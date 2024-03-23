@@ -30,8 +30,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
-            ],
+              "src/styles.scss",
+              {
+                  "input": "src/styles/light.scss",
+                  "bundleName": "light",
+                  "inject": true
+              },
+              {
+                  "input": "src/styles/dark.scss",
+                  "bundleName": "dark",
+                  "inject": false
+              }
+          ],
             "scripts": []
           },
           "configurations": {
@@ -100,5 +110,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "c2804dbc-559e-44ad-a7a6-f649ad0a4774"
   }
 }
