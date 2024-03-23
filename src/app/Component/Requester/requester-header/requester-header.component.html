@@ -31,6 +31,19 @@
     </ul>
   </div>
 
+  <div class="dropstart mr-4">
+    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <select class="form-select" [(ngModel)]="selectedTheme" (ngModelChange)="switchTheme()" name="themeSelect">
+          <option [value]="'light'" [selected]="selectedTheme === 'light'">Light</option>
+          <option [value]="'dark'" [selected]="selectedTheme === 'dark'">Dark</option>
+        </select>
+      </li>
+    </ul>
+  </div>
+  
+  
+
   <div class="dropstart mr-4"> <!-- Add margin to push to the right -->
     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
       <li class="nav-item">

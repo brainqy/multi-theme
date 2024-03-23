@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {JwtService} from "../../../Core/services/jwt.service";
 import { LanguageService } from 'src/app/Core/services/language.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ThemeService } from 'src/app/theme.service';
 
 @Component({
   selector: 'app-requester-header',
@@ -15,6 +16,7 @@ export class RequesterHeaderComponent {
   isLoggedIn = false;
   username: string = '';
   selectedLanguage!:any;
+  selectedTheme!: string;
 
   @Output() sideNavToggled = new EventEmitter<boolean>();
   menuStatus!: boolean ;
@@ -23,12 +25,17 @@ export class RequesterHeaderComponent {
               private jwtService: JwtService,
               private router: Router,
               private languageService: LanguageService,
-              private translate: TranslateService) {
+              private translate: TranslateService,private theme: ThemeService) {
 
   }
 
+  switchTheme(): void {
+    this.theme.current = this.selectedTheme;
+    console.log("this.theme.current", this.theme.current);
+  }
+
   ngOnInit(): void {
-    
+    this.selectedTheme = this.theme.current;
     this.isLoggedIn = this.authService.isAuthenticated();
     if (this.isLoggedIn) {
       const token = this.authService.getToken();
