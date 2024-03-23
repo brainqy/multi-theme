@@ -1,0 +1,57 @@
+
+<div class="container">
+<button class="bottom-left-button" (click)="openOrgModal(newOrgModal)"> Create Organization</button>
+
+<div *ngIf="response">
+  <p>{{ response }}</p>
+</div>
+<ng-template #newOrgModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Add New Organization</h4>
+      <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!-- Your form to collect new organization details -->
+      <form #newOrgForm="ngForm">
+        <!-- Organization Name -->
+        <div class="form-group">
+          <label for="orgName">Organization Name:</label>
+          <input type="text" id="orgName" name="orgName" ngModel required class="form-control">
+          <div
+          *ngIf="
+        newOrgForm.controls['orgName']?.touched &&
+        newOrgForm.controls['orgName']?.invalid
+      "
+          style="color: red;font-size: small;"
+        >
+          <span *ngIf="newOrgForm.controls['orgName'].hasError('required')">
+            Organization Name is required
+          </span>
+        </div>
+        </div>
+        
+        <!-- Organization Username -->
+        <div class="form-group">
+          <label for="orgUsername">Organization Username:</label>
+          <input type="text" id="orgUsername" name="orgUsername" ngModel required class="form-control">
+          <div
+          *ngIf="
+        newOrgForm.controls['orgUsername']?.touched &&
+        newOrgForm.controls['orgUsername']?.invalid
+      "
+          style="color: red;font-size: small;"
+        >
+          <span *ngIf="newOrgForm.controls['orgUsername'].hasError('required')">
+            Organization Username is required
+          </span>
+        </div>
+        </div>
+   
+        <button type="submit" class="btn btn-primary" [disabled]="newOrgForm.invalid" (click)="addNewOrganization(newOrgForm)">Add Organization</button>
+      </form>
+    </div>
+  </ng-template>
+
+</div>

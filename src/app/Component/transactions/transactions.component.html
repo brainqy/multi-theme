@@ -1,0 +1,54 @@
+<div class="container-fluid g-0">
+  <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+  </app-requester-header>
+
+  <main>
+    <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
+                           class="black-border"></app-requester-sidebar>
+    <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+
+      <!-- Dashboard Insights -->
+      <div class="dashboard-insights">
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <div class="rectangle"> 
+              Coin balance 
+              <div><h1>{{userBalance}}</h1></div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="rectangle"></div>
+          </div>
+          <div class="col-md-3">
+            <div class="rectangle"></div>
+          </div>
+          <div class="col-md-3">
+            <div class="rectangle"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transaction Table -->
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Transaction Date</th>
+            <th>Source</th>
+            <th>User</th>
+            <th>Transaction Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of transactions">
+            <td>{{ transaction.transactionType === 'REFERRAL_BONUS' ? '+' : '' }}{{ transaction.amount }}</td>
+            <td>{{ formatDate(transaction.createdDate) }}</td>
+            <td>{{ transaction.source || 'N/A' }}</td>
+            <td>{{ transaction.user.fullName }}</td>
+            <td>{{ transaction.transactionType }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>

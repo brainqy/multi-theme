@@ -1,0 +1,26 @@
+.bell-icon {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .bell-icon svg {
+    vertical-align: middle;
+  }
+  
+  .bell-icon .badge {
+    position: absolute;
+    top: -9px; /* Adjust top position */
+    right: -5px; /* Adjust right position */
+    font-size: 0.75rem;
+    line-height: 1;
+    padding: 0.25rem 0.5rem;
+    border-radius: 50%;
+  }
+  .dropdown-menu .dropdown-item {
+    font-size: 0.9rem; /* Adjust the font size as needed */
+  }
+  .dropstart {
+    margin-right: 10px; /* Adjust the value as needed for the desired spacing */
+  }
+  
+  

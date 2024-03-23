@@ -1,0 +1,36 @@
+<div class="container-fluid g-0">
+  <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+  </app-requester-header>
+
+  <main>
+    <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
+                           class="black-border"></app-requester-sidebar>
+    <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+      <p class="fs-1 fw-bold fst-italic text-center">List of Requesters</p>
+      <table style="width:100%">
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+
+        <tbody *ngFor="let user of userDetails">
+        <tr>
+          <td>{{ user.fullName }}</td>
+          <td>{{ user.emailAdd }}</td>
+          <td>
+            <button (click)="approveUser(user)" class="btn btn-primary btn-lg" id="submitbtn" name="submit"
+                    style="margin-left: 10px;">Approve
+            </button>
+            <button (click)="declineUser(user)" class="btn btn-primary btn-lg" id="submitbtn" name="submit"
+                    style="margin-left: 10px;">Decline
+            </button>
+          </td>
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </main>
+
+</div>

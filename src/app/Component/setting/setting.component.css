@@ -1,0 +1,26 @@
+nav-header {
+    height: 10%;
+}
+/* theme-dropdown.component.css */
+
+.dropdown {
+    display: inline-block;
+  }
+  
+  .dropdown-toggle {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: #fff; /* White text */
+  }
+  
+  .dropdown-menu {
+    min-width: auto; /* Adjust as needed */
+  }
+  
+  .dropdown-item {
+    cursor: pointer;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f8f9fa; /* Bootstrap dropdown item hover color */
+  }
+  

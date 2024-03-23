@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand navbar-custom px-2">
+
+  <a class="navbar-brand px-4" href="#" style="color: white;">BRAINQY</a>
+  <div (click)="sideNavToggle()" class="side-nav-button p-2 me-3">
+    <i class="fa-solid fa-bars" style="color: white;"></i>
+  </div>
+  <div class="navbar-collapse">
+    <ul class="navbar-nav me-auto">
+    </ul>
+  </div>
+
+  <div class="dropstart ml-auto mr-4"> <!-- Add margin to push to the right -->
+    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+      <!-- Notifications bell icon -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="bell-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M16.56 7.81C16.8 7.34 17 6.8 17 6c0-1.1-.9-2-2-2s-2 .9-2 2c0 .8.2 1.35.44 1.82C9.95 9.14 8 10.62 8 13v4h12v-4c0-2.38-1.95-3.86-3.44-5.19zM12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"/>
+            </svg>
+            <span class="badge bg-danger">3</span>
+          </div>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="#"><span class="notification-text">Notification 1</span></a></li>
+          <li><a class="dropdown-item" href="#"><span class="notification-text">Notification 2</span></a></li>
+          <li><a class="dropdown-item" href="#"><span class="notification-text">Notification 3</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="dropstart mr-4"> <!-- Add margin to push to the right -->
+    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+          <select class="form-select" [(ngModel)]="selectedLanguage" (ngModelChange)="switchLanguage()" name="languageSelect">
+              <option [value]="'en'" [selected]="selectedLanguage === 'en'">English</option>
+              <option [value]="'hi'" [selected]="selectedLanguage === 'hi'">Hindi</option>
+              <option [value]="'mar'" [selected]="selectedLanguage === 'mar'">Marathi</option>
+          </select>
+      </li>
+    </ul>
+  </div>
+
+  <div class="profile-logo dropstart mr-4"> <!-- Add margin to push to the right -->
+    <button class="btn btn-outline-light dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown">
+      {{ this.username }}
+    </button>
+
+    <ng-container *ngIf="authService.isAuthenticated()">
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="profileDropdown">
+        <li>
+          <a class="dropdown-item" href="#">Profile</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Bookmarks</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Badges</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/transactions">Wallet</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/setting">Settings</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Activity</a>
+        </li>
+        <li>
+          <a (click)="logout()" class="dropdown-item" href="#">Logout</a>
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+</nav>
+``

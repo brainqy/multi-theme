@@ -1,0 +1,56 @@
+<div class="container-fluid g-0">
+    <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+    </app-requester-header>
+  
+    <main>
+      <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
+                             class="black-border"></app-requester-sidebar>
+      <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <circle-progress class="circle__progress"
+                     [percent]="progress"
+                     [animation]="false"
+                     [startFromZero]="true"
+                     [showInnerStroke]="true"
+                     [titleFontSize]="'28'"
+                     [titleFontWeight]="'900'"
+                     [unitsFontSize]="'28'"
+                     [unitsFontWeight]="'900'"
+                     [subtitle]="'Progress'"
+                     [subtitleFontSize]="'12'"
+                     [lazy]="false"
+    ></circle-progress>
+    <div *ngIf="progress > 0 && progress < 100" class="progress-message">
+      We are searching for an interview buddy. Please wait...
+    </div>
+    <div *ngIf="progress !== 100">
+        <button (click)="startProgress()">Book Interview Buddy</button>
+    </div>
+   
+    <div *ngIf="progress === 100" class="completion-message">
+        <div class="card">
+            <div class="card-header">
+                <h2>Match found!</h2>
+            </div>
+            <div class="card-body">
+                <h3>{{ matchedBuddy?.name }}</h3>
+                <p>Skill Set: {{ matchedBuddy?.skills }}</p>
+                <p>Years of Experience: {{ matchedBuddy?.experience }}</p>
+                <h4>Available Time Slots:</h4>
+                <ul>
+                  <li *ngFor="let timeSlot of matchedBuddy?.timeSlots">
+                    <input type="checkbox" [value]="timeSlot.time" [checked]="timeSlot.available" (change)="toggleTimeSlot(timeSlot)">
+                    {{ timeSlot.time }} - {{ timeSlot.available ? 'Available' : 'Not Available' }}
+                  </li>
+                </ul>
+                <button (click)="scheduleInterview()">Schedule interview</button>
+              </div>
+              
+              
+        </div>
+    </div>
+</div>
+
+      </div></main></div>

@@ -1,0 +1,25 @@
+.container {
+    position: fixed; /* Ensure the container is positioned relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%; /* Fill the entire width of the viewport */
+    height: 100%; /* Fill the entire height of the viewport */
+    background-color: lightgray; /* Example background color */
+  }
+  
+  .bottom-left-button {
+    position: absolute;
+    bottom: 5%; /* Adjust as needed */
+    right: 5%; /* Adjust as needed */
+  }
+  body {
+    margin: 0;
+    font-family: var(--bs-font-sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #d37474;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}

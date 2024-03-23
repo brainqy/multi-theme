@@ -1,0 +1,3 @@
+<div class="star-rating">
+    <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="onStarClick(star - 1)" [class]="star <= rating ? 'star-filled' : 'star-empty'">&#9733;</span>
+  </div>

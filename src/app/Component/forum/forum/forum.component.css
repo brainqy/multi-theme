@@ -1,0 +1,10 @@
+.forum-container {
+    position: relative;
+    height: 100vh; /* Adjust as needed */
+    padding-left: 40%;
+  }
+  
+  app-report-form {
+    margin-top: 20px; /* Adjust as needed */
+  }
+  

@@ -1,0 +1,41 @@
+<div class="container-fluid g-0">
+    <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+    </app-requester-header>
+  
+    <main>
+      <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
+                             class="black-border"></app-requester-sidebar>
+      <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+
+            <h2>Referrals Works</h2>
+            <!-- Share this link and earn 50 Coins -->
+            <a (click)="copyToClipboard()">Share it now</a>
+            <div>
+            <h3>{{'howreferralworks' | translate}}</h3>
+            </div>
+            
+
+            <!-- Table to display referred people -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Date Referred</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Iterate over referred people and populate table rows -->
+                    <tr *ngFor="let referral of referredPeople">
+                        
+                        <td>{{ referral.email }}</td>
+                        <td>{{ referral.status }}</td>
+                        <td>{{ referral.referredAt }}</td>
+                        <td>
+                            <button *ngIf="referral.status === 'pending'" (click)="resendEmail(referral)">Resend Email</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+      </div></main></div>

@@ -1,0 +1,20 @@
+<!-- report-form.component.html -->
+<div class="report-card">
+    <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="tags">Tags</label>
+          <input type="text" formControlName="tags" id="tags" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="rating">Rating</label>
+            <app-star-rating [rating]="reportForm.get('rating')!.value" (ratingChange)="onRatingChange($event)"></app-star-rating>
+          </div>
+        <div class="form-group">
+          <label for="comment">Comment</label>
+          <textarea formControlName="comment" id="comment" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Report</button>
+      </form>
+</div>
+
+  

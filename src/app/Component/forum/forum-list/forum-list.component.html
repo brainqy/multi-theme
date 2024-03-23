@@ -1,0 +1,6 @@
+<p>forum-list works!</p>
+<ul>
+    <li *ngFor="let post of forumPosts" (click)="openPost(post.id)">
+      {{ post.title }}
+    </li>
+  </ul>

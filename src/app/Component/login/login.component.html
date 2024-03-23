@@ -1,0 +1,89 @@
+<section class="vh-100">
+    <div class="topnav">
+      <a class="ytms-logo" href="#">
+  
+        <img src="../../../assets/img/YTMS_LOGO 1.png"></a>
+  
+  
+    </div>
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img alt="Sample image"
+               class="img-fluid" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp">
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <form [formGroup]="userLoginForm">
+            <div>
+              <p><strong>WELCOME TO BrainQyTECHNOLOGIES !!!</strong></p>
+            </div>
+            <br>
+            <div><p>Sign in with your organizational account</p></div>
+  
+            <div class="form-group form-outline mb-4">
+              <label>Email Address</label>
+              <input
+                [pattern]="emailpattern"
+                class="form-control form-control-lg"
+                formControlName="email"
+                type="email"
+              />
+              <div
+                *ngIf="
+              userLoginForm.controls['email'].touched &&
+              userLoginForm.controls['email'].invalid
+            "
+                style="color: red;font-size: small;"
+              >
+                <span *ngIf="userLoginForm.controls['email'].hasError('required')">
+                  EmailID is required
+                </span>
+                <span *ngIf="userLoginForm.controls['email'].hasError('pattern')"
+                >EmailID is not valid</span
+                >
+              </div>
+            </div>
+            <div class="form-group form-outline mb-3">
+              <label>Password</label>
+              <input
+                class="form-control form-control-lg"
+                formControlName="password"
+                type="password"
+              />
+              <div
+                *ngIf="
+              userLoginForm.controls['password'].touched &&
+              userLoginForm.controls['password'].invalid
+            "
+                style="color: red;font-size: small;"
+              >
+    <span *ngIf="userLoginForm.controls['password'].hasError('required')"
+    >Password is required</span
+    >
+                <span *ngIf="userLoginForm.controls['password'].hasError('pattern')"
+                >Password must contain at least one number, one uppercase and a
+    lowercase letter and at least 8 characters<br/>Password cannot
+    contain whitespace</span
+                >
+              </div>
+            </div>
+  
+  
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+  
+              </div>
+              <a [routerLink]="['/forgotPassword']">Forgot password?</a>
+            </div>
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button (click)="submit()" class="button"
+                      style="padding-left: 2.5rem; padding-right: 2.5rem;" type="button">Sign in
+              </button>
+             
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  

@@ -1,0 +1,32 @@
+<div class="container-fluid g-0">
+  <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+  </app-requester-header>
+
+  <main>
+    <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
+                           class="black-border"></app-requester-sidebar>
+    <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+  
+      <div class="container">
+        <div class="left-column"></div>
+        <div class="middle-column">
+          <div class="banner-row">
+            <img src="assets/img/banner.png" alt="Banner Image">
+          </div>
+          <div class="recommendation-row">
+            <p class="fs- fw-bold fst-italic text-center">{{ this.username }}, {{'greeting' | translate}}</p>
+            <h5>{{ 'welcome' | translate }}</h5>
+            <!-- Recommendation content goes here -->
+          </div>
+          <div class="upcoming-events-row">hello
+            <!-- Upcoming events content goes here -->
+          </div>
+        </div>
+        <div class="right-column"></div>
+      </div>
+      
+      
+    </div>
+  </main>
+
+</div>
