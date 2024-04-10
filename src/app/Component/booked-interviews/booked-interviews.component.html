@@ -61,19 +61,20 @@
           <!-- Modal body -->
           <div class="modal-body">
             <div class="week">
-              <div *ngFor="let day of daysInWeek" class="day">
-                <h5>{{ day }}</h5>
+              <div *ngFor="let dayWithSlots of datesWithSlots" class="day">
+                <h5>{{ dayWithSlots.date }}</h5>
                 <div class="slot-buttons">
-                  <button *ngFor="let slot of slots[day]"
+                  <button *ngFor="let slot of dayWithSlots.slots"
                           class="slot-button"
-                          [class.selected]="isSlotSelected(day, slot)"
-                          (click)="toggleSlot(day, slot)">
+                          [class.selected]="isSlotSelected(dayWithSlots.date, slot)"
+                          (click)="toggleSlot(dayWithSlots.date, slot)">
                     {{ slot }}
                   </button>
                 </div>
               </div>
             </div>
           </div>
+          
           <!-- Modal footer -->
           <div class="modal-footer">
             <!-- Interview Type button -->

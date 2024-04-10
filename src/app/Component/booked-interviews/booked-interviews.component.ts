@@ -53,7 +53,7 @@ istheSlotSelected:boolean=false;
       action: 'Cancel/Reschedule'
     }
   ];
-  daysInWeek: string[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+ /*  daysInWeek: string[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   slots: WeeklySlots = {
    
     'Mon': ['9:00 AM', '11:00 AM', '1:00 PM'],
@@ -63,9 +63,38 @@ istheSlotSelected:boolean=false;
     'Fri': ['8:00 AM', '12:00 PM', '3:00 PM'],
     'Sat': ['8:00 AM', '9:00 AM', '10:00 AM'],
     // Add slots data for other days as needed
-  };
+  }; */
+  datesWithSlots: { date: string, slots: string[] }[] = [];
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal) {
+    this.generateDatesWithSlots();
+  }
+  generateDatesWithSlots() {
+    const today = new Date();
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(today.getTime() + i * 24 * 60 * 60 * 1000);
+      const formattedDate = date.toISOString().split('T')[0];
+      const slots = this.generateSlotsForDate(date);
+      this.datesWithSlots.push({ date: formattedDate, slots: slots });
+    }
+  }
+
+  generateSlotsForDate(date: Date): string[] {
+    // Assuming slots from 8 AM to 6 PM with 30 minutes interval
+    const slots = [];
+    const startHour = 8;
+    const endHour = 18;
+    const interval = 30; // minutes
+
+    for (let hour = startHour; hour <= endHour; hour++) {
+      for (let minute = 0; minute < 60; minute += interval) {
+        const slot = `${hour < 10 ? '0' + hour : hour}:${minute === 0 ? '00' : minute} ${hour < 12 ? 'AM' : 'PM'}`;
+        slots.push(slot);
+      }
+    }
+    console.log("slots",slots);
+    return slots;
+  }
   toggleSlot(day: string, slot: string) {
     if (this.selectedSlot && this.selectedSlot.day === day && this.selectedSlot.slot === slot) {
       this.selectedSlot = null; // Deselect slot if already selected
