@@ -19,7 +19,7 @@ export class RequesterSidebarComponent {
       number: 2,
       name: 'Analytics',
       icon: 'fa-solid fa-chart-line',
-      link:''
+      link:'analytics'
     },
     {
       number: 3,

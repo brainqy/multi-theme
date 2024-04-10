@@ -1,0 +1,147 @@
+<div class="container-fluid g-0">
+    <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+    </app-requester-header>
+  
+    <main>
+      <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
+                             class="black-border"></app-requester-sidebar>
+      <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+
+<div>
+    <h2>PRACTICE MAKES PERFECT</h2>
+    <button>Start a Practice session</button>
+    <p>Credits left: 5 interviews</p>
+    <p><a href="#">GET MORE FOR FREE</a></p>
+    <button class="bottom-left-button" (click)="openBookingModal(bookingModal)"> Book slot</button>
+  </div>
+  <div>
+    <!-- interview-table.component.html -->
+    <h2>UPCOMING PRACTICE INTERVIEWS</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Type</th>
+<th>Question You'll Ask</th>
+<th>Language</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let session of interviewSessions">
+<td>{{ session.date }}</td>
+<td>{{ session.type }}</td>
+<td>{{ session.question }}</td>
+<td>{{ session.language }}</td>
+<td><button>Cancel </button><button>ReSchedule </button></td>
+</tr>
+</tbody>
+</table>
+
+  </div>
+      </div></main></div>
+
+      <ng-template #bookingModal let-modal>
+        <!-- First page: Weekly schedule -->
+        <div *ngIf="isSchedulePageVisible">
+          <div class="modal-header">
+            <!-- Previous and Next buttons -->
+            <button type="button" class="btn btn-link" (click)="navigateWeek(-1)">
+              <span>&lt; Previous Week</span>
+            </button>
+            <h4 class="modal-title">Weekly Schedule</h4>
+            <button type="button" class="btn btn-link" (click)="navigateWeek(1)">
+              <span>Next Week &gt;</span>
+            </button>
+            <!-- Close button -->
+            <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="week">
+              <div *ngFor="let day of daysInWeek" class="day">
+                <h5>{{ day }}</h5>
+                <div class="slot-buttons">
+                  <button *ngFor="let slot of slots[day]"
+                          class="slot-button"
+                          [class.selected]="isSlotSelected(day, slot)"
+                          (click)="toggleSlot(day, slot)">
+                    {{ slot }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <!-- Interview Type button -->
+            <button type="button" class="btn btn-primary" (click)="showInterviewTypePage()">Interview Type</button>
+            <!-- Confirm and Schedule button -->
+            <button type="button" class="btn btn-primary" [disabled]="!istheSlotSelected" (click)="confirmAndSchedule()">Confirm and Schedule</button>  
+          </div>
+        </div>
+      
+        <!-- Second page: Interview Type -->
+        <div *ngIf="!isSchedulePageVisible && !isKindOfPracticePageVisible">
+            <div class="modal-header">
+              <h4 class="modal-title">Interview Type</h4>
+              <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <!-- Interview Type selection content -->
+              <p>Select interview type here...</p>
+              <div class="grid-container">
+                <!-- Grid items -->
+                <div *ngFor="let item of interviewItems"
+                     class="grid-item"
+                     [class.selected]="isSelectedInterviewType(item)"
+                     (click)="toggleSelection(item)">
+                  {{ item }}
+                </div>
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <!-- Next button -->
+              <button type="button" class="btn btn-primary" (click)="hideInterviewTypePage()">Next</button>
+            </div>
+          </div>
+
+          <div *ngIf="isKindOfPracticePageVisible">
+            <div class="modal-header">
+              <h4 class="modal-title">Kind Of Interview</h4>
+              <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+         
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- Interview Type selection content -->
+                <p>Select Kind of Interview you want to schedule...</p>
+                <div class="grid-container">
+                  <!-- Grid items -->
+                  <div *ngFor="let kind of kindOfInterview"
+                       class="grid-item"
+                       [class.selected]="isSelectedkindOfInterviewType(kind)"
+                       (click)="toggleKindOfSelection(kind)">
+                    {{ kind }}
+                  </div>
+                </div>
+              </div>
+    
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <!-- Next button -->
+              <button type="button" class="btn btn-primary" (click)="hideKindOfPracticePage()">Next</button>
+            </div>
+          </div>
+          
+      </ng-template>
+      
+    

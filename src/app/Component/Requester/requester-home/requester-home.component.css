@@ -101,3 +101,22 @@ app-requester-sidebar {
     border-radius: 20px; /* Add rounded corners to the image */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for separation */
   }
+  /* interview-table.component.css */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px dotted #999;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}

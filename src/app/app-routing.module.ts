@@ -21,6 +21,9 @@ import { InterviewMatcherComponent } from './Component/interview-matcher/intervi
 import { ForumComponent } from './Component/forum/forum/forum.component';
 import { ForumListComponent } from './Component/forum/forum-list/forum-list.component';
 import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
+import { AnalyticsComponent } from './Component/analytics/analytics.component';
+import { PracticeWithFrndsComponent } from './Component/practice-with-frnds/practice-with-frnds.component';
+import { BookedInterviewsComponent } from './Component/booked-interviews/booked-interviews.component';
 
 
 const routes: Routes = [
@@ -38,6 +41,18 @@ const routes: Routes = [
     path:"book-calendar",component:CalenderComponent,
     canActivate: [AuthGuard]
 
+  },
+  {
+    path:"analytics",component:AnalyticsComponent,
+    canActivate: [AuthGuard]
+
+  },
+  {
+    path:"practice-with-frnd",component:PracticeWithFrndsComponent
+
+  },
+  {
+    path:"booked-interviews",component:BookedInterviewsComponent
   },
   {
     path: 'register',
@@ -104,10 +119,14 @@ const routes: Routes = [
     component:ChangePasswordComponent},
     {
       path:"referrals",
-      component:ReferralsComponent},
+      component:ReferralsComponent,
+      canActivate: [AuthGuard]
+    },
       {
         path:"transactions",
-        component:TransactionsComponent},
+        component:TransactionsComponent,
+        canActivate: [AuthGuard]
+      },
   {
     path: '**',
     component: LoginComponent

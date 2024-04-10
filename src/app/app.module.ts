@@ -52,6 +52,9 @@ import { LoginComponent } from './Component/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './Component/signup/signup.component';
 import { RequesterHomeComponent } from './Component/Requester/requester-home/requester-home.component';
+import { AnalyticsComponent } from './Component/analytics/analytics.component';
+import { PracticeWithFrndsComponent } from './Component/practice-with-frnds/practice-with-frnds.component';
+import { BookedInterviewsComponent } from './Component/booked-interviews/booked-interviews.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -90,7 +93,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     ThemeSwitcherComponent,
     LoginComponent,
     SignupComponent,
-    RequesterHomeComponent
+    RequesterHomeComponent,
+    AnalyticsComponent,
+    PracticeWithFrndsComponent,
+    BookedInterviewsComponent
   ],
   imports: [
     BrowserModule,
