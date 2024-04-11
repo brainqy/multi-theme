@@ -23,4 +23,6 @@ nav-header {
   .dropdown-item:hover {
     background-color: #f8f9fa; /* Bootstrap dropdown item hover color */
   }
-  
+  .block-container{
+    padding: 10px;
+  }

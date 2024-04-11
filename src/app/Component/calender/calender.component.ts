@@ -27,10 +27,10 @@ import { EventColor } from 'calendar-utils';
 import { FormBuilder, NgForm, NgModel, Validators } from '@angular/forms';
 import { FlatPickrOutputOptions } from 'angularx-flatpickr/lib/flatpickr.directive';
 import { CalendarService } from 'src/app/Core/services/calendar.service';
-import { UsersService } from 'src/app/Core/services/users.service';
 import { User } from 'src/app/Model/User';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/Core/services/auth.service';
+import { UsersService } from 'src/app/Core/services/users.service';
 import { IcsRequest } from 'src/app/Core/services/transaction.service';
 const colors: Record<string, EventColor> = {
   red: {
@@ -333,10 +333,10 @@ export class CalenderComponent {
     // Validate and add the new event to the events array
     if (newEventForm.valid) {
       const newEvent: any = {
-        title: newEventForm.value.title,
+        title: "AVAILABILITY",
         start: new Date(newEventForm.value.startDate),
         end: new Date(newEventForm.value.endDate),
-        color: newEventForm.value?.primaryColor,
+        color: "#90dd1d",
         trainerEmail: newEventForm.value?.trainerEmail
 
       };
@@ -357,7 +357,9 @@ export class CalenderComponent {
       // Close the modal
       this.modal.dismissAll();
     }
+    window.location.reload();
   }
+ 
   fetchAllTrainers() {
     this.userService.getAllTrainers().subscribe(
       (trainers) => {

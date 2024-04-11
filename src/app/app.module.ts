@@ -55,6 +55,7 @@ import { RequesterHomeComponent } from './Component/Requester/requester-home/req
 import { AnalyticsComponent } from './Component/analytics/analytics.component';
 import { PracticeWithFrndsComponent } from './Component/practice-with-frnds/practice-with-frnds.component';
 import { BookedInterviewsComponent } from './Component/booked-interviews/booked-interviews.component';
+import { DashboardComponent } from './Component/dashboard/dashboard.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -96,7 +97,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RequesterHomeComponent,
     AnalyticsComponent,
     PracticeWithFrndsComponent,
-    BookedInterviewsComponent
+    BookedInterviewsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

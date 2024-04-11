@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment'; // Import moment library for date manipulation
+import { InterviewService } from 'src/app/Core/services/interview.service';
 
 interface WeeklySlots {
   [day: string]: string[];
@@ -19,7 +20,8 @@ export class BookedInterviewsComponent {
   isKindOfPracticePageVisible:boolean=false;
 selectedKindOfInterviewType: string | null = null;
 istheSlotSelected:boolean=false;
-
+isTheSelectedInterviewType:boolean=false;
+isTheSelectedkindOfInterviewType:boolean=false;
   
   interviewItems: string[] = [
     'Data Structures and algorithms',
@@ -37,37 +39,13 @@ istheSlotSelected:boolean=false;
 
     // Add more interview types as needed
   ];
-  interviewSessions = [
-    {
-      date: 'Tue, Apr 9, 2024',
-      type: 'System Design',
-      question: 'Spring security',
-      language: 'Java',
-      action: 'Cancel/Reschedule'
-    },
-    {
-      date: 'Tue, Apr 9, 2024',
-      type: 'Algorithm',
-      question: 'Microservices',
-      language: 'Java',
-      action: 'Cancel/Reschedule'
-    }
-  ];
- /*  daysInWeek: string[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  slots: WeeklySlots = {
-   
-    'Mon': ['9:00 AM', '11:00 AM', '1:00 PM'],
-    'Tue': ['8:00 AM', '12:00 PM', '3:00 PM'],
-    'Wed': ['8:00 AM', '9:00 AM', '10:00 AM'],
-    'Thu': ['9:00 AM', '11:00 AM', '1:00 PM'],
-    'Fri': ['8:00 AM', '12:00 PM', '3:00 PM'],
-    'Sat': ['8:00 AM', '9:00 AM', '10:00 AM'],
-    // Add slots data for other days as needed
-  }; */
+  interviewSlots:any;
+
   datesWithSlots: { date: string, slots: string[] }[] = [];
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal,private interviewService:InterviewService) {
     this.generateDatesWithSlots();
+    this.getAllSlots();
   }
   generateDatesWithSlots() {
     const today = new Date();
@@ -92,7 +70,7 @@ istheSlotSelected:boolean=false;
         slots.push(slot);
       }
     }
-    console.log("slots",slots);
+  
     return slots;
   }
   toggleSlot(day: string, slot: string) {
@@ -108,6 +86,7 @@ istheSlotSelected:boolean=false;
   openBookingModal(content:any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
+
 
   bookSlot(bookingForm: any) {
     if (bookingForm.valid) {
@@ -132,7 +111,9 @@ istheSlotSelected:boolean=false;
   
     if (this.selectedSlot) {
       // Add selected slot to the data object
-      data.slot = this.selectedSlot;
+      data.slot = this.selectedSlot.slot;
+      data.day=this.selectedSlot.day;
+      data.status="SCHEDULED";
     }
   
     if (this.selectedInterviewType) {
@@ -144,7 +125,12 @@ istheSlotSelected:boolean=false;
       // Add selected kind of interview type to the data object
       data.kindOfInterviewType = this.selectedKindOfInterviewType;
     }
-  
+
+  this.interviewService.saveinterviewSlot(data).subscribe((res)=>{
+console.log(" called interview service",res);
+this.modalService.dismissAll();
+window.location.reload();
+  })
     // Log or further process the data object
     console.log('Selected Data:', data);
   
@@ -171,8 +157,10 @@ istheSlotSelected:boolean=false;
   toggleSelection(item: string) {
     if (this.selectedInterviewType === item) {
       this.selectedInterviewType = null; // Deselect item if already selected
+      this.isTheSelectedInterviewType=false;
     } else {
       this.selectedInterviewType = item; // Select item
+      this.isTheSelectedInterviewType=true;
     }
   }
   
@@ -185,9 +173,41 @@ istheSlotSelected:boolean=false;
   toggleKindOfSelection(item: string) {
     if (this.selectedKindOfInterviewType === item) {
       this.selectedKindOfInterviewType = null; // Deselect item if already selected
+      this.isTheSelectedkindOfInterviewType=false;
     } else {
       this.selectedKindOfInterviewType = item; // Select item
+      this.isTheSelectedkindOfInterviewType=true;
     }
   }
+  getAllSlots(){
+    this.interviewService.getAllInterviewSlots().subscribe((res)=>{
+      this.interviewSlots=res;
+console.log("all slots ",res);
+    })
+  }
+  updateSlot(id: number, updatedSlot: any) {
+    this.interviewService.updateInterviewSlot(id, updatedSlot)
+      .subscribe(
+        response => {
+          console.log('Slot updated successfully:', response);
+          // Do something with the response if needed
+        },
+        error => {
+          console.error('Error updating slot:', error);
+          // Handle error if needed
+        }
+      );
+  }
+
+  cancelInterviewSlot(id:any){
+    console.log("id is ",id);
+    this.interviewService.cancelInterviewSlot(id).subscribe((res)=>{
+console.log(" Canceled slot is ",res);
+    })
+    window.location.reload();
+
+
+  }
+ 
   
 }

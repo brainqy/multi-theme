@@ -24,6 +24,7 @@ import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.componen
 import { AnalyticsComponent } from './Component/analytics/analytics.component';
 import { PracticeWithFrndsComponent } from './Component/practice-with-frnds/practice-with-frnds.component';
 import { BookedInterviewsComponent } from './Component/booked-interviews/booked-interviews.component';
+import { DashboardComponent } from './Component/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,9 @@ const routes: Routes = [
   {
     path:"practice-with-frnd",component:PracticeWithFrndsComponent
 
+  },
+  {
+    path:"dashboard",component:DashboardComponent
   },
   {
     path:"booked-interviews",component:BookedInterviewsComponent
