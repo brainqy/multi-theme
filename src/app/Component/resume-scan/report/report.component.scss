@@ -1,0 +1,134 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sticky {
+    width: 20%;
+    position: sticky;
+    top: 0;
+    height: 100%;
+    background-color: #f0f0f0;
+    overflow-y: auto; /* Add vertical scrollbar if needed */
+    padding: 20px; /* Add padding for buttons */
+}
+
+.column {
+    display: flex;
+    padding-top: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.progress-wrapper {
+    width: 100%; /* Ensure the progress bar container takes full width */
+    text-align: center;
+}
+.progress-bar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Add margin between progress bars */
+}
+
+.progress-title-left,
+.progress-title-right {
+    font-size: 12px; /* Set font size for titles */
+    color: #888; /* Set color for titles */
+}
+
+.progress-bar-container {
+    flex-grow: 1;
+    margin: 0 10px; /* Add margin around progress bar */
+}
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+.left,
+.right {
+    font-size: 10px; /* Adjust the font size as needed */
+}
+
+
+.scrollable {
+    width: 80%; /* Adjust width of the scrollable area */
+    height: 100%;
+    overflow-y: auto; /* Add vertical scrollbar if needed */
+    background-color: #ffffff; /* Set your desired background color */
+    padding: 20px; /* Add padding for better spacing */
+}
+.button-container {
+    margin-top: 20px; /* Add margin between progress bar and buttons */
+    display: flex;
+    flex-direction: column; /* Arrange buttons in a column */
+}
+.progress-container {
+    padding-top: 20px; /* Add padding above progress bars */
+}
+
+.progress {
+    margin-bottom: 20px; /* Add margin between progress bars */
+}
+.button-container button {
+    margin-bottom: 10px; /* Add margin between buttons */
+    padding: 10px 20px; /* Add padding inside buttons */
+    background-color: #007bff; /* Set button background color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff; /* Set text color */
+    font-size: 16px; /* Set font size */
+}
+
+.button-container button:last-child {
+    margin-bottom: 0; /* Remove bottom margin from the last button */
+}
+
+.grid-container {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust column width as needed */
+    grid-gap: 20px; /* Adjust gap between grid items */
+}
+
+.grid-item {
+    background-color: #f8f2f2; /* Set your desired background color */
+    padding: 20px; /* Add padding for better spacing */
+    border-radius: 5px; /* Add border radius for rounded corners */
+}
+
+.grid-item-large {
+    grid-column-end: span 2; /* Set the column span for large grid items */
+}
+
+.grid-item-large-xl {
+    grid-column-end: span 3; /* Set the column span for extra-large grid items */
+}
+.title-column {
+    width: 15%; /* Adjust as needed */
+    padding: 5px; /* Adjust as needed */
+    margin: 5px; /* Adjust as needed */
+}
+
+.icon-column {
+    width: 3%; /* Adjust as needed */
+    text-align: center; /* Center-align icons */
+}
+
+.content-column {
+    width: 70%; /* Adjust as needed */
+    padding: 5px; /* Adjust as needed */
+    margin: 3px; /* Adjust as needed */
+}
+

@@ -1,0 +1,155 @@
+<div class="container">
+    <div class="sticky">
+        <div class="column">
+            <div class="progress-wrapper">
+                <h5>Match Rate</h5>
+                <circle-progress class="circle__progress"
+                    [percent]="progress"
+                    [animation]="false"
+                    [startFromZero]="true"
+                    [showInnerStroke]="true"
+                    [titleFontSize]="'28'"
+                    [titleFontWeight]="'900'"
+                    [unitsFontSize]="'28'"
+                    [unitsFontWeight]="'900'"
+                    [subtitle]="'Progress'"
+                    [subtitleFontSize]="'12'"
+                    [lazy]="false">
+                </circle-progress>
+                <div class="button-container">
+                    <button class="btn btn-primary">Button 1</button>
+                    <button class="btn btn-primary">Button 2</button>
+                    <!-- Add more buttons as needed -->
+                </div>
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span class="left">Searchability</span>
+                        <span class="right"><a href="#">3 issues to fix</a></span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar"
+                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                            40%
+                        </div>
+                    </div>
+                    <div class="progress-info">
+                        <span class="left">Skills</span>
+                        <span class="right"><a href="#">3 issues to fix</a></span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar"
+                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                            60%
+                        </div>
+                    </div>
+                    <div class="progress-info">
+                        <span class="left">Recruiter Tips</span>
+                        <span class="right"><a href="#">3 issues to fix</a></span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar"
+                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:78%">
+                            78%
+                        </div>
+                    </div>
+                    <div class="progress-info">
+                        <span class="left">Formatting</span>
+                        <span class="right"><a href="#">3 issues to fix</a></span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar"
+                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:78%">
+                            78%
+                        </div>
+                    </div>
+                    <div class="progress-info">
+                        <span class="left">Cover Letter</span>
+                        <span class="right"><a href="#">3 issues to fix</a></span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar"
+                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:78%">
+                            78%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Left sidebar content goes here -->
+    </div>
+    <div class="scrollable">
+        <div class="grid-container">
+            <div class="grid-item">Item 1</div>
+            <div class="grid-item grid-item-large-xl">1 Add resume and job description
+                2 Add suggestions below to your resume
+                3 Upload resume & rescan</div>
+            
+            
+
+
+            <div class="grid-item grid-item-large-xl" *ngFor="let part of allData">
+                <div class="content">
+                    <h3>{{ part.section }}</h3>
+                    <div>
+                        <table>
+                            <tbody>
+                                <ng-container *ngFor="let item of part.data">
+                                    <tr>
+                                        <td class="title-column">{{ item.title }}</td>
+                                        <td class="icon-column">
+                                            <ng-container *ngIf="item.infoIcon">
+                                                <i class="fas fa-info-circle text-info"></i>
+                                            </ng-container>
+                                        </td>
+                                        <td class="content-column">
+                                            <ul>
+                                                <li class="no-bullets" *ngFor="let contentItem of item.content">
+                                                    <ng-container *ngIf="contentItem.tickIcon; else crossIcon">
+                                                        <i class="fas fa-check-circle text-success"></i>
+                                                    </ng-container>
+                                                    <ng-template #crossIcon>
+                                                        <i class="fas fa-times-circle text-danger"></i>
+                                                    </ng-template>
+                                                    {{ contentItem.contentValue }}
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><hr></td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            <!-- Add more grid items with different sizes as needed -->
+            
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">Item 1</div>
+            <div class="grid-item grid-item-large">Item 2 (Large)</div>
+            <div class="grid-item">Item 3</div>
+            <div class="grid-item">Item 4</div>
+            <div class="grid-item">Item 5</div>
+            <div class="grid-item grid-item-large">Item 6 (Large)</div>
+            <div class="grid-item grid-item-large-xl">Item 6 (Large)</div>
+            <!-- Add more grid items with different sizes as needed -->
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">Item 1</div>
+            <div class="grid-item grid-item-large">Item 2 (Large)</div>
+            <div class="grid-item">Item 3</div>
+            <div class="grid-item">Item 4</div>
+            <div class="grid-item">Item 5</div>
+            <div class="grid-item grid-item-large">Item 6 (Large)</div>
+            <div class="grid-item grid-item-large-xl">Item 6 (Large)</div>
+            <!-- Add more grid items with different sizes as needed -->
+        </div>
+    </div>
+</div>

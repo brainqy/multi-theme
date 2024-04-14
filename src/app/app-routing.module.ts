@@ -25,6 +25,7 @@ import { AnalyticsComponent } from './Component/analytics/analytics.component';
 import { PracticeWithFrndsComponent } from './Component/practice-with-frnds/practice-with-frnds.component';
 import { BookedInterviewsComponent } from './Component/booked-interviews/booked-interviews.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
+import { ReportComponent } from './Component/resume-scan/report/report.component';
 
 
 const routes: Routes = [
@@ -54,6 +55,9 @@ const routes: Routes = [
   },
   {
     path:"dashboard",component:DashboardComponent
+  },
+  {
+    path:"scan/:id",component:ReportComponent
   },
   {
     path:"booked-interviews",component:BookedInterviewsComponent

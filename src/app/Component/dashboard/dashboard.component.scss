@@ -119,3 +119,8 @@ table tr:last-child td {
     flex: 1; /* Each column takes up equal space */
     padding: 10px; /* Add padding between columns */
   }
+  .arrow {
+    position: absolute;
+    top: 18px;
+    right: 10px; /* Adjust distance from the header */
+  }
