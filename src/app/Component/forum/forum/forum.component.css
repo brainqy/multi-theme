@@ -1,10 +1,58 @@
-.forum-container {
-    position: relative;
-    height: 100vh; /* Adjust as needed */
-    padding-left: 40%;
-  }
-  
-  app-report-form {
-    margin-top: 20px; /* Adjust as needed */
-  }
-  
+
+.comment-container {
+  margin-top: 20px;
+}
+
+.comment {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment .reported-by {
+  font-weight: bold;
+  color: #333;
+}
+
+.comment .comment-text {
+  margin-top: 5px;
+  color: #666;
+}
+
+.nav-right-small {
+  float: right;
+  font-size: 10px; /* Increase font size for better visibility */
+  margin-top: 5px; /* Adjust top margin */
+  margin-right: 10px; /* Add right margin */
+  color: #666; /* Set text color */
+}
+.nav-right-large {
+  float: right;
+  font-size: 20px; /* Increase font size for better visibility */
+  margin-top: -30px; /* Adjust top margin */
+  margin-right: 10px; /* Add right margin */
+  color: #666; /* Set text color */
+}
+
+.tags-container {
+  margin-top: 20px;
+}
+
+.tags {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tags li {
+  display: inline-block;
+  margin-right: 10px;
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.app-report-form {
+  margin-top: 20px;
+}

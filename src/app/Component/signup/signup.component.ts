@@ -7,6 +7,6 @@ import { ThemeService } from 'src/app/theme.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
-  constructor(private theme: ThemeService){}
+ 
 
 }

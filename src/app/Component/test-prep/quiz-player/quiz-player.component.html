@@ -1,0 +1,10 @@
+<!-- quiz.component.html -->
+<div class="quiz-container">
+    <app-question 
+      [question]="questions[currentQuestionIndex]" 
+      (previous)="moveToPreviousQuestion()" 
+      (next)="moveToNextQuestion()"
+      (optionSelected)="handleOptionSelected($event)">
+    </app-question>
+  </div>
+  

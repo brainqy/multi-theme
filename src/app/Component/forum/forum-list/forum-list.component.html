@@ -1,6 +1,37 @@
-<p>forum-list works!</p>
-<ul>
-    <li *ngFor="let post of forumPosts" (click)="openPost(post.id)">
-      {{ post.title }}
-    </li>
-  </ul>
+<div class="container-fluid g-0">
+  <app-requester-header (sideNavToggled)="sideNavStatus=$event;"></app-requester-header>
+  <main>
+    <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
+                           class="black-border"></app-requester-sidebar>
+    <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+
+      <!-- Breadcrumb navigation -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Home</a></li> <!-- Link to forum homepage -->
+          <li class="breadcrumb-item active" aria-current="page">Forum</li> <!-- Current forum page -->
+        </ol>
+      </nav>
+
+      <!-- Forum content -->
+      <div class="forum-container">
+        <h1>Welcome to the Forum!</h1>
+        <button class="create-post-button" (click)="createNewPost()">Create New Post</button>
+        <ul class="forum-post-list">
+          <li *ngFor="let post of currentPagePosts" (click)="openPost(post.forum_id)">
+            {{ post.forum_title }}
+          </li>
+        </ul>
+      </div>
+     <!-- Pagination controls -->
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage === 0">Previous</button>
+  <ng-container *ngFor="let page of pages">
+    <button (click)="goToPage(page)" [class.active]="currentPage === page">{{ page + 1 }}</button>
+  </ng-container>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1">Next</button>
+</div>
+
+    </div>
+  </main>
+</div>

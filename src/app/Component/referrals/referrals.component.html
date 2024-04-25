@@ -7,13 +7,53 @@
                              class="black-border"></app-requester-sidebar>
       <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
 
-            <h2>Referrals Works</h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page"><a>Referrals</a></li> <!-- Link to forum homepage -->
+            </ol>
+          </nav>
             <!-- Share this link and earn 50 Coins -->
             <a (click)="copyToClipboard()">Share it now</a>
             <div>
             <h3>{{'howreferralworks' | translate}}</h3>
             </div>
-            
+            <div class="dashboard-insights">
+                <div class="row mb-4">
+                  <div class="col-md-3">
+                    <div class="rectangle primary-bg"> <!-- Added primary-bg class for background color -->
+                      <div class="content">
+                        <h1>99</h1>
+                        <p>Friends Referred</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="rectangle primary-bg">
+                      <div class="content">
+                        <h1>89</h1>
+                        <p>Users Joined</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="rectangle primary-bg">
+                      <div class="content">
+                        <h1>10</h1>
+                        <p>Users yet to join</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="rectangle primary-bg">
+                      <div class="content">
+                        <h1>4500</h1>
+                        <p>Commision earned</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             <!-- Table to display referred people -->
             <table class="table">

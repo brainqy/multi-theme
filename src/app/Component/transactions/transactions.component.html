@@ -7,13 +7,22 @@
                            class="black-border"></app-requester-sidebar>
     <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
 
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a>Wallet</a></li> <!-- Link to forum homepage -->
+        </ol>
+      </nav>
+
       <!-- Dashboard Insights -->
       <div class="dashboard-insights">
         <div class="row mb-4">
           <div class="col-md-3">
             <div class="rectangle"> 
+              <div class="content">
               Coin balance 
               <div><h1>{{userBalance}}</h1></div>
+              </div>
             </div>
           </div>
           <div class="col-md-3">

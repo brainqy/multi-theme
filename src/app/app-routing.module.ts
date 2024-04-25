@@ -26,6 +26,8 @@ import { PracticeWithFrndsComponent } from './Component/practice-with-frnds/prac
 import { BookedInterviewsComponent } from './Component/booked-interviews/booked-interviews.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { ReportComponent } from './Component/resume-scan/report/report.component';
+import { CreateForumComponent } from './Component/forum/create-forum/create-forum.component';
+import { QuizPlayerComponent } from './Component/test-prep/quiz-player/quiz-player.component';
 
 
 const routes: Routes = [
@@ -81,8 +83,18 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: "test",
+    component: QuizPlayerComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: "forum/:id",
     component: ForumComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "create-forum",
+    component: CreateForumComponent,
     canActivate: [AuthGuard]
   },
   {

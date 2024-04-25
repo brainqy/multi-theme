@@ -11,39 +11,58 @@ export class RequesterSidebarComponent {
   list = [
     {
       number: 1,
-      name: 'home',
-      icon: 'fa-solid fa-house',
-      link:''
+      name: 'Home',
+      icon: 'fas fa-home',
+      link: ''
     },
     {
       number: 2,
       name: 'Analytics',
-      icon: 'fa-solid fa-chart-line',
-      link:'analytics'
+      icon: 'fas fa-chart-line',
+      link: 'analytics'
     },
     {
       number: 3,
       name: 'Schedule meeting',
-      icon: 'fa-solid fa-box',
-      link:'book-calendar'
+      icon: 'fas fa-calendar-alt',
+      link: 'book-calendar'
+    },
+    {
+      number: 4,
+      name: 'Reports',
+      icon: 'fas fa-file-alt',
+      link: '/reports'
+    },
+    {
+      number: 5,
+      name: 'Forum',
+      icon: 'fas fa-comments',
+      link: '/forum-list'
     },
     {
       number: 6,
-      name: 'Reports',
-      icon: 'fa-solid fa-circle-info',
-      link:'/reports'
+      name: 'Booked Interviews',
+      icon: 'fas fa-calendar-alt', // Changed icon to calendar
+      link: '/booked-interviews'
+    },
+    {
+      number: 6,
+      name: 'Job Tracker',
+      icon: 'fas fa-briefcase', // Changed icon to briefcase
+      link: '/dashboard'
     },
     {
       number: 7,
       name: 'Create org',
-      icon: 'fa-solid fa-phone',
-      link:'/my-org'
+      icon: 'fas fa-building',
+      link: '/my-org'
     },
     {
-      number: 7,
+      number: 8,
       name: 'Share',
-      icon: 'fa-solid fa-share-alt',
-      link:'referrals'
-    },
-  ]
+      icon: 'fas fa-share-alt',
+      link: 'referrals'
+    }
+  ];
+  
 }

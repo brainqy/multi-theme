@@ -1,0 +1,26 @@
+/* question.component.css */
+.options-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-circle {
+  /* Styling for the entire option container */
+}
+
+.option-letter {
+  width: 30px; /* Adjust the size of the circle */
+  height: 30px; /* Adjust the size of the circle */
+  border-radius: 50%;
+  background-color: #fff; /* Change the background color of the circle */
+  border: 2px solid #000; /* Add border around the circle */
+  display: inline-flex; /* Display inline to only wrap the letter */
+  justify-content: center;
+  align-items: center;
+  font-weight: bold; /* Make the text bold */
+}
+
+.option-circle.selected .option-letter {
+  background-color: #00f; /* Change color for selected option */
+  color: #fff; /* Change text color for selected option */
+}

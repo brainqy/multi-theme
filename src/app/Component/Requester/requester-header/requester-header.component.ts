@@ -43,14 +43,14 @@ export class RequesterHeaderComponent {
     }
   this.selectedLanguage = localStorage.getItem('selectedLanguage');
     this.languageService.setDefaultLanguage();
-    const storedMenuStatus = localStorage.getItem('menuStatus');
-    if (storedMenuStatus) {
-      this.menuStatus = JSON.parse(storedMenuStatus); // Parse stored string back to boolean
-    }
   }
 
   sideNavToggle() {
     console.log("side nav is working");
+    const storedMenuStatus = localStorage.getItem('menuStatus');
+    if (storedMenuStatus) {
+      this.menuStatus = JSON.parse(storedMenuStatus); // Parse stored string back to boolean
+    }
     this.menuStatus = !this.menuStatus;
     localStorage.setItem('menuStatus', JSON.stringify(this.menuStatus)); // Save menu status in local storage
     this.sideNavToggled.emit(this.menuStatus);

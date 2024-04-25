@@ -1,24 +1,42 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ForumPost } from 'src/app/Component/forum/forum/forum.component';
+import { Observable } from 'rxjs';
+import { environment } from '../application_constant/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ForumService {
+  private baseUrl=environment.baseUrl+environment.contextUrl+"/forum"
 
-  private forumPosts: ForumPost[] = [
-    { id: 1, title: 'Post 1', content: 'Content of Post 1' },
-    { id: 2, title: 'Post 2', content: 'Content of Post 2' },
-    // Add more forum posts
-  ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getForumPosts(): ForumPost[] {
-    return this.forumPosts;
+  createForum(forum: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/createForum`, forum);
   }
 
-  getForumPostById(id: number): ForumPost | undefined {
-    return this.forumPosts.find(post => post.id === id);
+  updateForum(forumId: number, forum: Forum): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${forumId}`, forum);
   }
+
+  deleteForum(forumId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${forumId}`);
+  }
+
+  getForum(forumId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/${forumId}`);
+  }
+
+  getAllForumPosts(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/getAll`);
+  }
+}
+
+export interface Forum {
+  id:number;
+  forum_title: string;
+  forum_body: string;
+  createdBy: string;
+  createdAt: string;
 }

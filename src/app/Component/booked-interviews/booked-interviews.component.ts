@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment'; // Import moment library for date manipulation
 import { InterviewService } from 'src/app/Core/services/interview.service';
+import Swal from 'sweetalert2';
 
 interface WeeklySlots {
   [day: string]: string[];
@@ -199,15 +200,33 @@ console.log("all slots ",res);
       );
   }
 
-  cancelInterviewSlot(id:any){
-    console.log("id is ",id);
-    this.interviewService.cancelInterviewSlot(id).subscribe((res)=>{
-console.log(" Canceled slot is ",res);
-    })
-    window.location.reload();
-
-
+  cancelInterviewSlot(id: any) {
+    // Display confirmation popup
+    Swal.fire({
+      title: 'Are you Sure?',
+      text: 'You want to cancel the slot',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, cancel it',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      // If user confirms the action
+      if (result.isConfirmed) {
+        console.log("id is ", id);
+        // Call API to cancel the slot
+        this.interviewService.cancelInterviewSlot(id).subscribe((res) => {
+          console.log("Canceled slot is ", res);
+          // Reload the page after cancelling the slot
+          window.location.reload();
+        });
+      }
+    });
   }
- 
+  getNonCanceledSlots(slots: any[]): any[] {
+    return slots.filter(slot => slot.status !== 'CANCELED');
+  }
+  getCanceledSlots(slots: any[]): any[] {
+    return slots.filter(slot => slot.status === 'CANCELED');
+  }
   
 }

@@ -57,6 +57,10 @@ import { PracticeWithFrndsComponent } from './Component/practice-with-frnds/prac
 import { BookedInterviewsComponent } from './Component/booked-interviews/booked-interviews.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { ReportComponent } from './Component/resume-scan/report/report.component';
+import { CreateForumComponent } from './Component/forum/create-forum/create-forum.component';
+import { QuillModule } from 'ngx-quill';
+import { QuizPlayerComponent } from './Component/test-prep/quiz-player/quiz-player.component';
+import { QuestionComponent } from './Component/test-prep/question/question.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -100,12 +104,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     PracticeWithFrndsComponent,
     BookedInterviewsComponent,
     DashboardComponent,
-    ReportComponent
+    ReportComponent,
+    CreateForumComponent,
+    QuizPlayerComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    QuillModule.forRoot(),
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgCircleProgressModule.forRoot({
