@@ -19,6 +19,10 @@ export class JobScanService {
   getLatestReport():Observable<any>{
     return this.http.get(`${this.baseUrl}/getLatestReport`);
   }
+
+  getAllReportsByUser():Observable<any>{
+    return this.http.get(`${this.baseUrl}/get-scan-history`);
+  }
 }
 export interface SectionData {
   section: string;

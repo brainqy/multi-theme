@@ -1,0 +1,79 @@
+<div class="container">
+  
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a>plans</a></li> <!-- Link to forum homepage -->
+          </ol>
+        </nav>
+    
+        <div>
+            <div style="display: flex; justify-content: center;">
+                <div>
+                    <h2>Choose your plan</h2> 
+                    <h6>Boost your interview chances. Cancel any time.</h6>
+                </div>
+            </div>
+            
+          
+            <div class="row">
+                <div class="col-md-4" *ngFor="let plan of plans">
+                  <div class="card h-100 d-flex flex-column justify-content-center">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ plan.title }}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">{{ plan.subtitle }}</h6>
+                      <ul class="list-unstyled">
+                        <li *ngFor="let detail of plan.details" class="card-text">
+                          <i class="fas fa-check text-success"></i> {{ detail }}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            
+            
+            <!-- Career Coach Signup -->
+<div class="row">
+    <div class="col-md-12 text-center mt-4">
+        <p>Are you a career coach? Sign up <a href="#">here</a>.</p>
+    </div>
+</div>
+
+<!-- Jobscan Benefits Section -->
+<div class="row">
+    <div class="col-md-12 text-center mt-4">
+        <p>1,000,000+ job seekers rely on Jobscan to get hired by</p>
+        <!-- Add logos or icons here -->
+        <img src="amazon_logo.png" alt="Amazon Logo">
+        <img src="google_logo.png" alt="Google Logo">
+        <!-- Add more logos -->
+    </div>
+</div>
+
+<!-- FAQ Section -->
+<div class="row">
+    <div class="col-md-6 mt-4" *ngFor="let faq of faqs.slice(0, sliceIndex)">
+
+      <h3>{{ faq.question }}</h3>
+      <p>{{ faq.answer }}</p>
+    </div>
+    <div class="col-md-6 mt-4" *ngFor="let faq of faqs.slice(faqs.length / 2)">
+      <h3>{{ faq.question }}</h3>
+      <p>{{ faq.answer }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 mx-auto text-center mt-3">
+        <p>Have more questions?</p>
+        <button class="btn btn-primary" >Ask Us anything</button>
+    </div>
+</div>
+  
+  
+
+        </div>
+    
+    </div>
+  

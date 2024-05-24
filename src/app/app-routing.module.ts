@@ -28,12 +28,17 @@ import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { ReportComponent } from './Component/resume-scan/report/report.component';
 import { CreateForumComponent } from './Component/forum/create-forum/create-forum.component';
 import { QuizPlayerComponent } from './Component/test-prep/quiz-player/quiz-player.component';
+import { QuizBankComponent } from './Component/test-prep/quiz-bank/quiz-bank.component';
+import { ResumeScanHistoryComponent } from './Component/resume-scan/resume-scan-history/resume-scan-history.component';
+import { PlansComponent } from './Component/resume-scan/plans/plans.component';
+import { JobTrackerComponent } from './Component/job-tracker/job-tracker.component';
+import { LandingComponent } from './Component/landing/landing.component';
 
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "login",
+    redirectTo: "landing",
     pathMatch: "full"
   },
   {
@@ -47,22 +52,39 @@ const routes: Routes = [
 
   },
   {
+    path:"landing",component:LandingComponent
+  },
+  {
     path:"analytics",component:AnalyticsComponent,
     canActivate: [AuthGuard]
 
   },
   {
-    path:"practice-with-frnd",component:PracticeWithFrndsComponent
+    path:"practice-with-frnd",component:PracticeWithFrndsComponent,
+    canActivate: [AuthGuard]
 
   },
   {
-    path:"dashboard",component:DashboardComponent
+    path:"dashboard",component:DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path:"scan/:id",component:ReportComponent
+    path:"scan/:id",component:ReportComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path:"booked-interviews",component:BookedInterviewsComponent
+    path:"scan-history",component:ResumeScanHistoryComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"job-tracker",component:JobTrackerComponent
+  },
+  {
+    path:"plans",component:PlansComponent
+  },
+  {
+    path:"booked-interviews",component:BookedInterviewsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
@@ -83,7 +105,12 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "test",
+    path: "quiz-bank",
+    component: QuizBankComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "quiz-test",
     component: QuizPlayerComponent,
     canActivate: [AuthGuard]
   },

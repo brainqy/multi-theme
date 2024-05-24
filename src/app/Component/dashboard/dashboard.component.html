@@ -7,23 +7,6 @@
                              class="black-border"></app-requester-sidebar>
       <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
 
-<div class="navigation-bar">
-    <ul>
-        <li>
-            <span class="sub-text"></span>
-            <span><a href="#">BRAINQY</a></span>
-           
-        </li>
-        <div class="nav-right-large">
-            <a href="#" class="right">Dashboard</a>
-            <a href="#" class="right">LinkedIn Scan</a>  
-            <a href="#" class="right">Job Tracker</a>
-            <a href="#" class="right">Scan History</a> 
-            <a href="#" class="right">Profile</a>
-        </div>
-        
-    </ul>
-</div>
 
 
             <div class="dashboard-insights">
@@ -41,7 +24,7 @@
                             <div class="content">
                                 <div class="column">
                                     <circle-progress class="circle__progress"
-                                [percent]="progress"
+                                [percent]="finalProgress"
                                 [animation]="false"
                                 [startFromZero]="true"
                                 [showInnerStroke]="true"
@@ -137,7 +120,7 @@
                         </div>
                         <div class="titleEnd">
                             <div class="button-container">
-                                <button class="btn btn-primary">Reset</button>
+                                <button class="btn btn-primary"(click)="resetScan()">Reset</button>
                                 <button class="btn btn-primary" (click)="generateReport()">Scan</button>
                             </div>
                         </div>
@@ -146,6 +129,37 @@
                     </div>
                 </div>
 
+            </div>
+
+            <div style="text-align:center" *ngIf="progress>0">
+                <circle-progress class="circle__progress"
+                                 [percent]="progress"
+                                 [animation]="false"
+                                 [startFromZero]="true"
+                                 [showInnerStroke]="true"
+                                 [titleFontSize]="'28'"
+                                 [titleFontWeight]="'900'"
+                                 [unitsFontSize]="'28'"
+                                 [unitsFontWeight]="'900'"
+                                 [subtitle]="'Progress'"
+                                 [subtitleFontSize]="'12'"
+                                 [lazy]="false"
+                ></circle-progress>
+                <div *ngIf="progress > 0 && progress < 100" class="progress-message">
+                  We are Preparing analysis report. Please wait...
+                </div>
+                <div *ngIf="progress !== 100">
+                   
+                </div>
+               
+                <div *ngIf="progress === 100" class="completion-message">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Analysis Completed!</h2>
+                            <button class="btn btn-primary" (click)="checkReport()">Check Report</button>
+                        </div>   
+                    </div>
+                </div>
             </div>
 
       </div></main></div>

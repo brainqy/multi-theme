@@ -1,0 +1,147 @@
+<div class="container-fluid g-0">
+  <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+  </app-requester-header>
+
+  <main>
+    <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
+      class="black-border"></app-requester-sidebar>
+
+    <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a>scan history</a></li> <!-- Link to forum homepage -->
+        </ol>
+      </nav>
+
+      <div class="dashboard-insights">
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <div class="rectangle primary-bg"> <!-- Added primary-bg class for background color -->
+              <div class="content">
+                <h1>43</h1>
+                <p>Total Resume scans</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="rectangle primary-bg">
+              <div class="content">
+                <h1>09</h1>
+                <p>Unique Resumes</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="rectangle primary-bg">
+              <div class="content">
+                <h1>79</h1>
+                <p>Maximum Score</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="rectangle primary-bg">
+              <div class="content">
+                <h1>5</h1>
+                <p>Improvement</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="nav nav-tabs" id="myTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button (click)="getAllReportsByUser()" class="nav-link active" id="tab1-tab" data-bs-toggle="tab"
+                  data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">
+            View Highest Match
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button  class="nav-link" id="tab2-tab" data-bs-toggle="tab"
+                  data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">
+            View Starred
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button  class="nav-link" id="tab3-tab" data-bs-toggle="tab"
+                  data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">
+            View All
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button  class="nav-link" id="tab4-tab" data-bs-toggle="tab"
+                    data-bs-target="#tab" type="button" role="tab" aria-controls="tab4" aria-selected="false">
+              View Archived
+            </button>
+          </li>
+      </ul>
+      <div class="tab-content" id="myTabsContent">
+        <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+            <div class="container">
+                <div class="row" *ngFor="let item of scanHistory">
+                    <div class="col-3">
+                        <div class="circle__progress">
+                            <circle-progress
+                                [percent]="item.finalProgress"
+                                [animation]="true"
+                                [startFromZero]="true"
+                                [showInnerStroke]="true"
+                                [titleFontSize]="'28'"
+                                [titleFontWeight]="'900'"
+                                [unitsFontSize]="'28'"
+                                [unitsFontWeight]="'900'"
+                                [subtitle]="'Progress'"
+                                [subtitleFontSize]="'12'"
+                                [lazy]="false">
+                            </circle-progress>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class=" my-2 mx-2">
+                            <div >
+                                <h5 >{{ item.jobTitle }}</h5>
+                            </div>
+                            <div >
+                                <p >Resume snippet</p>
+                                <p>Job Description</p>
+                                <!-- Display other properties of SectionDataWrapperDto as needed -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <button class="btn btn-primary">Delete</button>
+                        <p>{{item.createdAt | date}}</p>
+                    </div>
+                    <!-- Horizontal line -->
+                    <hr class="col-12">
+                </div>
+                <div class="row">
+                    <div class="col-6 mx-auto text-center mt-3">
+                        <p>Standard users can only view the last 20 scans</p>
+                        <button class="btn btn-primary" (click)="getPlans()">Unlock Unlimited Scan History</button>
+                    </div>
+                </div>
+                
+                
+              </div>
+              
+        </div>
+        <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+        
+
+        </div>
+        <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+       
+        </div>
+        <div class="tab-pane fade" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
+       
+        </div>
+      </div>
+      <!-- Move the card section outside of the navigation bar -->
+     
+    </div>
+  </main>
+</div>

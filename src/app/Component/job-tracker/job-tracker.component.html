@@ -1,0 +1,83 @@
+<div class="job-container">
+  
+    
+    <div class="row">
+        <div class="col-2">
+            <div class="job-card">
+                <h5 class="card-header">Jobs</h5>
+                <div class="header-sticky">
+                    <input type="text" placeholder="Search job" class="search">
+                    <input type="text" placeholder="Location" class="location">
+                    <button class="btn btn-primary" style="margin: 10px;">Search</button>
+                </div>
+                
+                <div class="job-card-body" cdkDropList id="jobs" [cdkDropListConnectedTo]="['saved','applied', 'interview', 'offer']" [cdkDropListData]="jobs" (cdkDropListDropped)="drop($event)">
+                    <div class="item" cdkDrag *ngFor="let item of jobs" [cdkDragData]="item"><div class="sb-card">
+                        <div class="sb-card-header">
+                            <!-- Header content goes here -->
+                            {{ item.jobRole }}
+                        </div>
+                        <div class="sb-card-body">
+                            <!-- Body content goes here -->
+                            {{ item.jobLocation }}
+                        </div>
+                    </div>
+                     </div>
+    
+                </div>
+                <div class="footer-sticky">
+                    <button class="btn btn-primary">Find more jobs</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <!-- Saved -->
+                <div class="col-6 col-md-3 px-1">
+                  <div class="card">
+                    <h5 class="card-header">Saved</h5>
+                    <p>Jobs saved from our chrome extension or the scan report will appear here</p>
+                    <div class="card-body" cdkDropList id="saved" [cdkDropListConnectedTo]="['applied', 'interview', 'offer','jobs']" [cdkDropListData]="saved" (cdkDropListDropped)="drop($event)">
+                      <div class="item" cdkDrag *ngFor="let item of saved" [cdkDragData]="item">{{item.jobRole}}</div>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Applied -->
+                <div class="col-6 col-md-3 px-1">
+                  <div class="card">
+                    <h5 class="card-header">Applied</h5>
+                    <p>Application completed. Awaiting response from employer or recruiter.</p>
+                    <div class="card-body" cdkDropList id="applied" [cdkDropListConnectedTo]="['saved', 'interview', 'offer']" [cdkDropListData]="applied" (cdkDropListDropped)="drop($event)">
+                      <div class="item" cdkDrag *ngFor="let item of applied" [cdkDragData]="item">{{item.jobRole}}</div>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Interview -->
+                <div class="col-6 col-md-3 px-1">
+                  <div class="card">
+                    <h5 class="card-header">Interview</h5>
+                    <p>Invited to interview? Record the interview details and notes here.</p>
+                    <div class="card-body" cdkDropList id="interview" [cdkDropListConnectedTo]="['saved', 'applied', 'offer']" [cdkDropListData]="interview" (cdkDropListDropped)="drop($event)">
+                      <div class="item" cdkDrag *ngFor="let item of interview" [cdkDragData]="item">{{item.jobRole}}</div>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Offer -->
+                <div class="col-6 col-md-3 px-1">
+                  <div class="card">
+                    <h5 class="card-header">Offer</h5>
+                    <p>Interviews completed. Negotiating offer, or waiting for employer response.</p>
+                    <div class="card-body" cdkDropList id="offer" [cdkDropListConnectedTo]="['saved', 'applied', 'interview']" [cdkDropListData]="offer" (cdkDropListDropped)="drop($event)">
+                      <div class="item" cdkDrag *ngFor="let item of offer" [cdkDragData]="item">{{item.jobRole}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+        </div>
+    </div>
+    
+</div>

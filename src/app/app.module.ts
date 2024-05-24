@@ -27,6 +27,7 @@ import { InterviewMatcherComponent } from './Component/interview-matcher/intervi
 import { ForumListComponent } from './Component/forum/forum-list/forum-list.component';
 import { ForumComponent } from './Component/forum/forum/forum.component';
 import { StarRatingComponent } from './Component/feedback/star-rating/star-rating.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -61,6 +62,11 @@ import { CreateForumComponent } from './Component/forum/create-forum/create-foru
 import { QuillModule } from 'ngx-quill';
 import { QuizPlayerComponent } from './Component/test-prep/quiz-player/quiz-player.component';
 import { QuestionComponent } from './Component/test-prep/question/question.component';
+import { QuizBankComponent } from './Component/test-prep/quiz-bank/quiz-bank.component';
+import { ResumeScanHistoryComponent } from './Component/resume-scan/resume-scan-history/resume-scan-history.component';
+import { PlansComponent } from './Component/resume-scan/plans/plans.component';
+import { JobTrackerComponent } from './Component/job-tracker/job-tracker.component';
+import { LandingComponent } from './Component/landing/landing.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -70,6 +76,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     AppComponent,
+    QuizBankComponent,
     RequesterHeaderComponent,
     RequesterSidebarComponent,
     RequesterHomeComponent,
@@ -107,12 +114,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReportComponent,
     CreateForumComponent,
     QuizPlayerComponent,
-    QuestionComponent
+    QuestionComponent,
+    ResumeScanHistoryComponent,
+    PlansComponent,
+    JobTrackerComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    DragDropModule,
     QuillModule.forRoot(),
     ReactiveFormsModule,
     BrowserAnimationsModule,

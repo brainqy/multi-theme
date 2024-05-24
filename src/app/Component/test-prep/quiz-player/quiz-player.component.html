@@ -1,4 +1,4 @@
-<!-- quiz.component.html -->
+<!-- quiz-player.component.html -->
 <div class="quiz-container">
     <app-question 
       [question]="questions[currentQuestionIndex]" 
@@ -6,5 +6,28 @@
       (next)="moveToNextQuestion()"
       (optionSelected)="handleOptionSelected($event)">
     </app-question>
+  
+    <div>
+      <button (click)="submitQuiz()">Submit</button>
+    </div>
   </div>
   
+
+  <div>
+<div *ngFor="let question of allQ"> 
+    <div class="question-details">
+        <p>{{ question.questionType }} Question</p>
+        <h2><strong>Question:</strong> {{ question.question }}</h2>
+        <p><strong>Options:</strong></p>
+        <ul>
+          <li *ngFor="let option of question.options">{{ option }}</li>
+        </ul>
+        <p><strong>Answer:</strong> {{ question.answer }}</p>
+        <p><strong>Explanation:</strong> {{ question.explanation }}</p>
+        <p><strong>Tags:</strong> {{ question.tags.join(', ') }}</p>
+      </div>
+      
+
+</div>
+
+  </div>

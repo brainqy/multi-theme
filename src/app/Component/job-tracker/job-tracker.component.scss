@@ -1,0 +1,85 @@
+.search{
+    //margin: 10px;
+    border-radius: 5px;
+    padding-right: 8px;
+    margin: 5px;
+}
+.location{
+   // margin: 10px;
+    border-radius: 5px;
+    padding-right: 8px;
+    margin: 5px;
+}
+.header-sticky {
+    position: sticky;
+    top: 0;
+    background-color: white; /* Add background color as needed */
+    padding: 0px; /* Add padding as needed */
+    z-index: 1; /* Ensure it's above other elements */
+}
+.footer-sticky {
+    position: sticky;
+    bottom: 0;
+    padding: 10px;
+    background-color: white;
+    z-index: 1;
+}
+
+.job-card {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure the job card takes up the full height of its container */
+}
+.card {
+   background-color: aliceblue;
+  }
+  .job-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adjust the value as needed for the spacing between stacked elements */
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adjust the value as needed for the spacing between stacked elements */
+  }
+  
+  .card-body .item {
+    background-color: #6495ED;
+    color: rgb(12, 12, 12);
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    align-items: center;
+    cursor: move;
+    padding: 1em;
+    transition: transform 0.2s ease-in-out; /* Add a transition for smooth animation */
+  }
+  
+  .card-body .item.cdk-drag-preview {
+    opacity: 0.8; /* Adjust the opacity of the dragged element preview */
+    background-color: #FFA500; /* Customize the background color of the dragged element preview */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow to the dragged element preview */
+  }
+  .job-card-body .item {
+    background-color: #6495ED;
+    color: rgb(12, 12, 12);
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    align-items: center;
+    cursor: move;
+    padding: 1em;
+    transition: transform 0.2s ease-in-out; /* Add a transition for smooth animation */
+  }
+  .job-card-body .item.cdk-drag-preview {
+    opacity: 0.5; /* Adjust the opacity of the dragged element preview */
+    background-color: #FFA500; /* Customize the background color of the dragged element preview */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow to the dragged element preview */
+  }
+  .job-container{
+    margin: 15px;
+  }
+  
+  

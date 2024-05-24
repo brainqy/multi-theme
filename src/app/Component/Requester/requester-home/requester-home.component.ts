@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class RequesterHomeComponent {
 
-  sideNavStatus: boolean = false;
+  sideNavStatus: boolean = true;
   username: string = '';
   isLoggedIn = false;
 
