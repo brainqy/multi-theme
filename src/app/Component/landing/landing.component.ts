@@ -50,6 +50,7 @@ export class LandingComponent {
     }
   ];
   items = ['First', 'Second', 'Third'];
+  
   constructor(private config: NgbCarouselConfig) {
     this.getlandingData();
     config.interval = 5000;

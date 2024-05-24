@@ -90,6 +90,7 @@
 
 //masthead
 
+
 //contact section
 /* contact-section.component.css */
 
@@ -424,17 +425,36 @@ $primary:#007bff;
         }
       }
   }
-  
-header.masthead{
-    padding-top: 6rem + 4.5rem;
-    padding-bottom: 6rem;
-    text-align: center;
-    color: #f2f5f7;
-    background-image: var(--bg-image-url);
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: center center;
+  .masthead, .color-grad {
+    background: linear-gradient(to bottom, #d4e8f0, #1d97c0); /* Gradient sky blue color */
     background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.masthead {
+    padding: 100px 0;
+}
+
+.masthead .section-heading {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.masthead .section-subheading {
+    font-size: 1.25em;
+    margin-bottom: 40px;
+    color: #f8f9fa; /* Adjust text color for better contrast */
+}
+
+.masthead .btn-primary {
+    font-size: 1.2em;
+    padding: 10px 20px;
+}
+
+.navbar {
+    padding: 10px 20px;
+    color: #fff;
 }
 //feature section 
 .feature {
@@ -451,12 +471,60 @@ header.masthead{
     align-items: center;
     
 }
-.carousel-item{
-    width: 500px;
-    height: 200px;
+.carousel-item {
+    display: inline-block;
+    width: 50%; /* Show two items at a time */
+    padding: 0 10px; /* Add padding */
+    margin-right: -10px; /* Add negative margin to offset padding and prevent wrapping */
 }
 
-//footer section
-.footer {
-    padding: 5rem 0;
+.carousel-inner {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent items from wrapping */
+    justify-content: space-between; /* Space items evenly */
 }
+
+
+//footer section
+footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    border-top: 1px solid #e7e7e7;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .footer-column {
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  .footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-column ul li a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .footer-column ul li a:hover {
+    text-decoration: underline;
+  }
+  
