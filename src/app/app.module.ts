@@ -67,6 +67,7 @@ import { ResumeScanHistoryComponent } from './Component/resume-scan/resume-scan-
 import { PlansComponent } from './Component/resume-scan/plans/plans.component';
 import { JobTrackerComponent } from './Component/job-tracker/job-tracker.component';
 import { LandingComponent } from './Component/landing/landing.component';
+import { MaintenanceComponent } from './Component/front-pages/maintenance/maintenance.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -118,7 +119,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResumeScanHistoryComponent,
     PlansComponent,
     JobTrackerComponent,
-    LandingComponent
+    LandingComponent,
+    MaintenanceComponent
   ],
   imports: [
     BrowserModule,
