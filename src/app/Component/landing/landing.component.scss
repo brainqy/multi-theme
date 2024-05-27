@@ -129,26 +129,38 @@
 }
 //team section
 /* team-section.component.css */
-.team-section{
+.team-section {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-}
-.team-member {
+  }
+  
+  .team-member {
     margin-bottom: 3rem;
     text-align: center;
-}
-
-.team-member img {
+  }
+  
+  .team-member img {
     width: 12rem;
     height: 12rem;
     border: 0.5rem solid rgba(0, 0, 0, 0.9);
-}
-
-.team-member h4 {
+  }
+  
+  .team-member h4 {
     margin-top: 1.5rem;
     margin-bottom: 0;
-}
+  }
+  
+  @media (min-width: 992px) {
+    .team-section {
+      flex-wrap: nowrap; /* Ensure all members are in one row on large screens */
+    }
+    .team-member {
+      margin-bottom: 0; /* Remove bottom margin for large screens */
+    }
+  }
+  
 //timeline
 /* timeline-section.component.css */
 /* Timeline section styling */
