@@ -442,10 +442,12 @@
 
 
  
-   <section>
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner row mx-auto">
-          <div class="carousel-item col-md-3 active">
+<section>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row mx-auto justify-content-center">
+          <div class="col-md-4">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Job Match saves me time</h5>
@@ -461,7 +463,7 @@
               </div>
             </div>
           </div>
-          <div class="carousel-item col-md-4">
+          <div class="col-md-4 d-none d-md-block">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Good ATS Scanner</h5>
@@ -477,7 +479,7 @@
               </div>
             </div>
           </div>
-          <div class="carousel-item col-md-4">
+          <div class="col-md-4 d-none d-md-block">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Review</h5>
@@ -493,7 +495,11 @@
               </div>
             </div>
           </div>
-          <div class="carousel-item col-md-4">
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row mx-auto justify-content-center">
+          <div class="col-md-4">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">This is worth the money!</h5>
@@ -509,19 +515,22 @@
               </div>
             </div>
           </div>
-          <!-- Add more carousel items as needed -->
+          <!-- Add more items in the same structure if needed -->
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
-    
-   </section>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+
+
   <!-- Accordion Section -->
   <section id="accordionSection" class="page-section bg-light">
     <div class="container">

@@ -472,24 +472,47 @@ $primary:#007bff;
     width: 4rem;
     font-size: 2rem;
 }
-.carousel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.carousel-item {
-    display: inline-block;
-    width: 33.3333%; /* Show three items at a time */
-    padding: 0 10px; /* Add padding */
-    margin-right: -10px; /* Add negative margin to offset padding and prevent wrapping */
-}
-
 .carousel-inner {
     display: flex;
     flex-wrap: nowrap; /* Prevent items from wrapping */
-    justify-content: space-between; /* Space items evenly */
 }
+
+.carousel-item {
+    width: 100%;
+}
+
+.carousel-item .col-md-4 {
+    display: inline-block;
+    padding: 0 10px; /* Add padding */
+}
+
+@media (min-width: 768px) {
+    .carousel-item .col-md-4 {
+        flex: 0 0 33.3333%; /* Display three items per slide on larger screens */
+        max-width: 33.3333%;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .carousel-item .col-md-4 {
+        flex: 0 0 50%; /* Display two items per slide on medium screens */
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 575px) {
+    .carousel-item .col-md-4 {
+        flex: 0 0 100%; /* Display one item per slide on small screens */
+        max-width: 100%;
+    }
+}
+
+.fa-star {
+    color: gold;
+  }
+  
+
+
 
 .fa-star {
     color: gold;
