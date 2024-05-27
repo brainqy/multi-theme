@@ -76,6 +76,9 @@ import {
   NguCarouselPrevDirective,
   NguItemComponent
 } from '@ngu/carousel';
+import { WeRLaunchingComponent } from './Component/front-pages/we-r-launching/we-r-launching.component';
+import { NotAuthorizedComponent } from './Component/front-pages/not-authorized/not-authorized.component';
+import { AuthTwoStepsComponent } from './Component/front-pages/auth-two-steps/auth-two-steps.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -129,7 +132,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     JobTrackerComponent,
     LandingComponent,
     MaintenanceComponent,
-    CustomSliderComponent
+    CustomSliderComponent,
+    WeRLaunchingComponent,
+    NotAuthorizedComponent,
+    AuthTwoStepsComponent
   ],
   imports: [
     BrowserModule,

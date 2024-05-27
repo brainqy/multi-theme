@@ -34,6 +34,10 @@ import { PlansComponent } from './Component/resume-scan/plans/plans.component';
 import { JobTrackerComponent } from './Component/job-tracker/job-tracker.component';
 import { LandingComponent } from './Component/landing/landing.component';
 import { CustomSliderComponent } from './Component/custom-slider/custom-slider.component';
+import { MaintenanceComponent } from './Component/front-pages/maintenance/maintenance.component';
+import { WeRLaunchingComponent } from './Component/front-pages/we-r-launching/we-r-launching.component';
+import { NotAuthorizedComponent } from './Component/front-pages/not-authorized/not-authorized.component';
+import { AuthTwoStepsComponent } from './Component/front-pages/auth-two-steps/auth-two-steps.component';
 
 
 const routes: Routes = [
@@ -59,6 +63,12 @@ const routes: Routes = [
   },
   {
     path:"landing",component:LandingComponent
+  },
+  { path: 'launch', component: WeRLaunchingComponent },
+  { path: 'not-authorized', component: NotAuthorizedComponent },
+  { path: 'auth-two-steps', component: AuthTwoStepsComponent },
+  {
+    path:"maintenance",component:MaintenanceComponent
   },
   {
     path:"analytics",component:AnalyticsComponent,

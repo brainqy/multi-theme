@@ -1,0 +1,15 @@
+<div class="two-step-auth-container">
+    <h2>Two Step Authentication</h2>
+    <p>We sent a verification code to your mobile. Enter the code from the mobile in the field below.</p>
+    <div class="verification-code">
+      <input id="code0" type="text" maxlength="1" placeholder="*" [(ngModel)]="code[0]" (input)="focusNext($event, 0)">
+      <input id="code1" type="text" maxlength="1" placeholder="*" [(ngModel)]="code[1]" (input)="focusNext($event, 1)">
+      <input id="code2" type="text" maxlength="1" placeholder="*" [(ngModel)]="code[2]" (input)="focusNext($event, 2)">
+      <input id="code3" type="text" maxlength="1" placeholder="*" [(ngModel)]="code[3]" (input)="focusNext($event, 3)">
+      <input id="code4" type="text" maxlength="1" placeholder="*" [(ngModel)]="code[4]" (input)="focusNext($event, 4)">
+      <input id="code5" type="text" maxlength="1" placeholder="*" [(ngModel)]="code[5]" (input)="focusNext($event, 5)">
+    </div>
+    <p>Type your 6-digit security code</p>
+    <button class="btn btn-primary" (click)="resendCode()">Resend</button>
+  </div>
+  
