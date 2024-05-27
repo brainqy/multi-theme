@@ -38,6 +38,7 @@ import { MaintenanceComponent } from './Component/front-pages/maintenance/mainte
 import { WeRLaunchingComponent } from './Component/front-pages/we-r-launching/we-r-launching.component';
 import { NotAuthorizedComponent } from './Component/front-pages/not-authorized/not-authorized.component';
 import { AuthTwoStepsComponent } from './Component/front-pages/auth-two-steps/auth-two-steps.component';
+import { PageNotFoundComponent } from './Component/front-pages/page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
@@ -66,6 +67,7 @@ const routes: Routes = [
   },
   { path: 'launch', component: WeRLaunchingComponent },
   { path: 'not-authorized', component: NotAuthorizedComponent },
+  { path: 'page-not-found', component: PageNotFoundComponent },
   { path: 'auth-two-steps', component: AuthTwoStepsComponent },
   {
     path:"maintenance",component:MaintenanceComponent
