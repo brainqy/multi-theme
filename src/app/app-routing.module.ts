@@ -39,6 +39,7 @@ import { WeRLaunchingComponent } from './Component/front-pages/we-r-launching/we
 import { NotAuthorizedComponent } from './Component/front-pages/not-authorized/not-authorized.component';
 import { AuthTwoStepsComponent } from './Component/front-pages/auth-two-steps/auth-two-steps.component';
 import { PageNotFoundComponent } from './Component/front-pages/page-not-found/page-not-found.component';
+import { CommonSplitComponent } from './Component/front-pages/common-split/common-split.component';
 
 
 const routes: Routes = [
@@ -65,6 +66,7 @@ const routes: Routes = [
   {
     path:"landing",component:LandingComponent
   },
+  { path: 'common', component: CommonSplitComponent },
   { path: 'launch', component: WeRLaunchingComponent },
   { path: 'not-authorized', component: NotAuthorizedComponent },
   { path: 'page-not-found', component: PageNotFoundComponent },

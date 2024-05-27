@@ -80,6 +80,7 @@ import { WeRLaunchingComponent } from './Component/front-pages/we-r-launching/we
 import { NotAuthorizedComponent } from './Component/front-pages/not-authorized/not-authorized.component';
 import { AuthTwoStepsComponent } from './Component/front-pages/auth-two-steps/auth-two-steps.component';
 import { PageNotFoundComponent } from './Component/front-pages/page-not-found/page-not-found.component';
+import { CommonSplitComponent } from './Component/front-pages/common-split/common-split.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -137,7 +138,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     WeRLaunchingComponent,
     NotAuthorizedComponent,
     AuthTwoStepsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CommonSplitComponent
   ],
   imports: [
     BrowserModule,

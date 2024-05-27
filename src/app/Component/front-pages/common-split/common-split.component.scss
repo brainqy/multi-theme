@@ -1,0 +1,19 @@
+.left-container {
+    background-color: rgb(170, 246, 135);
+    height: 100vh; /* Ensures the container takes the full height of the viewport */
+    width: 70%; /* Ensures the container takes 70% of the width */
+    float: left; /* Ensures the container stays on the left side */
+}
+
+.right-container {
+    height: 100vh; /* Ensures the container takes the full height of the viewport */
+    width: 30%; /* Ensures the container takes 30% of the width */
+    float: right; /* Ensures the container stays on the right side */
+}
+
+/* Optional: Clear floats if needed */
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
