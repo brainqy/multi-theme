@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 export interface LandingData {
@@ -29,29 +30,39 @@ export class LandingComponent {
   fontSize: string = '16px'; // Ensure it's initialized as a string
   fontFamily: string = 'Arial';
   color: string = '#000000';
-  testimonials = [
+  testimonials: any[] =  [
     {
-      name: 'Lisa Redfern',
-      image: '//c2.staticflickr.com/8/7310/buddyicons/24846422@N06_r.jpg',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. It is a long established fact that a reader will be distracted by the readable its layout.',
-      rating: 5
+      "title":"awesome",
+      "name": "Jayashree C.",
+      "position": "Product Manager",
+      "rating": 5,
+      "date": "Jan 9, 2024",
+      "text": "I like the app and I'm using it a lot. The power edit needs to be refined. I didn't like what it kicked back. Also when I ..."
     },
-    {
-      name: 'Cassi',
-      image: 'https://res.cloudinary.com/hnmqik4yn/image/upload/c_fill,fl_force_strip,h_128,q_100,w_128/v1493982718/ah57hnfnwxkmsciwivve.jpg',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. It is a long established fact that a reader will be distracted by the readable its layout.',
-      rating: 4
+    {"title":"Good Job",
+      "name": "Mohan Pawar.",
+      "position": "Lead Engineer",
+      "rating": 5,
+      "date": "Jan 30, 2024",
+      "text": "UPDATE - I realized I made a mistake when I originally uploaded my resume. I didn't include a job description, I uploaded ..."
     },
-    {
-      name: 'Md Nahidul',
-      image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/451270/profile/profile-80.jpg',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. It is a long established fact that a reader will be distracted by the readable its layout.',
-      rating: 5
+    {"title":"Very nice Service",
+      "name": "Jeevan Pandit.",
+      "position": "Senior Software Engineer",
+      "rating": 5,
+      "date": "Dec 23, 2023",
+      "text": "I had been applying for jobs but my resume was getting automatically rejected. After I started using this program and inco ..."
     }
   ];
+
+  
+
+  ngOnInit(): void {
+  
+  }
   items = ['First', 'Second', 'Third'];
   
-  constructor(private config: NgbCarouselConfig) {
+  constructor(private config: NgbCarouselConfig,private http: HttpClient) {
     this.getlandingData();
     config.interval = 5000;
     config.wrap = false;

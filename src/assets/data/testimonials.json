@@ -1,0 +1,26 @@
+{
+    "testimonials": [
+      {
+        "name": "Barbara C.",
+        "position": "Position Title",
+        "rating": 5,
+        "date": "Jan 9, 2024",
+        "text": "I like the app and I'm using it a lot. The power edit needs to be refined. I didn't like what it kicked back. Also when I ..."
+      },
+      {
+        "name": "Mohan Pawar.",
+        "position": "Position Title",
+        "rating": 5,
+        "date": "Jan 30, 2024",
+        "text": "UPDATE - I realized I made a mistake when I originally uploaded my resume. I didn't include a job description, I uploaded ..."
+      },
+      {
+        "name": "Jeevan Pandit.",
+        "position": "Position Title",
+        "rating": 5,
+        "date": "Dec 23, 2023",
+        "text": "I had been applying for jobs but my resume was getting automatically rejected. After I started using this program and inco ..."
+      }
+    ]
+  }
+  
