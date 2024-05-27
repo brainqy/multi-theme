@@ -52,6 +52,13 @@
     padding: 2rem 1.5rem;
     color: rgba(0, 0, 0, 0.5);
 }
+/* Add this to your CSS file */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+.nav-item.dropdown:hover .dropdown-item-filled {
+   background-color: #1687ac;
+}
 
 #mainNav .navbar-nav .nav-item .nav-link:hover {
     color: rgba(0, 0, 0, 0.25);
@@ -465,15 +472,15 @@ $primary:#007bff;
     width: 4rem;
     font-size: 2rem;
 }
-.carousel{
+.carousel {
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
+
 .carousel-item {
     display: inline-block;
-    width: 50%; /* Show two items at a time */
+    width: 33.3333%; /* Show three items at a time */
     padding: 0 10px; /* Add padding */
     margin-right: -10px; /* Add negative margin to offset padding and prevent wrapping */
 }
@@ -483,6 +490,11 @@ $primary:#007bff;
     flex-wrap: nowrap; /* Prevent items from wrapping */
     justify-content: space-between; /* Space items evenly */
 }
+
+.fa-star {
+    color: gold;
+  }
+  
 
 
 //footer section

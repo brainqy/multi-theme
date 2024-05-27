@@ -33,6 +33,7 @@ import { ResumeScanHistoryComponent } from './Component/resume-scan/resume-scan-
 import { PlansComponent } from './Component/resume-scan/plans/plans.component';
 import { JobTrackerComponent } from './Component/job-tracker/job-tracker.component';
 import { LandingComponent } from './Component/landing/landing.component';
+import { CustomSliderComponent } from './Component/custom-slider/custom-slider.component';
 
 
 const routes: Routes = [
@@ -45,6 +46,11 @@ const routes: Routes = [
     path: "login",
     component: LoginComponent
   },
+  {
+    path: "slider",
+    component: CustomSliderComponent
+  },
+
 
   {
     path:"book-calendar",component:CalenderComponent,

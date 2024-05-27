@@ -1,27 +1,118 @@
 <div class="color-grad">
     <!-- Horizontal navigation bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container px-4 px-lg-5">
-      <a class="navbar-brand" routerLink="/">BRAINQY</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/contact">Contact</a>
-          </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container px-4 px-lg-5">
+          <a class="navbar-brand" routerLink="/">BRAINQY</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" routerLink="/about">About</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          Products
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                          <li><a class="dropdown-item" routerLink="/resume-bullet-points-generator"><i class="bi bi-file-earmark-text"></i> Resume Bullet Points Generator</a></li>
+                          <li><a class="dropdown-item" routerLink="/ai-resume-tool">AI Resume Tool</a></li>
+                          <li><a class="dropdown-item" routerLink="/job-tracker-board">Job Tracker Board</a></li>
+                          <li><a class="dropdown-item" routerLink="/jobs">Jobs</a></li>
+                          <li><a class="dropdown-item" routerLink="/resume-power-edit">Resume Power Edit</a></li>
+                          <li><a class="dropdown-item" routerLink="/linkedin-optimization-tool">LinkedIn Optimization Tool</a></li>
+                          <li><a class="dropdown-item" routerLink="/resume-builder-tool">Resume Builder Tool</a></li>
+                          <li><a class="dropdown-item" routerLink="/resume-optimization-report">Resume Optimization Report</a></li>
+                          <li><a class="dropdown-item" routerLink="/cover-letter-generator">Cover Letter Generator</a></li>
+                          <li><a class="dropdown-item" routerLink="/cover-letter-optimization-report">Cover Letter Optimization Report</a></li>
+                          <li><a class="dropdown-item" routerLink="/career-change-tool">Career Change Tool</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="organizationsDropdown" role="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          Organizations
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="organizationsDropdown">
+                          <li><a class="dropdown-item" routerLink="/universities"><i class="bi bi-file-earmark-text"></i> Universities</a></li>
+                          <li><a class="dropdown-item" routerLink="/government"><i class="bi bi-file-earmark-text"></i> Government</a></li>
+                          <li><a class="dropdown-item" routerLink="/ngos"><i class="bi bi-file-earmark-text"></i> NGOs</a></li>
+                          <li><a class="dropdown-item" routerLink="/business"><i class="bi bi-file-earmark-text"></i> Business</a></li>
+                          <li><a class="dropdown-item" routerLink="/career-coaches"><i class="bi bi-file-earmark-text"></i> Career Coaches</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="atsResumeDropdown" role="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          ATS Resume
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="atsResumeDropdown">
+                          <li><a class="dropdown-item" routerLink="/resume-optimization-report">Resume Optimization Report</a></li>
+                          <li><a class="dropdown-item" routerLink="/what-is-ats">What Is An ATS?</a></li>
+                          <li><a class="dropdown-item" routerLink="/how-to-optimize-resume-ats">How to Optimize Your Resume for ATS</a></li>
+                          <li><a class="dropdown-item" routerLink="/how-to-write-resume">How to Write a Resume</a></li>
+                          <li><a class="dropdown-item" routerLink="/resume-templates">Resume Templates</a></li>
+                          <li><a class="dropdown-item" routerLink="/ats-resume-templates">ATS Resume Templates</a></li>
+                          <li><a class="dropdown-item" routerLink="/google-docs-resume-templates">Google Docs Resume Templates</a></li>
+                          <li><a class="dropdown-item" routerLink="/resume-formats">Resume Formats</a></li>
+                          <li><a class="dropdown-item" routerLink="/resume-examples">Resume Examples</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="coverLetterDropdown" role="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          Cover Letter
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="coverLetterDropdown">
+                          <li><a class="dropdown-item" routerLink="/cover-letter-optimization-report">Cover Letter Optimization Report</a></li>
+                          <li><a class="dropdown-item" routerLink="/how-to-write-cover-letter">How to Write a Cover Letter</a></li>
+                          <li><a class="dropdown-item" routerLink="/cover-letter-formats">Cover Letter Formats</a></li>
+                          <li><a class="dropdown-item" routerLink="/cover-letter-templates">Cover Letter Templates</a></li>
+                          <li><a class="dropdown-item" routerLink="/cover-letter-examples">Cover Letter Examples</a></li>
+                          <li><a class="dropdown-item-filled" routerLink="/cover-letter-examples">Generate Personalized Cover letter</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="linkedinDropdown" role="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          LinkedIn
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="linkedinDropdown">
+                          <li><a class="dropdown-item" routerLink="/linkedin-optimization-tool">LinkedIn Optimization Tool</a></li>
+                          <li><a class="dropdown-item" routerLink="/linkedin-profile-writing-guide">LinkedIn Profile Writing Guide</a></li>
+                          <li><a class="dropdown-item" routerLink="/linkedin-headline-examples">LinkedIn Headline Examples</a></li>
+                          <li><a class="dropdown-item" routerLink="/linkedin-summary-examples">LinkedIn Summary Examples</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          Resources
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                          <li><a class="dropdown-item" routerLink="/Job Match-blog">Job Match Blog</a></li>
+                          <li><a class="dropdown-item" routerLink="/resume-guides">Resume Guides</a></li>
+                          <li><a class="dropdown-item" routerLink="/ats-guides">ATS Guides</a></li>
+                          <li><a class="dropdown-item" routerLink="/cover-letter-guides">Cover Letter Guides</a></li>
+                          <li><a class="dropdown-item" routerLink="/job-search-advice">Job Search Advice</a></li>
+                          <li><a class="dropdown-item" routerLink="/linkedin-guides">LinkedIn Guides</a></li>
+                          <li><a class="dropdown-item" routerLink="/career-change-guides">Career Change Guides</a></li>
+                          <li><a class="dropdown-item" routerLink="/learning-center">Learning Center</a></li>
+                          <li><a class="dropdown-item" routerLink="/customer-stories">Customer Stories</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
   </nav>
+  
+  
+  
+  
+  
   
   
 
@@ -45,7 +136,7 @@
 
 
   <!-- Media video player -->
-  <div class="container mt-5">
+<!--   <div class="container mt-5">
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <div class="video-container">
@@ -57,9 +148,7 @@
       </div>
     </div>
   </div>
-  <div>
-    <div></div>
-  </div>
+ -->
 
 <div class="landing-text">
     <div *ngIf="landingData">
@@ -70,10 +159,10 @@
         
       </div>  
 </div>
-<div class="editText">
-    <button class="btn btn-primary" [routerLink]="['/edit-landing']">Edit</button>
+<!-- <div class="editText">
+    <button class="btn btn-primary" routerLink="['/edit-landing']">Edit</button>
 </div>
-
+ -->
 <section class="pt-4">
     <div class="container px-lg-5">
         <div class="row gx-lg-5">
@@ -155,7 +244,7 @@
     <div class="container">
       <div class="text-center">
         <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        <h3 class="section-subheading text-muted">MNeet our Professionals.</h3>
       </div>
       <div class="row justify-content-center text-center"> <!-- Added utility classes -->
         <div class="col-lg-4">
@@ -245,11 +334,11 @@
           </div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4>Year Range</h4>
-              <h4 class="subheading">Event Title</h4>
+              <h4>2024</h4>
+              <h4 class="subheading">PRARAMBHA</h4>
             </div>
             <div class="timeline-body">
-              <p class="text-muted">Description of the event goes here.</p>
+              <p class="text-muted">We started.</p>
             </div>
           </div>
         </li>
@@ -257,47 +346,48 @@
       </ul>
     </div>
   </section>
-<section>
-    <div id="carouselExampleCaptions" class="carousel slide" >
-
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner" data-bs-ride="carousel">
-          <div class="carousel-item active">
-            <img src="../assets/img/team/3.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
-              <p>Some representative placeholder content for the first slide.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="../assets/img/team/2.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="../assets/img/team/1.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+<!--   <section>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
-</section>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../assets/img/team/3.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../assets/img/team/2.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="../assets/img/team/1.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+   -->
+  
   
 
 
@@ -310,7 +400,7 @@
                     <div class="card">
                         <img src="../assets/img/team/3.jpg" class="card-img-top" alt="Connor's story">
                         <div class="card-body">
-                            <h5 class="card-title">Within Hours of Using Jobscan, Connor Attracted Recruiters on LinkedIn</h5>
+                            <h5 class="card-title">Within Hours of Using Job Match, Connor Attracted Recruiters on LinkedIn</h5>
                             <p class="card-text">This is part of our Customer Stories series, where we ask real job seekers about...</p>
                             <a href="#" class="btn btn-primary">Read more</a>
                         </div>
@@ -330,7 +420,7 @@
                     <div class="card">
                         <img src="../assets/img/team/1.jpg" class="card-img-top" alt="Kelly's story">
                         <div class="card-body">
-                            <h5 class="card-title">Kelly Built a Network and Landed a Job in a New City using Jobscan's LinkedIn Optimization</h5>
+                            <h5 class="card-title">Kelly Built a Network and Landed a Job in a New City using Job Match's LinkedIn Optimization</h5>
                             <p class="card-text">When Kelly, a long-time software engineer, moved from Denver, Colorado to Hilton Head, South Carolina,...</p>
                             <a href="#" class="btn btn-primary">Read more</a>
                         </div>
@@ -348,48 +438,88 @@
     
 </section>
 
-  <section id="contact" style="--bg-image-url: url('../assets/img/map-image.png');">
-    <div class="container">
-      <div class="text-center">
-        <h2 class="section-heading text-uppercase">Contact Us</h2>
-        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-      </div>
-      <div class="row">
-        <form id="contactForm">
-            <div class="container">
-                <div class="row">
-                  <div class="col-lg-6">
-                    
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Name *" required />
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Your Email *" required />
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Mobile number *" required />
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                   
-                    <div class="form-group form-group-textarea">
-                        <textarea class="form-control" placeholder="Your Message *" required></textarea>
-                    </div>
-                  </div>
-                  
-                </div>
+
+  // testomonials
+   <section>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner row mx-auto">
+          <div class="carousel-item col-md-3 active">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Job Match saves me time</h5>
+                <p class="card-text">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </p>
+                <p class="card-text">Until ATS can be enhanced with semantic modeling, we are at the mercy of making sure we "strategy initiatives" on one resume... Read more</p>
+                <p class="card-text"><small class="text-muted">Cole T. on Feb 7, 2024</small></p>
               </div>
-        <div class="clearfix"></div>
-        <div class="text-center">
-            <div id="success"></div>
-            <button class="btn btn-primary btn-xl text-uppercase" type="submit">Send Message</button>
+            </div>
+          </div>
+          <div class="carousel-item col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Good ATS Scanner</h5>
+                <p class="card-text">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </p>
+                <p class="card-text">UPDATE - I realized I made a mistake when I originally uploaded my resume. I didn't include a job description, I uploaded ... Read more</p>
+                <p class="card-text"><small class="text-muted">Angelina A. on Jan 30, 2024</small></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Review</h5>
+                <p class="card-text">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </p>
+                <p class="card-text">I like the app and I'm using it a lot. The power edit needs to be refined. I didn't like what it kicked back. Also when I ... Read more</p>
+                <p class="card-text"><small class="text-muted">Barbara C. on Jan 9, 2024</small></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">This is worth the money!</h5>
+                <p class="card-text">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                </p>
+                <p class="card-text">I had been applying for jobs but my resume was getting automatically rejected. After I started using this program and inco ... Read more</p>
+                <p class="card-text"><small class="text-muted">Janeen S. on Dec 23, 2023</small></p>
+              </div>
+            </div>
+          </div>
+          <!-- Add more carousel items as needed -->
         </div>
-        </form>
-    </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     
-    </div>
-  </section>
-   
+   </section>
   <!-- Accordion Section -->
   <section id="accordionSection" class="page-section bg-light">
     <div class="container">
@@ -551,7 +681,47 @@
     </div>
 </section>
 
-
+<section id="contact" style="--bg-image-url: url('../assets/img/map-image.png');">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Contact Us</h2>
+      <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+    </div>
+    <div class="row">
+      <form id="contactForm">
+          <div class="container">
+              <div class="row">
+                <div class="col-lg-6">
+                  
+                  <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Your Name *" required />
+                  </div>
+                  <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Your Email *" required />
+                  </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Your Mobile number *" required />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                 
+                  <div class="form-group form-group-textarea">
+                      <textarea class="form-control" placeholder="Your Message *" required></textarea>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+      <div class="clearfix"></div>
+      <div class="text-center">
+          <div id="success"></div>
+          <button class="btn btn-primary btn-xl text-uppercase" type="submit">Send Message</button>
+      </div>
+      </form>
+  </div>
+  
+  </div>
+</section>
   
 <section id="contact" class="contact-section bg-black">
     <div class="container px-4 px-lg-5">
