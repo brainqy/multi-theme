@@ -16,7 +16,9 @@ export class AuthTwoStepsComponent {
     }
   }
   
-
+  verifyCode(){
+    console.log(' verification code...');
+  }
   resendCode() {
     // Logic to resend the verification code
     console.log('Resending verification code...');

@@ -1,6 +1,15 @@
-.two-step-auth-container {
+.image-container {
+    background-color: rgb(105, 169, 237);
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    height: 100%; /* Full height */
+    padding-bottom: 5px;
+  }
+  
+  .two-step-auth-container {
     text-align: center;
-    margin-top: 50px;
+
   }
   
   .verification-code {
@@ -13,5 +22,15 @@
     font-size: 1.2em;
     text-align: center;
     margin-right: 5px;
+  }
+  
+  .verification-image {
+    width: 400px;
+    height: auto;
+  }
+  
+  .code-container {
+    padding-right: 30px;
+    padding-top: 30px;
   }
   
