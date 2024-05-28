@@ -160,7 +160,48 @@
       margin-bottom: 0; /* Remove bottom margin for large screens */
     }
   }
+  //accordion 
+  .accordion-button {
+    font-size: 1.25rem;
+    font-weight: bold;
+    background-color: #f8f9fa;
+    border: none;
+    padding: 1rem;
+  }
   
+  .accordion-button:focus {
+    box-shadow: none;
+  }
+  
+  .accordion-item {
+    border: 1px solid #e7e7e7;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .accordion-body {
+    padding: 1rem;
+    background-color: #fff;
+  }
+  
+  .section-heading {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .section-subheading {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  .row.align-items-center {
+    display: flex;
+    align-items: center;
+  }
 //timeline
 /* timeline-section.component.css */
 /* Timeline section styling */
@@ -382,6 +423,7 @@ $primary:#007bff;
     background-image: var(--bg-image-url);
     background-attachment: scroll;
     background-size: cover;
+    padding-top: 20px;
   
     .section-heading {
       color: #ffffff; /* White */

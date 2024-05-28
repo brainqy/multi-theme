@@ -456,163 +456,32 @@
   <!-- Accordion Section -->
   <section id="accordionSection" class="page-section bg-light">
     <div class="container">
-        <div class="text-center">
-            <h2 class="section-heading text-uppercase">Frequently Asked Questions</h2>
-            <h3 class="section-subheading text-muted">Find answers to the most common questions below.</h3>
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase">Frequently Asked Questions</h2>
+        <h3 class="section-subheading text-muted">Find answers to the most common questions below.</h3>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-md-5">
+          <img src="../assets/img/landing/faq-boy-with-logos.png" alt="Descriptive Alt Text" class="img-fluid">
         </div>
-        <div class="row">
-            <div class="col-md-5">
-                <img src="../assets/img/landing/faq-boy-with-logos.png" alt="Descriptive Alt Text" class="img-fluid">
+        <div class="col-md-7">
+          <div class="accordion" id="faqAccordion">
+            <div *ngFor="let faq of faqs; let i = index" class="accordion-item">
+              <h2 class="accordion-header" [id]="'heading' + i">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + i" aria-expanded="i === 0 ? 'true' : 'false'" [attr.aria-controls]="'collapse' + i">
+                  {{ faq.question }}
+                </button>
+              </h2>
+              <div [id]="'collapse' + i" class="accordion-collapse collapse" [ngClass]="{'show': i === 0}" [attr.aria-labelledby]="'heading' + i" data-bs-parent="#faqAccordion">
+                <div class="accordion-body" [innerHTML]="faq.answer"></div>
+              </div>
             </div>
-            <div class="col-md-7">
-                <div class="accordion" id="faqAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                What is Job Match?
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Job Match is an online tool that helps job seekers optimize their resumes and LinkedIn profiles to increase their chances of getting interviews. It uses AI technology to analyze job listings and provide personalized recommendations.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                How does Job Match work?
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Job Match works by scanning your resume or LinkedIn profile and comparing it to the job description. It identifies the key skills and keywords that are missing and provides suggestions for improving your documents to match the job requirements.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                How do I know if my resume is ATS-compliant?
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Each Applicant Tracking System has different methods of scanning and filtering resumes. A resume scanner will be able to detect formatting errors that make your resume hard to understand for different Applicant Tracking Systems. Job Match’s resume scanner will give you a match rate based on top ATS including iCIMS, Recruiterbox, Lever, Greenhouse, and Taleo.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                What is a good ATS score for a resume?
-                            </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                We recommend a match rate score of 75%. However, many career counselors and Job Match users see success even with just a 65% match rate. There is such a thing as an over-optimized resume. The general rule is that a higher score is better, but it might not be possible to score above 75% without overstuffing your resume with keywords.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                Do ATS scan resumes?
-                            </button>
-                        </h2>
-                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Each system offers a different combination and scope of features, but ATS are primarily used to help hiring companies collect, organize, and filter applicants. That means that an ATS will scan your resume and search for certain keywords, skills, job titles, and education that the recruiter is looking for. Job seekers who submit their resume and job application through an online form are interacting with an ATS.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingSix">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                Can ATS detect PDF?
-                            </button>
-                        </h2>
-                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Our tests have shown that some applicant tracking systems more accurately parse .docx resumes. For this reason, we recommend uploading your resume in the .docx (Microsoft Word) format when applying to a job, unless the job posting requests a PDF.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingSeven">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                What is a Resume Checker?
-                            </button>
-                        </h2>
-                        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                A resume checker will scan your resume and compare it to a job description. The checker will show you if your resume is optimized for an ATS and for the job listing. To ensure that the resume is optimized for an ATS, the resume checker will check the formatting and file type. It will compare the text in the resume to see if it matches the skills, keywords, job titles, and education requirements mentioned in the job listing.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingEight">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                How to make an ATS-friendly resume
-                            </button>
-                        </h2>
-                        <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Here are some quick tips on how to beat applicant tracking systems:
-                                <ul>
-                                    <li>Tailor your resume to the specific job you are applying for.</li>
-                                    <li>Match your resume keywords to skills found in the job description.</li>
-                                    <li>Use long-form and acronym versions of keywords.</li>
-                                    <li>Use Chronological or Hybrid resume format.</li>
-                                    <li>Don’t use tables, columns, or graphics.</li>
-                                    <li>Use a screen-friendly, traditional font.</li>
-                                    <li>Don’t use headers or footers.</li>
-                                    <li>Use standard resume section headings.</li>
-                                    <li>Save Your File as a .docx if possible</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingNine">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                                How does Job Match work?
-                            </button>
-                        </h2>
-                        <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                Job Match improves job placement by helping job seekers land 3X more interviews and cutting job search time in half. Job Match uses artificial intelligence and machine learning technology to give job seekers an instant analysis of how well their resume and cover letter are tailored for a particular job and how they can optimize their application materials to combat applicant tracking systems (ATS).
-                                <br><br>
-                                Here’s the process: Upload your resume and copy-and-paste a job listing you’re applying for. Job Match will analyze your resume for formatting errors, key qualifications, hard skills, best practices, word count, tone, and more. View your match rate to see how closely your resume matches the job you’re applying for. Then, optimize your resume with personalized suggestions based on the job description you entered. As you make changes, you’ll see your match rate improve!
-                                <br><br>
-                                Use Job Match for every job application to increase your chances of getting an interview. Upload the new job listing and your optimized resume, and Job Match will analyze the new job listing against your current resume to help you optimize for each new job you apply to.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTen">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-                                What features are available with Job Match?
-                            </button>
-                        </h2>
-                        <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <ul>
-                                    <li>Resume Scanner: Checks your resume against common Applicant Tracking Systems (ATS) to see how your resume performs and provides a match rate score.</li>
-                                    <li>LinkedIn Profile Analysis: Analyzes your LinkedIn profile and provides suggestions for improvement.</li>
-                                    <li>Cover Letter Analyzer: Scans your cover letter and gives feedback on how well it matches the job listing.</li>
-                                    <li>Keyword Optimizer: Identifies key skills and keywords missing from your resume and suggests where to add them.</li>
-                                    <li>Formatting Checker: Detects formatting issues that may affect how your resume is read by ATS.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Add other accordion items similarly -->
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-</section>
+  </section>
+  
 
 <section id="contact" style="--bg-image-url: url('../assets/img/map-image.png');">
   <div class="container">
