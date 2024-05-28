@@ -69,18 +69,13 @@ import { JobTrackerComponent } from './Component/job-tracker/job-tracker.compone
 import { LandingComponent } from './Component/landing/landing.component';
 import { MaintenanceComponent } from './Component/front-pages/maintenance/maintenance.component';
 import { CustomSliderComponent } from './Component/custom-slider/custom-slider.component';
-import {
-  NguCarousel,
-  NguCarouselDefDirective,
-  NguCarouselNextDirective,
-  NguCarouselPrevDirective,
-  NguItemComponent
-} from '@ngu/carousel';
+
 import { WeRLaunchingComponent } from './Component/front-pages/we-r-launching/we-r-launching.component';
 import { NotAuthorizedComponent } from './Component/front-pages/not-authorized/not-authorized.component';
 import { AuthTwoStepsComponent } from './Component/front-pages/auth-two-steps/auth-two-steps.component';
 import { PageNotFoundComponent } from './Component/front-pages/page-not-found/page-not-found.component';
 import { CommonSplitComponent } from './Component/front-pages/common-split/common-split.component';
+import { ModalComponent } from './Component/job-tracker/modal/modal.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -139,13 +134,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     NotAuthorizedComponent,
     AuthTwoStepsComponent,
     PageNotFoundComponent,
-    CommonSplitComponent
+    CommonSplitComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     DragDropModule,
+    NgbModule,
     QuillModule.forRoot(),
     ReactiveFormsModule,
     BrowserAnimationsModule,
