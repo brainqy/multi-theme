@@ -26,6 +26,8 @@ export class ModalComponent {
 
   save() {
     if (this.jobForm.valid) {
+      console.log(" values ",this.jobForm.value);
+      
       this.activeModal.close(this.jobForm.value);
     } else {
       // Handle form validation errors

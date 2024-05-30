@@ -1,53 +1,53 @@
 <div class="modal-content">
-    <div class="modal-header modal-head">
-      <h4 class="modal-title">{{ companyName || 'Company Name' }}</h4>
-      <p>{{ jobTitle || 'Job Title' }}</p>
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form [formGroup]="jobForm">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="jobTitle">Job Title</label>
-              <input type="text" class="form-control" id="jobTitle" formControlName="jobTitle">
-            </div>
-            <div class="form-group">
-              <label for="companyName">Company Name</label>
-              <input type="text" class="form-control" id="companyName" formControlName="companyName">
-            </div>
-            <div class="form-group">
-              <label for="jobListingUrl">Job Listing URL</label>
-              <input type="text" class="form-control" id="jobListingUrl" formControlName="jobListingUrl">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="jobDescription">Job Description</label>
-              <textarea rows="8" class="form-control" id="jobDescription" formControlName="jobDescription"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="salary">Salary</label>
-              <input type="text" class="form-control" id="salary" formControlName="salary">
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div class="form-group">
-              <label for="dateSpecified">Date</label>
-              <input type="date" class="form-control" id="dateSpecified" formControlName="dateSpecified">
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Close</button>
-      <button type="button" class="btn btn-primary" (click)="save()">Save</button>
-    </div>
+  <div class="modal-header modal-head">
+    <h4 class="modal-title">{{ companyName || 'Company Name' }}</h4>
+    <p>{{ jobTitle || 'Job Title' }}</p>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
+  <div class="modal-body">
+    <form [formGroup]="jobForm">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="jobTitle">Job Title</label>
+            <input type="text" class="form-control" id="jobTitle" formControlName="jobTitle">
+          </div>
+          <div class="form-group">
+            <label for="companyName">Company Name</label>
+            <input type="text" class="form-control" id="companyName" formControlName="companyName">
+          </div>
+          <div class="form-group">
+            <label for="jobListingUrl">Job Listing URL</label>
+            <input type="text" class="form-control" id="jobListingUrl" formControlName="jobListingUrl">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="jobDescription">Job Description</label>
+            <textarea rows="8" class="form-control" id="jobDescription" formControlName="jobDescription"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="salary">Salary</label>
+            <input type="text" class="form-control" id="salary" formControlName="salary">
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="dateSpecified">Date</label>
+            <input type="date" class="form-control" id="dateSpecified" formControlName="dateSpecified">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  </div>
+</div>

@@ -1,137 +1,115 @@
 .header-sticky {
-    position: sticky;
-    top: 0;
-    background-color: white; /* Add background color as needed */
-    padding: 0px; /* Add padding as needed */
-    z-index: 1; /* Ensure it's above other elements */
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding: 0px;
+  z-index: 1;
 }
 .footer-sticky {
-    position: sticky;
-    bottom: 0;
-    padding: 10px;
-    background-color: white;
-    z-index: 1;
-}
-
-.search, .location {
-  padding-right: 8px;
-  margin: 10px;
-  width: 150px;
-}
-
-@media (max-width: 768px) {
-  .search, .location {
-      width: 100%;
-  }
+  position: sticky;
+  bottom: 0;
+  padding: 10px;
+  background-color: white;
+  z-index: 1;
 }
 
 .job-card {
-  margin: 5px;
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Ensure the job card takes up the full height of its container */
+margin: 5px;
+display: flex;
+flex-direction: column;
+height: 100%;
 }
 
 .card {
-  background-color: aliceblue;
+background-color: aliceblue;
 }
 
 .job-card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 5px; /* Adjust the value as needed for the spacing between stacked elements */
+display: flex;
+flex-direction: column;
+gap: 5px;
 }
 
 .card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 10px; /* Adjust the value as needed for the spacing between stacked elements */
+display: flex;
+flex-direction: column;
+gap: 10px;
 }
 
-.card-body .item {
-  background-color: #fff;
-  color: rgb(12, 12, 12);
-  display: flex;
-  justify-content: center;
-  border-radius: 5px;
-  align-items: center;
-  cursor: move;
-  padding: 1em;
-  transition: transform 0.2s ease-in-out; /* Add a transition for smooth animation */
+.card-body .item, .job-card-body .item {
+background-color: #fff;
+color: rgb(12, 12, 12);
+display: flex;
+justify-content: center;
+border-radius: 5px;
+align-items: center;
+cursor: move;
+padding: 1em;
+transition: transform 0.2s ease-in-out;
 }
 
-.card-body .item.cdk-drag-preview {
-  opacity: 0.8; /* Adjust the opacity of the dragged element preview */
-  background-color: #FFA500; /* Customize the background color of the dragged element preview */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow to the dragged element preview */
-}
-
-.job-card-body .item {
-  background-color: #fff;
-  color: rgb(12, 12, 12);
-  display: flex;
-  justify-content: center;
-  border-radius: 5px;
-  align-items: center;
-  cursor: move;
-  padding: 1em;
-  transition: transform 0.2s ease-in-out; /* Add a transition for smooth animation */
-}
-
-.job-card-body .item.cdk-drag-preview {
-  opacity: 0.5; /* Adjust the opacity of the dragged element preview */
-  background-color: #FFA500; /* Customize the background color of the dragged element preview */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow to the dragged element preview */
+.card-body .item.cdk-drag-preview, .job-card-body .item.cdk-drag-preview {
+opacity: 0.8;
+background-color: #FFA500;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .job-container {
-  padding: 15px;
-  background-color: #f5f7fb;
+padding: 15px;
+background-color: #f5f7fb;
 }
 
 .job-column {
-  padding-right: 5px;
+padding-right: 5px;
 }
 
 .other-column {
-  padding-top: 70px;
+padding-top: 20px;
 }
 
 .job-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
 }
 
 .job-role {
-  margin-bottom: 0.5rem;
+margin-bottom: 0.5rem;
 }
 
 .job-company {
-  font-weight: bold;
+font-weight: bold;
 }
 
-  .small-text {
-    font-size: 12px;
-    padding: 10px;
-  }
-  .empty-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    border: 2px dashed #ccc;
-    border-radius: 4px;
-    margin: 10px 0;
-    padding: 20px;
-    text-align: center;
-    font-size: 14px;
-    color: #777;
-  }
-  .add-job-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 999; /* Ensure button appears above other content */
-  }
+.small-text {
+font-size: 12px;
+padding: 10px;
+}
+
+.empty-list {
+display: flex;
+align-items: center;
+justify-content: center;
+height: 100px;
+border: 2px dashed #ccc;
+border-radius: 4px;
+margin: 10px 0;
+padding: 20px;
+text-align: center;
+font-size: 14px;
+color: #777;
+}
+
+.add-job-btn {
+position: absolute;
+top: 20px;
+right: 20px;
+z-index: 999;
+}
+
+@media (max-width: 768px) {
+.search, .location {
+  width: 100%;
+}
+}

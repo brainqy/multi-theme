@@ -1,20 +1,15 @@
-Copy code
 .modal-content {
-  width: 100%; /* Ensure it takes the full width of the viewport */
-  max-width: 800px; /* Set a max-width for larger screens */
-}
-
-.modal-head {
-  padding: 15px;
-}
-
-/* Ensure responsiveness for smaller devices */
-@media (max-width: 576px) {
-  .modal-content {
-    padding: 10px;
+    max-width: 800px; /* Set a max-width for larger screens */
+    margin: auto; /* Center the modal */
   }
-
-  .modal-head {
-    text-align: center;
+  
+  @media (max-width: 576px) {
+    .modal-content {
+      padding: 10px;
+    }
+  
+    .modal-head {
+      text-align: center;
+    }
   }
-}
+  
