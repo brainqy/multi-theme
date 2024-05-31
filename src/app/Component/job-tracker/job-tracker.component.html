@@ -14,7 +14,7 @@
         <div class="job-card-body card-body" cdkDropList id="jobs" [cdkDropListConnectedTo]="['saved','applied', 'interview', 'offer']" [cdkDropListData]="jobs" (cdkDropListDropped)="drop($event)">
           <ng-container *ngFor="let item of jobs">
             <ng-container *ngIf="item.jobRole && item.company">
-              <div class="item" cdkDrag [cdkDragData]="item">
+              <div class="item" cdkDrag [cdkDragData]="item" (click)="openModal(item)">
                 <div class="sb-card card mb-2">
                   <div class="sb-card-header card-header">
                     {{ item.jobRole }}
@@ -43,7 +43,7 @@
             <div class="card-body" cdkDropList id="saved" [cdkDropListConnectedTo]="['applied', 'interview', 'offer','jobs']" [cdkDropListData]="saved" (cdkDropListDropped)="drop($event)">
               <ng-container *ngFor="let item of saved">
                 <ng-container *ngIf="item.jobRole && item.company">
-                  <div class="item job-item" cdkDrag [cdkDragData]="item">
+                  <div class="item job-item" cdkDrag [cdkDragData]="item" (click)="openModal(item)">
                     <div class="job-role">{{ item.jobRole }}</div>
                     <div class="job-company">{{ item.company }}</div>
                   </div>
@@ -61,7 +61,7 @@
             <div class="card-body" cdkDropList id="applied" [cdkDropListConnectedTo]="['saved', 'interview', 'offer']" [cdkDropListData]="applied" (cdkDropListDropped)="drop($event)">
               <ng-container *ngFor="let item of applied">
                 <ng-container *ngIf="item.jobRole && item.company">
-                  <div class="item job-item" cdkDrag [cdkDragData]="item">
+                  <div class="item job-item" cdkDrag [cdkDragData]="item" (click)="openModal(item)">
                     <div class="job-role">{{ item.jobRole }}</div>
                     <div class="job-company">{{ item.company }}</div>
                   </div>
@@ -79,7 +79,7 @@
             <div class="card-body" cdkDropList id="interview" [cdkDropListConnectedTo]="['saved', 'applied', 'offer']" [cdkDropListData]="interview" (cdkDropListDropped)="drop($event)">
               <ng-container *ngFor="let item of interview">
                 <ng-container *ngIf="item.jobRole && item.company">
-                  <div class="item job-item" cdkDrag [cdkDragData]="item">
+                  <div class="item job-item" cdkDrag [cdkDragData]="item"(click)="openModal(item)">
                     <div class="job-role">{{ item.jobRole }}</div>
                     <div class="job-company">{{ item.company }}</div>
                   </div>
@@ -97,7 +97,7 @@
             <div class="card-body" cdkDropList id="offer" [cdkDropListConnectedTo]="['saved', 'applied', 'interview']" [cdkDropListData]="offer" (cdkDropListDropped)="drop($event)">
               <ng-container *ngFor="let item of offer">
                 <ng-container *ngIf="item.jobRole && item.company">
-                  <div class="item job-item" cdkDrag [cdkDragData]="item">
+                  <div class="item job-item" cdkDrag [cdkDragData]="item" (click)="openModal(item)">
                     <div class="job-role">{{ item.jobRole }}</div>
                     <div class="job-company">{{ item.company }}</div>
                   </div>

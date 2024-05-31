@@ -4,11 +4,15 @@ import { Observable } from 'rxjs';
 import { environment } from '../application_constant/environment';
 
 export interface Job {
+  jobDescription?: any;
+  jobRole?: any;
   id?: number;
-  jobRole: string;
   jobLocation: string;
   company: string;
   status: string;
+  jobListingUrl?: string; // Make optional
+  salary?: number; // Make optional
+  dateSpecified?: string; // Make optional
 }
 
 @Injectable({
@@ -29,9 +33,19 @@ export class JobService {
 
   updateJobStatus(job: Job): Observable<Job> {
     const url = `${this.baseUrl}/${job.id}`;
-    return this.http.put<Job>(url, job, this.httpOptions);
+    console.log("in job service  id", job);
+    
+    return this.http.patch<Job>(url, job, this.httpOptions);
   }
   createJob(job: Job): Observable<Job> {
     return this.http.post<Job>(this.baseUrl, job, this.httpOptions);
+  }
+  saveJob(job: Job): Observable<Job> {
+    return this.http.post<Job>(this.apiUrl, job);
+  }
+
+  getJobById(id: number): Observable<Job> {
+    const url = `${this.baseUrl}/${id}`; // Adjust the URL to match your backend endpoint
+    return this.http.get<Job>(url);
   }
 }

@@ -1,36 +1,90 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Import FormsModule
+import { Job, JobService } from 'src/app/Core/services/job.service';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent {
-  jobTitle: string = 'Job Title';
-  companyName: string = 'Company Name';
+export class ModalComponent implements OnInit {
+  jobRole: string = 'Job Title';
+  company: string = 'Company Name';
+  @Input() job: Job | null = null;
   jobForm: FormGroup;
+  errorMessage: string | null = null;
 
-  constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder) {
+  constructor(
+    public activeModal: NgbActiveModal,
+    private formBuilder: FormBuilder,
+    private jobService: JobService
+  ) {
     this.jobForm = this.formBuilder.group({
-      jobTitle: ['Job Title', Validators.required],
+      jobRole: ['', Validators.required],
       jobDescription: ['', Validators.required],
-      companyName: ['Company Name', Validators.required],
+      jobLocation: [''],
+      company: ['', Validators.required],
       jobListingUrl: [''],
       salary: [''],
-      dateSpecified: ['']
+      dateSpecified: [''],
+      status: ['']
     });
+  }
+
+  ngOnInit(): void {
+    if (this.job) {
+      console.log('Job received in modal:', this.job);
+      this.jobForm.patchValue({
+        id: this.job.id,
+        jobRole: this.job.jobRole,
+        jobDescription: this.job.jobDescription || '',
+        jobLocation: this.job.jobLocation,
+        company: this.job.company,
+        jobListingUrl: this.job.jobListingUrl || '',
+        salary: this.job.salary || '',
+        dateSpecified: this.job.dateSpecified || '',
+        status: this.job.status
+      });
+    } else {
+      console.log('No job received in modal.');
+    }
   }
 
   save() {
     if (this.jobForm.valid) {
-      console.log(" values ",this.jobForm.value);
-      
-      this.activeModal.close(this.jobForm.value);
+      const jobData = this.jobForm.value;
+      jobData.id = this.job?.id;
+      console.log('Saving job data:', jobData);
+
+      if (this.job && this.job.id) {
+        this.jobService.updateJobStatus(jobData).subscribe({
+          next: (updatedJob) => {
+            this.activeModal.close(updatedJob);
+          },
+          error: (error) => {
+            this.errorMessage = 'Failed to update job. Please try again.';
+            console.error('Error updating job:', error);
+          }
+        });
+      } else {
+        this.jobService.saveJob(jobData).subscribe({
+          next: (savedJob) => {
+            this.activeModal.close(savedJob);
+          },
+          error: (error) => {
+            this.errorMessage = 'Failed to save job. Please try again.';
+            console.error('Error saving job:', error);
+          }
+        });
+      }
     } else {
-      // Handle form validation errors
+      this.errorMessage = 'Please fill in all required fields.';
     }
+  }
+
+  clearError() {
+    this.errorMessage = null;
   }
 }
