@@ -77,6 +77,7 @@ import { PageNotFoundComponent } from './Component/front-pages/page-not-found/pa
 import { CommonSplitComponent } from './Component/front-pages/common-split/common-split.component';
 import { ModalComponent } from './Component/job-tracker/modal/modal.component';
 import { DemoComponent } from './Component/demo/demo.component';
+import { DashHeaderComponent } from './Component/dash-header/dash-header.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -137,7 +138,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PageNotFoundComponent,
     CommonSplitComponent,
     ModalComponent,
-    DemoComponent
+    DemoComponent,
+    DashHeaderComponent
   ],
   imports: [
     BrowserModule,

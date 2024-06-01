@@ -1,8 +1,14 @@
+<app-dash-header></app-dash-header>
 <div class="container-x container-fluid">
-  <button class="btn btn-primary add-job-btn" (click)="openModal()">
-    <i class="fa fa-plus"></i> Add Job
-  </button>
+
   <div class="job-container row">
+    <div class="row">
+      <div class="col-lg-11 offset-lg-1 col-12 text-lg-end text-center mb-3">
+        <button class="btn btn-primary add-job-btn" (click)="openModal()">
+          <i class="fa fa-plus"></i> Add Job
+        </button>
+      </div>
+    </div>
     <div class="col-12 col-md-3 job-column">
       <div class="job-card card">
         <h5 class="card-header">Jobs</h5>

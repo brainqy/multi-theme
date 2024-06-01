@@ -64,7 +64,7 @@ padding-right: 5px;
 }
 
 .other-column {
-padding-top: 20px;
+padding-top: 60px;
 }
 
 .job-item {
@@ -101,15 +101,22 @@ font-size: 14px;
 color: #777;
 }
 
-.add-job-btn {
-position: absolute;
-top: 20px;
-right: 20px;
-z-index: 999;
-}
+
 
 @media (max-width: 768px) {
 .search, .location {
   width: 100%;
 }
 }
+.add-job-btn {
+  margin-top: 1rem; /* Ensure some spacing */
+  
+}
+
+@media (max-width: 767.98px) {
+  .add-job-btn {
+    margin-top: 60px; /* Adjust this value as needed for spacing from the top */
+    text-align: left; /* Align the button text to the left on small screens */
+  }
+}
+
