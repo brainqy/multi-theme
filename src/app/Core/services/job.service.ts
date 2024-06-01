@@ -41,7 +41,8 @@ export class JobService {
     return this.http.post<Job>(this.baseUrl, job, this.httpOptions);
   }
   saveJob(job: Job): Observable<Job> {
-    return this.http.post<Job>(this.apiUrl, job);
+    console.log("posting ... ", job);
+    return this.http.post<Job>(`${this.baseUrl}/save`, job);
   }
 
   getJobById(id: number): Observable<Job> {

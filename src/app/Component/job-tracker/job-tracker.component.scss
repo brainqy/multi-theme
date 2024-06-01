@@ -55,7 +55,7 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .job-container {
-padding: 15px;
+padding: 5px;
 background-color: #f5f7fb;
 }
 
@@ -115,7 +115,7 @@ color: #777;
 
 @media (max-width: 767.98px) {
   .add-job-btn {
-    margin-top: 60px; /* Adjust this value as needed for spacing from the top */
+    margin-top: 20px; /* Adjust this value as needed for spacing from the top */
     text-align: left; /* Align the button text to the left on small screens */
   }
 }

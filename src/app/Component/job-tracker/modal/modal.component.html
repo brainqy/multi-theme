@@ -1,60 +1,156 @@
-<div class="modal-content">
-    <div class="modal-header modal-head">
-      <h4 class="modal-title">{{ jobForm.get('company')?.value || 'Company Name' }}</h4>
-      <p>{{ jobForm.get('jobRole')?.value || 'Job Title' }}</p>
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <form [formGroup]="jobForm">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="jobRole">Job Title</label>
-              <input type="text" class="form-control" id="jobRole" formControlName="jobRole">
+<form #jobForm="ngForm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div *ngIf="isEmptyJob(); else tabContent">
+          <!-- Show form without tabs when job is empty -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="company">Job listing</label>
+                <input type="text" class="form-control" id="jobListingUrl" [(ngModel)]="job.jobListingUrl" name="jobListingUrl" required>
+              </div>
+              <div class="form-group">
+                <label for="company">Company Name</label>
+                <input type="text" class="form-control" id="company" [(ngModel)]="job.company" name="company" required>
+              </div>
+              <div class="form-group">
+                <label for="jobRole">Job Title</label>
+                <input type="text" class="form-control" id="jobRole" [(ngModel)]="job.jobRole" name="jobRole" required>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="salary">Location</label>
+                    <input type="text" class="form-control" id="jobLocation" [(ngModel)]="job.jobLocation" name="jobLocation">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="dateSpecified">Status</label>
+                    <input type="text" class="form-control" id="status" [(ngModel)]="job.status" name="status">
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="company">Company Name</label>
-              <input type="text" class="form-control" id="company" formControlName="company">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="jobDescription">Job Description</label>
+                <textarea rows="8" class="form-control" id="jobDescription" [(ngModel)]="job.jobDescription" name="jobDescription" required></textarea>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="jobListingUrl">Job Listing URL</label>
-              <input type="text" class="form-control" id="jobListingUrl" formControlName="jobListingUrl">
-            </div>
-            <div class="form-group">
-              <label for="jobLocation">Job Location</label>
-              <input type="text" class="form-control" id="jobLocation" formControlName="jobLocation">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="jobDescription">Job Description</label>
-              <textarea rows="8" class="form-control" id="jobDescription" formControlName="jobDescription"></textarea>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="salary">Salary</label>
+                  <input type="text" class="form-control" id="salary" [(ngModel)]="job.salary" name="salary">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="dateSpecified">Date</label>
+                  <input type="date" class="form-control" id="dateSpecified" [(ngModel)]="job.dateSpecified" name="dateSpecified">
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="salary">Salary</label>
-              <input type="text" class="form-control" id="salary" formControlName="salary">
+        <ng-template #tabContent>
+          <!-- Show form with tabs when job is not empty -->
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#jobDetails">Job Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#coverLetter">Cover Letter</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#interviews">Interviews</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#notes">Notes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#emptyTab">Empty Tab</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="jobDetails">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="company">Job listing</label>
+                    <input type="text" class="form-control" id="jobListingUrl" [(ngModel)]="job.jobListingUrl" name="jobListingUrl" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" class="form-control" id="company" [(ngModel)]="job.company" name="company" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="jobRole">Job Title</label>
+                    <input type="text" class="form-control" id="jobRole" [(ngModel)]="job.jobRole" name="jobRole" required>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="salary">Location</label>
+                        <input type="text" class="form-control" id="jobLocation" [(ngModel)]="job.jobLocation" name="jobLocation">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="dateSpecified">Status</label>
+                        <input type="text" class="form-control" id="status" [(ngModel)]="job.status" name="status">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="jobDescription">Job Description</label>
+                    <textarea rows="8" class="form-control" id="jobDescription" [(ngModel)]="job.jobDescription" name="jobDescription" required></textarea>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="salary">Salary</label>
+                      <input type="text" class="form-control" id="salary" [(ngModel)]="job.salary" name="salary">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="dateSpecified">Date</label>
+                      <input type="date" class="form-control" id="dateSpecified" [(ngModel)]="job.dateSpecified" name="dateSpecified">
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="col-md-5">
-            <div class="form-group">
-              <label for="dateSpecified">Date</label>
-              <input type="date" class="form-control" id="dateSpecified" formControlName="dateSpecified">
+            <div class="tab-pane fade" id="coverLetter">
+              <div class="form-group">
+                <label for="coverLetterText">Cover Letter</label>
+                <textarea rows="8" class="form-control" id="coverLetterText" name="coverLetterText" [(ngModel)]="extras.coverLetterText">Sample cover letter text...</textarea>
+              </div>
             </div>
+            <div class="tab-pane fade" id="interviews">
+              <div class="form-group">
+                <label for="interviewNotes">Interviews</label>
+                <textarea rows="8" class="form-control" id="interviewNotes" name="interviewNotes" [(ngModel)]="extras.interviewNotes">Sample interview notes...</textarea>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="notes">
+              <div class="form-group">
+                <label for="notesText">Notes</label>
+                <textarea rows="8" class="form-control" id="notesText" name="notesText" [(ngModel)]="extras.notesText">Sample notes text...</textarea>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="emptyTab"></div>
           </div>
-        </div>
-      </form>
+        </ng-template>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="save(jobForm)">Save</button>
+      </div>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Close</button>
-      <button type="button" class="btn btn-primary" (click)="save()">Save</button>
-      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-          {{ errorMessage }}
-        </div>
-    </div>
-  </div>
+  </form>

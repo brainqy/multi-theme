@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Import FormsModule
@@ -10,11 +10,27 @@ import { Job, JobService } from 'src/app/Core/services/job.service';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-  jobRole: string = 'Job Title';
-  company: string = 'Company Name';
-  @Input() job: Job | null = null;
+  @Input() job: Job = { jobRole: '', company: '', jobDescription: '', jobLocation: '', jobListingUrl: '', salary: 0, dateSpecified: '', status: '' };
+  company: string = 'Company name  ';
+ extras:any='';
   jobForm: FormGroup;
+  activeTab: string = 'jobDetails'; 
   errorMessage: string | null = null;
+  ngOnInit(): void {
+    if (!this.job) {
+      this.job = {
+        jobRole: '',
+        company: '',
+        jobDescription: '',
+        jobLocation: '',
+        jobListingUrl: '',
+        salary: 0,
+        dateSpecified: '',
+        status: ''
+      };
+    }
+  }
+
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -27,37 +43,24 @@ export class ModalComponent implements OnInit {
       jobLocation: [''],
       company: ['', Validators.required],
       jobListingUrl: [''],
-      salary: [''],
+      salary: 0,
       dateSpecified: [''],
       status: ['']
     });
   }
-
-  ngOnInit(): void {
-    if (this.job) {
-      console.log('Job received in modal:', this.job);
-      this.jobForm.patchValue({
-        jobRole: this.job.jobRole,
-        jobDescription: this.job.jobDescription || '',
-        jobLocation: this.job.jobLocation,
-        company: this.job.company,
-        jobListingUrl: this.job.jobListingUrl || '',
-        salary: this.job.salary || '',
-        dateSpecified: this.job.dateSpecified || '',
-        status: this.job.status
-      });
-    } else {
-      console.log('No job received in modal.');
-    }
+  isEmptyJob(): boolean {
+    return !this.job.jobRole && !this.job.company && !this.job.jobDescription && !this.job.jobLocation && !this.job.jobListingUrl && this.job.salary === 0 && !this.job.dateSpecified && !this.job.status;
   }
 
-  save() {
-    if (this.jobForm.valid) {
-      const jobData = this.jobForm.value;
-      jobData.id = this.job?.id;
-      console.log('Saving job data:', jobData);
 
+  save(form: NgForm) {
+    if (form.valid) {
+      const jobData = { ...form.value };
+      
       if (this.job && this.job.id) {
+        jobData.id = this.job.id;
+        console.log('Updating job data:', jobData);
+        
         this.jobService.updateJobStatus(jobData).subscribe({
           next: (updatedJob) => {
             this.activeModal.close(updatedJob);
@@ -68,6 +71,8 @@ export class ModalComponent implements OnInit {
           }
         });
       } else {
+        console.log('Creating new job data:', jobData);
+        
         this.jobService.saveJob(jobData).subscribe({
           next: (savedJob) => {
             this.activeModal.close(savedJob);
@@ -83,7 +88,9 @@ export class ModalComponent implements OnInit {
     }
   }
 
+
   clearError() {
     this.errorMessage = null;
-  }
+  };
+  
 }

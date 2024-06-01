@@ -4,6 +4,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './modal/modal.component';
 import { Job, JobService } from 'src/app/Core/services/job.service';
+import { DmComponent } from './dm/dm.component';
 
 @Component({
   selector: 'app-job-tracker',
@@ -16,6 +17,7 @@ export class JobTrackerComponent {
   interview: Job[] = [];
   offer: Job[] = [];
   jobs: Job[] = [];
+  jobToUpdate!: Job;
 
   constructor(private modalService: NgbModal, private jobService: JobService) {}
 
@@ -70,9 +72,9 @@ export class JobTrackerComponent {
     if (job && job.id !== undefined) {
       console.log('Fetching job by ID:', job.id);
       this.jobService.getJobById(job.id).subscribe((res) => {
-        const jobToUpdate = res; // Assuming the response contains the full job object
-        console.log('Job fetched:', jobToUpdate);
-        modalRef.componentInstance.job = jobToUpdate;
+         this.jobToUpdate = res; // Assuming the response contains the full job object
+        console.log('Job fetched:', this.jobToUpdate);
+        modalRef.componentInstance.job = this.jobToUpdate;
         console.log('Job set in modal instance:', modalRef.componentInstance.job);
       });
     } else {
