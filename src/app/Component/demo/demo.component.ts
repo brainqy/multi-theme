@@ -33,4 +33,13 @@ export class DemoComponent {
      console.log('Job set in modal instance:', modalRef.componentInstance.job);
    });
   }
+  activeTab = 'search';
+
+  search(activeTab: string){
+    this.activeTab = activeTab;
+  }
+
+  result(activeTab: string){
+    this.activeTab = activeTab;
+  }
 }

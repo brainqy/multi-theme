@@ -32,3 +32,41 @@
     </div>
   </nav>
   <button (click)="openModal()">Open Modal</button>
+
+  <div id="tabs" #tabs>
+
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link"  [ngClass]="{ 'active':activeTab==='job'}" data-toggle="tab"
+               (click)="search('job')">Job Details</a>
+          </li>
+      <li class="nav-item">
+        <a class="nav-link active"  [ngClass]="{ 'active':activeTab==='resume'}" (click)="search('resume')"
+           data-toggle="tab">Resume</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  [ngClass]="{ 'active':activeTab==='cover_letter'}" data-toggle="tab"
+           (click)="search('cover_letter')">Cover Letter</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  [ngClass]="{ 'active':activeTab==='interviews'}" data-toggle="tab"
+           (click)="search('interviews')">Interviews</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  [ngClass]="{ 'active':activeTab==='notes'}" data-toggle="tab"
+           (click)="search('notes')">Notes</a>
+      </li>
+    </ul>
+  
+    <div class="tab-content">
+      <div class="tab-pane" id="search" [ngClass]="{ 'active':activeTab==='search'}">
+        search screen
+        <button type="button" (click)="search('result')">Search</button>
+      </div>
+      <div class="tab-pane" id="resume" [ngClass]="{ 'active':activeTab==='resume'}">resume screen</div>
+      <div class="tab-pane" id="cover_letter" [ngClass]="{ 'active':activeTab==='cover_letter'}">cover_letter screen</div>
+      <div class="tab-pane" id="interviews" [ngClass]="{ 'active':activeTab==='interviews'}">interviews screen</div>
+      <div class="tab-pane" id="notes" [ngClass]="{ 'active':activeTab==='notes'}">notes screen</div>
+    </div>
+  
+  </div>

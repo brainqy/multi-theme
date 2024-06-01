@@ -12,10 +12,21 @@ import { Job, JobService } from 'src/app/Core/services/job.service';
 export class ModalComponent implements OnInit {
   @Input() job: Job = { jobRole: '', company: '', jobDescription: '', jobLocation: '', jobListingUrl: '', salary: 0, dateSpecified: '', status: '' };
   company: string = 'Company name  ';
- extras:any='';
   jobForm: FormGroup;
   activeTab: string = 'jobDetails'; 
   errorMessage: string | null = null;
+  //activeTab = 'search';
+
+  extras = {
+    coverLetterText: 'Sample cover letter text...',
+    interviewNotes: 'Sample interview notes...',
+    notesText: 'Sample notes text...',
+  };
+
+  search(activeTab: string){
+    this.activeTab = activeTab;
+  }
+
   ngOnInit(): void {
     if (!this.job) {
       this.job = {
