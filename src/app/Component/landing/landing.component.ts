@@ -110,6 +110,14 @@ export class LandingComponent {
     config.keyboard = false;
     config.pauseOnHover = false;
   }
+  toggleNavbar() {
+    const navbarCollapse = document.getElementById('navbarNav');
+    if (navbarCollapse?.classList.contains('show')) {
+      navbarCollapse.classList.remove('show');
+    } else {
+      navbarCollapse?.classList.add('show');
+    }
+  }
 
   // Method to fetch landing data from service
   getlandingData() {

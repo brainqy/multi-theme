@@ -1,60 +1,60 @@
 <div class="modal-content">
-  <div class="modal-header modal-head">
-    <h4 class="modal-title">{{ company || 'Company Name' }}</h4>
-    <p>{{ jobRole || 'Job Title' }}</p>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <div class="modal-header modal-head">
+      <h4 class="modal-title">{{ jobForm.get('company')?.value || 'Company Name' }}</h4>
+      <p>{{ jobForm.get('jobRole')?.value || 'Job Title' }}</p>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="jobForm">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="jobRole">Job Title</label>
+              <input type="text" class="form-control" id="jobRole" formControlName="jobRole">
+            </div>
+            <div class="form-group">
+              <label for="company">Company Name</label>
+              <input type="text" class="form-control" id="company" formControlName="company">
+            </div>
+            <div class="form-group">
+              <label for="jobListingUrl">Job Listing URL</label>
+              <input type="text" class="form-control" id="jobListingUrl" formControlName="jobListingUrl">
+            </div>
+            <div class="form-group">
+              <label for="jobLocation">Job Location</label>
+              <input type="text" class="form-control" id="jobLocation" formControlName="jobLocation">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="jobDescription">Job Description</label>
+              <textarea rows="8" class="form-control" id="jobDescription" formControlName="jobDescription"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="salary">Salary</label>
+              <input type="text" class="form-control" id="salary" formControlName="salary">
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label for="dateSpecified">Date</label>
+              <input type="date" class="form-control" id="dateSpecified" formControlName="dateSpecified">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Close</button>
+      <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+          {{ errorMessage }}
+        </div>
+    </div>
   </div>
-  <div class="modal-body">
-    <form [formGroup]="jobForm">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="jobRole">Job Title</label>
-            <input type="text" class="form-control" id="jobRole" formControlName="jobRole">
-          </div>
-          <div class="form-group">
-            <label for="company">Company Name</label>
-            <input type="text" class="form-control" id="company" formControlName="company">
-          </div>
-          <div class="form-group">
-            <label for="jobListingUrl">Job Listing URL</label>
-            <input type="text" class="form-control" id="jobListingUrl" formControlName="jobListingUrl">
-          </div>
-          <div class="form-group">
-            <label for="jobLocation">Job Location</label>
-            <input type="text" class="form-control" id="jobLocation" formControlName="jobLocation">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label for="jobDescription">Job Description</label>
-            <textarea rows="8" class="form-control" id="jobDescription" formControlName="jobDescription"></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="salary">Salary</label>
-            <input type="text" class="form-control" id="salary" formControlName="salary">
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div class="form-group">
-            <label for="dateSpecified">Date</label>
-            <input type="date" class="form-control" id="dateSpecified" formControlName="dateSpecified">
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Close</button>
-    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
-    <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-        {{ errorMessage }}
-      </div>
-  </div>
-</div>

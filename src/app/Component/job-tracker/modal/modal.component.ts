@@ -37,7 +37,6 @@ export class ModalComponent implements OnInit {
     if (this.job) {
       console.log('Job received in modal:', this.job);
       this.jobForm.patchValue({
-        id: this.job.id,
         jobRole: this.job.jobRole,
         jobDescription: this.job.jobDescription || '',
         jobLocation: this.job.jobLocation,

@@ -40,6 +40,7 @@ import { NotAuthorizedComponent } from './Component/front-pages/not-authorized/n
 import { AuthTwoStepsComponent } from './Component/front-pages/auth-two-steps/auth-two-steps.component';
 import { PageNotFoundComponent } from './Component/front-pages/page-not-found/page-not-found.component';
 import { CommonSplitComponent } from './Component/front-pages/common-split/common-split.component';
+import { DemoComponent } from './Component/demo/demo.component';
 
 
 const routes: Routes = [
@@ -177,6 +178,10 @@ const routes: Routes = [
     path: "theme",
     component: ThemeSwitcherComponent
   },  
+  {
+    path: "demo",
+    component: DemoComponent
+  },
   {
     path:"reset-password",
     component:ResetPasswordComponent

@@ -76,6 +76,7 @@ import { AuthTwoStepsComponent } from './Component/front-pages/auth-two-steps/au
 import { PageNotFoundComponent } from './Component/front-pages/page-not-found/page-not-found.component';
 import { CommonSplitComponent } from './Component/front-pages/common-split/common-split.component';
 import { ModalComponent } from './Component/job-tracker/modal/modal.component';
+import { DemoComponent } from './Component/demo/demo.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -135,7 +136,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AuthTwoStepsComponent,
     PageNotFoundComponent,
     CommonSplitComponent,
-    ModalComponent
+    ModalComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,

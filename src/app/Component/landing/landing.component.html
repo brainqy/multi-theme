@@ -1,115 +1,109 @@
 <div class="color-grad">
     <!-- Horizontal navigation bar -->
-    <nav class="navbar navbar-expand-lg  color-nav">
+    <nav class="navbar navbar-expand-lg color-nav">
       <div class="container px-4 px-lg-5">
         <a class="navbar-brand d-flex align-items-center" routerLink="/">
           <img src="assets/img/YTMS_LOGO 17.png" alt="BrainQy Logo" class="me-2" style="height: 40px;">
         </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
-                      <a class="nav-link" routerLink="/about">About</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button"
-                          data-bs-toggle="dropdown" aria-expanded="false">
-                          Products
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="productsDropdown">
-                          <li><a class="dropdown-item" routerLink="/resume-bullet-points-generator"><i class="bi bi-file-earmark-text"></i> Resume Bullet Points Generator</a></li>
-                          <li><a class="dropdown-item" routerLink="/ai-resume-tool">AI Resume Tool</a></li>
-                          <li><a class="dropdown-item" routerLink="/job-tracker-board">Job Tracker Board</a></li>
-                          <li><a class="dropdown-item" routerLink="/jobs">Jobs</a></li>
-                          <li><a class="dropdown-item" routerLink="/resume-power-edit">Resume Power Edit</a></li>
-                          <li><a class="dropdown-item" routerLink="/linkedin-optimization-tool">LinkedIn Optimization Tool</a></li>
-                          <li><a class="dropdown-item" routerLink="/resume-builder-tool">Resume Builder Tool</a></li>
-                          <li><a class="dropdown-item" routerLink="/resume-optimization-report">Resume Optimization Report</a></li>
-                          <li><a class="dropdown-item" routerLink="/cover-letter-generator">Cover Letter Generator</a></li>
-                          <li><a class="dropdown-item" routerLink="/cover-letter-optimization-report">Cover Letter Optimization Report</a></li>
-                          <li><a class="dropdown-item" routerLink="/career-change-tool">Career Change Tool</a></li>
-                      </ul>
-                  </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="organizationsDropdown" role="button"
-                          data-bs-toggle="dropdown" aria-expanded="false">
-                          Organizations
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="organizationsDropdown">
-                          <li><a class="dropdown-item" routerLink="/universities"><i class="bi bi-file-earmark-text"></i> Universities</a></li>
-                          <li><a class="dropdown-item" routerLink="/government"><i class="bi bi-file-earmark-text"></i> Government</a></li>
-                          <li><a class="dropdown-item" routerLink="/ngos"><i class="bi bi-file-earmark-text"></i> NGOs</a></li>
-                          <li><a class="dropdown-item" routerLink="/business"><i class="bi bi-file-earmark-text"></i> Business</a></li>
-                          <li><a class="dropdown-item" routerLink="/career-coaches"><i class="bi bi-file-earmark-text"></i> Career Coaches</a></li>
-                      </ul>
-                  </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="atsResumeDropdown" role="button"
-                          data-bs-toggle="dropdown" aria-expanded="false">
-                          ATS Resume
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="atsResumeDropdown">
-                          <li><a class="dropdown-item" routerLink="/resume-optimization-report">Resume Optimization Report</a></li>
-                          <li><a class="dropdown-item" routerLink="/what-is-ats">What Is An ATS?</a></li>
-                          <li><a class="dropdown-item" routerLink="/how-to-optimize-resume-ats">How to Optimize Your Resume for ATS</a></li>
-                          <li><a class="dropdown-item" routerLink="/how-to-write-resume">How to Write a Resume</a></li>
-                          <li><a class="dropdown-item" routerLink="/resume-templates">Resume Templates</a></li>
-                          <li><a class="dropdown-item" routerLink="/ats-resume-templates">ATS Resume Templates</a></li>
-                          <li><a class="dropdown-item" routerLink="/google-docs-resume-templates">Google Docs Resume Templates</a></li>
-                          <li><a class="dropdown-item" routerLink="/resume-formats">Resume Formats</a></li>
-                          <li><a class="dropdown-item" routerLink="/resume-examples">Resume Examples</a></li>
-                      </ul>
-                  </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="coverLetterDropdown" role="button"
-                          data-bs-toggle="dropdown" aria-expanded="false">
-                          Cover Letter
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="coverLetterDropdown">
-                          <li><a class="dropdown-item" routerLink="/cover-letter-optimization-report">Cover Letter Optimization Report</a></li>
-                          <li><a class="dropdown-item" routerLink="/how-to-write-cover-letter">How to Write a Cover Letter</a></li>
-                          <li><a class="dropdown-item" routerLink="/cover-letter-formats">Cover Letter Formats</a></li>
-                          <li><a class="dropdown-item" routerLink="/cover-letter-templates">Cover Letter Templates</a></li>
-                          <li><a class="dropdown-item" routerLink="/cover-letter-examples">Cover Letter Examples</a></li>
-                          <li><a class="dropdown-item-filled" routerLink="/cover-letter-examples">Generate Personalized Cover letter</a></li>
-                      </ul>
-                  </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="linkedinDropdown" role="button"
-                          data-bs-toggle="dropdown" aria-expanded="false">
-                          LinkedIn
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="linkedinDropdown">
-                          <li><a class="dropdown-item" routerLink="/linkedin-optimization-tool">LinkedIn Optimization Tool</a></li>
-                          <li><a class="dropdown-item" routerLink="/linkedin-profile-writing-guide">LinkedIn Profile Writing Guide</a></li>
-                          <li><a class="dropdown-item" routerLink="/linkedin-headline-examples">LinkedIn Headline Examples</a></li>
-                          <li><a class="dropdown-item" routerLink="/linkedin-summary-examples">LinkedIn Summary Examples</a></li>
-                      </ul>
-                  </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button"
-                          data-bs-toggle="dropdown" aria-expanded="false">
-                          Resources
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
-                          <li><a class="dropdown-item" routerLink="/Job Match-blog">Job Match Blog</a></li>
-                          <li><a class="dropdown-item" routerLink="/resume-guides">Resume Guides</a></li>
-                          <li><a class="dropdown-item" routerLink="/ats-guides">ATS Guides</a></li>
-                          <li><a class="dropdown-item" routerLink="/cover-letter-guides">Cover Letter Guides</a></li>
-                          <li><a class="dropdown-item" routerLink="/job-search-advice">Job Search Advice</a></li>
-                          <li><a class="dropdown-item" routerLink="/linkedin-guides">LinkedIn Guides</a></li>
-                          <li><a class="dropdown-item" routerLink="/career-change-guides">Career Change Guides</a></li>
-                          <li><a class="dropdown-item" routerLink="/learning-center">Learning Center</a></li>
-                          <li><a class="dropdown-item" routerLink="/customer-stories">Customer Stories</a></li>
-                      </ul>
-                  </li>
+        <button class="navbar-toggler" type="button" (click)="toggleNavbar()" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/about">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Products
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                <li><a class="dropdown-item" routerLink="/resume-bullet-points-generator"><i class="bi bi-file-earmark-text"></i> Resume Bullet Points Generator</a></li>
+                <li><a class="dropdown-item" routerLink="/ai-resume-tool">AI Resume Tool</a></li>
+                <li><a class="dropdown-item" routerLink="/job-tracker-board">Job Tracker Board</a></li>
+                <li><a class="dropdown-item" routerLink="/jobs">Jobs</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-power-edit">Resume Power Edit</a></li>
+                <li><a class="dropdown-item" routerLink="/linkedin-optimization-tool">LinkedIn Optimization Tool</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-builder-tool">Resume Builder Tool</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-optimization-report">Resume Optimization Report</a></li>
+                <li><a class="dropdown-item" routerLink="/cover-letter-generator">Cover Letter Generator</a></li>
+                <li><a class="dropdown-item" routerLink="/cover-letter-optimization-report">Cover Letter Optimization Report</a></li>
+                <li><a class="dropdown-item" routerLink="/career-change-tool">Career Change Tool</a></li>
               </ul>
-          </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="organizationsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Organizations
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="organizationsDropdown">
+                <li><a class="dropdown-item" routerLink="/universities"><i class="bi bi-file-earmark-text"></i> Universities</a></li>
+                <li><a class="dropdown-item" routerLink="/government"><i class="bi bi-file-earmark-text"></i> Government</a></li>
+                <li><a class="dropdown-item" routerLink="/ngos"><i class="bi bi-file-earmark-text"></i> NGOs</a></li>
+                <li><a class="dropdown-item" routerLink="/business"><i class="bi bi-file-earmark-text"></i> Business</a></li>
+                <li><a class="dropdown-item" routerLink="/career-coaches"><i class="bi bi-file-earmark-text"></i> Career Coaches</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="atsResumeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                ATS Resume
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="atsResumeDropdown">
+                <li><a class="dropdown-item" routerLink="/resume-optimization-report">Resume Optimization Report</a></li>
+                <li><a class="dropdown-item" routerLink="/what-is-ats">What Is An ATS?</a></li>
+                <li><a class="dropdown-item" routerLink="/how-to-optimize-resume-ats">How to Optimize Your Resume for ATS</a></li>
+                <li><a class="dropdown-item" routerLink="/how-to-write-resume">How to Write a Resume</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-templates">Resume Templates</a></li>
+                <li><a class="dropdown-item" routerLink="/ats-resume-templates">ATS Resume Templates</a></li>
+                <li><a class="dropdown-item" routerLink="/google-docs-resume-templates">Google Docs Resume Templates</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-formats">Resume Formats</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-examples">Resume Examples</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="coverLetterDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Cover Letter
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="coverLetterDropdown">
+                <li><a class="dropdown-item" routerLink="/cover-letter-optimization-report">Cover Letter Optimization Report</a></li>
+                <li><a class="dropdown-item" routerLink="/how-to-write-cover-letter">How to Write a Cover Letter</a></li>
+                <li><a class="dropdown-item" routerLink="/cover-letter-formats">Cover Letter Formats</a></li>
+                <li><a class="dropdown-item" routerLink="/cover-letter-templates">Cover Letter Templates</a></li>
+                <li><a class="dropdown-item" routerLink="/cover-letter-examples">Cover Letter Examples</a></li>
+                <li><a class="dropdown-item-filled" routerLink="/cover-letter-examples">Generate Personalized Cover letter</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="linkedinDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                LinkedIn
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="linkedinDropdown">
+                <li><a class="dropdown-item" routerLink="/linkedin-optimization-tool">LinkedIn Optimization Tool</a></li>
+                <li><a class="dropdown-item" routerLink="/linkedin-profile-writing-guide">LinkedIn Profile Writing Guide</a></li>
+                <li><a class="dropdown-item" routerLink="/linkedin-headline-examples">LinkedIn Headline Examples</a></li>
+                <li><a class="dropdown-item" routerLink="/linkedin-summary-examples">LinkedIn Summary Examples</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Resources
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                <li><a class="dropdown-item" routerLink="/Job Match-blog">Job Match Blog</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-guides">Resume Guides</a></li>
+                <li><a class="dropdown-item" routerLink="/ats-guides">ATS Guides</a></li>
+                <li><a class="dropdown-item" routerLink="/cover-letter-guides">Cover Letter Guides</a></li>
+                <li><a class="dropdown-item" routerLink="/job-search-advice">Job Search Advice</a></li>
+                <li><a class="dropdown-item" routerLink="/linkedin-guides">LinkedIn Guides</a></li>
+                <li><a class="dropdown-item" routerLink="/career-change-guides">Career Change Guides</a></li>
+                <li><a class="dropdown-item" routerLink="/learning-center">Learning Center</a></li>
+                <li><a class="dropdown-item" routerLink="/customer-stories">Customer Stories</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-  </nav>
+    </nav>
+    
   
   
   
