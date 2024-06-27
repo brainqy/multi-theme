@@ -79,7 +79,6 @@ import { ModalComponent } from './Component/job-tracker/modal/modal.component';
 import { DemoComponent } from './Component/demo/demo.component';
 import { DashHeaderComponent } from './Component/dash-header/dash-header.component';
 import { DmComponent } from './Component/job-tracker/dm/dm.component';
-import { ProfileComponent } from './Component/profile/profile.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -142,8 +141,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ModalComponent,
     DemoComponent,
     DashHeaderComponent,
-    DmComponent,
-    ProfileComponent
+    DmComponent
   ],
   imports: [
     BrowserModule,

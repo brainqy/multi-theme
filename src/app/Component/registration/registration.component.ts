@@ -19,7 +19,6 @@ export class RegistrationComponent {
         /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/
       )]],
       confirmPassword: ['', [Validators.required]],
-      agreePrivacyPolicy: [''],
       ref:['']
     })
 

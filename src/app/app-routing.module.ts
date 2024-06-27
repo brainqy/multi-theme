@@ -41,7 +41,6 @@ import { AuthTwoStepsComponent } from './Component/front-pages/auth-two-steps/au
 import { PageNotFoundComponent } from './Component/front-pages/page-not-found/page-not-found.component';
 import { CommonSplitComponent } from './Component/front-pages/common-split/common-split.component';
 import { DemoComponent } from './Component/demo/demo.component';
-import { ProfileComponent } from './Component/profile/profile.component';
 
 
 const routes: Routes = [
@@ -182,10 +181,6 @@ const routes: Routes = [
   {
     path: "demo",
     component: DemoComponent
-  },
-  {
-    path: "profile",
-    component: ProfileComponent
   },
   {
     path:"reset-password",

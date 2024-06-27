@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://brainqy.eu-north-1.elasticbeanstalk.com",
+  baseUrl: "http://localhost:8083",
   contextUrl: "/ytms",
   signupUrl: "/ytms/register",
   loginUrl: "/ytms/login"
