@@ -3,19 +3,18 @@
     top: 0;
     z-index: 1; /* Ensure it's above the main content */
     background-color: white; /* Set background color */
-  }
-  
-  .side-nav-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.side-nav-content {
     color: black;
     width: 230px;
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 10px;
-  }
-  
-  /* Other styles remain the same */
-  
-
+    flex-grow: 1; /* Allow content to grow and fill the remaining space */
+}
 
 .nav-list {
     height: 100%;
@@ -37,8 +36,6 @@
 a:hover {
     color: #0056b3;
 }
-
-
 
 .nav-list-item i {
     font-size: 20px;
