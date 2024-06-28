@@ -223,9 +223,17 @@ console.log("all slots ",res);
     });
   }
   getNonCanceledSlots(slots: any[]): any[] {
+    if (!slots) {
+      console.error('slots is undefined');
+      return [];
+    }
     return slots.filter(slot => slot.status !== 'CANCELED');
   }
   getCanceledSlots(slots: any[]): any[] {
+    if (!slots) {
+      console.error('slots is undefined');
+      return [];
+    }
     return slots.filter(slot => slot.status === 'CANCELED');
   }
   
