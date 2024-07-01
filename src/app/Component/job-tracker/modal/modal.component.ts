@@ -4,6 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Import FormsModule
 import { Job, JobService } from 'src/app/Core/services/job.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -87,6 +88,7 @@ export class ModalComponent implements OnInit {
         this.jobService.saveJob(jobData).subscribe({
           next: (savedJob) => {
             this.activeModal.close(savedJob);
+            Swal.fire("SUCCESS","Job saved successfully",'success');
           },
           error: (error) => {
             this.errorMessage = 'Failed to save job. Please try again.';
@@ -100,8 +102,8 @@ export class ModalComponent implements OnInit {
   }
 
 
-  clearError() {
+/*   clearError() {
     this.errorMessage = null;
-  };
+  }; */
   
 }

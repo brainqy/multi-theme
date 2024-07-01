@@ -36,12 +36,16 @@ export class AuthInterceptor implements HttpInterceptor {
             // Handle 401 Unauthorized error
             Swal.fire("ERROR", "JWT Token has expired", 'error');
             // Optionally, redirect to login page
-            this.authService.removeToken();// Uncomment if you have a logout method
+            //this.authService.removeToken();// Uncomment if you have a logout method
            window.location.href = '/login'; // Adjust the URL as needed
           }
           if (error && error.error && error.error.message === 'Jwt Token has expired !!') {
             Swal.fire('ERROR', 'JWT Token has expired', 'error');
             // Handle token expiration error, e.g., redirect to login page or refresh token
+            Swal.fire("ERROR", "JWT Token has expired", 'error');
+            // Optionally, redirect to login page
+            this.authService.removeToken();// Uncomment if you have a logout method
+           window.location.href = '/login'; // Adjust the URL as needed
           }
           return throwError(error);
         })

@@ -42,7 +42,7 @@ export class JobService {
   }
   saveJob(job: Job): Observable<Job> {
     console.log("posting ... ", job);
-    return this.http.post<Job>(`${this.baseUrl}/save`, job);
+    return this.http.post<Job>(`${this.baseUrl}/save`, job,this.httpOptions);
   }
 
   getJobById(id: number): Observable<Job> {

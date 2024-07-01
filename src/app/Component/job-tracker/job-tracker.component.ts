@@ -115,7 +115,7 @@ export class JobTrackerComponent {
 
           console.log('Creating new job:', newJob);
           this.saved.push(newJob);
-          this.jobService.createJob(newJob).subscribe(job => {
+          this.jobService.saveJob(newJob).subscribe(job => {
             this.saved = this.saved.map(j => j.id === newJob.id ? job : j);
             console.log('New job created:', job);
           });
