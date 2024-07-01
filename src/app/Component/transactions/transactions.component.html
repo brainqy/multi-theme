@@ -41,6 +41,7 @@
       <table class="table table-bordered">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Amount</th>
             <th>Transaction Date</th>
             <th>Source</th>
@@ -50,9 +51,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let transaction of transactions">
+            <td>{{transaction.id}}</td>
             <td>{{ transaction.transactionType === 'REFERRAL_BONUS' ? '+' : '' }}{{ transaction.amount }}</td>
             <td>{{ formatDate(transaction.createdDate) }}</td>
-            <td>{{ transaction.source || 'N/A' }}</td>
+            <td>{{ transaction.sourceType || 'N/A' }}</td>
             <td>{{ transaction.user.fullName }}</td>
             <td>{{ transaction.transactionType }}</td>
           </tr>

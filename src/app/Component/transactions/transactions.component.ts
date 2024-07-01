@@ -24,7 +24,7 @@ export class TransactionsComponent {
     this.transactionService.getTransactions()
       .subscribe(transactions => {
         console.log("transactions",transactions);
-        this.transactions = transactions;
+        this.transactions = transactions.data;
       }
       )
   }

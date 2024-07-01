@@ -11,7 +11,7 @@
 <div class="calendar-container">
 
   <div class="search-box">
-    <div  *ngIF="allTrainers">
+    <div *ngIf="allTrainers>0">
     <label for="trainerSelect">Select Trainer:</label>
     <select id="trainerSelect" [(ngModel)]="selectedTrainer">
       <option value="0">Select</option>

@@ -15,11 +15,10 @@
 
 <div>
     <h2>PRACTICE MAKES PERFECT</h2>
-    <button (click)="openBookingModal(bookingModal)" class="btn btn-primary">Start a Practice session</button>
-    <p>Credits left: 5 interviews</p>
-    <p><a href="#">GET MORE FOR FREE</a></p>
+    <button (click)="openBookingModal(bookingModal)" class="btn btn-primary"  [disabled]="interviewBalance < 1">Start a Practice session</button>
+    <p>Credits left: {{interviewBalance}} interviews</p>
+    <p><a (click)="getMoreFree()">GET MORE FOR FREE</a></p>
   </div>
-
   <ul class="nav nav-tabs" id="myTabs" role="tablist">
     <li class="nav-item" role="presentation">
       <button  class="nav-link active" id="tab1-tab" data-bs-toggle="tab"

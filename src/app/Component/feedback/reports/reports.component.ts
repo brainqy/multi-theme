@@ -23,7 +23,9 @@ export class ReportsComponent {
   getAllReports() {
     this.contentReportService.getAllContentReports().subscribe(
       reports => {
-        this.contents = reports;
+        console.log("reports",reports.data);
+        
+        this.contents = reports.data;
         this.contents.sort((a, b) => a.rating - b.rating);
         console.log('All reports:', reports);
       },

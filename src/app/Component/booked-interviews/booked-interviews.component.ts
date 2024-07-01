@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment'; // Import moment library for date manipulation
 import { InterviewService } from 'src/app/Core/services/interview.service';
@@ -43,10 +44,12 @@ isTheSelectedkindOfInterviewType:boolean=false;
   interviewSlots:any;
 
   datesWithSlots: { date: string, slots: string[] }[] = [];
+  interviewBalance!: number;
 
-  constructor(private modalService: NgbModal,private interviewService:InterviewService) {
-    this.generateDatesWithSlots();
+  constructor(private modalService: NgbModal,private interviewService:InterviewService,private router: Router) {
     this.getAllSlots();
+    this.generateDatesWithSlots();
+    
   }
   generateDatesWithSlots() {
     const today = new Date();
@@ -180,9 +183,39 @@ window.location.reload();
       this.isTheSelectedkindOfInterviewType=true;
     }
   }
+  getMoreFree() {
+    Swal.fire({
+      title: "Info",
+      html: `
+        <p style="font-family: 'Arial', sans-serif; font-size: 16px; color: #333;">
+          <i class="fas fa-info-circle" style="color: #007BFF;"></i> You can get free interview credits by referring your friends or by logging in daily. If you log in daily, you will be credited coins, which can be used for interviews. Additionally, sharing your referral link with friends can earn you extra coins. The more friends you refer, the more credits you accumulate. Make sure to take advantage of this opportunity to maximize your interview chances. Consistent daily logins will also help you build a substantial coin balance over time.
+        </p>`,
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: '<i class="fas fa-user-friends"></i> Refer a Friend',
+      cancelButtonText: '<i class="fas fa-sign-in-alt"></i> Log In Daily',
+      customClass: {
+        popup: 'custom-swal'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/referrals']);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // Code to log in daily
+      }
+    });
+  }
+  
+  
+  
   getAllSlots(){
     this.interviewService.getAllInterviewSlots().subscribe((res)=>{
-      this.interviewSlots=res;
+      console.log("all slots",res);
+      
+      this.interviewSlots=res.data.data;
+      this.interviewBalance = Math.floor(res.data.coinBalance / 26);
+      console.log("interview Balance ",this.interviewBalance);
+      
 console.log("all slots ",res);
     })
   }
@@ -224,14 +257,14 @@ console.log("all slots ",res);
   }
   getNonCanceledSlots(slots: any[]): any[] {
     if (!slots) {
-      console.error('slots is undefined');
+      console.log('No slots found');
       return [];
     }
     return slots.filter(slot => slot.status !== 'CANCELED');
   }
   getCanceledSlots(slots: any[]): any[] {
     if (!slots) {
-      console.error('slots is undefined');
+      console.log('No slots found');
       return [];
     }
     return slots.filter(slot => slot.status === 'CANCELED');

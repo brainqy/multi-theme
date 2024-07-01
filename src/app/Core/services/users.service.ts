@@ -58,7 +58,7 @@ export class UsersService {
       }
     );
   }
-  public getAllTrainers(): Observable<string[]> {
-    return this.http.get<string[]>(environment.baseUrl+ environment.contextUrl+this.usersUrl + '/get/all-trainers');
+  public getAllTrainers(): Observable<any> {
+    return this.http.get<any>(environment.baseUrl+ environment.contextUrl+this.usersUrl + '/get/all-trainers');
   }
 }

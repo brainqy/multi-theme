@@ -364,7 +364,7 @@ export class CalenderComponent {
     this.userService.getAllTrainers().subscribe(
       (trainers) => {
         console.log("trainers fetch : ", trainers);
-        this.allTrainers = trainers;
+        this.allTrainers = trainers.data;
         console.log("this.allTrainers : ", this.allTrainers);
       },
       (error) => {

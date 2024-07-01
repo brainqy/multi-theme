@@ -22,8 +22,8 @@ export class ContentReportService {
     return this.http.post<ContentReport>(`${this.baseUrl}/save`, report,this.httpOptions);
   }
 
-  getAllContentReports(): Observable<ContentReport[]> {
-    return this.http.get<ContentReport[]>(`${this.baseUrl}/get-all`);
+  getAllContentReports(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/get-all`);
   }
   getContentReportByLink(link: string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/getForLink?link=${link}`);

@@ -29,6 +29,6 @@ private baseUrl=environment.baseUrl+environment.contextUrl;
   }
   cancelInterviewSlot(id: number): Observable<any> {
     const url = `${this.baseUrl+this.chatUrl+"/cancel"}/${id}`;
-    return this.http.put(url, "CANCEL");
+    return this.http.patch(url, "CANCEL");
   }
 }

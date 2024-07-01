@@ -49,7 +49,7 @@ export class RequesterSidebarComponent {
       number: 6,
       name: 'Job Tracker',
       icon: 'fas fa-briefcase', // Changed icon to briefcase
-      link: '/dashboard'
+      link: '/job-tracker'
     },
     {
       number: 7,
