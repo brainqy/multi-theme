@@ -45,7 +45,7 @@ export class JobService {
     return this.http.post<Job>(`${this.baseUrl}/save`, job,this.httpOptions);
   }
 
-  getJobById(id: number): Observable<Job> {
+  getJobById(id: number): Observable<any> {
     const url = `${this.baseUrl}/${id}`; // Adjust the URL to match your backend endpoint
     return this.http.get<Job>(url);
   }

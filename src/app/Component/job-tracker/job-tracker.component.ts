@@ -72,7 +72,9 @@ export class JobTrackerComponent {
     if (job && job.id !== undefined) {
       console.log('Fetching job by ID:', job.id);
       this.jobService.getJobById(job.id).subscribe((res) => {
-         this.jobToUpdate = res; // Assuming the response contains the full job object
+        console.log("get job by id",res);
+        
+         this.jobToUpdate = res.data; // Assuming the response contains the full job object
         console.log('Job fetched:', this.jobToUpdate);
         modalRef.componentInstance.job = this.jobToUpdate;
         console.log('Job set in modal instance:', modalRef.componentInstance.job);
