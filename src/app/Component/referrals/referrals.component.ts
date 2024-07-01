@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/app/Core/application_constant/environment';
 import { LanguageService } from 'src/app/Core/services/language.service';
 import { ReferralsService } from 'src/app/Core/services/referrals.service';
 import Swal from 'sweetalert2';
@@ -51,7 +52,7 @@ console.log("res",res);
   getMyReferralLink(){
     const myLink=this.referralService.getMyReferralLink().subscribe((res)=>{
      
-      this.myReferralLink=res;
+      this.myReferralLink= res;
       console.log("My referral link",this.myReferralLink);
     })
     return this.myReferralLink;

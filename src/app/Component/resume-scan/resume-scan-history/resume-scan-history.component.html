@@ -1,11 +1,6 @@
 <div class="container-fluid g-0">
-  <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
-  </app-requester-header>
-
+  <app-dash-header></app-dash-header>
   <main>
-    <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
-      class="black-border"></app-requester-sidebar>
-
     <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
 
       <nav aria-label="breadcrumb">

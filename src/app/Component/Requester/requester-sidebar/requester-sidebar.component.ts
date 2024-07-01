@@ -15,12 +15,12 @@ export class RequesterSidebarComponent {
       icon: 'fas fa-home',
       link: ''
     },
-    {
+ /*    {
       number: 2,
       name: 'Analytics',
       icon: 'fas fa-chart-line',
       link: 'analytics'
-    },
+    }, 
     {
       number: 3,
       name: 'Schedule meeting',
@@ -32,7 +32,13 @@ export class RequesterSidebarComponent {
       name: 'Reports',
       icon: 'fas fa-file-alt',
       link: '/reports'
-    },
+    }, */
+    {
+      number: 4,
+      name: 'Wallet',
+      icon: 'fas fa-file-alt',
+      link: '/transactions'
+    }, 
     {
       number: 5,
       name: 'Forum',
@@ -50,6 +56,12 @@ export class RequesterSidebarComponent {
       name: 'Job Tracker',
       icon: 'fas fa-briefcase', // Changed icon to briefcase
       link: '/job-tracker'
+    },
+    {
+      number: 4,
+      name: 'Resume Scan',
+      icon: 'fas fa-file-alt',
+      link: '/dashboard'
     },
     {
       number: 7,
