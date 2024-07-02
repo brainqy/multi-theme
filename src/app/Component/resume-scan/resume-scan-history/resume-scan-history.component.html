@@ -15,8 +15,8 @@
           <div class="col-md-3">
             <div class="rectangle primary-bg"> <!-- Added primary-bg class for background color -->
               <div class="content">
-                <h1>43</h1>
-                <p>Total Resume scans</p>
+                <h1>{{totalScans}}</h1>
+                <p>Total Scans</p>
               </div>
             </div>
           </div>
@@ -31,7 +31,7 @@
           <div class="col-md-3">
             <div class="rectangle primary-bg">
               <div class="content">
-                <h1>79</h1>
+                <h1>{{maxMatch}}</h1>
                 <p>Maximum Score</p>
               </div>
             </div>
@@ -88,7 +88,7 @@
                                 [titleFontWeight]="'900'"
                                 [unitsFontSize]="'28'"
                                 [unitsFontWeight]="'900'"
-                                [subtitle]="'Progress'"
+                                [subtitle]="'Match'"
                                 [subtitleFontSize]="'12'"
                                 [lazy]="false">
                             </circle-progress>

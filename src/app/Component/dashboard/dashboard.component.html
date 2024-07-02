@@ -85,53 +85,49 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div *ngIf="progress<=0">
 
 
                 <div class="dashboard-insights">
                     <div class="row mb-4">
-                        <div class="title">
-                            <h3>Create new Scan</h3> <button class="btn btn-primary">View sample</button>
+                      <div class="title">
+                        <h3>Create new Scan</h3>
+                        <button class="btn btn-primary">View sample</button>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="rectangle">
+                          <div class="header">
+                            <h2>Resume</h2>
+                          </div>
+                          <div class="content">
+                            <textarea rows="8" cols="50" placeholder="Enter your resume here" [(ngModel)]="resumeText"></textarea>
+                          </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="rectangle">
-                                <div class="header">
-                                    <h2>Resume</h2>
-                                </div>
-                                <div class="content">
-                                    <textarea rows="8" cols="50" placeholder="Enter your resume here"[(ngModel)]="resumeText"></textarea>
-        
-                                </div>
-                            </div>
+                      </div>
+                  
+                      <div class="col-md-6">
+                        <div class="rectangle">
+                          <div class="header">
+                            <h2>Job Description</h2>
+                          </div>
+                          <div class="content">
+                            <textarea rows="8" cols="50" placeholder="Enter your Job description here" [(ngModel)]="jobDescriptionText"></textarea>
+                          </div>
                         </div>
-                        
-                        <div class="col-md-6">
-                            <div class="rectangle">
-                                <div class="header">
-                                    <h2>Job Descreption</h2>
-                                </div>
-                                <div class="content">
-                                    <textarea rows="8" cols="50" placeholder="Enter your Job description here"[(ngModel)]="jobDescriptionText"></textarea>
-        
-
-                                </div>
-                            </div>
-
+                      </div>
+                      <div class="titleEnd">
+                        <div class="button-container">
+                          <button class="btn btn-primary" (click)="resetScan()" [disabled]="!resumeText || !jobDescriptionText" >Reset</button>
+                          <button class="btn btn-primary" (click)="generateReport()" [disabled]="!resumeText || !jobDescriptionText">Scan</button>
                         </div>
-                        <div class="titleEnd">
-                            <div class="button-container">
-                                <button class="btn btn-primary"(click)="resetScan()">Reset</button>
-                                <button class="btn btn-primary" (click)="generateReport()">Scan</button>
-                            </div>
-                        </div>
-                        
-                        
+                      </div>
                     </div>
-                </div>
+                  </div>
+                  
 
             </div>
 
-            <div style="text-align:center" *ngIf="progress>0">
+            <div class="progressor" style="text-align:center" *ngIf="progress>0">
                 <circle-progress class="circle__progress"
                                  [percent]="progress"
                                  [animation]="false"

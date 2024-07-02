@@ -118,10 +118,8 @@ startProgress(slowPhase: boolean, startProgress: number = 0) {
 }
 
 resetScan() {
-  // Reset progress to 0
-  this.progress = 0;
-  // Reset responseReceived flag to false
-  this.responseReceived = false;
+  this.resumeText = '';
+  this.jobDescriptionText = '';
 }
   
   

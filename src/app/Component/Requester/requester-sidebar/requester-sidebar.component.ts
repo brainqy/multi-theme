@@ -63,12 +63,12 @@ export class RequesterSidebarComponent {
       icon: 'fas fa-file-alt',
       link: '/dashboard'
     },
-    {
+/*     {
       number: 7,
       name: 'Create org',
       icon: 'fas fa-building',
       link: '/my-org'
-    },
+    }, */
     {
       number: 8,
       name: 'Share',
