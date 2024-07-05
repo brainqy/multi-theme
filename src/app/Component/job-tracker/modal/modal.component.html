@@ -24,12 +24,19 @@
                     <input type="text" class="form-control" id="jobLocation" [(ngModel)]="job.jobLocation" name="jobLocation">
                   </div>
                 </div>
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label for="dateSpecified">Status</label>
-                    <input type="text" class="form-control" id="status" [(ngModel)]="job.status" name="status">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                      <select class="form-control" id="status" [(ngModel)]="job.status" name="status">
+                        <option value="" disabled selected>Select Interview Type</option>
+                        <option value="saved">Saved</option>
+                        <option value="applied">Applied</option>
+                        <option value="interview">Interview</option>
+                        <option value="offer">Offer</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
+                  
               </div>
             </div>
             <div class="col-md-6">
@@ -113,9 +120,16 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="status">Status</label>
-                                <input type="text" class="form-control" id="status" [(ngModel)]="job.status" name="status">
+                              <select class="form-control" id="status" [(ngModel)]="job.status" name="status">
+                                <option value="" disabled selected>Select Interview Type</option>
+                                <option value="saved">Saved</option>
+                                <option value="applied">Applied</option>
+                                <option value="interview">Interview</option>
+                                <option value="offer">Offer</option>
+                              </select>
                             </div>
-                        </div>
+                          </div>
+                          
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -153,16 +167,33 @@
         <div class="resume-card">
             <div>
                 <p>There is no resume associated with this opportunity yet. Click to scan one now!</p>
-           
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="8" placeholder="Copy and paste resume"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 text-right"> <!-- text-right class aligns buttons to the right -->
+                        <button class="btn btn-primary">Upload Resume</button>
+                    </div>
+                    <div class="col-md-3 text-right"> <!-- text-right class aligns buttons to the right -->
+                        <button class="btn btn-primary">Add Resume</button>
+                    </div>
+                    <div class="col-md-3 text-right"> <!-- text-right class aligns buttons to the right -->
+                        <button class="btn btn-primary">Clear </button>
+                    </div>
+                </div>
             </div>
-            <button class="btn btn-primary">Add Resume</button>
         </div>
+        
       
     </div>
       <div class="tab-pane" id="cover_letter" [ngClass]="{ 'active':activeTab==='cover_letter'}">
         <div class="row cover-letter-content">
             <div class="col-md-7 mb-3">
-                <textarea rows="10" cols="35" class="form-control"></textarea>
+                <textarea rows="15" cols="35" placeholder="Create a Cover Letter for this Job" class="form-control"></textarea>
             </div>
             <div class="col-md-5">
                 <div class="mb-3 p-3 border rounded bg-light">
@@ -254,9 +285,9 @@
             <div class="row notes-content">
                 <div class="col-lg-8 notes-form">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <textarea rows="10" cols="35"  class="form-control" rows="5" placeholder="Notes"></textarea>
+                                <textarea rows="10"   class="form-control"  placeholder="Notes"></textarea>
                             </div>
                         </div>
                     </div>

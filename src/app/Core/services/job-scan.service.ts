@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from '../application_constant/environment';
 
 @Injectable({
@@ -23,6 +23,28 @@ export class JobScanService {
   getAllReportsByUser():Observable<any>{
     return this.http.get(`${this.baseUrl}/get-scan-history`);
   }
+  bookmarkScans(scanId:boolean):Observable<any>{
+  return this.http.put(`${this.baseUrl}/bookmark_scan`,scanId);
+  }
+  saveAsStarred(id: number): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/${id}/star`, {})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'An unknown error occurred!';
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred.
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // The backend returned an unsuccessful response code.
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
+  }
+
 }
 export interface SectionData {
   section: string;

@@ -75,53 +75,58 @@
       </ul>
       <div class="tab-content" id="myTabsContent">
         <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
-            <div class="container">
-                <div class="row" *ngFor="let item of scanHistory">
-                    <div class="col-3">
-                        <div class="circle__progress">
-                            <circle-progress
-                                [percent]="item.finalProgress"
-                                [animation]="true"
-                                [startFromZero]="true"
-                                [showInnerStroke]="true"
-                                [titleFontSize]="'28'"
-                                [titleFontWeight]="'900'"
-                                [unitsFontSize]="'28'"
-                                [unitsFontWeight]="'900'"
-                                [subtitle]="'Match'"
-                                [subtitleFontSize]="'12'"
-                                [lazy]="false">
-                            </circle-progress>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class=" my-2 mx-2">
-                            <div >
-                                <h5 >{{ item.jobTitle }}</h5>
-                            </div>
-                            <div >
-                                <p >Resume snippet</p>
-                                <p>Job Description</p>
-                                <!-- Display other properties of SectionDataWrapperDto as needed -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <button class="btn btn-primary">Delete</button>
-                        <p>{{item.createdAt | date}}</p>
-                    </div>
-                    <!-- Horizontal line -->
-                    <hr class="col-12">
-                </div>
-                <div class="row">
-                    <div class="col-6 mx-auto text-center mt-3">
-                        <p>Standard users can only view the last 20 scans</p>
-                        <button class="btn btn-primary" (click)="getPlans()">Unlock Unlimited Scan History</button>
-                    </div>
-                </div>
-                
-                
+          <div class="container">
+            <div class="row" *ngFor="let item of scanHistory">
+              <div class="col-1">
+                <!-- Star button -->
+                <button class="btn btn-star" [class.starred]="item.starred" (click)="toggleStar(item)">
+                  ★
+                </button>
               </div>
+              <div class="col-3">
+                <div class="circle__progress">
+                  <circle-progress
+                    [percent]="item.finalProgress"
+                    [animation]="true"
+                    [startFromZero]="true"
+                    [showInnerStroke]="true"
+                    [titleFontSize]="'28'"
+                    [titleFontWeight]="'900'"
+                    [unitsFontSize]="'28'"
+                    [unitsFontWeight]="'900'"
+                    [subtitle]="'Match'"
+                    [subtitleFontSize]="'12'"
+                    [lazy]="false">
+                  </circle-progress>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="my-2 mx-2">
+                  <div>
+                    <h5>{{ item.jobTitle }}</h5>
+                  </div>
+                  <div>
+                    <p>Resume snippet</p>
+                    <p>Job Description</p>
+                    <!-- Display other properties of SectionDataWrapperDto as needed -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-2">
+                <button class="btn btn-primary">Delete</button>
+                <p>{{ item.createdAt | date }}</p>
+              </div>
+              <!-- Horizontal line -->
+              <hr class="col-12">
+            </div>
+            <div class="row plans">
+              <div class="col-6 mx-auto text-center mt-3">
+                <p>Standard users can only view the last 5 scans</p>
+                <button class="btn btn-primary" (click)="getPlans()">Unlock Unlimited Scan History</button>
+              </div>
+            </div>
+          </div>
+          
               
         </div>
         <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">

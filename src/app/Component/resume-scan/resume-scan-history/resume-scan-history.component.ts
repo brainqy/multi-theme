@@ -13,30 +13,41 @@ export class ResumeScanHistoryComponent implements OnInit{
   scanHistory: any;
   totalScans: any;
   maxMatch:any;
+  errorMessage: string = '';
   constructor(private scanService: JobScanService,private router:Router){
 
   }
   ngOnInit(): void {
     this.getAllReportsByUser();
   }
-getAllReportsByUser(){
-  this.scanService.getAllReportsByUser().subscribe((res)=>{
-    console.log("all scan History",res);
-    this.totalScans=res.length;
-    console.log("this.totalScans",this.totalScans);
-    
-    this.scanHistory=res;
-    console.log("This alll history",this.scanHistory);
-    this.maxMatch=Math.floor(this.calculateMaxFinalProgress(res));
-    
-    
-    
-  })
-}
+  getAllReportsByUser() {
+    this.scanService.getAllReportsByUser().subscribe((res) => {
+      console.log("All scan history", res);
+      this.totalScans = res.length;
+      console.log("Total scans", this.totalScans);
+  
+      // Show only the last 5 items
+      this.scanHistory = res.slice(-5);
+      console.log("Filtered scan history", this.scanHistory);
+  
+      this.maxMatch = Math.floor(this.calculateMaxFinalProgress(res));
+    });
+  }
+  
 getPlans(){
   this.router.navigateByUrl("/plans");
 }
 calculateMaxFinalProgress(data:any): number {
   return Math.max(...data.map((job: { finalProgress: any; }) => job.finalProgress));
+}
+toggleStar(item: any) {
+  this.scanService.saveAsStarred(item.wrapper_id).subscribe(
+    (res) => {
+      item.starred = !item.starred;
+    },
+    (error) => {
+      this.errorMessage = error;
+    }
+  );
 }
 }

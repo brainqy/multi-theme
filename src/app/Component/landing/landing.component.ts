@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ContactService } from 'src/app/Core/contact.service';
 export interface LandingData {
   videoUrl: string;
   dynamicText: string;
@@ -103,7 +105,7 @@ export class LandingComponent {
   }
   items = ['First', 'Second', 'Third'];
   
-  constructor(private config: NgbCarouselConfig,private http: HttpClient) {
+  constructor(private config: NgbCarouselConfig,private http: HttpClient,private contactService: ContactService) {
     this.getlandingData();
     config.interval = 5000;
     config.wrap = false;
@@ -124,6 +126,22 @@ export class LandingComponent {
    
   }
 
+
+  onSubmit(contactForm: NgForm) {
+    if (contactForm.valid) {
+      this.contactService.sendContactForm(contactForm.value).subscribe(
+        response => {
+          console.log('Form submitted successfully', response);
+          // Handle success response
+        },
+        error => {
+          console.error('Error submitting form', error);
+          // Handle error response
+        }
+      );
+    }
+  }
+
   // Method to get video URL
   getVideoUrl(): string {
     return `C:/Users/DELL/Projects/Full Stack/NPSR/multi-tent/uploads/${this.landingData.videoUrl}`;
@@ -141,5 +159,5 @@ export class LandingComponent {
   parseFontSize(): number {
     return parseInt(this.fontSize, 10); // Parse integer part of fontSize
   }
-
+ 
 }
