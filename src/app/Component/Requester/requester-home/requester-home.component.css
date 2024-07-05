@@ -1,122 +1,131 @@
+/* app.component.css or the appropriate CSS file */
+
+/* Existing styles */
 app-requester-header {
-    position: fixed;
-    width: 100%;
-    top: 0px;
-    height: 4rem;
-    z-index: 2;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  height: 4rem;
+  z-index: 2;
 }
 
 main {
-    position: absolute;
-    top: 4rem;
-    width: 100%;
-    z-index: 1;
+  position: absolute;
+  top: 4rem;
+  width: 100%;
+  z-index: 1;
 }
 
 app-requester-sidebar {
-
-    position: absolute;
-    left: 0rem;
-    width: 60px;
-    border: 1px solid black;
-    height: calc(100vh - 4rem);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    background-color: white;
-    overflow-x: hidden;
-    white-space: nowrap;
-    transition: width 1s linear;
+  position: absolute;
+  left: 0rem;
+  width: 60px;
+  border: 1px solid black;
+  height: calc(100vh - 4rem);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  overflow-x: hidden;
+  white-space: nowrap;
+  transition: width 1s linear;
 }
 
 .app-side-nav-open {
-    width: 250px;
+  width: 250px;
 }
 
 .display-area {
-    position: absolute;
-    left: 60px;
-    width: calc(100% - 60px);
-    transition: width 1s linear, left 1s linear;;
-
+  position: absolute;
+  left: 60px;
+  width: calc(100% - 60px);
+  transition: width 1s linear, left 1s linear;
 }
 
 .display-area-shrink {
-    left: 250px;
-    width: calc(100% - 250px);
-    transition: width 1s linear, left 1s linear;;
+  left: 250px;
+  width: calc(100% - 250px);
+  transition: width 1s linear, left 1s linear;
 }
+
 .container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .left-column, .middle-column, .right-column {
-    border-radius: 10px;
-  }
-  
-  .left-column {
-    flex: 15%;
-    background-color: #ccc;
-    margin-right: 1%;
-    padding: 20px;
-  }
-  
-  .middle-column {
-    flex: 60%;
-   
-    margin: 0 1%;
-    padding: 20px;
-    overflow-y: auto;
-  }
-  
-  .right-column {
-    flex: 15%;
-    background-color: #ccc;
-    margin-left: 1%;
-    padding: 20px;
-  }
-  
-  .recommendation-row, .upcoming-events-row {
-    margin-bottom: 20px;
-    border-radius: 10px; /* Add rounded corners */
-    padding: 30px; /* Add padding */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for separation */
-  }
-  
-  .recommendation-row {
-    background-color: #e0e0e0; /* Add background color for recommendation block */
-  }
-  
-  .upcoming-events-row {
-    background-color: #f9f5f5; /* Add background color for upcoming events block */
-  }
-  
-  .banner-row {
-    margin-bottom: 20px;
-    border-radius: 20px;
-    overflow: hidden; /* Ensure image does not overflow */
-  }
-  
-  .banner-row img {
-    width: 100%; /* Adjust image width to fill the container */
-    border-radius: 20px; /* Add rounded corners to the image */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for separation */
-  }
-  /* interview-table.component.css */
+  display: flex;
+  height: 100vh;
+}
 
-table {
-  border-collapse: collapse;
+.left-column, .middle-column, .right-column {
+  border-radius: 10px;
+}
+
+.left-column {
+  flex: 15%;
+  background-color: #ccc;
+  margin-right: 1%;
+  padding: 20px;
+}
+
+.middle-column {
+  flex: 60%;
+  margin: 0 1%;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.right-column {
+  flex: 15%;
+  background-color: #ccc;
+  margin-left: 1%;
+  padding: 20px;
+}
+
+.recommendation-row, .upcoming-events-row {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-row {
+  background-color: #e0e0e0;
+}
+
+.upcoming-events-row {
+  background-color: #f9f5f5;
+}
+
+.banner-row {
+  margin-bottom: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.banner-row img {
   width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
-  border: 1px dotted #999;
-  padding: 8px;
+.red-icon {
+  color: red; /* Customize the color as needed */
+}
+.fire-icons {
+  display: flex;
 }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+.bi-fire {
+  font-size: 1.5rem; /* Adjust size as needed */
+  margin-right: 5px; /* Adjust spacing between icons */
 }
-
-tr:hover {
-  background-color: #ddd;
+.numb {
+  font-size: 1.0rem; /* Adjust size as needed */
+  padding-bottom: -20px; /* Remove default margin */
+  font-weight: bold;
+  margin-left: -6px;
+  margin-right: 6px;
+}
+.stat{
+  background-color: #f0f0f0;
+  padding: 4px;
+  margin: 5px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
 }

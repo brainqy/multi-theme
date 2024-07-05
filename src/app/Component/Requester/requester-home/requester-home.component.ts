@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {AuthService} from "../../../Core/services/auth.service";
 import {JwtService} from "../../../Core/services/jwt.service";
 import {Router} from "@angular/router";
@@ -14,12 +14,16 @@ export class RequesterHomeComponent {
   sideNavStatus: boolean = true;
   username: string = '';
   isLoggedIn = false;
+  buttons: { toggled: boolean }[] = Array(8).fill({ toggled: false }).map(() => ({ toggled: false }));
+  dailyStrike: number = 5;
+  @Input() streakNumber: number = 0;  // Input from parent component
 
+  fireIcons: any[] = [];
+  userBalance: any;
   constructor(public authService: AuthService,
               private jwtService: JwtService,
               private router: Router,
               private translate: TranslateService) {
-
   }
 
   ngOnInit(): void {
@@ -27,6 +31,15 @@ export class RequesterHomeComponent {
     if (this.isLoggedIn) {
       const token = this.authService.getToken();
       this.username = this.jwtService.getFullNameFromToken(token);
+      this.streakNumber=this.authService.getStreak();
+      this.userBalance=this.authService.getBalance();
+    }
+    const maxIcons = 8; // Maximum number of icons to show
+
+    // Push icons based on streakNumber
+    for (let i = 0; i < maxIcons; i++) {
+      this.fireIcons.push({});
     }
   }
+ 
 }

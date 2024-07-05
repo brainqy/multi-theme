@@ -1,3 +1,4 @@
+<!-- Your existing HTML structure -->
 <div class="container-fluid g-0">
   <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
   </app-requester-header>
@@ -6,6 +7,26 @@
                            class="black-border side-nav-container"></app-requester-sidebar>
     <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3 flex-grow-1">
       <div class="container">
+       <div class="col">
+       <div class="row">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-4 stat">
+          <div class="fire-icons">
+            <ng-container *ngFor="let icon of fireIcons.slice(0, 8); let i = index">
+              <i class="bi bi-fire" [ngClass]="{'red-icon': i < streakNumber}"></i> <p class="numb">{{i+1}}</p> 
+            </ng-container>
+          </div>
+          
+        </div>
+        <div class="col-lg-1 stat text-center fw-bold p-2 m-2">
+          100 XP
+        </div>
+        
+        <div class="col-lg-1 stat text-center fw-bold p-2 m-2">
+          {{userBalance}} <i class="bi bi-coin"></i>
+        </div>
+        <div class="col-lg-1"></div>
+   
         <div class="row">
           <div class="col left-column"></div>
           <div class="col middle-column">
@@ -24,6 +45,9 @@
           </div>
           <div class="col right-column"></div>
         </div>
+       </div>
+       </div>
+       
       </div>
     </div>
   </main>

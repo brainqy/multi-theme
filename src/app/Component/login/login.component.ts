@@ -50,10 +50,13 @@ export class LoginComponent {
 
     }
     this.loginService.login(user).subscribe(res => {
+console.log("log res ",res);
 
         if (res.status === 'SUCCESS') {
           Swal.fire('Daily Streak',res.dailyStreakDto.streakNumber.toString(),'success');
           this.authService.storeToken(res.token);
+          this.authService.storeStreak(res.dailyStreakDto.streakNumber);
+          this.authService.storeBalance(res.dailyStreakDto.userBalance);
           this.routeUserDashboard();
         } else {
           Swal.fire('Error', res.message, 'error');

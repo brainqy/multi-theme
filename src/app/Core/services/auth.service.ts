@@ -7,6 +7,7 @@ import { JwtService } from './jwt.service';
   providedIn: 'root'
 })
 export class AuthService {
+ 
 
   constructor(@Inject(SESSION_STORAGE) private storage: StorageService,
               private encryption: EncryptDecryptService) {
@@ -21,6 +22,20 @@ export class AuthService {
   storeToken(token: string) {
     const encryptedToken = this.encryption.getEncryption(token);
     this.storage.set("auth_token", encryptedToken);
+  }
+  storeStreak(streakNumber: number) {
+    this.storage.set("daily_streak", streakNumber);
+  }
+
+  getStreak(){
+    const streak=this.storage.get("daily_streak");
+    return streak;
+  }
+  storeBalance(userBalance: any) {
+    this.storage.set("userBalance", userBalance);
+  }
+  getBalance() {
+    return this.storage.get("userBalance");
   }
 
   getToken() {
