@@ -59,6 +59,58 @@ export class LandingComponent {
 
   faqs = [
     {
+      question: 'What is Brainqy?',
+      answer: 'Brainqy is a community-driven and free platform that helps you prepare for interviews and manage your job applications. It offers two main products: one for creating top-notch resumes and job tracking, and another for interview preparation with buddies or generative AI technology.'
+    },
+    {
+      question: 'How does Brainqy work?',
+      answer: 'Brainqy works by matching you with experienced interview buddies or using generative AI to help you prepare for interviews. Additionally, it provides tools for creating professional resumes and tracking your job applications.'
+    },
+    {
+      question: 'How are interview buddies selected?',
+      answer: 'Interview buddies are selected based on their experience and expertise in specific skill areas. Brainqy ensures that you are matched with a buddy who has relevant knowledge and can provide valuable insights.'
+    },
+    {
+      question: 'What skills does Brainqy support?',
+      answer: 'Brainqy supports a wide range of skills including technical, behavioral, and industry-specific skills. You can choose from various categories to find the best match for your interview preparation needs.'
+    },
+    {
+      question: 'Can I choose my interview buddy?',
+      answer: 'Yes, Brainqy allows you to choose your interview buddy from a list of available experts. You can review their profiles and select the one that best fits your needs.'
+    },
+    {
+      question: 'How do I schedule an interview?',
+      answer: 'Scheduling an interview with Brainqy is simple. After selecting your interview buddy, you can choose a convenient time slot for your mock interview. Brainqy will send you a confirmation and a reminder before the interview.'
+    },
+    {
+      question: 'What can I expect during a mock interview?',
+      answer: 'During a mock interview, your interview buddy will simulate a real interview scenario. You will be asked questions relevant to your skills and the position you are preparing for. After the interview, you will receive feedback and tips for improvement.'
+    },
+    {
+      question: 'How can Brainqy help improve my interview performance?',
+      answer: 'Brainqy helps improve your interview performance by providing you with practice opportunities, constructive feedback, and personalized tips. The mock interviews are designed to mimic real interview conditions, helping you build confidence and refine your skills.'
+    },
+    {
+      question: 'Is Brainqy suitable for beginners?',
+      answer: 'Yes, Brainqy is suitable for individuals at all levels, including beginners. The platform provides resources and support to help you prepare effectively, regardless of your experience level.'
+    },
+    {
+      question: 'How do I get started with Brainqy?',
+      answer: 'Getting started with Brainqy is easy. Sign up on the platform, create your profile, and select the skills you want to focus on. You can then browse available interview buddies and schedule your first mock interview.'
+    },
+    {
+      question: 'How can I earn digital coins on Brainqy?',
+      answer: 'You can earn digital coins by maintaining daily streaks and referring friends to Brainqy. These coins can be used to unlock more features and enhance your experience on the platform.'
+    },
+    {
+      question: 'What can I use digital coins for?',
+      answer: 'Digital coins can be used to unlock additional features on Brainqy, such as more advanced interview simulations, personalized coaching sessions, and access to premium resources.'
+    },
+    {
+      question: 'What are the main products offered by Brainqy?',
+      answer: 'Brainqy offers two main products: one for creating top-notch resumes and job tracking, and another for interview preparation with buddies or generative AI technology.'
+    },
+    {
       question: 'What is Job Match?',
       answer: 'Job Match is an online tool that helps job seekers optimize their resumes and LinkedIn profiles to increase their chances of getting interviews. It uses AI technology to analyze job listings and provide personalized recommendations.'
     },
