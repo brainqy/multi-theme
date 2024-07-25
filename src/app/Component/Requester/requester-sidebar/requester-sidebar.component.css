@@ -11,6 +11,7 @@
     overflow-y: auto;
     transition: width 0.3s ease; /* Smooth transition for width change */
     border-right: 1px solid #ddd; /* Optional: Add a border to visualize the sidebar */
+    transition: width 1s linear, left 1s linear;
 }
 
 .side-nav-container.collapsed {
