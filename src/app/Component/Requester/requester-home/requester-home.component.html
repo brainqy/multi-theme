@@ -3,9 +3,10 @@
   <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
   </app-requester-header>
   <main class="d-flex">
-    <app-requester-sidebar  [sideNavStatus]="sideNavStatus"
+    <app-requester-sidebar  [sideNavStatus]="sideNavStatus" [ngClass]="{'collapsed': !sideNavStatus}"
                            class="black-border side-nav-container"></app-requester-sidebar>
-    <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3 flex-grow-1">
+                           <div [ngClass]="{'display-area-expand': !sideNavStatus, 'display-area-shrink': sideNavStatus}"
+                           class="display-area p-3 flex-grow-1">
       <div class="container">
        <div class="col">
        <div class="row">
