@@ -21,18 +21,35 @@ export class ResumeScanHistoryComponent implements OnInit{
     this.getAllReportsByUser();
   }
   getAllReportsByUser() {
-    this.scanService.getAllReportsByUser().subscribe((res) => {
-      console.log("All scan history", res);
-      this.totalScans = res.length;
-      console.log("Total scans", this.totalScans);
+    this.scanService.getAllReportsByUser().subscribe(
+      (res) => {
+        if (res && Array.isArray(res)) {
+          console.log("All scan history", res);
+          this.totalScans = res.length;
+          console.log("Total scans", this.totalScans);
   
-      // Show only the last 5 items
-      this.scanHistory = res.slice(-5);
-      console.log("Filtered scan history", this.scanHistory);
+          // Show only the last 5 items
+          this.scanHistory = res.slice(-5);
+          console.log("Filtered scan history", this.scanHistory);
   
-      this.maxMatch = Math.floor(this.calculateMaxFinalProgress(res));
-    });
+          this.maxMatch = Math.floor(this.calculateMaxFinalProgress(res));
+        } else {
+          console.warn("Unexpected response format:", res);
+          this.totalScans = 0;
+          this.scanHistory = [];
+          this.maxMatch = 0;
+        }
+      },
+      (error) => {
+        console.error("Error fetching scan history", error);
+        // Handle error scenario
+        this.totalScans = 0;
+        this.scanHistory = [];
+        this.maxMatch = 0;
+      }
+    );
   }
+  
   
 getPlans(){
   this.router.navigateByUrl("/plans");

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LoginService} from "../../Core/services/login.service";
 import Swal from "sweetalert2";
+import { AuthService } from 'src/app/Core/services/auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -25,10 +26,12 @@ export class RegistrationComponent {
   constructor(private formBuilder: FormBuilder,
               private loginService: LoginService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,private authService:AuthService) {
   }
 
   ngOnInit(): void {
+    if (this.authService.isAuthenticated())
+    this.loginService.navigateByRoles();
     this.route.queryParams.subscribe(params => {
       if (params?.['ref']) { // Using the safe navigation operator (?.)
         this.hideReferralField = true;
@@ -36,6 +39,7 @@ export class RegistrationComponent {
         this.signUpForm.get('ref')?.setValue(params['ref']); // Using the safe navigation operator (?.)
       }
     });
+    
 
   }
 

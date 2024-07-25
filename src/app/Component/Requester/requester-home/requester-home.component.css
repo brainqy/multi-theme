@@ -29,9 +29,6 @@ app-requester-sidebar {
   transition: width 1s linear;
 }
 
-.app-side-nav-open {
-  width: 250px;
-}
 
 .display-area {
   position: absolute;

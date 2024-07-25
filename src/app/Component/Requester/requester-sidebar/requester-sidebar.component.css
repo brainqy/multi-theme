@@ -1,40 +1,49 @@
 .side-nav-container {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 1; /* Ensure it's above the main content */
-    background-color: white; /* Set background color */
+    left: 0;
+    z-index: 1;
+    background-color: rgba(255, 255, 255);
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    width: 250px; /* Full width when expanded */
+    overflow-y: auto;
+    transition: width 0.3s ease; /* Smooth transition for width change */
+    border-right: 1px solid #ddd; /* Optional: Add a border to visualize the sidebar */
+    transition: width 1s linear;
+}
+
+.side-nav-container.collapsed {
+    width: 60px; /* Narrow width when collapsed */
 }
 
 .side-nav-content {
     color: black;
-    width: 230px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    flex-grow: 1; /* Allow content to grow and fill the remaining space */
+    margin: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 55px;
 }
 
 .nav-list {
-    height: 100%;
-    padding: 0%;
-    margin-bottom: 0%;
+    padding: 0;
+    margin: 0;
     list-style: none;
+    height: 100%;
 }
 
 .nav-list-item {
     display: flex;
     align-items: center;
     height: 50px;
+    justify-content: flex-start;
+    overflow: hidden;
 }
 
-.nav-list-open li:hover {
-    color: #0056b3;
-}
-
-a:hover {
-    color: #0056b3;
+.side-nav-container.collapsed .nav-list-item span {
+    display: none; /* Hide text labels when collapsed */
 }
 
 .nav-list-item i {
@@ -48,8 +57,8 @@ a:hover {
 }
 
 .nav-list-item span {
-    width: 120px;
     text-transform: capitalize;
+    white-space: nowrap;
 }
 
 a {

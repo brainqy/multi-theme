@@ -3,7 +3,7 @@
     </app-requester-header>
   
     <main>
-      <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
+      <app-requester-sidebar [sideNavStatus]="sideNavStatus"
                              class="black-border"></app-requester-sidebar>
       <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
         <div class="grid-container">

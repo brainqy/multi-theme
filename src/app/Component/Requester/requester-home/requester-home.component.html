@@ -3,7 +3,7 @@
   <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
   </app-requester-header>
   <main class="d-flex">
-    <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
+    <app-requester-sidebar  [sideNavStatus]="sideNavStatus"
                            class="black-border side-nav-container"></app-requester-sidebar>
     <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3 flex-grow-1">
       <div class="container">

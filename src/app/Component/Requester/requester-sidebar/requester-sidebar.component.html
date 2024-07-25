@@ -1,13 +1,13 @@
-<div class="side-nav-container">
-  <div class="side-nav-content border-white">
-      <nav>
-          <ul class="nav-list" [ngClass]="{'nav-list-open': sideNavStatus}">
-              <!-- List items -->
-              <li class="nav-list-item border-white" *ngFor="let item of list">
-                  <i class="{{item.icon}}"></i>
-                  <span><a href={{item.link}}>{{item.name}}</a></span>
-              </li>
-          </ul>
-      </nav>
+<div class="side-nav-container" [ngClass]="{'collapsed': !sideNavStatus}">
+    <div class="side-nav-content">
+        <nav>
+            <ul class="nav-list">
+                <!-- List items -->
+                <li class="nav-list-item" *ngFor="let item of list">
+                    <i class="{{item.icon}}"></i>
+                    <span><a href="{{item.link}}">{{item.name}}</a></span>
+                </li>
+            </ul>
+        </nav>
+    </div>
   </div>
-</div>
