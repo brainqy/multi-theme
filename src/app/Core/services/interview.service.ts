@@ -23,6 +23,10 @@ private baseUrl=environment.baseUrl+environment.contextUrl;
 
     return this.http.get(this.baseUrl+this.chatUrl);
   }
+  getAllInterviewSlotsByJobId(jobId:any):Observable<any>{
+
+    return this.http.get(this.baseUrl+this.chatUrl+"/jobId/"+jobId);
+  }
   updateInterviewSlot(id: number, updatedSlot: any): Observable<any> {
     const url = `${this.baseUrl+this.chatUrl}/${id}`;
     return this.http.put(url, updatedSlot);

@@ -5,17 +5,20 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Import FormsModule
 import { Job, JobService } from 'src/app/Core/services/job.service';
 import Swal from 'sweetalert2';
+import { InterviewService } from 'src/app/Core/services/interview.service';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-  @Input() job: Job = { jobRole: '', company: '', jobDescription: '', jobLocation: '', jobListingUrl: '', salary: 0, dateSpecified: '', status: '' };
+  @Input() job: Job = {jobRole: '', company: '', jobDescription: '', jobLocation: '', jobListingUrl: '', salary: 0, dateSpecified: '', status: '' };
   company: string = 'Company name  ';
   jobForm: FormGroup;
   activeTab: string = 'jobDetails'; 
   errorMessage: string | null = null;
+  interviewForm: FormGroup;
+  @Input() interviews: any[] = [];
   //activeTab = 'search';
 
   extras = {
@@ -23,6 +26,7 @@ export class ModalComponent implements OnInit {
     interviewNotes: 'Sample interview notes...',
     notesText: 'Sample notes text...',
   };
+  slts: any[];
 
   search(activeTab: string){
     this.activeTab = activeTab;
@@ -41,13 +45,15 @@ export class ModalComponent implements OnInit {
         status: ''
       };
     }
+    
+    
+    
   }
-
-
+  time = { hour: 13, minute: 30 };
   constructor(
     public activeModal: NgbActiveModal,
-    private formBuilder: FormBuilder,
-    private jobService: JobService
+    private formBuilder: FormBuilder,private interviewService:InterviewService,
+    private jobService: JobService,private fb: FormBuilder
   ) {
     this.jobForm = this.formBuilder.group({
       jobRole: ['', Validators.required],
@@ -59,6 +65,21 @@ export class ModalComponent implements OnInit {
       dateSpecified: [''],
       status: ['']
     });
+    this.interviewForm = this.fb.group({
+      interviewType: ['', Validators.required],
+      day: ['', Validators.required],
+      hrName: ['', Validators.required],
+      mobileNumber: ['', Validators.required],
+      hrEmail: ['', [Validators.required, Validators.email]],
+      meetingLink: [''],
+      description: [''],
+      slot:[],
+      jobId:0,
+      status:['SCHEDULED']
+    });
+    this.slts=this.interviews
+    console.log("slts",this.slts);
+    
   }
   isEmptyJob(): boolean {
     return !this.job.jobRole && !this.job.company && !this.job.jobDescription && !this.job.jobLocation && !this.job.jobListingUrl && this.job.salary === 0 && !this.job.dateSpecified && !this.job.status;
@@ -101,6 +122,17 @@ export class ModalComponent implements OnInit {
     }
   }
 
+  saveInterview(jobId:any){
+    if (this.interviewForm.valid) {
+      console.log(this.interviewForm.value);
+      this.interviewForm.value.jobId=jobId;
+      this.interviewService.saveinterviewSlot(this.interviewForm.value).subscribe((res)=>{
+        console.log("after saving interview slot ",res);
+      })
+    } else {
+      console.log('Form is invalid');
+    }
+  }
 
 /*   clearError() {
     this.errorMessage = null;

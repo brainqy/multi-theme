@@ -5,6 +5,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './modal/modal.component';
 import { Job, JobService } from 'src/app/Core/services/job.service';
 import { DmComponent } from './dm/dm.component';
+import { InterviewService } from 'src/app/Core/services/interview.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-job-tracker',
@@ -18,8 +20,10 @@ export class JobTrackerComponent {
   offer: Job[] = [];
   jobs: Job[] = [];
   jobToUpdate!: Job;
+  slotInterviews:any;
 
-  constructor(private modalService: NgbModal, private jobService: JobService) {}
+  constructor(private modalService: NgbModal, private jobService: JobService,
+    private interviewService:InterviewService) {}
 
   ngOnInit(): void {
     this.getJobs();
@@ -68,55 +72,56 @@ export class JobTrackerComponent {
 
   openModal(job?: Job) {
     const modalRef = this.modalService.open(ModalComponent);
-
+  
     if (job && job.id !== undefined) {
       console.log('Fetching job by ID:', job.id);
-      this.jobService.getJobById(job.id).subscribe((res) => {
-        console.log("get job by id",res);
-        
-         this.jobToUpdate = res.data; // Assuming the response contains the full job object
-        console.log('Job fetched:', this.jobToUpdate);
+      
+      // Using forkJoin to handle multiple API calls
+      forkJoin({
+        jobData: this.jobService.getJobById(job.id),
+        interviewSlots: this.interviewService.getAllInterviewSlotsByJobId(job.id)
+      }).subscribe(({ jobData, interviewSlots }) => {
+        console.log("Job fetched:", jobData);
+        console.log("All slots:", interviewSlots);
+  
+        this.jobToUpdate = jobData.data; // Assuming the response contains the full job object
+        this.slotInterviews = interviewSlots.data;
+  
+        // Pass data to the modal
         modalRef.componentInstance.job = this.jobToUpdate;
+        modalRef.componentInstance.interviews = this.slotInterviews;
+  
         console.log('Job set in modal instance:', modalRef.componentInstance.job);
+        console.log('Interviews set in modal instance:', modalRef.componentInstance.interviews);
       });
     } else {
       console.log('No job ID provided. Opening modal for new job.');
       modalRef.componentInstance.job = null; // Ensure null is explicitly set
+      modalRef.componentInstance.interviews = []; // Initialize with empty array
     }
-
+  
     modalRef.result.then((result) => {
       console.log('Modal closed with result:', result);
-
+  
       if (result) {
         if (job) {
           // Update existing job
-          job.jobRole = result.jobRole;
-          job.jobLocation = result.jobLocation;
-          job.company = result.company;
-          job.jobListingUrl = result.jobListingUrl;
-          job.salary = result.salary;
-          job.dateSpecified = result.dateSpecified;
-          job.jobDescription = result.jobDescription;
-
+          Object.assign(job, result);
           console.log('Updating job...', job);
+  
           this.jobService.updateJobStatus(job).subscribe((res) => {
             console.log('Update completed:', res);
           });
         } else {
           // Create new job
           const newJob: Job = {
-            jobRole: result.jobRole,
-            jobLocation: result.jobLocation,
-            company: result.company,
-            status: 'saved',
-            jobListingUrl: result.jobListingUrl,
-            salary: result.salary,
-            dateSpecified: result.dateSpecified,
-            jobDescription: result.jobDescription
+            ...result,
+            status: 'saved'
           };
-
+  
           console.log('Creating new job:', newJob);
           this.saved.push(newJob);
+  
           this.jobService.saveJob(newJob).subscribe(job => {
             this.saved = this.saved.map(j => j.id === newJob.id ? job : j);
             console.log('New job created:', job);
@@ -126,5 +131,10 @@ export class JobTrackerComponent {
     }, (reason) => {
       console.log('Modal dismissed with reason:', reason);
     });
+  }
+  getAllSlotsByJobId(jobId:any){
+    this.interviewService.getAllInterviewSlotsByJobId(jobId).subscribe((res)=>{
+      console.log("all slots",res);
+    })
   }
 }

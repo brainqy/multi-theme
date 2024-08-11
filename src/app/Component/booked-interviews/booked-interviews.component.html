@@ -46,8 +46,8 @@
               <thead>
                   <tr>
                       <th>Date</th>
-                      <th>Category</th>
                       <th>Type</th>
+                      <th>Category</th>
                       <th>Language</th>
                       <th>Action</th>
                   </tr>
@@ -58,7 +58,7 @@
                   <td>{{ slot.interviewType }}</td>
                   <td>{{ slot.kindOfInterviewType }}</td>
                   <td>Java</td>
-                  <td><button class="btn btn-danger" (click)="cancelInterviewSlot(slot.id)">Cancel</button></td>
+                  <td><button class="btn btn-danger" (click)="cancelInterviewSlot(slot)">Cancel</button></td>
               </tr>
               </tbody>
           </table>

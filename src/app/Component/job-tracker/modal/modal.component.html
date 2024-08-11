@@ -215,69 +215,78 @@
       <div class="tab-pane" id="interviews" [ngClass]="{ 'active':activeTab==='interviews'}">
         <div class="row interview-content">
             <div class="col-lg-8 interview-form">
+              <form [formGroup]="interviewForm">
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option value="" disabled selected>Interview Type</option>
-                                <option value="phone">Phone Interview</option>
-                                <option value="video">Video Interview</option>
-                                <option value="in_person">In Person Interview</option>
-                            </select>
-                        </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <select class="form-control" formControlName="interviewType">
+                        <option value="" disabled selected>Interview Type</option>
+                        <option value="real_phone">Phone Interview</option>
+                        <option value="real_video">Video Interview</option>
+                        <option value="real_in_person">In Person Interview</option>
+                      </select>
                     </div>
+                  </div>
+                  <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="date" class="form-control" placeholder="Date">
-                        </div>
+                      <div class="form-group">
+                        <input type="datetime-local" class="form-control" formControlName="day">
+                      </div>
                     </div>
+                   
+                    
+                    
+                  </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Name">
-                        </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="HR Name" formControlName="hrName">
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Phone">
-                        </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="HR Phone" formControlName="mobileNumber">
                     </div>
+                  </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email">
-                        </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="HR Email" formControlName="hrEmail">
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Meeting Link">
-                        </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Meeting Link" formControlName="meetingLink">
                     </div>
+                  </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="4" placeholder="Description"></textarea>
-                        </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <textarea class="form-control" rows="4" placeholder="Description" formControlName="description"></textarea>
                     </div>
+                  </div>
                 </div>
-                <button class="btn btn-primary">Save</button>
+                <button class="btn btn-primary" (click)="saveInterview(job.id)">Save</button>
+              </form>
             </div>
             <div class="col-lg-4 interview-list">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <p>Interview at 2:30 AM</p>
-                    </div>
+              <div class="card mb-3" *ngFor="let interview of interviews">
+                <div class="card-body">
+                  <p>{{interview.day}}</p>
+                  <p>Interview at {{interview.slot}}</p>
                 </div>
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <p>Interview at 2:30 AM</p>
-                    </div>
+              </div>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <p>Interview at 2:30 AM</p>
                 </div>
+              </div>
             </div>
-        </div>
+          </div>
+          
         
     </div>
       <div class="tab-pane" id="notes" [ngClass]="{ 'active':activeTab==='notes'}">

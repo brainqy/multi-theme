@@ -41,7 +41,7 @@ import {MAT_DATE_LOCALE} from "@angular/material/core";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule, NgbModule ,NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { DatePipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common'; // Added import for locale data
@@ -151,6 +151,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgbTimepickerModule,
     DragDropModule,
     NgbModule,
     QuillModule.forRoot(),

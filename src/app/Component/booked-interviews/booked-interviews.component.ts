@@ -25,7 +25,7 @@ istheSlotSelected:boolean=false;
 isTheSelectedInterviewType:boolean=false;
 isTheSelectedkindOfInterviewType:boolean=false;
   
-  interviewItems: string[] = [
+   kindOfInterview: string[] = [
     'Data Structures and algorithms',
     'System Design',
     'Java ',
@@ -35,9 +35,10 @@ isTheSelectedkindOfInterviewType:boolean=false;
     'Practice with Friends'
     // Add more interview types as needed
   ];
-  kindOfInterview: string[] = [
+  interviewItems: string[] = [
     'Practice with peers',
     'Practice with experts',
+    'Practice with AI'
 
     // Add more interview types as needed
   ];
@@ -233,7 +234,7 @@ console.log("all slots ",res);
       );
   }
 
-  cancelInterviewSlot(id: any) {
+  cancelInterviewSlot(slot: any) {
     // Display confirmation popup
     Swal.fire({
       title: 'Are you Sure?',
@@ -245,9 +246,9 @@ console.log("all slots ",res);
     }).then((result) => {
       // If user confirms the action
       if (result.isConfirmed) {
-        console.log("id is ", id);
+        console.log("id is ", slot.id);
         // Call API to cancel the slot
-        this.interviewService.cancelInterviewSlot(id).subscribe((res) => {
+        this.interviewService.cancelInterviewSlot(slot.id).subscribe((res) => {
           console.log("Canceled slot is ", res);
           // Reload the page after cancelling the slot
           window.location.reload();
