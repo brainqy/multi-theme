@@ -128,6 +128,8 @@ export class ModalComponent implements OnInit {
       this.interviewForm.value.jobId=jobId;
       this.interviewService.saveinterviewSlot(this.interviewForm.value).subscribe((res)=>{
         console.log("after saving interview slot ",res);
+        this.activeModal.close();
+        Swal.fire("SUCCESS","Interview saved successfully",'success');
       })
     } else {
       console.log('Form is invalid');
