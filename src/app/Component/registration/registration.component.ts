@@ -20,7 +20,8 @@ export class RegistrationComponent {
         /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/
       )]],
       confirmPassword: ['', [Validators.required]],
-      ref:['']
+      ref:[''],
+      agreePrivacyPolicy:['']
     })
 
   constructor(private formBuilder: FormBuilder,
