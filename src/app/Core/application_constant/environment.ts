@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //baseUrl: "https://api.brainqy.com",
-  baseUrl: "http://localhost:8083",
+  baseUrl: "https://api.brainqy.com",
+  //baseUrl: "http://localhost:8083",
   contextUrl: "/ytms",
   signupUrl: "/ytms/register",
   loginUrl: "/ytms/login"
