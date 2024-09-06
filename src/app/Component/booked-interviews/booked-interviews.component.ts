@@ -217,7 +217,10 @@ window.location.reload();
       this.interviewBalance = Math.floor(res.data.coinBalance / 26);
       console.log("interview Balance ",this.interviewBalance);
       
-console.log("all slots ",res);
+     console.log("all slots ",res);
+     if(this.interviewSlots.length==0){
+Swal.fire("Info","No Upcoming Interviews Found",'info');
+     }
     })
   }
   updateSlot(id: number, updatedSlot: any) {
