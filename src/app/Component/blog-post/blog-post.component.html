@@ -1,0 +1,55 @@
+<p>blog-post works!</p>
+<div class="container-fluid g-0">
+    <app-requester-header (sideNavToggled)="sideNavStatus=$event;"></app-requester-header>
+    <main>
+      
+      <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+        <!-- Breadcrumb navigation -->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="">Home</a></li>
+            <li class="breadcrumb-item"><a href="forum-list">Forum</a></li> <!-- Link to forum homepage -->
+            <li class="breadcrumb-item active" aria-current="page">{{ forumPost?.forum_title }}</li> <!-- Current forum post title -->
+          </ol>
+        </nav>
+        <div>
+          <!-- Forum content -->
+          <div class="forum-container">
+            <div *ngIf="forumPost">
+              <h2>{{ forumPost.forum_title }}</h2>
+              <div [innerHTML]="forumPost.forum_body"></div>
+            </div>
+          </div>
+        
+        
+          <!-- Comments -->
+  <div class="comment-container">
+    <p>Average Rating {{ allReport?.avgRating }}</p>
+    <div *ngFor="let comment of allReport?.contentDto" class="comment">
+      <div class="comment-info">
+        <div class="reported-by">{{ comment.reportedBy }}</div>
+        <div *ngIf="comment.owner" class="nav-right-large delete-icon" >
+          <i class="fas fa-trash-alt"></i>
+        </div>
+        <div class="nav-right-small">{{ comment.reportedAt | dateFormat }}</div>
+        <!-- Delete icon -->
+        
+      </div>
+      <div class="comment-text">{{ comment?.comment }}</div>
+    </div>
+  </div>
+  
+  
+          
+          <!-- Unique Tags -->
+          <div class="tags-container">
+            <p>List of Unique Tags:</p>
+            <ul class="tags">
+              <li *ngFor="let tag of uniqueTags">{{ tag }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
