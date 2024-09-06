@@ -41,6 +41,8 @@ import { AuthTwoStepsComponent } from './Component/front-pages/auth-two-steps/au
 import { PageNotFoundComponent } from './Component/front-pages/page-not-found/page-not-found.component';
 import { CommonSplitComponent } from './Component/front-pages/common-split/common-split.component';
 import { DemoComponent } from './Component/demo/demo.component';
+import { BlogComponent } from './Component/blog/blog.component';
+import { BlogPostComponent } from './Component/blog-post/blog-post.component';
 
 
 const routes: Routes = [
@@ -148,7 +150,17 @@ const routes: Routes = [
   {
     path: "forum-list",
     component: ForumListComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
+  },
+  {
+    path: "blog",
+    component: BlogComponent,
+    //canActivate: [AuthGuard]
+  },
+  {
+    path: "blog/post/:id",
+    component: BlogPostComponent,
+    //canActivate: [AuthGuard]
   },
   {
     path: "matcher",
