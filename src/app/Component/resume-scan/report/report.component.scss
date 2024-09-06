@@ -1,0 +1,202 @@
+.containerp {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.sticky {
+    width: 20%;
+    position: sticky;
+    top: 0;
+    height: 100%;
+    background-color: #f0f0f0;
+    overflow-y: auto; /* Add vertical scrollbar if needed */
+    padding: 20px; /* Add padding for buttons */
+}
+
+.column {
+    display: flex;
+    padding-top: 10px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 15px;
+}
+
+.progress-wrapper {
+    width: 100%; /* Ensure the progress bar container takes full width */
+    text-align: center;
+    padding-right: 40px;
+}
+.progress-bar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Add margin between progress bars */
+}
+
+.progress-title-left,
+.progress-title-right {
+    font-size: 12px; /* Set font size for titles */
+    color: #888; /* Set color for titles */
+}
+
+.progress-bar-container {
+    flex-grow: 1;
+    margin: 0 10px; /* Add margin around progress bar */
+}
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-right-small {
+    float: right;
+    font-size: 8px;
+    padding: 5px;
+}
+.nav-left-small {
+    float: left;
+    font-size: 8px;
+    padding: 5px;
+}
+.nav-right-large {
+    float: right;
+    font-size: 20px;
+    padding: 10px;
+}
+
+
+.scrollable {
+    width: 80%; /* Adjust width of the scrollable area */
+    height: 100%;
+    overflow-y: auto; /* Add vertical scrollbar if needed */
+    background-color: #ffffff; /* Set your desired background color */
+    padding: 5px; /* Add padding for better spacing */
+}
+.button-container {
+    margin-top: 20px; /* Add margin between progress bar and buttons */
+    display: flex;
+    flex-direction: column; /* Arrange buttons in a column */
+}
+.progress-container {
+    padding-top: 2px; /* Add padding above progress bars */
+    padding-bottom: 0px;
+}
+
+.progress {
+    margin-bottom: 10px; /* Add margin between progress bars */
+}
+.button-container button {
+    margin-bottom: 10px; /* Add margin between buttons */
+    padding: 10px 20px; /* Add padding inside buttons */
+    background-color: #007bff; /* Set button background color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff; /* Set text color */
+    font-size: 16px; /* Set font size */
+}
+
+.button-container button:last-child {
+    margin-bottom: 0; /* Remove bottom margin from the last button */
+}
+
+.grid-container {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust column width as needed */
+    grid-gap: 20px; /* Adjust gap between grid items */
+}
+
+.grid-item {
+    background-color: #f8f2f2; /* Set your desired background color */
+    padding: 20px; /* Add padding for better spacing */
+    border-radius: 5px; /* Add border radius for rounded corners */
+}
+
+.grid-item-large {
+    grid-column-end: span 2; /* Set the column span for large grid items */
+}
+
+.grid-item-large-xl {
+    grid-column-end: span 4; /* Set the column span for extra-large grid items */
+}
+.title-column {
+    width: 15%; /* Adjust as needed */
+    padding: 5px; /* Adjust as needed */
+    margin: 5px; /* Adjust as needed */
+}
+
+.icon-column {
+    width: 3%; /* Adjust as needed */
+    text-align: center; /* Center-align icons */
+}
+
+.content-column {
+    width: 70%; /* Adjust as needed */
+    padding: 5px; /* Adjust as needed */
+    margin: 3px; /* Adjust as needed */
+}
+
+.navigation-bar {
+    background-color: #cb8316; /* Set the background color of the navigation bar */
+    overflow: hidden; /* Ensure that any overflowing content is hidden */
+}
+
+.navigation-bar ul {
+    list-style-type: none; /* Remove bullet points from the list */
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Ensure that any overflowing content is hidden */
+    padding-left: 20px;
+}
+
+.navigation-bar li {
+    float: left; /* Float the list items to the left to create a horizontal navigation bar */
+}
+
+.navigation-bar li.right {
+    float: right; /* Float the list items to the right */
+}
+
+.navigation-bar li a {
+    display: block; /* Make the links display as block elements */
+    color: white; /* Set the color of the links */
+    text-align: center; /* Center-align the text within the links */
+     /* Add padding to the links */
+    text-decoration: none; /* Remove underlines from the links */
+}
+
+/* Change the color of the links on hover */
+.navigation-bar li a:hover {
+    background-color: #111;
+}
+.sub-text {
+    font-size: 12px;
+    color: #888;
+    margin-top: -20px; /* Adjust as needed */
+}
+
+.circle-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .circle {
+    width: 20px; /* Adjust size as needed */
+    height: 20px; /* Adjust size as needed */
+    border-radius: 50%;
+    background-color: #ccc; /* Circle background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px; /* Adjust spacing between circle and text */
+  }
+  
+  .circle.active {
+    background-color: green; /* Adjust active circle background color */
+  }
+  
+  

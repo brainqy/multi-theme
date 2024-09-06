@@ -1,0 +1,51 @@
+<div class="container-fluid g-0">
+    <app-requester-header (sideNavToggled)="sideNavStatus=$event;"></app-requester-header>
+    <main>
+      
+        <div class="p-3">
+  
+        <!-- Breadcrumb navigation -->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li> <!-- Link to forum homepage -->
+            <li class="breadcrumb-item active" aria-current="page">Blog</li> <!-- Current forum page -->
+          </ol>
+        </nav>
+  
+        <!-- Forum content -->
+        <div class="forum-container">
+          <h1>Welcome to the Blog!</h1>
+
+          <ul class="forum-post-list">
+            <li *ngFor="let post of currentPagePosts" class="d-flex align-items-center mb-4 p-3 border rounded" (click)="openPost(post.forum_id)">
+              <div style="flex: 0 0 15%; max-width: 15%;">
+                <img [src]="post.imageUrl ? post.imageUrl : 'assets/img/default.webp'" 
+                     class="img-fluid" 
+                     alt="{{ post.forum_title }}" 
+                     style="object-fit: cover; width: 100%;">
+              </div>
+              <div style="flex: 1 1 85%; padding-left: 15px;">
+                <h5 class="mt-0 mb-1">{{ post.forum_title }}</h5>
+                <p>{{ post.shortDescription }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                   <small class="text-muted">By {{ post.createdBy }} on {{ post.createdAt | date }}</small>
+  
+                  <i class="bi bi-chat-dots"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+       <!-- Pagination controls -->
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 0">Previous</button>
+    <ng-container *ngFor="let page of pages">
+      <button (click)="goToPage(page)" [class.active]="currentPage === page">{{ page + 1 }}</button>
+    </ng-container>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1">Next</button>
+  </div>
+  
+      </div>
+    </main>
+  </div>
+  

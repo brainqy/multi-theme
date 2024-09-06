@@ -1,0 +1,14 @@
+<div class="container-fluid g-0">
+    <app-mn-header (sideNavToggled)="sideNavStatus=$event;">
+    </app-mn-header>
+  
+    <main>
+      <app-mn-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
+                             class="black-border"></app-mn-sidebar>
+      <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+        <p class="fs-1 fw-bold fst-italic text-center">{{ this.username }}, Welcome to your Dashboard !</p>
+      </div>
+    </main>
+  
+  </div>
+  

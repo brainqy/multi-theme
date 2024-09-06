@@ -1,0 +1,622 @@
+<div class="color-grad">
+    <!-- Horizontal navigation bar -->
+    <nav class="navbar navbar-expand-lg color-nav">
+      <div class="container px-4 px-lg-5">
+        <a class="navbar-brand d-flex align-items-center" routerLink="/">
+          <img src="assets/img/YTMS_LOGO 17.png" alt="BrainQy Logo" class="me-2" style="height: 40px;">
+        </a>
+        <button class="navbar-toggler" type="button" (click)="toggleNavbar()" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/about">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Products
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                <li><a class="dropdown-item" routerLink="/resume-bullet-points-generator"><i class="bi bi-file-earmark-text"></i> Resume Bullet Points Generator</a></li>
+                <li><a class="dropdown-item" routerLink="/ai-resume-tool"><i class="bi bi-file-earmark-text"></i>AI Resume Tool</a></li>
+                <li><a class="dropdown-item" routerLink="/job-tracker-board"><i class="bi bi-file-earmark-text"></i>Job Tracker Board</a></li>
+                <li><a class="dropdown-item" routerLink="/jobs"><i class="bi bi-file-earmark-text"></i>Jobs</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-power-edit"><i class="bi bi-file-earmark-text"></i>Resume Power Edit</a></li>
+                <li><a class="dropdown-item" routerLink="/linkedin-optimization-tool"><i class="bi bi-file-earmark-text"></i>LinkedIn Optimization Tool</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-builder-tool"><i class="bi bi-file-earmark-text"></i>Resume Builder Tool</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-optimization-report"><i class="bi bi-file-earmark-text"></i>Resume Optimization Report</a></li>
+                <li><a class="dropdown-item" routerLink="/cover-letter-generator"><i class="bi bi-file-earmark-text"></i>Cover Letter Generator</a></li>
+                <li><a class="dropdown-item" routerLink="/cover-letter-optimization-report"><i class="bi bi-file-earmark-text"></i>Cover Letter Optimization Report</a></li>
+                <li><a class="dropdown-item" routerLink="/career-change-tool"><i class="bi bi-file-earmark-text"></i>Career Change Tool</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="organizationsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Organizations
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="organizationsDropdown">
+                <li><a class="dropdown-item" routerLink="/universities"><i class="bi bi-file-earmark-text"></i> Universities</a></li>
+                <li><a class="dropdown-item" routerLink="/government"><i class="bi bi-file-earmark-text"></i> Government</a></li>
+                <li><a class="dropdown-item" routerLink="/ngos"><i class="bi bi-file-earmark-text"></i> NGOs</a></li>
+                <li><a class="dropdown-item" routerLink="/business"><i class="bi bi-file-earmark-text"></i> Business</a></li>
+                <li><a class="dropdown-item" routerLink="/career-coaches"><i class="bi bi-file-earmark-text"></i> Career Coaches</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="atsResumeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                ATS Resume
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="atsResumeDropdown">
+                <li><a class="dropdown-item" routerLink="/resume-optimization-report"><i class="bi bi-file-earmark-text"></i>Resume Optimization Report</a></li>
+                <li><a class="dropdown-item" routerLink="/what-is-ats"><i class="bi bi-file-earmark-text"></i>What Is An ATS?</a></li>
+                <li><a class="dropdown-item" routerLink="/how-to-optimize-resume-ats"><i class="bi bi-file-earmark-text"></i>How to Optimize Your Resume for ATS</a></li>
+                <li><a class="dropdown-item" routerLink="/how-to-write-resume"><i class="bi bi-file-earmark-text"></i>How to Write a Resume</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-templates"><i class="bi bi-file-earmark-text"></i>Resume Templates</a></li>
+                <li><a class="dropdown-item" routerLink="/ats-resume-templates"><i class="bi bi-file-earmark-text"></i>ATS Resume Templates</a></li>
+                <li><a class="dropdown-item" routerLink="/google-docs-resume-templates"><i class="bi bi-file-earmark-text"></i>Google Docs Resume Templates</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-formats"><i class="bi bi-file-earmark-text"></i>Resume Formats</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-examples"><i class="bi bi-file-earmark-text"></i>Resume Examples</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="coverLetterDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Cover Letter
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="coverLetterDropdown">
+                <li><a class="dropdown-item" routerLink="/cover-letter-optimization-report"><i class="bi bi-file-earmark-text"></i>Cover Letter Optimization Report</a></li>
+                <li><a class="dropdown-item" routerLink="/how-to-write-cover-letter"><i class="bi bi-file-earmark-text"></i>How to Write a Cover Letter</a></li>
+                <li><a class="dropdown-item" routerLink="/cover-letter-formats"><i class="bi bi-file-earmark-text"></i>Cover Letter Formats</a></li>
+                <li><a class="dropdown-item" routerLink="/cover-letter-templates"><i class="bi bi-file-earmark-text"></i>Cover Letter Templates</a></li>
+                <li><a class="dropdown-item" routerLink="/cover-letter-examples"><i class="bi bi-file-earmark-text"></i>Cover Letter Examples</a></li>
+                <li><a class="dropdown-item-filled" routerLink="/cover-letter-examples"><i class="bi bi-file-earmark-text"></i>Generate Personalized Cover letter</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="linkedinDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                LinkedIn
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="linkedinDropdown">
+                <li><a class="dropdown-item" routerLink="/linkedin-optimization-tool"><i class="bi bi-file-earmark-text"></i>LinkedIn Optimization Tool</a></li>
+                <li><a class="dropdown-item" routerLink="/linkedin-profile-writing-guide"><i class="bi bi-file-earmark-text"></i>LinkedIn Profile Writing Guide</a></li>
+                <li><a class="dropdown-item" routerLink="/linkedin-headline-examples"><i class="bi bi-file-earmark-text"></i>LinkedIn Headline Examples</a></li>
+                <li><a class="dropdown-item" routerLink="/linkedin-summary-examples"><i class="bi bi-file-earmark-text"></i>LinkedIn Summary Examples</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Resources
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="resourcesDropdown">
+                <li><a class="dropdown-item" routerLink="/Job Match-blog"><i class="bi bi-file-earmark-text"></i>Job Match Blog</a></li>
+                <li><a class="dropdown-item" routerLink="/resume-guides"><i class="bi bi-file-earmark-text"></i>Resume Guides</a></li>
+                <li><a class="dropdown-item" routerLink="/ats-guides"><i class="bi bi-file-earmark-text"></i>ATS Guides</a></li>
+                <li><a class="dropdown-item" routerLink="/cover-letter-guides"><i class="bi bi-file-earmark-text"></i>Cover Letter Guides</a></li>
+                <li><a class="dropdown-item" routerLink="/job-search-advice"><i class="bi bi-file-earmark-text"></i>Job Search Advice</a></li>
+                <li><a class="dropdown-item" routerLink="/linkedin-guides"><i class="bi bi-file-earmark-text"></i>LinkedIn Guides</a></li>
+                <li><a class="dropdown-item" routerLink="/career-change-guides"><i class="bi bi-file-earmark-text"></i>Career Change Guides</a></li>
+                <li><a class="dropdown-item" routerLink="/learning-center"><i class="bi bi-file-earmark-text"></i>Learning Center</a></li>
+                <li><a class="dropdown-item" routerLink="/customer-stories"><i class="bi bi-file-earmark-text"></i>Customer Stories</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+  
+  
+  
+  
+  
+  
+  
+
+  <header >
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 text-left">
+                <h1 class="section-heading text-uppercase">Optimize your resume to get more interviews</h1>
+                <h2 class="section-subheading text-muted">Job Match helps you optimize your resume for any job, highlighting the key experience and skills recruiters need to see.</h2>
+                <button class="btn btn-primary mt-3" routerLink="/register">Get Started</button>
+            </div>
+            <div class="col-lg-6 text-right">
+                <img src="../assets/img/landing.webp" alt="Resume Optimization" class="img-fluid" style="max-width: 100%; height: auto; padding: 20px;">
+            </div>
+        </div>
+    </div>
+</header>
+
+</div>
+
+
+
+  <!-- Media video player -->
+<!--   <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="video-container">
+            <video [width]="videoWidth" [height]="videoHeight" controls>
+                <source src="../../../assets/img/landing.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+        </div>
+      </div>
+    </div>
+  </div>
+ -->
+
+<div class="landing-text">
+    <div *ngIf="landingData">
+        <div *ngIf="landingData" [innerHTML]="landingData.main_title"></div>
+        <div *ngIf="landingData" [innerHTML]="landingData.text1_body"></div>
+        <div *ngIf="landingData" [innerHTML]="landingData.text2_body"></div>
+        <div *ngIf="landingData" [innerHTML]="landingData.text3_body"></div>
+        
+      </div>  
+</div>
+<!-- <div class="editText">
+    <button class="btn btn-primary" routerLink="['/edit-landing']">Edit</button>
+</div>
+ -->
+<section class="pt-4">
+    <div class="container px-lg-5">
+        <div class="row gx-lg-5">
+            <div class="col-lg-6 col-xxl-4 mb-5">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                            <i class="bi bi-collection"></i>
+                        </div>
+                        <h2 class="fs-4 fw-bold">Generate a Personalized Cover Letter</h2>
+                        <p class="mb-0">83% of HR pros say cover letters are important to their hiring decision. Job Match’s AI cover letter generator will give you a personalized cover letter with just a single click. Say goodbye to spending hours crafting the perfect cover letter.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xxl-4 mb-5">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                            <i class="bi bi-collection"></i>
+                        </div>
+                        <h2 class="fs-4 fw-bold">ATS-Friendly Resume Templates</h2>
+                        <p class="mb-0">Download a free ATS resume template that follows industry standard guidelines on how to get past an Applicant Tracking System. These templates will help your resume get seen and increase your interview rate.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xxl-4 mb-5">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                            <i class="bi bi-collection"></i>
+                        </div>
+                        <h2 class="fs-4 fw-bold">Track Your Job Search in One Place</h2>
+                        <p class="mb-0">Organize your job applications, resumes, and interviews in the Job Tracker tool. This free tool saves you time and makes your job search easier by keeping all of the most important information in one place.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xxl-4 mb-5">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                            <i class="bi bi-collection"></i>
+                        </div>
+                        <h2 class="fs-4 fw-bold">Optimize Your LinkedIn Profile to Get More Interviews</h2>
+                        <p class="mb-0">94% of recruiters use LinkedIn to search for candidates. Will they find your profile? Not if it doesn’t contain the keywords and information they’re looking for.
+
+                            Scan your LinkedIn profile and get personalized tips for how to optimize and improve it.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xxl-4 mb-5">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                            <i class="bi bi-collection"></i>
+                        </div>
+                        <h2 class="fs-4 fw-bold">See your missing skills</h2>
+                        <p class="mb-0">Job Match matches hard skills, soft skills, and keywords from the job listing to your resume. AI-powered system will show you how to tailor your resume so that you highlight the skills and experience recruiters are searching for.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xxl-4 mb-5">
+                <div class="card bg-light border-0 h-100">
+                    <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                            <i class="bi bi-collection"></i>
+                        </div>
+                        <h2 class="fs-4 fw-bold">Beat the bots</h2>
+                        <p class="mb-0">Most companies, including 99% of Fortune 500, use Applicant Tracking Systems (ATS) to process your resume. These systems might cause qualified candidates like you to slip through the cracks. Job Match reverse-engineered all the top ATS and studied recruiter workflows to get you in the “yes” pile.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the above structure for other feature cards -->
+        </div>
+    </div>
+</section>
+
+
+<section id="team" class="page-section bg-light">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+      <h3 class="section-subheading text-muted">Meet our Professionals.</h3>
+    </div>
+    <div class="row justify-content-center text-center team-row"> <!-- Added custom class for styling -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="team-member">
+          <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="Parveen Anand" />
+          <h4>Ram Potale</h4>
+          <p class="text-muted">Senior DevOps Engineer</p>
+          <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="team-member">
+          <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="Somwanshi D." />
+          <h4>Somwanshi D.</h4>
+          <p class="text-muted">Lead Consultant</p>
+          <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Somwanshi D. Twitter Profile">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Somwanshi D. Facebook Profile">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Somwanshi D. LinkedIn Profile">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="team-member">
+          <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="Mrunal Anand" />
+          <h4>Amol Konarde</h4>
+          <p class="text-muted">Technical Test Lead</p>
+          <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Mrunal Anand Twitter Profile">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Mrunal Anand Facebook Profile">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Mrunal Anand LinkedIn Profile">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+      <!-- Add more team members here -->
+    </div>
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <p class="large text-muted">We are constantly improving and upskilling our team. That's what we believe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <section id="about" class="page-section">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase">About</h2>
+        <h3 class="section-subheading text-muted">Watch our Journey.</h3>
+      </div>
+      <ul class="timeline">
+        <li>
+          <div class="timeline-image">
+            <img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="..." />
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>2024-2025</h4>
+              <h4 class="subheading">Our Humble Initiatives</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted">We have launched our first product Job Match in market.</p>
+            </div>
+          </div>
+        </li>
+        <!-- Add more timeline items -->
+        <li class="timeline-inverted">
+          <div class="timeline-image">
+            <img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="..." />
+          </div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4>2024</h4>
+              <h4 class="subheading">PRARAMBHA</h4>
+            </div>
+            <div class="timeline-body">
+              <p class="text-muted">We started.</p>
+            </div>
+          </div>
+        </li>
+        <!-- Add more timeline items as needed -->
+      </ul>
+    </div>
+  </section>
+
+
+<section>
+
+    <section class="customer-stories">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <img src="../assets/img/blog/1.jpg" class="card-img-top" alt="Connor's story">
+                        <div class="card-body">
+                            <h5 class="card-title">Within Hours of Using Job Match, Connor Attracted Recruiters on LinkedIn</h5>
+                            <p class="card-text">This is part of our Customer Stories series, where we ask real job seekers about...</p>
+                            <a href="#" class="btn btn-primary">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <img src="../assets/img/blog/2.jpg" class="card-img-top" alt="Daniel's story">
+                        <div class="card-body">
+                            <h5 class="card-title">How Daniel Overcame 8 Months of Unemployment to Land His Dream Job</h5>
+                            <p class="card-text">This is part of our Customer Stories series, where we ask real job seekers about...</p>
+                            <a href="#" class="btn btn-primary">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <img src="../assets/img/blog/3.jpg" class="card-img-top" alt="Kelly's story">
+                        <div class="card-body">
+                            <h5 class="card-title">Kelly Built a Network and Landed a Job in a New City using Job Match's LinkedIn Optimization</h5>
+                            <p class="card-text">When Kelly, a long-time software engineer, moved from Denver, Colorado to Hilton Head, South Carolina,...</p>
+                            <a href="#" class="btn btn-primary">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <a href="#" class="btn btn-secondary mt-4">See more stories</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+</section>
+
+
+<section>
+  <div class="testimonials-container">
+    <div class="row">
+      <div class="col-md-3">
+        <p>REAL CUSTOMERS REVIEWS</p>
+        <h3>What people say </h3>
+        <p>See what our customers have to say about their experience.</p>
+        <button class="btn btn-primary">Read More Reviews</button>
+      </div>
+      <div class="col-md-9">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+         <div class="carousel-inner">
+  <div class="carousel-item" *ngFor="let testimonial of testimonials; let i = index" [class.active]="i === 0">
+    <div class="row mx-auto justify-content-center">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ testimonial.title }}</h5>
+            <p class="card-text">
+              <span *ngFor="let _ of [0,1,2,3,4]; let j = index" class="fa fa-star" [class.checked]="j < testimonial.rating"></span>
+            </p>
+            <p class="card-text">{{ testimonial.text }}</p>
+            <p class="card-text"><small class="text-muted">{{ testimonial.name }} on {{ testimonial.date }}</small></p>
+            <div class="user-info">
+              <img src="assets/img/blog/user.png" alt="User Photo" class="user-photo">
+              <div class="user-details">
+                <h6 class="user-name">{{ testimonial.name }}</h6>
+                <p class="user-position">{{ testimonial.position }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Accordion Section -->
+  <section id="accordionSection" class="page-section bg-light">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase">Frequently Asked Questions</h2>
+        <h3 class="section-subheading text-muted">Find answers to the most common questions below.</h3>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-md-5">
+          <img src="../assets/img/landing/faq-boy-with-logos.png" alt="Descriptive Alt Text" class="img-fluid">
+        </div>
+        <div class="col-md-7">
+          <div class="accordion" id="faqAccordion">
+            <div *ngFor="let faq of faqs; let i = index" class="accordion-item">
+              <h2 class="accordion-header" [id]="'heading' + i">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + i" aria-expanded="i === 0 ? 'true' : 'false'" [attr.aria-controls]="'collapse' + i">
+                  {{ faq.question }}
+                </button>
+              </h2>
+              <div [id]="'collapse' + i" class="accordion-collapse collapse" [ngClass]="{'show': i === 0}" [attr.aria-labelledby]="'heading' + i" data-bs-parent="#faqAccordion">
+                <div class="accordion-body" [innerHTML]="faq.answer"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+<section id="contact" style="--bg-image-url: url('../assets/img/map-image.png');">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Contact Us</h2>
+      <h3 class="section-subheading text-muted">For any Queries drop a message. We will shortly get back to you</h3>
+    </div>
+    <div class="row">
+      <form id="contactForm" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name *" required name="name" ngModel />
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Your Email *" required name="email" ngModel />
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Mobile number *" required name="mobile" ngModel />
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group form-group-textarea">
+                <textarea class="form-control" placeholder="Your Message *" required name="message" ngModel></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="text-center">
+          <div id="success"></div>
+          <button class="btn btn-primary btn-xl text-uppercase" type="submit">Send Message</button>
+        </div>
+      </form>
+    </div>
+    
+  
+  </div>
+</section>
+  
+<section id="contact" class="contact-section bg-black">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5">
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Address</h4>
+              <hr class="my-4 mx-auto">
+              <div class="small text-black-50">4923 Magarpatta, Hadapsar ,Pune India</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-envelope text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Email</h4>
+              <hr class="my-4 mx-auto">
+              <a class="small text-black-50" href="mailto:brainqy@gmail.com">brainqy@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-mobile-alt text-primary mb-2"></i>
+              <h4 class="text-uppercase m-0">Phone</h4>
+              <hr class="my-4 mx-auto">
+              <div class="small text-black-50">+91  9561402263</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="social d-flex justify-content-center">
+        <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+        <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+        <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </section>
+ <app-contact-whatsapp></app-contact-whatsapp>
+  <footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>Platform</h3>
+            <ul>
+                <li>Pricing</li>
+                <li>Resume Optimization</li>
+                <li>Resume Builder</li>
+                <li>Resume Power Edit</li>
+                <li>LinkedIn Optimization</li>
+                <li>Job Tracker</li>
+                <li>Career Change Tool</li>
+                <li>Cover Letter Optimization</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Tutorials</h3>
+            <ul>
+                <li>Customer Stories</li>
+                <li>ATS Resume</li>
+                <li>What Is An ATS?</li>
+                <li>How to Optimize Your Resume for ATS</li>
+                <li>How to Write a Resume</li>
+                <li>Resume Formats</li>
+                <li>Resume Templates</li>
+                <li>Resume Examples</li>
+                <li>Cover Letter</li>
+                <li>How to Write a Cover Letter</li>
+                <li>Cover Letter Formats</li>
+                <li>Cover Letter Templates</li>
+                <li>Cover Letter Examples</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Linkedin</h3>
+            <ul>
+                <li>LinkedIn Profile Writing Guide</li>
+                <li>LinkedIn Headline Examples</li>
+                <li>LinkedIn Summary Examples</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Company</h3>
+            <ul>
+                <li>About</li>
+                <li>Press</li>
+                <li>Careers</li>
+                <li>Affiliates</li>
+                <li>Job Match Widget</li>
+                <li>Support</li>
+                <li>Customer Support</li>
+                <li>Privacy</li>
+                <li>Terms</li>
+                <li>Cookie Policy</li>
+                <li>Companies Hiring List</li>
+            </ul>
+        </div>
+    </div>
+</footer>
+  
+  

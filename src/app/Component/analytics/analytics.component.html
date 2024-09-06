@@ -1,0 +1,52 @@
+<div class="container-fluid g-0">
+  <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+  </app-requester-header>
+
+  <main>
+    <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
+                           class="black-border"></app-requester-sidebar>
+    <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a>Analytics</a></li> <!-- Link to forum homepage -->
+        </ol>
+      </nav>
+<div class="dashboard-insights">
+  <div class="row mb-4">
+    <div class="col-md-3">
+      <div class="rectangle primary-bg"> <!-- Added primary-bg class for background color -->
+        <div class="content">
+          <h1>09</h1>
+          <p>Reported Items</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="rectangle primary-bg">
+        <div class="content">
+          <h1>89</h1>
+          <p>Users Reported</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="rectangle primary-bg">
+        <div class="content">
+          <h1>7</h1>
+          <p>Reported Items</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="rectangle primary-bg">
+        <div class="content">
+          <h1>45</h1>
+          <p>Reported Items</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div></main></div>
+  

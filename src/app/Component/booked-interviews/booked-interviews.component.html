@@ -1,0 +1,252 @@
+<div class="container-fluid g-0">
+    <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+    </app-requester-header>
+  
+    <main>
+      <app-requester-sidebar [sideNavStatus]="sideNavStatus"
+                             class="black-border"></app-requester-sidebar>
+      <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Practice</li>
+          </ol>
+        </nav>
+
+<div>
+    <h2>PRACTICE MAKES PERFECT</h2>
+    <button (click)="openBookingModal(bookingModal)" class="btn btn-primary"  [disabled]="interviewBalance < 1">Start a Practice session</button>
+    <p>Credits left: {{interviewBalance}} interviews</p>
+    <p><a (click)="getMoreFree()">GET MORE FOR FREE</a></p>
+  </div>
+  <ul class="nav nav-tabs" id="myTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button  class="nav-link active" id="tab1-tab" data-bs-toggle="tab"
+              data-bs-target="#tab1" type="button" role="tab" aria-controls="tab1" aria-selected="true">Upcoming Interviews
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button  class="nav-link" id="tab2-tab" data-bs-toggle="tab"
+              data-bs-target="#tab2" type="button" role="tab" aria-controls="tab2" aria-selected="false">All Interviews
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="tab3-tab" data-bs-toggle="tab"
+              data-bs-target="#tab3" type="button" role="tab" aria-controls="tab3" aria-selected="false">Canceled Interviews
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabsContent">
+    <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+      <table class="table table-striped"> <!-- Added table-striped class for striped rows -->
+        <div>
+          <!-- interview-table.component.html -->
+          <h2>UPCOMING PRACTICE INTERVIEWS</h2>
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>Date</th>
+                      <th>Type</th>
+                      <th>Category</th>
+                      <th>Language</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let slot of getNonCanceledSlots(interviewSlots)">
+                  <td>{{ slot.day }}</td>
+                  <td>{{ slot.interviewType }}</td>
+                  <td>{{ slot.kindOfInterviewType }}</td>
+                  <td>Java</td>
+                  <td><button class="btn btn-danger" (click)="cancelInterviewSlot(slot)">Cancel</button></td>
+              </tr>
+              </tbody>
+          </table>
+      </div>
+      
+      
+      
+      </table>
+    </div>
+    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+      <table class="table table-striped"> <!-- Added table-striped class for striped rows -->
+        <div>
+          <!-- interview-table.component.html -->
+          <h2>ALL INTERVIEWS</h2>
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>Date</th>
+                      <th>Category</th>
+                      <th>Type</th>
+                      <th>Language</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let slot of interviewSlots">
+                  <td>{{ slot.day }}</td>
+                  <td>{{ slot.interviewType }}</td>
+                  <td>{{ slot.kindOfInterviewType }}</td>
+                  <td>Java</td>
+                  <td>
+                    <button *ngIf="slot.status !== 'CANCELED'" class="btn btn-danger" (click)="cancelInterviewSlot(slot.id)">Cancel</button>
+                    <span *ngIf="slot.status === 'CANCELED'" class="text-muted">CANCELED</span>
+                </td>
+              </tr>
+              </tbody>
+          </table>
+      </div>
+      
+      
+      
+      </table>
+
+    </div>
+    <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+      <table class="table table-striped"> <!-- Added table-striped class for striped rows -->
+        <div>
+          <!-- interview-table.component.html -->
+          <h2>CANCELED INTERVIEWS</h2>
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>Date</th>
+                      <th>Category</th>
+                      <th>Type</th>
+                      <th>Language</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let slot of getCanceledSlots(interviewSlots)">
+                  <td>{{ slot.day }}</td>
+                  <td>{{ slot.interviewType }}</td>
+                  <td>{{ slot.kindOfInterviewType }}</td>
+                  <td>Java</td>
+                  <td>
+                    <button *ngIf="slot.status !== 'CANCELED'" class="btn btn-danger" (click)="cancelInterviewSlot(slot.id)">Cancel</button>
+                    <span *ngIf="slot.status === 'CANCELED'" class="text-muted">CANCELED</span>
+                </td>
+                </tr>
+              </tbody>
+          </table>
+      </div>
+      
+      
+      
+      </table>
+    </div>
+  </div>
+
+
+  
+      </div></main></div>
+
+      <ng-template #bookingModal let-modal>
+        <!-- First page: Weekly schedule -->
+       
+      
+        <!-- Second page: Interview Type -->
+        <div *ngIf="!isSchedulePageVisible && !isKindOfPracticePageVisible">
+            <div class="modal-header">
+              <h4 class="modal-title">Interview Type</h4>
+              <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <!-- Interview Type selection content -->
+              <p>Select interview type here...</p>
+              <div class="grid-container">
+                <!-- Grid items -->
+                <div *ngFor="let item of interviewItems"
+                     class="grid-item"
+                     [class.selected]="isSelectedInterviewType(item)"
+                     (click)="toggleSelection(item)">
+                  {{ item }}
+                </div>
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <!-- Next button -->
+              <button type="button" class="btn btn-primary" [disabled]="!isTheSelectedInterviewType" (click)="hideInterviewTypePage()">Next</button>
+            </div>
+          </div>
+
+          <div *ngIf="isKindOfPracticePageVisible">
+            <div class="modal-header">
+              <h4 class="modal-title">Kind Of Interview</h4>
+              <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+         
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <!-- Interview Type selection content -->
+                <p>Select Kind of Interview you want to schedule...</p>
+                <div class="grid-container">
+                  <!-- Grid items -->
+                  <div *ngFor="let kind of kindOfInterview"
+                       class="grid-item"
+                       [class.selected]="isSelectedkindOfInterviewType(kind)"
+                       (click)="toggleKindOfSelection(kind)">
+                    {{ kind }}
+                  </div>
+                </div>
+              </div>
+    
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <!-- Next button -->
+              <button type="button" class="btn btn-primary" [disabled]="!isTheSelectedkindOfInterviewType" (click)="hideKindOfPracticePage()">Next</button>
+            </div>
+          </div>
+
+          <div *ngIf="isSchedulePageVisible">
+            <div class="modal-header">
+              <!-- Previous and Next buttons -->
+              <button type="button" class="btn btn-link" (click)="navigateWeek(-1)">
+                <span>&lt; Previous Week</span>
+              </button>
+              <h4 class="modal-title">Weekly Schedule</h4>
+              <button type="button" class="btn btn-link" (click)="navigateWeek(1)">
+                <span>Next Week &gt;</span>
+              </button>
+              <!-- Close button -->
+              <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="week">
+                <div *ngFor="let dayWithSlots of datesWithSlots" class="day">
+                  <p>{{ dayWithSlots.date | date: 'EEE, MMM d' }}</p>
+                  <div class="slot-buttons">
+                    <button *ngFor="let slot of dayWithSlots.slots"
+                            class="slot-button"
+                            [class.selected]="isSlotSelected(dayWithSlots.date, slot)"
+                            (click)="toggleSlot(dayWithSlots.date, slot)">
+                      {{ slot }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <!-- Interview Type button -->
+              <button type="button" class="btn btn-primary" (click)="showInterviewTypePage()">Interview Type</button>
+              <!-- Confirm and Schedule button -->
+              <button type="button" class="btn btn-primary" [disabled]="!istheSlotSelected" (click)="confirmAndSchedule()">Confirm and Schedule</button>  
+            </div>
+          </div>
+          
+      </ng-template>
+      
+    

@@ -1,0 +1,119 @@
+<app-dash-header></app-dash-header>
+<div class="container-x container-fluid">
+
+  <div class="job-container row">
+    <div class="row">
+      <div class="col-lg-11 offset-lg-1 col-12 text-lg-end text-center mb-3">
+        <button class="btn btn-primary add-job-btn" (click)="openModal()">
+          <i class="fa fa-plus"></i> Add Job
+        </button>
+      </div>
+    </div>
+    <div class="col-12 col-md-3 job-column">
+      <div class="job-card card">
+        <h5 class="card-header">Jobs</h5>
+        <div class="header-sticky card-body">
+          <input type="text" placeholder="Search job" class="form-control mb-2">
+          <input type="text" placeholder="Location" class="form-control mb-2">
+          <button class="btn btn-primary w-100">Search</button>
+        </div>
+        <div class="job-card-body card-body" cdkDropList id="jobs" [cdkDropListConnectedTo]="['saved','applied', 'interview', 'offer']" [cdkDropListData]="jobs" (cdkDropListDropped)="drop($event)">
+          <ng-container *ngFor="let item of jobs">
+            <ng-container *ngIf="item.jobRole && item.company">
+              <div class="item" cdkDrag [cdkDragData]="item" (click)="openModal(item)">
+                <div class="sb-card card mb-2">
+                  <div class="sb-card-header card-header">
+                    {{ item.jobRole }}
+                  </div>
+                  <div class="sb-card-body card-body small-text">
+                    {{ item.jobLocation }}
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+          <div *ngIf="jobs.length === 0" class="empty-list">Drag here</div>
+        </div>
+        <div class="footer-sticky card-footer">
+          <button class="btn btn-primary w-100">Find more jobs</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-9 other-column">
+      <div class="row">
+        <!-- Saved -->
+        <div class="col-12 col-sm-6 col-md-3 px-1">
+          <div class="card">
+            <h5 class="card-header">Saved</h5>
+            <p class="small-text card-body">Jobs saved from our chrome extension or the scan report will appear here</p>
+            <div class="card-body" cdkDropList id="saved" [cdkDropListConnectedTo]="['applied', 'interview', 'offer','jobs']" [cdkDropListData]="saved" (cdkDropListDropped)="drop($event)">
+              <ng-container *ngFor="let item of saved">
+                <ng-container *ngIf="item.jobRole && item.company">
+                  <div class="item job-item" cdkDrag [cdkDragData]="item" (click)="openModal(item)">
+                    <div class="job-role">{{ item.jobRole }}</div>
+                    <div class="job-company">{{ item.company }}</div>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <div *ngIf="saved.length === 0" class="empty-list">Drag here</div>
+            </div>
+          </div>
+        </div>
+        <!-- Applied -->
+        <div class="col-12 col-sm-6 col-md-3 px-1">
+          <div class="card">
+            <h5 class="card-header">Applied</h5>
+            <p class="small-text card-body">Application completed. Awaiting response from employer or recruiter.</p>
+            <div class="card-body" cdkDropList id="applied" [cdkDropListConnectedTo]="['saved', 'interview', 'offer']" [cdkDropListData]="applied" (cdkDropListDropped)="drop($event)">
+              <ng-container *ngFor="let item of applied">
+                <ng-container *ngIf="item.jobRole && item.company">
+                  <div class="item job-item" cdkDrag [cdkDragData]="item" (click)="openModal(item)">
+                    <div class="job-role">{{ item.jobRole }}</div>
+                    <div class="job-company">{{ item.company }}</div>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <div *ngIf="applied.length === 0" class="empty-list">Drag here</div>
+            </div>
+          </div>
+        </div>
+        <!-- Interview -->
+        <div class="col-12 col-sm-6 col-md-3 px-1">
+          <div class="card">
+            <h5 class="card-header">Interview</h5>
+            <p class="small-text card-body">Invited to interview? Record the interview details and notes here.</p>
+            <div class="card-body" cdkDropList id="interview" [cdkDropListConnectedTo]="['saved', 'applied', 'offer']" [cdkDropListData]="interview" (cdkDropListDropped)="drop($event)">
+              <ng-container *ngFor="let item of interview">
+                <ng-container *ngIf="item.jobRole && item.company">
+                  <div class="item job-item" cdkDrag [cdkDragData]="item"(click)="openModal(item)">
+                    <div class="job-role">{{ item.jobRole }}</div>
+                    <div class="job-company">{{ item.company }}</div>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <div *ngIf="interview.length === 0" class="empty-list">Drag here</div>
+            </div>
+          </div>
+        </div>
+        <!-- Offer -->
+        <div class="col-12 col-sm-6 col-md-3 px-1">
+          <div class="card">
+            <h5 class="card-header">Offer</h5>
+            <p class="small-text card-body">Interviews completed. Negotiating offer, or waiting for employer response.</p>
+            <div class="card-body" cdkDropList id="offer" [cdkDropListConnectedTo]="['saved', 'applied', 'interview']" [cdkDropListData]="offer" (cdkDropListDropped)="drop($event)">
+              <ng-container *ngFor="let item of offer">
+                <ng-container *ngIf="item.jobRole && item.company">
+                  <div class="item job-item" cdkDrag [cdkDragData]="item" (click)="openModal(item)">
+                    <div class="job-role">{{ item.jobRole }}</div>
+                    <div class="job-company">{{ item.company }}</div>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <div *ngIf="offer.length ===0" class="empty-list">Drag here</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

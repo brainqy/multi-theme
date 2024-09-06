@@ -1,0 +1,46 @@
+app-requester-header {
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  height: 4rem;
+  z-index: 2;
+}
+
+main {
+  position: absolute;
+  top: 4rem;
+  width: 100%;
+  z-index: 1;
+}
+
+app-requester-sidebar {
+
+  position: absolute;
+  left: 0rem;
+  width: 60px;
+  border: 1px solid black;
+  height: calc(100vh - 4rem);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  overflow-x: hidden;
+  white-space: nowrap;
+  transition: width 1s linear;
+}
+
+.app-side-nav-open {
+  width: 250px;
+}
+
+.display-area {
+  position: absolute;
+  left: 60px;
+  width: calc(100% - 60px);
+  transition: width 1s linear, left 1s linear;;
+
+}
+
+.display-area-shrink {
+  left: 250px;
+  width: calc(100% - 250px);
+  transition: width 1s linear, left 1s linear;;
+}

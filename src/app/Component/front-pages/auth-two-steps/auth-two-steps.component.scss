@@ -1,0 +1,70 @@
+.two-step-auth-container {
+    height: 100vh; /* Ensures the container takes the full height of the viewport */
+    display: flex; /* Use Flexbox to control the layout */
+}
+
+.row {
+    display: flex; /* Ensures the children are in a single row */
+    width: 100%;
+}
+
+.image-container {
+    background-color: rgb(98, 145, 215); /* Background color for the left container */
+    height: 100%; /* Ensures the container takes the full height of its parent */
+    flex: 0 0 70%; /* Takes up 70% of the width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Adds some padding for better spacing */
+}
+
+.code-container {
+    height: 100%; /* Ensures the container takes the full height of its parent */
+    flex: 0 0 30%; /* Takes up 30% of the width */
+    padding: 20px; /* Adds some padding for better spacing */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.verification-code input {
+    width: 30px;
+    margin: 5px;
+    text-align: center;
+}
+.maintenance-image {
+    width: 300px;
+    height: auto;
+  }
+  
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .image-container, .code-container {
+        flex: 0 0 100%; /* Full width for both containers on medium screens */
+    }
+    .image-container {
+        order: 2; /* Move image container below the code container */
+    }
+    .code-container {
+        order: 1; /* Move code container above the image container */
+    }
+    .row {
+        flex-direction: column; /* Stack the items vertically */
+    }
+}
+
+@media (max-width: 768px) {
+    .maintenance-image {
+        width: 200px; /* Adjust image size on small screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .verification-code input {
+        width: 25px; /* Adjust input size on extra small screens */
+    }
+    .maintenance-image {
+        width: 150px; /* Adjust image size on extra small screens */
+    }
+}

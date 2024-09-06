@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand  navbar-custom px-2">
+
+  <a class="navbar-brand px-4" href="#" style="color: white;">BRAINQY</a>
+  <div (click)="sideNavToggle()" class="side-nav-button p-2 me-3">
+    <i class="fa-solid fa-bars" style="color: white;"></i>
+  </div>
+  <div class="navbar-collapse">
+    <ul class="navbar-nav me-auto">
+
+    </ul>
+  </div>
+
+
+  <div class="profile-logo dropstart">
+    <button class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown">
+      {{ this.username }}
+    </button>
+
+    <ul class="dropdown-menu dropdown-menu-dark">
+      <!-- <li><a href="#" class="dropdown-item">SignUp</a></li>
+      <li><a href="#" class="dropdown-item">LogIn</a></li>
+      <li><a href="#" class="dropdown-item">Your Profile</a></li> -->
+      <li *ngIf="authService.isAuthenticated()"><a (click)="logout()" class="dropdown-item" href="#">Logout</a></li>
+    </ul>
+  </div>
+</nav>

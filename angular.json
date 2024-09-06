@@ -30,27 +30,56 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+              "node_modules/angular-calendar/css/angular-calendar.css",
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss",
+              "node_modules/ngx-toastr/toastr.css",
+              {
+                  "input": "src/styles/light.scss",
+                  "bundleName": "light",
+                  "inject": true
+              },
+              {
+                  "input": "src/styles/dark.scss",
+                  "bundleName": "dark",
+                  "inject": false
+              }
+          ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app/Core/application_constant/environment.ts",
+                  "with": "src/app/Core/application_constant/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "6mb"
                 }
               ],
               "outputHashing": "all"
             },
             "development": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app/Core/application_constant/environment.prod.ts",
+                  "with": "src/app/Core/application_constant/environments/environment.ts"
+                }
+              ],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -100,5 +129,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "c2804dbc-559e-44ad-a7a6-f649ad0a4774"
   }
 }

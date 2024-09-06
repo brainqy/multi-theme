@@ -1,0 +1,56 @@
+.rectangle {
+    width: 100%;
+    height: 100px; /* Adjust height as needed */
+    position: relative;
+    border-radius: 10px;
+    border: 2px solid rgb(12, 113, 191); /* Example border color */
+  }
+  
+  
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .circle__progress {
+    width: 100%; /* Ensure the circle progress bar takes full width */
+  }
+  
+  .card {
+    width: 100%; /* Ensure the card takes full width */
+    display: flex; /* Use flexbox to align items horizontally */
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Distribute space between items */
+    padding: 10px; /* Add padding to the card */
+    margin-bottom: 10px; /* Add margin between cards */
+  }
+  
+  .card-body {
+    width: 60%; /* Set the width of the card body */
+  }
+  
+  .card-header {
+    font-weight: bold; /* Make the card header text bold */
+  }
+  
+  .btn-primary {
+    width: 100%; /* Ensure the delete button takes full width */
+  }
+  .plans{
+    padding-bottom: 100px;
+  }
+  .btn-star {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: gray;
+    cursor: pointer;
+  }
+  
+  .btn-star.starred {
+    color: gold;
+  }
+  
+  

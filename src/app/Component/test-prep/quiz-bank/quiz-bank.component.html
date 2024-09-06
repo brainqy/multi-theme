@@ -1,0 +1,22 @@
+<div>
+    <table class="table-bordered">
+        <thead>
+          <tr>
+            <th>Question ID</th>
+            <th>Question</th>
+            <th>QuestionType</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let question of allQ">
+            <td>{{ question.questionId }}</td>
+            <td>{{ question.question }}</td>
+            <td>{{ question.questionType }}</td>
+            <td><button class="btn btn-primary">View</button></td>
+          </tr>
+        </tbody>
+      </table>
+      
+
+  </div>

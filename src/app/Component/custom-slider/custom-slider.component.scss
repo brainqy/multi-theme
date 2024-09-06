@@ -1,0 +1,15 @@
+.carousel-inner {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .carousel-item {
+    flex: 0 0 33.3333%; /* This makes 3 items visible at a time */
+    max-width: 33.3333%;
+  }
+  .card-img-top {
+    width: 100%;
+    height: auto;
+  }
+  .fa-star {
+  color: gold;
+}

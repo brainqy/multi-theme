@@ -1,0 +1,82 @@
+<div class="container-fluid g-0">
+    <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+    </app-requester-header>
+  
+    <main>
+      <app-requester-sidebar [sideNavStatus]="sideNavStatus"
+                             class="black-border"></app-requester-sidebar>
+      <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page"><a>Referrals</a></li> <!-- Link to forum homepage -->
+            </ol>
+          </nav>
+            <!-- Share this link and earn 50 Coins -->
+            <button>{{myReferralLink}}</button>
+            <a (click)="copyToClipboard()"> Copy now</a>
+            <div>
+            <h3>{{'howreferralworks' | translate}}</h3>
+            </div>
+            <div class="dashboard-insights">
+                <div class="row mb-4">
+                  <div class="col-md-3">
+                    <div class="rectangle primary-bg"> <!-- Added primary-bg class for background color -->
+                      <div class="content">
+                        <h1>99</h1>
+                        <h6>Friends Referred</h6>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="rectangle primary-bg">
+                      <div class="content">
+                        <h1>89</h1>
+                        <h6>Users Joined</h6>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="rectangle primary-bg">
+                      <div class="content">
+                        <h1>10</h1>
+                        <h6>Users yet to join</h6>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="rectangle primary-bg">
+                      <div class="content">
+                        <h1>4500</h1>
+                        <h6>Commision earned</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            <!-- Table to display referred people -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Date Referred</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Iterate over referred people and populate table rows -->
+                    <tr *ngFor="let referral of referredPeople">
+                        
+                        <td>{{ referral.email }}</td>
+                        <td>{{ referral.status }}</td>
+                        <td>{{ referral.referredAt }}</td>
+                        <td>
+                            <button *ngIf="referral.status === 'pending'" (click)="resendEmail(referral)">Resend Email</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+      </div></main></div>

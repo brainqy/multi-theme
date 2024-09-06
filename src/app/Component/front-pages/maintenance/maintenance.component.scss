@@ -1,0 +1,17 @@
+.maintenance-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .button-container {
+    margin-bottom: 20px;
+  }
+  
+  .maintenance-image {
+    width: 300px;
+    height: auto;
+  }
+  

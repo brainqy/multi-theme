@@ -1,0 +1,137 @@
+<section class="vh-100">
+  <div class="topnav">
+    <a class="ytms-logo" href="#">
+      <img src="../../../assets/img/YTMS_LOGO 1.png"></a>
+  </div>
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img alt="Sample image"
+             class="img-fluid" src="../assets/img/boy-verify-email-light.png">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form [formGroup]="signUpForm">
+          <div>
+            <p><strong>WELCOME TO BRAINQY TECHNOLOGIES 🚀 !!!</strong></p>
+          </div>
+          <br>
+          <div><p>Sign up with your organizational account</p></div>
+
+          <div class="form-group form-outline mb-4">
+            <label>Full Name</label>
+            <input
+              class="form-control form-control-lg"
+              formControlName="fullName"
+              type="text"
+            />
+            <div
+              *ngIf="
+            signUpForm.controls['fullName'].touched &&
+            signUpForm.controls['fullName'].invalid
+            "
+              style="color: red;font-size: small;"
+            >
+    <span *ngIf="signUpForm.controls['fullName'].hasError('required')"
+    >Name is required</span
+    >
+              <span *ngIf="signUpForm.controls['fullName'].hasError('pattern')"
+              >Name is not valid</span
+              >
+            </div>
+          </div>
+          <div class="form-group form-outline mb-4" *ngIf="!hideReferralField">
+            <label>Referral</label>
+            <input
+              class="form-control form-control-lg"
+              formControlName="ref"
+              type="text"
+            />
+          </div>
+
+          <div class="form-group form-outline mb-4">
+            <label>Email Address</label>
+            <input
+              class="form-control form-control-lg"
+              formControlName="emailAdd"
+              type="email"
+            />
+            <div
+              *ngIf="
+                signUpForm.controls['emailAdd'].touched &&
+                signUpForm.controls['emailAdd'].invalid
+                "
+              style="color: red;font-size: small;"
+            >
+        <span *ngIf="signUpForm.controls['emailAdd'].hasError('required')"
+        >Email ID is required</span
+        >
+              <span *ngIf="signUpForm.controls['emailAdd'].hasError('pattern')"
+              >Email ID is not valid</span
+              >
+            </div>
+          </div>
+          
+
+          <div class="form-group form-outline mb-4">
+            <label>Password</label>
+            <input
+              class="form-control form-control-lg"
+              formControlName="password"
+              type="password"
+            />
+
+            <div
+              *ngIf="
+                    signUpForm.controls['password'].touched &&
+                    signUpForm.controls['password'].invalid
+                    "
+              style="color: red;font-size: small;"
+            >
+            <span *ngIf="signUpForm.controls['password'].hasError('required')"
+            >Password is required</span
+            >
+            </div>
+          </div>
+
+
+          <div class="form-group form-outline mb-3">
+            <label>Confirm Password</label>
+            <input
+              class="form-control form-control-lg"
+              formControlName="confirmPassword"
+              type="password"
+            />
+            <div
+              *ngIf="
+            signUpForm.controls['confirmPassword'].touched &&
+            signUpForm.controls['confirmPassword'].invalid
+            "
+              style="color: red;font-size: small;"
+            >
+    <span *ngIf="signUpForm.controls['confirmPassword'].hasError('required')"
+    >Confirm password is required</span
+    >
+            </div>
+            <span *ngIf="validateSubmit() && !(signUpForm.controls['confirmPassword'].invalid)" style="color: red;font-size: small;">
+        Password and confirm password didn't match </span>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="agreePrivacyPolicy" formControlName="agreePrivacyPolicy">
+              <label class="form-check-label" for="agreePrivacyPolicy">I agree to privacy policy & terms</label>
+            </div>
+          </div>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button (click)="submit()" class="button" type="button">Sign up</button>
+
+          </div>
+          <div class="text-center text-lg-start mt-2 pt-2">
+            <p>Already have an account? <a href="login">Sign in instead</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,134 @@
+<div class="navigation-bar">
+    <ul>
+        <li>
+            <span class="sub-text">Resume Scan result</span>
+            <span><a href="#">Full Stack Developer</a></span>
+           
+        </li>
+        <div class="nav-right-large">
+            <span><a href="#" class="right">Share</a></span>
+            <span><a href="#" class="right" (click)="printwindows()">Print</a></span>  
+        </div>
+    </ul>
+</div>
+
+
+<div class="containerp">
+    <div class="sticky">
+        <div class="column">
+            <div class="progress-wrapper">
+                <h5>Match Rate</h5>
+                <circle-progress class="circle__progress"
+                    [percent]="progress"
+                    [animation]="true"
+                    [startFromZero]="true"
+                    [showInnerStroke]="true"
+                    [titleFontSize]="'28'"
+                    [titleFontWeight]="'900'"
+                    [unitsFontSize]="'28'"
+                    [unitsFontWeight]="'900'"
+                    [subtitle]="'Progress'"
+                    [subtitleFontSize]="'12'"
+                    [lazy]="true">
+                </circle-progress>
+                <div class="button-container">
+                    <button class="btn btn-primary">Upload & Rescan</button>
+                    <button class="btn btn-primary">Power Edit</button>
+                    <!-- Add more buttons as needed -->
+                </div>
+                <div class="progress-container" *ngFor="let item of allData">
+                    <div  class="progress-info">
+                        <span class="nav-left-small">{{ item.section }}</span>
+                        <span class="nav-right-small"><a href="#">{{ item.issues }} issues to fix</a></span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped active" role="progressbar"
+                            [style.width.%]="item.percentage">
+                            {{ item.percentage }}%
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- Left sidebar content goes here -->
+    </div>
+    <div class="scrollable">
+        <div class="grid-container">
+            
+            <div class="grid-item grid-item-large-xl">
+            
+                <div *ngFor="let samp of tada" class="circle-container">
+                    <div class="circle" [ngClass]="{ 'active': samp.isVerify }" (click)="toggleVerify(samp)">
+                      <ng-container *ngIf="!samp.isVerify; else tickIconTemplate">
+                        {{ samp.id }}
+                      </ng-container>
+                      <ng-template #tickIconTemplate>
+                        <i class="fas fa-check"></i>
+                      </ng-template>
+                    </div>
+                    <span>{{ samp.value }}</span>
+                  </div>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+            </div>
+            
+            
+
+
+            <div class="grid-item grid-item-large-xl" *ngFor="let part of allData">
+                <div class="content">
+                    <h3>{{ part.section }}</h3>
+                    <div>
+                        <table>
+                            <tbody>
+                                <ng-container *ngFor="let item of part.data">
+                                    <tr>
+                                        <td class="title-column">{{ item.title }}</td>
+                                        <td class="icon-column">
+                                            <ng-container *ngIf="item.infoIcon">
+                                                <i class="fas fa-info-circle text-info"></i>
+                                            </ng-container>
+                                        </td>
+                                        <td class="content-column">
+                                            <ul>
+                                                <li class="no-bullets" *ngFor="let contentItem of item.content">
+                                                    <ng-container *ngIf="contentItem.tickIcon; else crossIcon">
+                                                        <i class="fas fa-check-circle text-success"></i>
+                                                    </ng-container>
+                                                    <ng-template #crossIcon>
+                                                        <i class="fas fa-times-circle text-danger"></i>
+                                                    </ng-template>
+                                                    {{ contentItem.contentValue }}
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><hr></td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            <!-- Add more grid items with different sizes as needed -->
+            
+        </div>
+       
+    </div>
+</div>

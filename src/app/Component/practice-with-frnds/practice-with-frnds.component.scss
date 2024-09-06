@@ -1,0 +1,23 @@
+/* Grid container styling */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 1 by 2 grid */
+    gap: 20px; /* Padding between grid items */
+  }
+  
+  /* Grid item styling */
+  .grid-item {
+    padding: 20px; /* Padding for each grid item */
+   /* Example border for grid items */
+  }
+  
+  /* Pagination styling */
+  .pagination {
+    margin-top: 20px; /* Spacing between grid and pagination */
+    text-align: center; /* Center-align pagination */
+  }
+  img {
+    height: 300px; /* Adjust the value to set the desired height */
+  }
+
+  

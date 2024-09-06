@@ -1,0 +1,35 @@
+<div class="container-fluid g-0">
+  <app-requester-header (sideNavToggled)="sideNavStatus=$event;"></app-requester-header>
+  
+  <main>
+    <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus" class="black-border"></app-requester-sidebar>
+    
+    <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+      <div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <form [formGroup]="newPostForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label for="forum_title">Title:</label>
+                  <input type="text" id="forum_title" formControlName="forum_title" class="form-control">
+                  <div *ngIf="newPostForm?.get('forum_title')?.invalid && newPostForm?.get('forum_title')?.touched" class="text-danger">
+                    Title is required.
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="forum_body">Content:</label>
+                  <quill-editor formControlName="forum_body"></quill-editor>
+                  <div *ngIf="newPostForm?.get('forum_body')?.invalid && newPostForm?.get('forum_body')?.touched" class="text-danger">
+                    Content is required.
+                  </div>
+                </div>
+                <button class="btn btn-primary" type="submit" [disabled]="newPostForm.invalid">Create Post</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

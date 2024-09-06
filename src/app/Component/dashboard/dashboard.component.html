@@ -1,0 +1,161 @@
+<div class="container-fluid g-0">
+    <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+    </app-requester-header>
+  
+    <main>
+      <app-requester-sidebar [sideNavStatus]="sideNavStatus"
+                             class="black-border"></app-requester-sidebar>
+      <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+
+
+
+            <div class="dashboard-insights">
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="rectangle">
+                            <div class="header" (click)="openScannedReport()">
+                                <h5>Latest Resume Scan</h5>
+                                
+                                <div class="arrow">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                                  </svg></div>
+                            </div>
+                            <div class="content">
+                                <div class="column">
+                                    <circle-progress class="circle__progress"
+                                [percent]="finalProgress"
+                                [animation]="false"
+                                [startFromZero]="true"
+                                [showInnerStroke]="true"
+                                [titleFontSize]="'28'"
+                                [titleFontWeight]="'900'"
+                                [unitsFontSize]="'28'"
+                                [unitsFontWeight]="'900'"
+                                [subtitle]="'Progress'"
+                                [subtitleFontSize]="'12'"
+                                [lazy]="false"
+               ></circle-progress>
+                                </div><div class="column"> 
+                                    <p>Java Full Stack Developer</p>
+                                    <h5>  big-4-accounting-firms</h5>
+                                  </div>
+                                <div class="table-container">
+                                    <table>
+                                        <tr>
+                                            <td>Searchability</td>
+                                            <td>Skills Match</td>
+                                            <td>Recruiter Tips</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Formatting</td>
+                                            <td>Cover Letter</td>
+                                            <td></td> <!-- Empty cell for the last column -->
+                                        </tr>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="rectangle">
+                            <div class="header">
+                                <h5>LinkedIn Report</h5>
+                            </div>
+                            <div class="content">
+                                <p>Optimize your Linkedin profile to match your preferred job listings.</p>
+                                <div> <button class="btn btn-primary"> Optimize LinkedIn</button></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="rectangle">
+                            <div class="header">
+                                <h5>Incoming Interviews</h5>
+                            </div>
+                            <div>
+                                <ul class="left-align">
+                                    <li> Apr 12th @Amazon</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="progress<=0">
+
+
+                <div class="dashboard-insights">
+                    <div class="row mb-4">
+                      <div class="title">
+                        <h3>Create new Scan</h3>
+                        <button class="btn btn-primary">View sample</button>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="rectangle">
+                          <div class="header">
+                            <h2>Resume</h2>
+                          </div>
+                          <div class="content">
+                            <textarea rows="8" cols="50" placeholder="Enter your resume here" [(ngModel)]="resumeText"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                  
+                      <div class="col-md-6">
+                        <div class="rectangle">
+                          <div class="header">
+                            <h2>Job Description</h2>
+                          </div>
+                          <div class="content">
+                            <textarea rows="8" cols="50" placeholder="Enter your Job description here" [(ngModel)]="jobDescriptionText"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="titleEnd">
+                        <div class="button-container">
+                          <button class="btn btn-primary" (click)="resetScan()" [disabled]="!resumeText || !jobDescriptionText" >Reset</button>
+                          <button class="btn btn-primary" (click)="generateReport()" [disabled]="!resumeText || !jobDescriptionText">Scan</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+
+            </div>
+
+            <div class="progressor" style="text-align:center" *ngIf="progress>0">
+                <circle-progress class="circle__progress"
+                                 [percent]="progress"
+                                 [animation]="false"
+                                 [startFromZero]="true"
+                                 [showInnerStroke]="true"
+                                 [titleFontSize]="'28'"
+                                 [titleFontWeight]="'900'"
+                                 [unitsFontSize]="'28'"
+                                 [unitsFontWeight]="'900'"
+                                 [subtitle]="'Progress'"
+                                 [subtitleFontSize]="'12'"
+                                 [lazy]="false"
+                ></circle-progress>
+                <div *ngIf="progress > 0 && progress < 100" class="progress-message">
+                  We are Preparing analysis report. Please wait...
+                </div>
+                <div *ngIf="progress !== 100">
+                   
+                </div>
+               
+                <div *ngIf="progress === 100" class="completion-message">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Analysis Completed!</h2>
+                            <button class="btn btn-primary" (click)="checkReport()">Check Report</button>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+
+      </div></main></div>

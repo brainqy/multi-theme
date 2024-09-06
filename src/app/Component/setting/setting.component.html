@@ -1,0 +1,31 @@
+<div class="container-fluid g-0">
+    <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+    </app-requester-header>
+  
+    <main>
+      <app-requester-sidebar [sideNavStatus]="sideNavStatus"
+                             class="black-border"></app-requester-sidebar>
+      <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+        <div class="block-container">
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <select class="form-select" [(ngModel)]="selectedTheme" name="themeSelect">
+                        <option [value]="'light'" [selected]="selectedTheme === 'light'">Light Theme</option>
+                        <option [value]="'dark'" [selected]="selectedTheme === 'dark'">Dark Theme</option>
+                        <!-- Add more theme options if needed -->
+                    </select>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-primary" (click)="switchTheme()">Apply</button>
+                </li>
+            </ul>
+        </div>
+     
+        <div class="block-container">
+            <button class="btn btn-secondary"> My Availability</button>
+        </div>
+        
+        
+      </div>
+    </main>
+ </div>

@@ -1,0 +1,27 @@
+<div class="container-fluid g-0">
+    <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+    </app-requester-header>
+  
+    <main>
+      <app-requester-sidebar [sideNavStatus]="sideNavStatus"
+                             class="black-border"></app-requester-sidebar>
+      <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>
+                    Some of your friends are probably the best developers you know.
+        Get ready for technical interviews by practicing with them.
+                </h3>
+              <!-- Content for the first grid item -->
+            </div>
+            <div class="grid-item">
+                <div> <img src="assets/img/undraw_fingerprint_login_re_t71l.svg" alt="Friend Icon"></div>
+              <!-- Content for the second grid item -->
+            </div>
+          </div>
+          
+          <div class="pagination">
+            <button> Practice with friends</button>
+            <!-- Pagination controls -->
+          </div>
+      </div></main></div>

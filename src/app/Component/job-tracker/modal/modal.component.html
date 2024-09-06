@@ -1,0 +1,330 @@
+<form #jobForm="ngForm">
+    <div class="modal-content  custom-modal-width">
+      <div class="modal-body">
+        <div *ngIf="isEmptyJob(); else tabContent">
+          <!-- Show form without tabs when job is empty -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="company">Job listing</label>
+                <input type="text" class="form-control" id="jobListingUrl" [(ngModel)]="job.jobListingUrl" name="jobListingUrl" required>
+              </div>
+              <div class="form-group">
+                <label for="company">Company Name</label>
+                <input type="text" class="form-control" id="company" [(ngModel)]="job.company" name="company" required>
+              </div>
+              <div class="form-group">
+                <label for="jobRole">Job Title</label>
+                <input type="text" class="form-control" id="jobRole" [(ngModel)]="job.jobRole" name="jobRole" required>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="salary">Location</label>
+                    <input type="text" class="form-control" id="jobLocation" [(ngModel)]="job.jobLocation" name="jobLocation">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                      <select class="form-control" id="status" [(ngModel)]="job.status" name="status">
+                        <option value="" disabled selected>Select Interview Type</option>
+                        <option value="saved">Saved</option>
+                        <option value="applied">Applied</option>
+                        <option value="interview">Interview</option>
+                        <option value="offer">Offer</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="jobDescription">Job Description</label>
+                <textarea rows="8" class="form-control" id="jobDescription" [(ngModel)]="job.jobDescription" name="jobDescription" required></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="salary">Salary</label>
+                  <input type="text" class="form-control" id="salary" [(ngModel)]="job.salary" name="salary">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="dateSpecified">Date</label>
+                  <input type="date" class="form-control" id="dateSpecified" [(ngModel)]="job.dateSpecified" name="dateSpecified">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Close</button>
+            <button type="button" class="btn btn-primary" (click)="save(jobForm)">Save</button>
+      
+          </div>
+     
+        </div>
+        <ng-template #tabContent>
+          <!-- Show form with tabs when job is not empty -->
+         <div id="tabs" #tabs>
+
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link"  [ngClass]="{ 'active':activeTab==='jobDetails'}" data-toggle="tab"
+               (click)="search('jobDetails')">Job Details</a>
+          </li>
+      <li class="nav-item">
+        <a class="nav-link active"  [ngClass]="{ 'active':activeTab==='resume'}" (click)="search('resume')"
+           data-toggle="tab">Resume</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  [ngClass]="{ 'active':activeTab==='cover_letter'}" data-toggle="tab"
+           (click)="search('cover_letter')">Cover Letter</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  [ngClass]="{ 'active':activeTab==='interviews'}" data-toggle="tab"
+           (click)="search('interviews')">Interviews</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  [ngClass]="{ 'active':activeTab==='notes'}" data-toggle="tab"
+           (click)="search('notes')">Notes</a>
+      </li>
+    </ul>
+  
+    <div class="tab-content">
+        <div class="tab-pane" id="jobDetails" [ngClass]="{ 'active': activeTab === 'jobDetails' }">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="jobListingUrl">Job Listing</label>
+                        <input type="text" class="form-control" id="jobListingUrl" [(ngModel)]="job.jobListingUrl" name="jobListingUrl" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" class="form-control" id="company" [(ngModel)]="job.company" name="company" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jobRole">Job Title</label>
+                        <input type="text" class="form-control" id="jobRole" [(ngModel)]="job.jobRole" name="jobRole" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="jobLocation">Location</label>
+                                <input type="text" class="form-control" id="jobLocation" [(ngModel)]="job.jobLocation" name="jobLocation">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                              <select class="form-control" id="status" [(ngModel)]="job.status" name="status">
+                                <option value="" disabled selected>Select Interview Type</option>
+                                <option value="saved">Saved</option>
+                                <option value="applied">Applied</option>
+                                <option value="interview">Interview</option>
+                                <option value="offer">Offer</option>
+                              </select>
+                            </div>
+                          </div>
+                          
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="jobDescription">Job Description</label>
+                        <textarea rows="8" class="form-control" id="jobDescription" [(ngModel)]="job.jobDescription" name="jobDescription" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="salary">Salary</label>
+                        <input type="text" class="form-control" id="salary" [(ngModel)]="job.salary" name="salary">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="dateSpecified">Date</label>
+                        <input type="date" class="form-control" id="dateSpecified" [(ngModel)]="job.dateSpecified" name="dateSpecified">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col"><button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Close</button>
+                    </div>
+                    <div class="col"><button type="button" class="btn btn-primary" (click)="save(jobForm)">Save</button>
+                    </div>
+                </div>
+                   </div>
+        </div>
+        
+      <div class="tab-pane" id="resume" [ngClass]="{ 'active':activeTab==='resume'}">
+        <div class="resume-card">
+            <div>
+                <p>There is no resume associated with this opportunity yet. Click to scan one now!</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="8" placeholder="Copy and paste resume"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 text-right"> <!-- text-right class aligns buttons to the right -->
+                        <button class="btn btn-primary">Upload Resume</button>
+                    </div>
+                    <div class="col-md-3 text-right"> <!-- text-right class aligns buttons to the right -->
+                        <button class="btn btn-primary">Add Resume</button>
+                    </div>
+                    <div class="col-md-3 text-right"> <!-- text-right class aligns buttons to the right -->
+                        <button class="btn btn-primary">Clear </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+      
+    </div>
+      <div class="tab-pane" id="cover_letter" [ngClass]="{ 'active':activeTab==='cover_letter'}">
+        <div class="row cover-letter-content">
+            <div class="col-md-7 mb-3">
+                <textarea rows="15" cols="35" placeholder="Create a Cover Letter for this Job" class="form-control"></textarea>
+            </div>
+            <div class="col-md-5">
+                <div class="mb-3 p-3 border rounded bg-light">
+                    <h5>Create a Cover Letter</h5>
+                    <p>
+                        Create a cover letter for this job opportunity. Need inspiration? You can reference our cover letter writing guide for more tips.
+                    </p>
+                </div>
+                <div class="card p-3">
+                    <h5>Get a boost from AI</h5>
+                    <p>
+                        Upgrade to Jobscan Premium to automatically generate personalized cover letters for your job applications.
+                    </p>
+                    <button class="btn btn-primary">Upgrade</button>
+                </div>
+            </div>
+        </div>
+    </div>
+      <div class="tab-pane" id="interviews" [ngClass]="{ 'active':activeTab==='interviews'}">
+        <div class="row interview-content">
+            <div class="col-lg-8 interview-form">
+              <form [formGroup]="interviewForm">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <select class="form-control" formControlName="interviewType">
+                        <option value="" disabled selected>Interview Type</option>
+                        <option value="real_phone">Phone Interview</option>
+                        <option value="real_video">Video Interview</option>
+                        <option value="real_in_person">In Person Interview</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <input type="datetime-local" class="form-control" formControlName="day">
+                      </div>
+                    </div>
+                   
+                    
+                    
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="HR Name" formControlName="hrName">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="HR Phone" formControlName="mobileNumber">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="HR Email" formControlName="hrEmail">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Meeting Link" formControlName="meetingLink">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <textarea class="form-control" rows="4" placeholder="Description" formControlName="description"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <button class="btn btn-primary" (click)="saveInterview(job.id)">Save</button>
+              </form>
+            </div>
+            <div class="col-lg-4 interview-list">
+              <div class="card mb-3" *ngFor="let interview of interviews">
+                <div class="card-body">
+                  <p>{{interview.day}}</p>
+                  <p>Interview at {{interview.slot}}</p>
+                </div>
+              </div>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <p>Interview at 2:30 AM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        
+    </div>
+      <div class="tab-pane" id="notes" [ngClass]="{ 'active':activeTab==='notes'}">
+        <div class="tab-pane" id="notesTab" [ngClass]="{ 'active':activeTab==='notes'}">
+            <div class="row notes-content">
+                <div class="col-lg-8 notes-form">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea rows="10"   class="form-control"  placeholder="Notes"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Save</button>
+                </div>
+                <div class="col-lg-4 notes-list">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <p>Notes @ 2:30 AM</p>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <p>Notes @ 3:45 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    </div>
+  
+  </div>
+        </ng-template>
+      </div>
+   
+      <div class="modal-footer">
+            </div>
+    </div>
+  </form>

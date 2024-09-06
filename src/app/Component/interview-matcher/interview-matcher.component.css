@@ -1,0 +1,33 @@
+.circle__progress {
+    transition: stroke-dashoffset 0.5s ease; /* Smooth transition */
+  }
+  
+  .progress-message {
+    margin-top: 20px;
+  }
+  
+  .completion-message {
+    margin-top: 20px;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    margin: auto;
+  }
+  
+  .card-header {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .card-body {
+    text-align: left;
+  }
+  
+  .card-body button {
+    margin-top: 10px;
+  }
+  
