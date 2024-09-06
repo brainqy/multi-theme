@@ -43,6 +43,11 @@ export class RequesterHeaderComponent {
     }
   this.selectedLanguage = localStorage.getItem('selectedLanguage');
     this.languageService.setDefaultLanguage();
+    console.log("side nav is working");
+    const storedMenuStatus = localStorage.getItem('menuStatus');
+    if (storedMenuStatus) {
+      this.menuStatus = JSON.parse(storedMenuStatus); // Parse stored string back to boolean
+    }
   }
 
   sideNavToggle() {
