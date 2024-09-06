@@ -3,12 +3,12 @@
     <app-requester-header (sideNavToggled)="sideNavStatus=$event;"></app-requester-header>
     <main>
       
-      <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+      <div class="display-area p-3">
         <!-- Breadcrumb navigation -->
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="">Home</a></li>
-            <li class="breadcrumb-item"><a href="forum-list">Forum</a></li> <!-- Link to forum homepage -->
+            <li class="breadcrumb-item"><a href="blog">Blog</a></li> <!-- Link to forum homepage -->
             <li class="breadcrumb-item active" aria-current="page">{{ forumPost?.forum_title }}</li> <!-- Current forum post title -->
           </ol>
         </nav>

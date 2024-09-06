@@ -2,19 +2,19 @@
     
     <main>
       
-      <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+      <div  class="display-area">
   
         <!-- Breadcrumb navigation -->
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li> <!-- Link to forum homepage -->
-            <li class="breadcrumb-item active" aria-current="page">Forum</li> <!-- Current forum page -->
+            <li class="breadcrumb-item active" aria-current="page">Blog</li> <!-- Current forum page -->
           </ol>
         </nav>
   
         <!-- Forum content -->
         <div class="forum-container">
-          <h1>Welcome to the Forum!</h1>
+          <h1>Welcome to the Blog!</h1>
 
           <ul class="forum-post-list">
             <li *ngFor="let post of currentPagePosts" class="d-flex align-items-center mb-4 p-3 border rounded" (click)="openPost(post.forum_id)">
