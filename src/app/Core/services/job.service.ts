@@ -13,6 +13,7 @@ export interface Job {
   jobListingUrl?: string; // Make optional
   salary?: number; // Make optional
   dateSpecified?: string; // Make optional
+  scheduleUser?:any;
 }
 
 @Injectable({
@@ -34,15 +35,15 @@ export class JobService {
   updateJobStatus(job: Job): Observable<Job> {
     const url = `${this.baseUrl}/${job.id}`;
     console.log("in job service  id", job);
-    
+    console.log("in url service  id", url);
     return this.http.patch<Job>(url, job, this.httpOptions);
   }
   createJob(job: Job): Observable<Job> {
     return this.http.post<Job>(this.baseUrl, job, this.httpOptions);
   }
-  saveJob(job: Job): Observable<Job> {
-    console.log("posting ... ", job);
-    return this.http.post<Job>(`${this.baseUrl}/save`, job,this.httpOptions);
+  saveJob(jobDetails: Job): Observable<Job> {
+    console.log("posting ... ", jobDetails);
+    return this.http.post<Job>(`${this.baseUrl}/save`, jobDetails,this.httpOptions);
   }
 
   getJobById(id: number): Observable<any> {

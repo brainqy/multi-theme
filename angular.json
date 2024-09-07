@@ -77,7 +77,7 @@
               "fileReplacements": [
                 {
                   "replace": "src/app/Core/application_constant/environment.prod.ts",
-                  "with": "src/app/Core/application_constant/environments/environment.ts"
+                  "with": "src/app/Core/application_constant//environment.ts"
                 }
               ],
               "buildOptimizer": false,
