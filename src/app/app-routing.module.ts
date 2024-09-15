@@ -43,6 +43,8 @@ import { CommonSplitComponent } from './Component/front-pages/common-split/commo
 import { DemoComponent } from './Component/demo/demo.component';
 import { BlogComponent } from './Component/blog/blog.component';
 import { BlogPostComponent } from './Component/blog-post/blog-post.component';
+import { ProfileComponent } from './Component/profile/profile.component';
+import { AddbadgesComponent } from './Component/addbadges/addbadges.component';
 
 
 const routes: Routes = [
@@ -68,6 +70,12 @@ const routes: Routes = [
   },
   {
     path:"landing",component:LandingComponent
+  },
+  {
+    path:"badge",component:AddbadgesComponent
+  },
+  {
+    path:"profile",component:ProfileComponent
   },
   { path: 'common', component: CommonSplitComponent },
   { path: 'launch', component: WeRLaunchingComponent },

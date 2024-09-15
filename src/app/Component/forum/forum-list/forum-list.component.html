@@ -29,7 +29,7 @@
               <h5 class="mt-0 mb-1">{{ post.forum_title }}</h5>
               <p>{{ post.shortDescription }}</p>
             <div class="d-flex justify-content-between align-items-center">
-                 <small class="text-muted">By {{ post.author }} on {{ post.publishDate | date }}</small>
+                 <small class="text-muted">By {{ post.createdBy }} on {{ post.createdAt | date }}</small>
 
                 <i class="bi bi-chat-dots"></i>
               </div>

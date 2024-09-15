@@ -83,6 +83,7 @@ import { ProfileComponent } from './Component/profile/profile.component';
 import { ContactWhatsappComponent } from './Component/contact-whatsapp/contact-whatsapp.component';
 import { BlogComponent } from './Component/blog/blog.component';
 import { BlogPostComponent } from './Component/blog-post/blog-post.component';
+import { AddbadgesComponent } from './Component/addbadges/addbadges.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -149,7 +150,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProfileComponent,
     ContactWhatsappComponent,
     BlogComponent,
-    BlogPostComponent
+    BlogPostComponent,
+    AddbadgesComponent
   ],
   imports: [
     BrowserModule,

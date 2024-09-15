@@ -24,6 +24,8 @@ export class ForumListComponent {
   }
   loadForumPosts(): void {
     this.forumService.getAllForumPosts().subscribe((res: any) => {
+      console.log(" res",res);
+      
       this.forumPosts = res;
       this.totalPages = Math.ceil(this.forumPosts.length / this.pageSize);
       this.generatePageNumbers();

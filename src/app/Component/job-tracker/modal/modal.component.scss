@@ -1,8 +1,8 @@
 .modal-content {
     width: 700px; /* Set a max-width for larger screens */
     margin: auto; /* Center the modal */
-  }
-  .cover-letter-content {
+}
+.cover-letter-content {
     margin-top: 20px;
 }
 
@@ -89,7 +89,6 @@ textarea.form-control {
     width: 100%;
 }
 
-  
 .notes-content {
     margin-top: 20px;
     padding: 20px;
@@ -118,18 +117,77 @@ textarea.form-control {
     margin-top: 10px;
     width: 100%;
 }
-.resume-card{
+
+.resume-card {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-  @media (max-width: 576px) {
+
+/* Responsive Styles for Small Screens */
+@media (max-width: 576px) {
     .modal-content {
-      padding: 10px;
+        width: 100%;
+        padding: 1rem;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
     }
-  
-    .modal-head {
-      text-align: center;
+
+    .modal-footer {
+        text-align: center;
+        padding: 10px;
     }
-  }
-  
+
+    .cover-letter-content, 
+    .interview-content, 
+    .notes-content {
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    .interview-form, 
+    .notes-form {
+        padding: 10px;
+        border-radius: 4px;
+    }
+
+    .interview-list .card,
+    .notes-list .card {
+        margin-bottom: 10px;
+    }
+
+    .resume-card {
+        flex-direction: column;
+    }
+}
+
+/* Responsive Styles for Medium Screens (Tablets and Small Laptops) */
+@media (min-width: 577px) and (max-width: 991px) {
+    .modal-content {
+        width: 90%; /* Set a narrower width for medium screens */
+        padding: 1.5rem;
+    }
+
+    .modal-footer {
+        text-align: right;
+        padding: 12px;
+    }
+
+    .cover-letter-content, 
+    .interview-content, 
+    .notes-content {
+        padding: 15px;
+    }
+
+    .interview-form, 
+    .notes-form {
+        padding: 15px;
+        border-radius: 6px;
+    }
+
+    .resume-card {
+        justify-content: flex-start;
+        flex-direction: row;
+    }
+}
