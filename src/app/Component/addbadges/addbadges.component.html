@@ -45,30 +45,54 @@
         <div id="tabs" #tabs>
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link" [ngClass]="{ 'active': activeTab === 'all' }" data-toggle="tab" (click)="search('all')">All Badges</a>
-                  </li>
+                    <button class="nav-link" (click)="getAllBadges()">
+                        <a class="nav-link" [ngClass]="{ 'active': activeTab === 'all' }" data-toggle="tab" (click)="search('all')">All Badges</a>
+                    </button>
+                </li>
+                
               <li class="nav-item">
+                <button class="nav-link" (click)="getMyBadges()">
                 <a class="nav-link" [ngClass]="{ 'active': activeTab === 'myBadges' }" data-toggle="tab" (click)="search('myBadges')">My Badges</a>
-              </li>
+                </button>  
+            </li>
               <li class="nav-item">
+                <button class="nav-link">
                 <a class="nav-link" [ngClass]="{ 'active': activeTab === 'xp' }" data-toggle="tab" (click)="search('xp')">XP Based Badges</a>
-              </li>
+            </button>  
+            </li>
               <li class="nav-item">
+                <button class="nav-link">
                 <a class="nav-link" [ngClass]="{ 'active': activeTab === 'task' }" data-toggle="tab" (click)="search('task')">Task Completion Badges</a>
-              </li>
+            </button>
+        </li>
               <li class="nav-item">
+            <button class="nav-link">
                 <a class="nav-link" [ngClass]="{ 'active': activeTab === 'course' }" data-toggle="tab" (click)="search('course')">Course Completion Badges</a>
-              </li>
+            </button> 
+            </li>
               <li class="nav-item">
+            <button class="nav-link">
                 <a class="nav-link" [ngClass]="{ 'active': activeTab === 'time' }" data-toggle="tab" (click)="search('time')">Time Completion Badges</a>
-              </li>
+            </button>  
+            </li>
               
             </ul>
           
             <div class="tab-content">
               <div class="tab-pane" id="myBadges" [ngClass]="{ 'active': activeTab === 'myBadges' }">
                 <!-- Content for My Badges -->
-                My Badges
+                <h3 class="text-center w-100">My Badges</h3>
+                <div class="row">
+                  <div *ngFor="let badge of badges" class="col-6 col-md-3 mb-3">
+                    <div>{{ badge.name }}</div>
+                    <div class="badge-preview" [ngStyle]="{ 'background-color': badge.backgroundColor}">
+                        <i class="bi" [ngClass]="badge.icon"></i>
+                      </div>
+                      
+                    <div>{{ badge.rule }}</div>
+                    <div>Threshold: {{ badge.threshold }}</div>
+                  </div>
+                </div>
                
               </div>
               <div class="tab-pane" id="xp" [ngClass]="{ 'active': activeTab === 'xp' }">

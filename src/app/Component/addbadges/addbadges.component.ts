@@ -44,7 +44,12 @@ export class AddbadgesComponent implements OnInit{
   ngOnInit(): void {
     this.getAllBadges();
   }
-
+  getMyBadges(){
+    this.badgeService.getMyBadges().subscribe(
+      (badges: BadgeDto[]) => this.badges = badges,
+        error => console.error('Error loading badges', error)
+    );
+  }
   // Fetch all badges
   getAllBadges(): void {
     this.badgeService.getAllBadges().subscribe((data: BadgeDto[]) => {
