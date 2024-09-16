@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BadgeDto, BadgeService } from 'src/app/Core/services/badge.service';
+import Swal from 'sweetalert2';
 export enum BadgeRule {
   XP_BASED = 'XP_BASED',
   TASK_COMPLETION = 'TASK_COMPLETION',
@@ -65,7 +66,10 @@ export class AddbadgesComponent implements OnInit{
       const badgeData = this.badgeForm.value;
       this.badgeService.createBadge(badgeData).subscribe(response => {
         console.log('Badge created successfully!', response);
+        Swal.fire("Success","Badge created successfully!",'success');
       }, error => {
+        
+        Swal.fire("Error","Error creating badge!",'error');
         console.error('Error creating badge', error);
       });
     }
