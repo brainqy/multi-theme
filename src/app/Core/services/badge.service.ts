@@ -42,4 +42,12 @@ export class BadgeService {
   getBadgeByName(name: string): Observable<BadgeDto> {
     return this.http.get<BadgeDto>(`${this.apiUrl}/name/${name}`);
   }
+  //asign badges
+  assignEligibleBadges(userName: string): Observable<BadgeDto[]> {
+    return this.http.post<BadgeDto[]>(`${this.apiUrl}/assignEligible`, {});
+  }
+
+ getMyBadges(): Observable<BadgeDto[]> {
+    return this.http.get<BadgeDto[]>(`${this.apiUrl}/getMyBadges`);
+  }
 }

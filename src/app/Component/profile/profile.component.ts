@@ -35,11 +35,17 @@ export class ProfileComponent {
       this.streakNumber=this.authService.getStreak();
       this.userBalance=this.authService.getBalance();
     };
-    this.loadBadges();
+  
+    this.getMyBadge();
 }
 
 
-
+getMyBadge(){
+  this.badgeService.getMyBadges().subscribe(
+    (badges: BadgeDto[]) => this.badges = badges,
+      error => console.error('Error loading badges', error)
+  );
+}
 
 
   loadBadges(): void {
