@@ -1,19 +1,19 @@
-/* report-form.component.css */
-
 .report-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh; /* Adjust as needed */
+  padding: 20px; /* Added padding for smaller screens */
 }
 
 .report-card {
-  width: 30%;
-  height: 15%;
-   /* Example background color */
-  border-radius: 10px; /* Example border radius */
-  padding: 20px; /* Example padding */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Example box shadow */
+  width: 100%; /* Full width on small screens */
+  max-width: 400px; /* Max width for larger screens */
+  height: auto; /* Auto height to accommodate content */
+  background-color: white; /* Ensure background color */
+  border-radius: 10px; /* Border radius */
+  padding: 20px; /* Padding */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow */
 }
 
 /* Adjustments for form elements within report-card */
@@ -28,15 +28,16 @@
 .report-card input[type="text"],
 .report-card input[type="number"],
 .report-card textarea {
-  width: calc(100% - 20px);
+  width: 100%; /* Full width */
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 .report-card button[type="submit"] {
-  width: calc(100% - 20px);
+  width: 100%; /* Full width */
   padding: 10px;
   background-color: #007bff;
   color: white;
@@ -47,4 +48,25 @@
 
 .report-card button[type="submit"]:hover {
   background-color: #0056b3;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+  .report-card {
+    width: 90%; /* Use more width on smaller screens */
+    padding: 15px; /* Adjust padding */
+  }
+
+  .report-card input[type="text"],
+  .report-card input[type="number"],
+  .report-card textarea,
+  .report-card button[type="submit"] {
+    font-size: 16px; /* Increase font size for easier readability */
+  }
+}
+
+@media (max-width: 400px) {
+  .report-card {
+    padding: 10px; /* Further reduce padding */
+  }
 }
