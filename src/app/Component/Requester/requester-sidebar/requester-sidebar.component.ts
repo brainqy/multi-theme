@@ -15,13 +15,13 @@ export class RequesterSidebarComponent {
       icon: 'fas fa-home',
       link: '/requester-home'
     },
-   {
+ /*    {
       number: 2,
-      name: 'Dashboard',
+      name: 'Analytics',
       icon: 'fas fa-chart-line',
-      link: 'dashboard'
+      link: 'analytics'
     }, 
-     /* {
+    {
       number: 3,
       name: 'Schedule meeting',
       icon: 'fas fa-calendar-alt',

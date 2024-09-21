@@ -12,6 +12,9 @@ export class HelloService {
 
   constructor(private http: HttpClient) { }
   getHello(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/hello`);
+  }
+  getAllPosts(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/posts`);
   }
   getForum(forumId: number): Observable<any> {
