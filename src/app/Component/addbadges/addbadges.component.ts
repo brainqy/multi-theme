@@ -16,6 +16,7 @@ export enum BadgeRule {
 })
 export class AddbadgesComponent implements OnInit{
   badgeForm!: FormGroup;
+  sideNavStatus!:boolean;
   availableIcons = ['bi-fire', 'bi-star', 'bi-award', 'bi-gem']; // List of available Bootstrap icons
   activeTab = 'all';
   // Use the enum for the rules

@@ -1,4 +1,14 @@
-<div class="container">
+<div class="container-fluid g-0">
+  <app-dash-header></app-dash-header>
+  <main>
+    <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a>Badge</a></li> <!-- Link to forum homepage -->
+        </ol>
+      </nav>
     <div class="container">
         <h2>Create Badge</h2>
         <form [formGroup]="badgeForm" (ngSubmit)="onSubmit()">
@@ -130,7 +140,4 @@
           </div>
       </div>
       
-      
-
-  </div>
-  
+    </div></main></div>
