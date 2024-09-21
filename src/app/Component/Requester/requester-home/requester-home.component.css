@@ -1,3 +1,4 @@
+/* Base styles */
 .container {
   display: flex;
   height: 100vh;
@@ -85,3 +86,64 @@
   align-items: center;
 }
 
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+  /* Adjust columns for medium screens */
+  .left-column, .right-column {
+    flex: 20%; /* Make side columns wider */
+  }
+
+  .middle-column {
+    flex: 60%; /* Maintain middle column */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Stack columns on top of each other for smaller screens */
+  .container {
+    flex-direction: column;
+  }
+
+  .left-column, .right-column, .middle-column {
+    flex: 100%;
+    margin: 0;
+  }
+
+  .left-column, .right-column {
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .middle-column {
+    margin-bottom: 20px;
+  }
+  
+  .stat {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Adjustments for mobile screens */
+  .middle-column, .left-column, .right-column {
+    padding: 10px;
+  }
+
+  .banner-row img {
+    width: 100%;
+    height: auto; /* Ensure the image is responsive */
+  }
+
+  .recommendation-row, .upcoming-events-row {
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+
+  .numb {
+    font-size: 0.9rem; /* Adjust number size for small screens */
+  }
+
+  .bi-fire {
+    font-size: 1.2rem; /* Adjust icon size for small screens */
+  }
+}

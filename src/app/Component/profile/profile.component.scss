@@ -1,100 +1,153 @@
+/* Base styles */
+.container {
+  display: flex;
+  height: 100vh;
+}
 
-  
- 
-  
+.left-column, .middle-column, .right-column {
+  border-radius: 10px;
+}
 
-  
-  .container {
-    display: flex;
-    height: 100vh;
+.left-column {
+  flex: 15%;
+  background-color: #ccc;
+  margin-right: 1%;
+  padding: 20px;
+}
+
+.middle-column {
+  flex: 60%;
+  margin: 0 1%;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.right-column {
+  flex: 15%;
+  background-color: #ccc;
+  margin-left: 1%;
+  padding: 20px;
+}
+
+.recommendation-row, .upcoming-events-row {
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-row {
+  background-color: #e0e0e0;
+}
+
+.upcoming-events-row {
+  background-color: #f9f5f5;
+}
+
+.banner-row {
+  margin-bottom: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.banner-row img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.red-icon {
+  color: red; /* Customize the color as needed */
+}
+
+.fire-icons {
+  display: flex;
+}
+
+.bi-fire {
+  font-size: 1.5rem; /* Adjust size as needed */
+  margin-right: 5px; /* Adjust spacing between icons */
+}
+
+.numb {
+  font-size: 1.0rem; /* Adjust size as needed */
+  padding-bottom: -20px; /* Remove default margin */
+  font-weight: bold;
+  margin-left: -6px;
+  margin-right: 6px;
+}
+
+.stat {
+  background-color: #f0f0f0;
+  padding: 4px;
+  margin: 5px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+  /* Adjust columns for medium screens */
+  .left-column, .right-column {
+    flex: 20%; /* Make side columns wider */
   }
-  
-  .left-column, .middle-column, .right-column {
-    border-radius: 10px;
-  }
-  
-  .left-column {
-    flex: 15%;
-    background-color: #ccc;
-    margin-right: 1%;
-    padding: 20px;
-  }
-  
+
   .middle-column {
-    flex: 60%;
-    margin: 0 1%;
-    padding: 20px;
-    overflow-y: auto;
+    flex: 60%; /* Maintain middle column */
   }
-  
-  .right-column {
-    flex: 15%;
-    background-color: #ccc;
-    margin-left: 1%;
-    padding: 20px;
-  }
-  
-  .recommendation-row, .upcoming-events-row {
-    margin-bottom: 20px;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .recommendation-row {
-    background-color: #e0e0e0;
-  }
-  
-  .upcoming-events-row {
-    background-color: #f9f5f5;
-  }
-  
-  .banner-row {
-    margin-bottom: 20px;
-    border-radius: 20px;
-    overflow: hidden;
-  }
-  
-  .banner-row img {
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .red-icon {
-    color: red; /* Customize the color as needed */
-  }
-  .fire-icons {
-    display: flex;
-  }
-  
-  .bi-fire {
-    font-size: 1.5rem; /* Adjust size as needed */
-    margin-right: 5px; /* Adjust spacing between icons */
-  }
-  .numb {
-    font-size: 1.0rem; /* Adjust size as needed */
-    padding-bottom: -20px; /* Remove default margin */
-    font-weight: bold;
-    margin-left: -6px;
-    margin-right: 6px;
-  }
-  .stat{
-    background-color: #f0f0f0;
-    padding: 4px;
-    margin: 5px;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Stack columns on top of each other for smaller screens */
   .container {
-    max-width: 1200px;
-    margin: auto;
+    flex-direction: column;
+  }
+
+  .left-column, .right-column, .middle-column {
+    flex: 100%;
+    margin: 0;
+  }
+
+  .left-column, .right-column {
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .middle-column {
+    margin-bottom: 20px;
   }
   
-  .text-center {
+  .stat {
     text-align: center;
   }
+}
+
+@media screen and (max-width: 480px) {
+  /* Adjustments for mobile screens */
+  .middle-column, .left-column, .right-column {
+    padding: 10px;
+  }
+
+  .banner-row img {
+    width: 100%;
+    height: auto; /* Ensure the image is responsive */
+  }
+
+  .recommendation-row, .upcoming-events-row {
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+
+  .numb {
+    font-size: 0.9rem; /* Adjust number size for small screens */
+  }
+
+  .bi-fire {
+    font-size: 1.2rem; /* Adjust icon size for small screens */
+  }
+}
+
   .badge-container{
     background-color: #bdbcbc;
     padding: 10px;
