@@ -22,8 +22,14 @@ export class BlogComponent implements OnInit{
   ngOnInit(): void {
     this.loadForumPosts();
   }
-  loadForumPosts(): void {
+
+  getHello(): void {
     this.helloService.getHello().subscribe((res: any) => {
+      console.log("res",res);
+    });
+  }
+  loadForumPosts(): void {
+    this.helloService.getAllPosts().subscribe((res: any) => {
       console.log("res",res);
       
       this.forumPosts = res;
