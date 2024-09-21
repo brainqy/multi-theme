@@ -8,7 +8,7 @@ import { IcsRequest, TransactionService } from 'src/app/Core/services/transactio
 })
 export class TransactionsComponent {
   transactions: any;
-  sideNavStatus: boolean = false;
+  sideNavStatus: boolean = true;
   userBalance!: any;
    // Prepare the data required by the service
 

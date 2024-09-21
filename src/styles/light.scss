@@ -70,4 +70,138 @@ body {
   {
     background-color:  #005ba3;
   }
+  .side-nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 250px; /* Full width when expanded */
+    overflow-y: auto;
+    transition: width 0.3s ease; /* Smooth transition for width change */
+    border-right: 1px solid #ddd; /* Optional: Add a border to visualize the sidebar */
+    transition: width 1s linear, left 1s linear;
+  }
   
+  .side-nav-container.collapsed {
+    width: 60px; /* Narrow width when collapsed */
+  }
+  
+  .side-nav-content {
+    color: black;
+    margin: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .nav-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    height: 100%;
+    padding-top: 55px;
+  }
+  
+  .nav-list-item {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    justify-content: flex-start;
+    overflow: hidden;
+    transition: background-color 0.3s ease; /* Optional: smooth background color transition */
+  }
+  
+  .side-nav-container.collapsed .nav-list-item span {
+    display: none; /* Hide text labels when collapsed */
+  }
+  
+  .nav-list-item i {
+    font-size: 20px;
+    height: 25px;
+    width: 25px;
+    margin-right: 15px;
+    margin-left: 10px;
+    text-align: center;
+    line-height: 25px;
+  }
+  
+  .nav-list-item span {
+    text-transform: capitalize;
+    white-space: nowrap;
+  }
+  
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .side-nav-container.collapsed a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .display-area {
+    position: absolute;
+    left: 250px; /* Adjust based on sidebar width */
+    width: calc(100% - 250px);
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  
+  .display-area-shrink {
+    left: 60px; /* Adjust based on sidebar collapsed width */
+    width: calc(100% - 60px);
+  }
+  
+  .display-area-expand {
+    left: 250px; /* Adjust based on sidebar expanded width */
+    width: calc(100% - 250px);
+  }
+  
+  /* Small screens adjustments */
+@media screen and (max-width: 768px) {
+  app-requester-sidebar {
+    position: fixed;
+    width: 0;
+    left: -100px;
+    transition: width 0.3s ease, left 0.3s ease;
+    z-index: 3;
+  }
+
+  .sidebar-open app-requester-sidebar {
+    width: 250px;
+    left: 0;
+  }
+
+  .display-area {
+    left: 0;
+    width: 100%;
+  }
+  .display-area {
+    position: absolute;
+    left: 60px;
+    transition: width 1s linear, left 1s linear;
+  }
+//////fix this
+  .sidebar-open .display-area {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+
+  /* Toggle button for the sidebar */
+  .toggle-sidebar-btn {
+    position: fixed;
+    top: 4.5rem;
+    left: 10px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 4;
+  }
+}

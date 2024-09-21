@@ -3,9 +3,10 @@
   </app-requester-header>
 
   <main>
-    <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
-                           class="black-border"></app-requester-sidebar>
-    <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+    <app-requester-sidebar  [sideNavStatus]="sideNavStatus" [ngClass]="{'collapsed': !sideNavStatus}"
+                           class="black-border side-nav-container"></app-requester-sidebar>
+                           <div [ngClass]="{'display-area-expand': sideNavStatus, 'display-area-shrink': !sideNavStatus}"
+                           class="display-area p-3 flex-grow-1">
 
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
