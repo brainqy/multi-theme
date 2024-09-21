@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class RequesterHomeComponent {
 
-  sideNavStatus: boolean = true;
+  sideNavStatus: boolean = false;
   username: string = '';
   isLoggedIn = false;
   buttons: { toggled: boolean }[] = Array(8).fill({ toggled: false }).map(() => ({ toggled: false }));

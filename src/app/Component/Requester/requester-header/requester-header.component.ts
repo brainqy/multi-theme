@@ -45,8 +45,11 @@ export class RequesterHeaderComponent {
     this.languageService.setDefaultLanguage();
     console.log("side nav is working");
     const storedMenuStatus = localStorage.getItem('menuStatus');
+    console.log(" Stored menu status ",storedMenuStatus);
+    
     if (storedMenuStatus) {
       this.menuStatus = JSON.parse(storedMenuStatus); // Parse stored string back to boolean
+      this.sideNavToggled.emit(this.menuStatus);
     }
   }
 
