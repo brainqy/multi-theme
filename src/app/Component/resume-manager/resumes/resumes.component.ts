@@ -8,7 +8,7 @@ import { Resume, ResumeService } from 'src/app/Core/services/resume.service';
 })
 export class ResumesComponent {
   resumes: Resume[] = [];
-
+  sideNavStatus!:false;
   constructor(private resumeService: ResumeService) {}
 
   ngOnInit(): void {

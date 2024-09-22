@@ -8,6 +8,7 @@ import { ForumService } from 'src/app/Core/services/forum.service';
 })
 export class BookmarksComponent {
   bookmarks: any;
+  sideNavStatus!:false;
   constructor(private forumService : ForumService){
     this.loadBookmarked();
   }
