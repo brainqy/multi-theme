@@ -84,6 +84,7 @@ import { ContactWhatsappComponent } from './Component/contact-whatsapp/contact-w
 import { BlogComponent } from './Component/blog/blog.component';
 import { BlogPostComponent } from './Component/blog-post/blog-post.component';
 import { AddbadgesComponent } from './Component/addbadges/addbadges.component';
+import { ResumeFormComponent } from './Component/resume-form/resume-form.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -151,7 +152,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContactWhatsappComponent,
     BlogComponent,
     BlogPostComponent,
-    AddbadgesComponent
+    AddbadgesComponent,
+    ResumeFormComponent
   ],
   imports: [
     BrowserModule,
