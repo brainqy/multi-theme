@@ -1,0 +1,157 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li> <!-- Link to forum homepage -->
+      <li class="breadcrumb-item active" aria-current="page">Resume</li> <!-- Current forum page -->
+    </ol>
+  </nav>
+<div class="resume-upload-container">
+    <form [formGroup]="resumeForm" (ngSubmit)="onSubmit()" class="container">
+        <h3 class="text-center">Upload Resume</h3>
+        
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="applicantName">Name</label>
+            <input formControlName="applicantName" id="applicantName" class="form-control" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="email">Email</label>
+            <input formControlName="email" id="email" type="email" class="form-control" required>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="phone">Phone</label>
+            <input formControlName="phone" id="phone" class="form-control" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="address">Address</label>
+            <input formControlName="address" id="address" class="form-control">
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="city">City</label>
+            <input formControlName="city" id="city" class="form-control">
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="state">State</label>
+            <input formControlName="state" id="state" class="form-control">
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="country">Country</label>
+            <input formControlName="country" id="country" class="form-control">
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="postalCode">Postal Code</label>
+            <input formControlName="postalCode" id="postalCode" class="form-control">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="dateOfBirth">Date of Birth</label>
+            <input formControlName="dateOfBirth" id="dateOfBirth" type="date" class="form-control">
+          </div>
+        </div>
+      
+        <!-- Work Experiences -->
+        <div formArrayName="experiences" class="mb-3">
+          <h4>Work Experiences</h4>
+          <div *ngFor="let experience of experiences.controls; let i=index" [formGroupName]="i" class="row mb-3">
+            <div class="col-md-3">
+              <label for="jobTitle">Job Title</label>
+              <input formControlName="jobTitle" class="form-control">
+            </div>
+            <div class="col-md-3">
+              <label for="company">Company</label>
+              <input formControlName="company" class="form-control">
+            </div>
+            <div class="col-md-3">
+              <label for="startDate">Start Date</label>
+              <input formControlName="startDate" type="date" class="form-control">
+            </div>
+            <div class="col-md-3">
+              <label for="endDate">End Date</label>
+              <input formControlName="endDate" type="date" class="form-control">
+            </div>
+            <div class="col-12 d-flex justify-content-end">
+              <button (click)="removeExperience(i)" class="btn btn-danger btn-sm mt-2">Remove</button>
+            </div>
+          </div>
+          <button type="button" (click)="addExperience()" class="btn btn-secondary mb-3">Add Experience</button>
+        </div>
+      
+        <!-- Qualifications -->
+        <div formArrayName="qualifications" class="mb-3">
+          <h4>Qualifications</h4>
+          <div *ngFor="let qualification of qualifications.controls; let i=index" [formGroupName]="i" class="row mb-3">
+            <div class="col-md-6">
+              <label for="degree">Degree</label>
+              <input formControlName="degree" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label for="institution">Institution</label>
+              <input formControlName="institution" class="form-control">
+            </div>
+            <div class="col-12 d-flex justify-content-end">
+              <button (click)="removeQualification(i)" class="btn btn-danger btn-sm mt-2">Remove</button>
+            </div>
+          </div>
+          <button type="button" (click)="addQualification()" class="btn btn-secondary mb-3">Add Qualification</button>
+        </div>
+      
+        <!-- Certifications and Achievements -->
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="certifications">Certifications</label>
+            <textarea formControlName="certifications" class="form-control"></textarea>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="achievements">Achievements</label>
+            <textarea formControlName="achievements" class="form-control"></textarea>
+          </div>
+        </div>
+      
+        <!-- Social Links -->
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="linkedInUrl">LinkedIn URL</label>
+            <input formControlName="linkedInUrl" class="form-control">
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="githubUrl">GitHub URL</label>
+            <input formControlName="githubUrl" class="form-control">
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="portfolioUrl">Portfolio URL</label>
+            <input formControlName="portfolioUrl" class="form-control">
+          </div>
+        </div>
+      
+        <!-- References -->
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="referenceName">Reference Name</label>
+            <input formControlName="referenceName" class="form-control">
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="referenceEmail">Reference Email</label>
+            <input formControlName="referenceEmail" type="email" class="form-control">
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="referencePhone">Reference Phone</label>
+            <input formControlName="referencePhone" class="form-control">
+          </div>
+        </div>
+      
+        <!-- Submit Button -->
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary" [disabled]="!resumeForm.valid">Submit Resume</button>
+        </div>
+      </form>
+</div>
+
+
+  

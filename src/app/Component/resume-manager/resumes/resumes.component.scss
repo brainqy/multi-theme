@@ -1,0 +1,12 @@
+.btn-star {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: gray;
+    cursor: pointer;
+  }
+  
+  .btn-star.starred {
+    color: gold;
+  }
+  

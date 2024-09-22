@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResumeService } from 'src/app/Core/services/resume.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-resume-form',
@@ -119,6 +120,7 @@ export class ResumeFormComponent implements OnInit {
   
     this.resumeService.createResume(resumeData).subscribe(response => {
       console.log('Resume submitted successfully!', response);
+      Swal.fire("SUCCESS","Resume submitted successfully!",'success');
     }, error => {
       console.error('Error submitting resume:', error);
     });

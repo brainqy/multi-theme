@@ -1,0 +1,29 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li> <!-- Link to forum homepage -->
+      <li class="breadcrumb-item active" aria-current="page">Resume-List</li> <!-- Current forum page -->
+    </ol>
+  </nav>
+<div class="resume-upload-container">
+
+<div class="container mt-4">
+    <h2 class="text-center">Resume List</h2>
+    <div class="row">
+      <div class="col-md-6 mb-6" *ngFor="let resume of resumes">
+        <div class="card">
+          <div class="card-body">
+            <div class="col-1">
+                <!-- Star button -->
+                <button class="btn btn-star" [class.starred]="resume.starred" (click)="toggleStar(resume)">
+                  ★
+                </button>
+              </div>
+            <h5 class="card-title">{{ resume.applicantName }}</h5>
+            <p class="card-text">Email: {{ resume.email }}</p>
+            <a [routerLink]="['/resume', resume.id]" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

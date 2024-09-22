@@ -45,7 +45,8 @@ import { BlogComponent } from './Component/blog/blog.component';
 import { BlogPostComponent } from './Component/blog-post/blog-post.component';
 import { ProfileComponent } from './Component/profile/profile.component';
 import { AddbadgesComponent } from './Component/addbadges/addbadges.component';
-import { ResumeFormComponent } from './Component/resume-form/resume-form.component';
+import { ResumeFormComponent } from './Component/resume-manager/resume-form/resume-form.component';
+import { ResumesComponent } from './Component/resume-manager/resumes/resumes.component';
 
 
 const routes: Routes = [
@@ -74,6 +75,9 @@ const routes: Routes = [
   },
   {
     path:"resume",component:ResumeFormComponent
+  },
+  {
+    path:"resume-list",component:ResumesComponent
   },
   {
     path:"badge",component:AddbadgesComponent
