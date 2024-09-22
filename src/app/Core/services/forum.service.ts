@@ -1,13 +1,16 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from '../application_constant/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ForumService {
+
+
   private baseUrl=environment.baseUrl+environment.contextUrl+"/forum"
+  private bookmarkUrl=environment.baseUrl+environment.contextUrl+"/api/bookmarks"
 
 
   constructor(private http: HttpClient) { }
@@ -23,6 +26,25 @@ export class ForumService {
   deleteForum(forumId: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${forumId}`);
   }
+  saveAsStarred(postId: number): Observable<any> {
+    console.log("postID",postId);
+    
+    return this.http.put<any>(`${this.baseUrl}/${postId}/star`, {})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'An unknown error occurred!';
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred.
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // The backend returned an unsuccessful response code.
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
+  }
 
   getForum(forumId: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${forumId}`);
@@ -30,6 +52,9 @@ export class ForumService {
 
   getAllForumPosts(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/getAll`);
+  }
+  getBookmarkedPosts() : Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/getAllBookmarked`);
   }
 }
 

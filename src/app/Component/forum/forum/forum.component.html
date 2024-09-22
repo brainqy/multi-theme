@@ -16,10 +16,20 @@
         <!-- Forum content -->
         <div class="forum-container">
           <div *ngIf="forumPost">
-            <h2>{{ forumPost.forum_title }}</h2>
+            <div class="d-flex justify-content-between align-items-center">
+              <h2>{{ forumPost.forum_title }}</h2>
+              <button [ngClass]="isBookmarked ? 'btn btn-success' : 'btn btn-bg-danger'"
+        (click)="bookmarkPost(forumPost.forum_id)">
+  <i class="bi" [ngClass]="isBookmarked ? 'bi-bookmark' : 'bi-bookmark-fill'"></i>
+  {{ isBookmarked ? 'Bookmarked' : 'Bookmark' }}
+</button>
+
+      
+            </div>
             <div [innerHTML]="forumPost.forum_body"></div>
           </div>
         </div>
+        
       
       
         <!-- Comments -->

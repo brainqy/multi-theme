@@ -43,7 +43,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule, NgbModule ,NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common'; // Added import for locale data
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -86,6 +86,7 @@ import { BlogPostComponent } from './Component/blog-post/blog-post.component';
 import { AddbadgesComponent } from './Component/addbadges/addbadges.component';
 import { ResumeFormComponent } from './Component/resume-manager/resume-form/resume-form.component';
 import { ResumesComponent } from './Component/resume-manager/resumes/resumes.component';
+import { BookmarksComponent } from './Component/bookmarks/bookmarks.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -155,12 +156,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     BlogPostComponent,
     AddbadgesComponent,
     ResumeFormComponent,
-    ResumesComponent
+    ResumesComponent,
+    BookmarksComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    CommonModule, 
     NgbTimepickerModule,
     DragDropModule,
     NgbModule,

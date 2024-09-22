@@ -10,12 +10,13 @@ import { Forum, ForumService } from 'src/app/Core/services/forum.service';
 })
 export class ForumComponent {
 
+
   sideNavStatus:boolean=false;
   forumPost: any;
   forumId!: number;
   allReport!: any;
   uniqueTags!: Set<string>;
- 
+  isBookmarked: boolean = false;
   constructor(private route: ActivatedRoute, private forumService: ForumService,private reportService:ContentReportService ) { 
  
   }
@@ -29,6 +30,7 @@ export class ForumComponent {
       console.log(this.forumId); // Output: 2
       this.forumService.getForum(this.forumId).subscribe((res) => {
         this.forumPost = res;
+        this.isBookmarked = res.bookmarked;
         console.log(" post ", this.forumPost);
         
         // Extract unique tags from forumPost
@@ -42,6 +44,15 @@ export class ForumComponent {
   }
   deleteComment(comment:any){
 console.log("comment deleted ",comment);
+  }
+  bookmarkPost(postId: any) {
+    console.log("post id",postId);
+    
+    this.forumService.saveAsStarred(postId).subscribe(res=>{
+      console.log("res",res);
+      this.isBookmarked = res.bookmarked;
+      window.location.reload();
+    })
   }
   
   extractUniqueTags(): void {

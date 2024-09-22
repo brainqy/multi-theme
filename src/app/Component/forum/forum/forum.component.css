@@ -56,3 +56,11 @@
 .app-report-form {
   margin-top: 20px;
 }
+.btn {
+  background-color: #007bff; /* Customize the background color */
+  color: white; /* Customize the text color */
+}
+
+.btn i {
+  margin-right: 5px; /* Space between icon and text */
+}

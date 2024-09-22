@@ -47,6 +47,7 @@ import { ProfileComponent } from './Component/profile/profile.component';
 import { AddbadgesComponent } from './Component/addbadges/addbadges.component';
 import { ResumeFormComponent } from './Component/resume-manager/resume-form/resume-form.component';
 import { ResumesComponent } from './Component/resume-manager/resumes/resumes.component';
+import { BookmarksComponent } from './Component/bookmarks/bookmarks.component';
 
 
 const routes: Routes = [
@@ -75,6 +76,9 @@ const routes: Routes = [
   },
   {
     path:"resume",component:ResumeFormComponent
+  },
+  {
+    path:"bookmarks",component:BookmarksComponent
   },
   {
     path:"resume-list",component:ResumesComponent
