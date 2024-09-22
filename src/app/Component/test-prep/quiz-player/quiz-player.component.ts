@@ -7,6 +7,7 @@ import { QuizService } from 'src/app/Core/services/quiz.service';
   styleUrls: ['./quiz-player.component.scss']
 })
 export class QuizPlayerComponent {
+  sideNavStatus!:false;
   currentQuestionIndex = 0;
   questions: any[] = [
     { questionId:1,
