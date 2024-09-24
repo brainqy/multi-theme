@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { QuizService } from 'src/app/Core/services/quiz.service';
 
 @Component({
@@ -6,9 +6,8 @@ import { QuizService } from 'src/app/Core/services/quiz.service';
   templateUrl: './quiz-player.component.html',
   styleUrls: ['./quiz-player.component.scss']
 })
-export class QuizPlayerComponent {
+export class QuizPlayerComponent implements OnInit{
   sideNavStatus!:false;
-  currentQuestionIndex = 0;
   questions: any[] = [
     { questionId:1,
       question: 'What is 2 + 2?', 
@@ -38,36 +37,16 @@ export class QuizPlayerComponent {
     }
     // Add more questions here
   ];
-  selectedOptions: (number | null)[] = Array(this.questions.length).fill(null);
   allQuestionAnswers:any;
   allQ: any;
 constructor(private quizService:QuizService){
-this.getAllQuestions();
+
 }
-  handleOptionSelected(event: { questionIndex: number, option: string, correct: boolean }) {
-    const questionIndex = Number(event.questionIndex); // Parse questionIndex as number
-    this.selectedOptions[questionIndex] = this.getOptionIndex(event.option);
-    console.log(`Question ${questionIndex + 1}: Option ${event.option}`);
+  ngOnInit(): void {
+    this.getAllQuestions();
   }
-
-  private getOptionIndex(option: string): number {
-    const question = this.questions[this.currentQuestionIndex];
-    return question.options.findIndex((opt: any) => this.getOptionLetter(opt) === option);
-  }
-
-  private getOptionLetter(option: any): string {
-    return Object.keys(option)[0];
-  }
-
-  logQuestionOptions() {
-    console.log("Selected options for each question:");
-    this.questions.forEach((question, index) => {
-      const selectedOptionIndex = this.selectedOptions[index];
-      const selectedOption = selectedOptionIndex !== null ? this.getOptionLetter(question.options[selectedOptionIndex]) : 'Not selected';
-      console.log(`Question ${index + 1}: Option ${selectedOption}`);
-    });
-  }
-
+  selectedOptions: ([number, string] | null)[] = Array(this.questions.length).fill(null);
+  currentQuestionIndex = 0;
   moveToPreviousQuestion() {
     if (this.currentQuestionIndex > 0) {
       this.currentQuestionIndex--;
@@ -80,8 +59,58 @@ this.getAllQuestions();
     }
   }
 
+  handleOptionSelected(event: { questionIndex: number, option: string, correct: boolean }) {
+    const questionIndex = event.questionIndex;
+    const optionIndex = this.getOptionIndex(event.option); // Get option index
+
+    // Store the selected option as a tuple [index, optionLetter]
+    this.selectedOptions[questionIndex] = [optionIndex, event.option];
+
+    console.log(`Question ${questionIndex + 1}: Selected option letter ${event.option}`);
+  }
+
+
+
+
+  // Get the selected option index for current question
+  getSelectedOptionIndex(): number | null {
+    const selected = this.selectedOptions[this.currentQuestionIndex];
+    return selected ? selected[0] : null; // Return the option index or null
+  }
+
+ 
+
+
+  // Check if all questions have been answered
+
+
+
+  private getOptionIndex(option: string): number {
+    const question = this.questions[this.currentQuestionIndex];
+    return question.options.findIndex((opt: any) => this.getOptionLetter(opt) === option);
+  }
+
+  private getOptionLetter(option: any): string {
+    return Object.keys(option)[0];
+  }
+
+  // Check if all questions have been answered
+  allQuestionsAnswered(): boolean {
+    return Object.keys(this.selectedOptions).length === this.questions.length;
+  }
+
+
+/*   logQuestionOptions() {
+    console.log("Selected options for each question:");
+    this.questions.forEach((question, index) => {
+      const selectedOptionIndex = this.selectedOptions[index];
+      const selectedOption = selectedOptionIndex !== null ? this.getOptionLetter(question.options[selectedOptionIndex]) : 'Not selected';
+      console.log(`Question ${index + 1}: Option ${selectedOption}`);
+    });
+  } */
+
   submitQuiz() {
-    this.logQuestionOptions();
+    //this.logQuestionOptions();
   }
 
   getAllQuestions(){

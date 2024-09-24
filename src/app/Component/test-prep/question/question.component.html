@@ -1,23 +1,12 @@
-<!-- question.component.html -->
 <div>
-    <h3>{{ question.question }}</h3>
-   <!-- question.component.html -->
-<!-- question.component.html -->
-<div class="options-container">
-  <div 
-    *ngFor="let option of question.options; let i = index" 
-    class="option-circle" 
-    [class.selected]="i === selectedOptionIndex"
-    (click)="selectOption(i)">
-    <span class="option-letter">{{ getOptionLetter(option) }}</span>. {{ getOptionText(option) }}
+  <h3>{{ question.question }}</h3>
+  <div class="options-container">
+    <div 
+      *ngFor="let option of question.options; let i = index" 
+      class="option-circle" 
+      [class.selected]="i === selectedOptionIndex"
+      (click)="selectOption(i)">
+      <span class="option-letter">{{ getOptionLetter(option) }}</span>. {{ getOptionText(option) }}
+    </div>
   </div>
 </div>
-
-  
-      
-  </div>
-  <div>
-    <button (click)="previous.emit()">Previous</button>
-    <button (click)="next.emit()">Next</button>
-  </div>
-  

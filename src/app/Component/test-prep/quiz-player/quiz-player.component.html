@@ -13,18 +13,26 @@
   </nav>
 
 <!-- quiz-player.component.html -->
-<div class="quiz-container">
-    <app-question 
-      [question]="questions[currentQuestionIndex]" 
-      (previous)="moveToPreviousQuestion()" 
-      (next)="moveToNextQuestion()"
-      (optionSelected)="handleOptionSelected($event)">
-    </app-question>
-  
-    <div>
-      <button (click)="submitQuiz()">Submit</button>
-    </div>
-  </div>
+<div *ngIf="questions.length > 0">
+  <app-question
+    [question]="questions[currentQuestionIndex]"
+    [selectedOptionIndex]="getSelectedOptionIndex()"
+    [questionIndex]="currentQuestionIndex"
+    (optionSelected)="handleOptionSelected($event)"
+    (previous)="moveToPreviousQuestion()"
+    (next)="moveToNextQuestion()"
+  ></app-question>
+</div>
+
+
+
+
+<div>
+  <button [disabled]="currentQuestionIndex === 0" (click)="moveToPreviousQuestion()">Previous</button>
+  <button [disabled]="currentQuestionIndex === questions.length - 1" (click)="moveToNextQuestion()">Next</button>
+  <button [disabled]="!allQuestionsAnswered()" (click)="submitQuiz()">Submit</button>
+</div>
+
   
 
   <div>
