@@ -8,29 +8,25 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class QuestionComponent {
   @Input() question: any;
-  @Input() questionIndex!: number;
-  @Input() selectedOptionIndex!: number | null;  // Receive the selected option index from the parent
+  @Input() questionIndex!: number; // Current question index
+  @Input() selectedOptionIndex: number | null = null; // Currently selected option index
+  @Output() previous = new EventEmitter<void>();
+  @Output() next = new EventEmitter<void>();
+  @Output() optionSelected = new EventEmitter<{ questionIndex: number; option: string; correct: boolean }>();
 
-  @Output() optionSelected = new EventEmitter<{ questionIndex: number, option: string, correct: boolean }>();
-
-  // Select an option
   selectOption(index: number) {
-    this.selectedOptionIndex = index;
-
-    // Get the option letter (e.g., A, B, C)
+    this.selectedOptionIndex = index; // Update the selected option index
     const selectedOption = this.getOptionLetter(this.question.options[index]);
-    const isCorrect = selectedOption === this.question.correctAnswer;
-
-    // Emit the selected option letter (not the index)
+    const isCorrect = selectedOption === this.question.correctAnswer; // Check if selected option is correct
     this.optionSelected.emit({ questionIndex: this.questionIndex, option: selectedOption, correct: isCorrect });
   }
 
-  // Get the option letter (e.g., A, B, C)
   getOptionLetter(option: any): string {
-    return Object.keys(option)[0];
+    return Object.keys(option)[0]; // Get the letter of the option (A, B, C, etc.)
   }
 
-  // Get the option text (e.g., the actual option value)
   getOptionText(option: any): string {
-    return option[Object.keys(option)[0]];
-  }}
+    return option[this.getOptionLetter(option)]; // Get the text of the option
+  }
+
+}

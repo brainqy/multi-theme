@@ -45,8 +45,12 @@ constructor(private quizService:QuizService){
   ngOnInit(): void {
     this.getAllQuestions();
   }
-  selectedOptions: ([number, string] | null)[] = Array(this.questions.length).fill(null);
   currentQuestionIndex = 0;
+  selectedOptions: (number | null)[] = []; 
+
+  correctness: boolean[] = Array(this.questions.length).fill(false);
+  quizSubmitted = false;
+
   moveToPreviousQuestion() {
     if (this.currentQuestionIndex > 0) {
       this.currentQuestionIndex--;
@@ -59,59 +63,36 @@ constructor(private quizService:QuizService){
     }
   }
 
-  handleOptionSelected(event: { questionIndex: number, option: string, correct: boolean }) {
-    const questionIndex = event.questionIndex;
-    const optionIndex = this.getOptionIndex(event.option); // Get option index
-
-    // Store the selected option as a tuple [index, optionLetter]
-    this.selectedOptions[questionIndex] = [optionIndex, event.option];
-
-    console.log(`Question ${questionIndex + 1}: Selected option letter ${event.option}`);
+  handleOptionSelected(event: { questionIndex: number; option: string; correct: boolean }) {
+    const questionIndex = event.questionIndex; // Get the current question index
+    this.selectedOptions[questionIndex] = this.getOptionIndex(event.option); // Store only the index of the selected option
+    console.log(`Question ${questionIndex + 1}: Option ${event.option}`);
   }
 
-
-
-
-  // Get the selected option index for current question
-  getSelectedOptionIndex(): number | null {
-    const selected = this.selectedOptions[this.currentQuestionIndex];
-    return selected ? selected[0] : null; // Return the option index or null
+   getOptionIndex(option: string): number {
+    const question = this.questions[this.currentQuestionIndex]; // Get current question
+    return question.options.findIndex((opt: any) => this.getOptionLetter(opt) === option); // Find index of the selected option
   }
 
- 
-
-
-  // Check if all questions have been answered
-
-
-
-  private getOptionIndex(option: string): number {
-    const question = this.questions[this.currentQuestionIndex];
-    return question.options.findIndex((opt: any) => this.getOptionLetter(opt) === option);
+   getOptionLetter(option: any): string {
+    if (!option || typeof option !== 'object') {
+      return ''; // Return an empty string or handle the case as needed
+    }
+    const keys = Object.keys(option);
+    return keys.length > 0 ? keys[0] : ''; // Return the first key or an empty string
   }
-
-  private getOptionLetter(option: any): string {
-    return Object.keys(option)[0];
-  }
-
-  // Check if all questions have been answered
-  allQuestionsAnswered(): boolean {
-    return Object.keys(this.selectedOptions).length === this.questions.length;
-  }
+  
 
 
-/*   logQuestionOptions() {
-    console.log("Selected options for each question:");
-    this.questions.forEach((question, index) => {
-      const selectedOptionIndex = this.selectedOptions[index];
-      const selectedOption = selectedOptionIndex !== null ? this.getOptionLetter(question.options[selectedOptionIndex]) : 'Not selected';
-      console.log(`Question ${index + 1}: Option ${selectedOption}`);
-    });
-  } */
+  isSelectedOption(questionIndex: number, optionLetter: string): boolean {
+    const selected = this.selectedOptions[questionIndex]; // This should be of type number | null
+    return selected !== null && this.getOptionLetter(this.questions[questionIndex].options[selected]) === optionLetter;
+}
 
-  submitQuiz() {
-    //this.logQuestionOptions();
-  }
+isCorrectOption(questionIndex: number, optionLetter: string): boolean {
+    return this.questions[questionIndex].correctAnswer === optionLetter; // Assuming optionLetter is a string like 'A', 'B', etc.
+}
+
 
   getAllQuestions(){
 this.quizService.getQuestions().subscribe((data)=>{
@@ -120,4 +101,26 @@ console.log(" this.allQ ", this.allQ);
 
 })
   }
+  allQuestionsAnswered(): boolean {
+    return this.selectedOptions.length === this.questions.length && 
+           this.selectedOptions.every(option => option !== null);
+  }
+
+  // Submit the quiz
+  submitQuiz(): void {
+    const results = this.selectedOptions.map((selectedOption, index) => {
+      const question = this.questions[index];
+      const selectedLetter = selectedOption !== null ? this.getOptionLetter(question.options[selectedOption]) : null;
+      const isCorrect = selectedLetter === question.correctAnswer;
+      return {
+        question: question.question,
+        selectedAnswer: selectedLetter,
+        isCorrect,
+      };
+    });
+    this.quizSubmitted=true;
+    console.log("Quiz Results: ", results);
+    // Here, you can handle what to do with the results, such as displaying them or sending them to a server.
+  }
+
 }

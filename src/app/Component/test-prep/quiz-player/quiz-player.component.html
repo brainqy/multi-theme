@@ -12,45 +12,27 @@
            </ol>
   </nav>
 
-<!-- quiz-player.component.html -->
-<div *ngIf="questions.length > 0">
-  <app-question
-    [question]="questions[currentQuestionIndex]"
-    [selectedOptionIndex]="getSelectedOptionIndex()"
-    [questionIndex]="currentQuestionIndex"
-    (optionSelected)="handleOptionSelected($event)"
-    (previous)="moveToPreviousQuestion()"
-    (next)="moveToNextQuestion()"
-  ></app-question>
-</div>
-
-
-
-
-<div>
-  <button [disabled]="currentQuestionIndex === 0" (click)="moveToPreviousQuestion()">Previous</button>
-  <button [disabled]="currentQuestionIndex === questions.length - 1" (click)="moveToNextQuestion()">Next</button>
+  <div *ngFor="let question of questions; let index = index">
+    <h4>Question {{ index + 1 }}:</h4>
+    <app-question
+      [question]="question"
+      [questionIndex]="index"
+      [selectedOptionIndex]="selectedOptions[index]"
+      (previous)="moveToPreviousQuestion()"
+      (next)="moveToNextQuestion()"
+      (optionSelected)="handleOptionSelected($event)"
+    ></app-question>
+    
+    <div *ngIf="quizSubmitted">
+      <p *ngFor="let option of question.options; let i = index">
+        <span [ngClass]="{'correct': isCorrectOption(index, getOptionLetter(option)), 'wrong': isSelectedOption(index, getOptionLetter(option)) && !isCorrectOption(index, getOptionLetter(option))}">
+          {{ getOptionLetter(option) }}: {{ option[getOptionLetter(option)] }}
+        </span>
+      </p>
+    </div>
+  </div>
+  
   <button [disabled]="!allQuestionsAnswered()" (click)="submitQuiz()">Submit</button>
-</div>
-
   
 
-  <div>
-<div *ngFor="let question of allQ"> 
-    <div class="question-details">
-        <p>{{ question.questionType }} Question</p>
-        <h2><strong>Question:</strong> {{ question.question }}</h2>
-        <p><strong>Options:</strong></p>
-        <ul>
-          <li *ngFor="let option of question.options">{{ option }}</li>
-        </ul>
-        <p><strong>Answer:</strong> {{ question.answer }}</p>
-        <p><strong>Explanation:</strong> {{ question.explanation }}</p>
-        <p><strong>Tags:</strong> {{ question.tags.join(', ') }}</p>
-      </div>
-      
-
-</div>
-
-  </div>
 </div></div></main></div>
