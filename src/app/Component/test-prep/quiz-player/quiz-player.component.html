@@ -11,10 +11,9 @@
       <li class="breadcrumb-item"><a href="quiz-test">Quiz</a></li> <!-- Link to forum homepage -->
            </ol>
   </nav>
-
   <div>
     <!-- Display only the current question -->
-    <div *ngIf="questions.length > 0">
+    <div *ngIf="questions.length > 0 && !quizSubmitted">
       <h4>Question {{ currentQuestionIndex + 1 }}:</h4>
       
       <app-question
@@ -26,21 +25,33 @@
         (optionSelected)="handleOptionSelected($event)"
       ></app-question>
     </div>
-    
+  
     <!-- Navigation buttons -->
-    <div class="navigation-buttons">
+    <div class="navigation-buttons" *ngIf="!quizSubmitted">
       <button (click)="moveToPreviousQuestion()" [disabled]="currentQuestionIndex === 0">Previous</button>
       <button (click)="moveToNextQuestion()" [disabled]="currentQuestionIndex === questions.length - 1">Next</button>
     </div>
   
     <!-- Submit button -->
-    <div>
+    <div *ngIf="!quizSubmitted">
       <button [disabled]="!allQuestionsAnswered()" (click)="submitQuiz()">Submit</button>
     </div>
   
-    <!-- Show the results if the quiz is submitted -->
-    <div *ngIf="quizSubmitted">
-      <h3>Quiz Results:</h3>
+    <!-- Dashboard after quiz submission -->
+    <div *ngIf="quizSubmitted" class="dashboard">
+      <h3>Quiz Summary:</h3>
+      <div class="stats">
+        <p>Correct Answers: {{ correctCount }}</p>
+        <p>Wrong Answers: {{ wrongCount }}</p>
+        <p>Unattempted Questions: {{ unattemptedCount }}</p>
+      </div>
+       <!-- Time taken per question -->
+<!--     <div *ngFor="let question of questions; let index = index">
+      <h4>Question {{ index + 1 }}: {{ question.question }}</h4>
+      <p>Time taken: {{ timeTakenPerQuestion[index] }} seconds</p>
+    </div> -->
+  
+      <!-- Show the results for each question -->
       <div *ngFor="let question of questions; let index = index">
         <h4>Question {{ index + 1 }}: {{ question.question }}</h4>
         <p *ngFor="let option of question.options; let i = index">

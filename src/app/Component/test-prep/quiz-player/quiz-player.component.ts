@@ -8,6 +8,9 @@ import { QuizService } from 'src/app/Core/services/quiz.service';
 })
 export class QuizPlayerComponent implements OnInit{
   sideNavStatus!:false;
+  correctCount = 0;
+  wrongCount = 0;
+  unattemptedCount = 0;
   questions: any[] = [
     { questionId:1,
       question: 'What is 2 + 2?', 
@@ -40,7 +43,7 @@ export class QuizPlayerComponent implements OnInit{
   allQuestionAnswers:any;
   allQ: any;
 constructor(private quizService:QuizService){
-
+  this.resetTimeTracking();
 }
   ngOnInit(): void {
     this.getAllQuestions();
@@ -50,23 +53,30 @@ constructor(private quizService:QuizService){
 
   correctness: boolean[] = Array(this.questions.length).fill(false);
   quizSubmitted = false;
+// Time tracking
+questionStartTime: number[] = []; // Store start time for each question
+timeTakenPerQuestion: number[] = []; // Store time taken for each question in seconds
 
   moveToPreviousQuestion() {
+    this.recordTimeForCurrentQuestion();
     if (this.currentQuestionIndex > 0) {
       this.currentQuestionIndex--;
     }
+    this.startTimerForCurrentQuestion();
   }
 
   moveToNextQuestion() {
     if (this.currentQuestionIndex < this.questions.length - 1) {
       this.currentQuestionIndex++;
     }
+    this.startTimerForCurrentQuestion(); // Start timer for new question
   }
 
   handleOptionSelected(event: { questionIndex: number; option: string; correct: boolean }) {
     const questionIndex = event.questionIndex; // Get the current question index
     this.selectedOptions[questionIndex] = this.getOptionIndex(event.option); // Store only the index of the selected option
     console.log(`Question ${questionIndex + 1}: Option ${event.option}`);
+    this.startTimerForCurrentQuestion(); // Restart timer after selection
   }
 
    getOptionIndex(option: string): number {
@@ -108,19 +118,45 @@ console.log(" this.allQ ", this.allQ);
 
   // Submit the quiz
   submitQuiz(): void {
-    const results = this.selectedOptions.map((selectedOption, index) => {
-      const question = this.questions[index];
-      const selectedLetter = selectedOption !== null ? this.getOptionLetter(question.options[selectedOption]) : null;
-      const isCorrect = selectedLetter === question.correctAnswer;
-      return {
-        question: question.question,
-        selectedAnswer: selectedLetter,
-        isCorrect,
-      };
+    this.quizSubmitted = true;
+    this.recordTimeForCurrentQuestion();
+    // Reset counts
+    this.correctCount = 0;
+    this.wrongCount = 0;
+    this.unattemptedCount = 0;
+
+    // Calculate correct, wrong, and unattempted questions
+    this.questions.forEach((question, index) => {
+      const selectedOptionIndex = this.selectedOptions[index];
+      if (selectedOptionIndex === null || selectedOptionIndex === undefined) {
+        this.unattemptedCount++;
+      } else {
+        const selectedOptionLetter = this.getOptionLetter(question.options[selectedOptionIndex]);
+        if (selectedOptionLetter === question.correctAnswer) {
+          this.correctCount++;
+        } else {
+          this.wrongCount++;
+        }
+      }
     });
-    this.quizSubmitted=true;
-    console.log("Quiz Results: ", results);
-    // Here, you can handle what to do with the results, such as displaying them or sending them to a server.
+    console.log("Quiz Submitted. Correct: ", this.correctCount, "Wrong: ", this.wrongCount, "Unattempted: ", this.unattemptedCount);
+    console.log("Time taken per question (in seconds): ", this.timeTakenPerQuestion);
+      }
+  resetTimeTracking(): void {
+    this.questionStartTime = new Array(this.questions.length).fill(0); // Track the start time of each question
+    this.timeTakenPerQuestion = new Array(this.questions.length).fill(0); // Track the time taken for each question
   }
+// Start the timer for the current question
+startTimerForCurrentQuestion(): void {
+  this.questionStartTime[this.currentQuestionIndex] = Date.now();
+}
+
+// Record the time spent on the current question
+recordTimeForCurrentQuestion(): void {
+  const startTime = this.questionStartTime[this.currentQuestionIndex];
+  const timeSpent = (Date.now() - startTime) / 1000; // Time spent in seconds
+  this.timeTakenPerQuestion[this.currentQuestionIndex] += timeSpent;
+}
+
 
 }
