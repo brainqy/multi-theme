@@ -12,27 +12,49 @@
            </ol>
   </nav>
 
-  <div *ngFor="let question of questions; let index = index">
-    <h4>Question {{ index + 1 }}:</h4>
-    <app-question
-      [question]="question"
-      [questionIndex]="index"
-      [selectedOptionIndex]="selectedOptions[index]"
-      (previous)="moveToPreviousQuestion()"
-      (next)="moveToNextQuestion()"
-      (optionSelected)="handleOptionSelected($event)"
-    ></app-question>
+  <div>
+    <!-- Display only the current question -->
+    <div *ngIf="questions.length > 0">
+      <h4>Question {{ currentQuestionIndex + 1 }}:</h4>
+      
+      <app-question
+        [question]="questions[currentQuestionIndex]"
+        [questionIndex]="currentQuestionIndex"
+        [selectedOptionIndex]="selectedOptions[currentQuestionIndex]"
+        (previous)="moveToPreviousQuestion()"
+        (next)="moveToNextQuestion()"
+        (optionSelected)="handleOptionSelected($event)"
+      ></app-question>
+    </div>
     
+    <!-- Navigation buttons -->
+    <div class="navigation-buttons">
+      <button (click)="moveToPreviousQuestion()" [disabled]="currentQuestionIndex === 0">Previous</button>
+      <button (click)="moveToNextQuestion()" [disabled]="currentQuestionIndex === questions.length - 1">Next</button>
+    </div>
+  
+    <!-- Submit button -->
+    <div>
+      <button [disabled]="!allQuestionsAnswered()" (click)="submitQuiz()">Submit</button>
+    </div>
+  
+    <!-- Show the results if the quiz is submitted -->
     <div *ngIf="quizSubmitted">
-      <p *ngFor="let option of question.options; let i = index">
-        <span [ngClass]="{'correct': isCorrectOption(index, getOptionLetter(option)), 'wrong': isSelectedOption(index, getOptionLetter(option)) && !isCorrectOption(index, getOptionLetter(option))}">
-          {{ getOptionLetter(option) }}: {{ option[getOptionLetter(option)] }}
-        </span>
-      </p>
+      <h3>Quiz Results:</h3>
+      <div *ngFor="let question of questions; let index = index">
+        <h4>Question {{ index + 1 }}: {{ question.question }}</h4>
+        <p *ngFor="let option of question.options; let i = index">
+          <span [ngClass]="{
+              'correct': isCorrectOption(index, getOptionLetter(option)), 
+              'wrong': isSelectedOption(index, getOptionLetter(option)) && !isCorrectOption(index, getOptionLetter(option))
+            }">
+            {{ getOptionLetter(option) }}: {{ option[getOptionLetter(option)] }}
+          </span>
+        </p>
+      </div>
     </div>
   </div>
   
-  <button [disabled]="!allQuestionsAnswered()" (click)="submitQuiz()">Submit</button>
   
 
 </div></div></main></div>
