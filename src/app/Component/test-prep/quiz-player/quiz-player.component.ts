@@ -6,6 +6,7 @@ interface Section {
   correctAnswersCount: number; // Add this line
   wrongAnswersCount: number; // Add this line
   unattemptedCount: number; // Add this line
+  sectionIndex: number; // Add this property
 }
 interface Question{
   
@@ -48,6 +49,7 @@ export class QuizPlayerComponent implements OnInit{
       ], correctAnswersCount: 0, // Initialize count
       wrongAnswersCount: 0,   // Initialize count
       unattemptedCount: 0 ,    //
+      sectionIndex: 0, // Assign a section index
     },
     {
       section: 'Geography',
@@ -69,6 +71,7 @@ export class QuizPlayerComponent implements OnInit{
       correctAnswersCount: 0, // Initialize count
       wrongAnswersCount: 0,   // Initialize count
       unattemptedCount: 0 ,    //
+      sectionIndex: 1, // Assign a section index
     }
     // Add more sections here
   ];
@@ -143,6 +146,25 @@ export class QuizPlayerComponent implements OnInit{
     // Restart timer after selection
     this.startTimerForCurrentQuestion();
 }
+getStatistics(): { section: string; totalQuestions: number; correctAnswers: number; percentage: number }[] {
+  return this.sections.map((sectionData, sectionIndex) => { // Added sectionIndex here
+    const totalQuestions = sectionData.questions.length;
+    const correctAnswers = sectionData.questions.filter((q, questionIndex) => {
+      const selectedOption = this.selectedOptions[sectionIndex]?.[questionIndex]; // Use sectionIndex here
+      return selectedOption !== null && q.correctAnswer === this.getOptionLetter(selectedOption);
+    }).length;
+
+    const percentage = totalQuestions > 0 ? (correctAnswers / totalQuestions) * 100 : 0;
+
+    return {
+      section: sectionData.section,
+      totalQuestions,
+      correctAnswers,
+      percentage: parseFloat(percentage.toFixed(2)) // Keep two decimal places
+    };
+  });
+}
+
 
   
 
@@ -187,38 +209,43 @@ export class QuizPlayerComponent implements OnInit{
   submitQuiz(): void {
     this.quizSubmitted = true;
     this.recordTimeForCurrentQuestion();
-    // Reset counts
-    // Calculate correct, wrong, and unattempted questions
+  
+    // Reset counts for each section
     this.sections.forEach(section => {
       section.correctAnswersCount = 0; // Initialize
       section.wrongAnswersCount = 0; // Initialize
       section.unattemptedCount = 0; // Initialize
   
       section.questions.forEach(question => {
-       // Assuming this.selectedOptions[question.questionId] might return a number.
-       const userAnswer: string | null = this.selectedOptions[question.questionId]?.toString() || null;
-
-// Assuming questionId maps to selectedOptions
+        console.log("Question ",JSON.stringify(question));
+        
+        // Assuming selectedOptions is structured as an array or a map where questionId maps to selected options
+        const userAnswer: number | null = this.selectedOptions[section.sectionIndex]?.[question.questionId] ?? null;
+  
+        // Check the user's answer
         if (userAnswer === null) {
-          console.log("useranswer null ",userAnswer);
-          
+          console.log("User answer is null for question: ", question.questionId);
           section.unattemptedCount++; // If no answer is selected
-        } else if (userAnswer === question.correctAnswer) {
-          console.log("useranswer correct ",userAnswer);
-          
+        } else if (this.getOptionLetter(userAnswer) === question.correctAnswer) {
+          console.log("User answer is correct for question: ", question.questionId);
           section.correctAnswersCount++; // If the answer is correct
         } else {
-          console.log("useranswer wrong ",userAnswer);
+          console.log("User answer is wrong for question: ", question.questionId);
           section.wrongAnswersCount++; // If the answer is wrong
         }
       });
     });
-
-    console.log("Quiz Submitted. Correct: ", this.correctCount, "Wrong: ", this.wrongCount, "Unattempted: ", this.unattemptedCount);
+  
+    // Calculate overall counts
+    const totalCorrect = this.sections.reduce((acc, section) => acc + section.correctAnswersCount, 0);
+    const totalWrong = this.sections.reduce((acc, section) => acc + section.wrongAnswersCount, 0);
+    const totalUnattempted = this.sections.reduce((acc, section) => acc + section.unattemptedCount, 0);
+  
+    console.log("Quiz Submitted. Correct: ", totalCorrect, "Wrong: ", totalWrong, "Unattempted: ", totalUnattempted);
     console.log("Time taken per question (in seconds): ", this.timeTakenPerQuestion);
     console.log(this.sections);
   }
-
+  
   resetTimeTracking(): void {
     this.questionStartTime = new Array(this.currentSectionQuestions.length).fill(0); // Track the start time of each question
     this.timeTakenPerQuestion = new Array(this.currentSectionQuestions.length).fill(0); // Track the time taken for each question

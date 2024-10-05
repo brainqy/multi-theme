@@ -48,13 +48,15 @@
 
   <!-- Dashboard after quiz submission -->
   <div *ngIf="quizSubmitted" class="dashboard">
-    <h3>Quiz Summary:</h3>
-    <div class="stats">
-      <p>Correct Answers: {{ correctCount }}</p>
-      <p>Wrong Answers: {{ wrongCount }}</p>
-      <p>Unattempted Questions: {{ unattemptedCount }}</p>
+    <div *ngFor="let stat of getStatistics()">
+      <h3>{{ stat.section }}</h3>
+      <p>Total Questions: {{ stat.totalQuestions }}</p>
+      <p>Correct Answers: {{ stat.correctAnswers }}</p>
+      <p>Percentage: {{ stat.percentage }}%</p>
     </div>
-  
+    
+    <div *ngFor="let section of sections">
+      <h3>{{ section.section }}</h3>
     <!-- Show the results for each question -->
     <div *ngFor="let question of currentSectionQuestions; let index = index">
       <h4>Question {{ index + 1 }}: {{ question.question }}</h4>
@@ -65,22 +67,9 @@
         <span *ngIf="!isCorrectOption(index, getOptionLetter(option)) && isSelectedOption(currentSectionIndex, index, getOptionLetter(option))" class="wrong">(Wrong)</span>
       </p>
     </div>
+    </div>
   </div>
 </div>
-
-  
-    <!-- Dashboard after quiz submission -->
-    <div *ngIf="quizSubmitted" class="dashboard">
-      <h3>Quiz Summary:</h3>
-      <div class="stats">
-        <p>Correct Answers: {{ correctCount }}</p>
-        <p>Wrong Answers: {{ wrongCount }}</p>
-        <p>Unattempted Questions: {{ unattemptedCount }}</p>
-      </div>
-  
-      <!-- Show the results for each section -->
-
-    </div>
   </div>
   
   
