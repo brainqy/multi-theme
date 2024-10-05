@@ -1,5 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { QuizService } from 'src/app/Core/services/quiz.service';
+interface Section {
+  section: string;
+  questions: Question[];
+  correctAnswersCount: number; // Add this line
+  wrongAnswersCount: number; // Add this line
+  unattemptedCount: number; // Add this line
+}
+interface Question{
+  
+}
 
 @Component({
   selector: 'app-quiz-player',
@@ -8,111 +18,168 @@ import { QuizService } from 'src/app/Core/services/quiz.service';
 })
 export class QuizPlayerComponent implements OnInit{
   sideNavStatus!:false;
-  correctCount = 0;
+   correctCount = 0;
   wrongCount = 0;
   unattemptedCount = 0;
-  questions: any[] = [
-    { questionId:1,
-      question: 'What is 2 + 2?', 
-      options: [{A: '1'}, {B: '2'}, {C: '3'}, {D: '4'}], 
-      correctAnswer: 'D'
+
+  sections = [
+    {
+      section: 'Mathematics',
+      questions: [
+        {
+          questionId: 1,
+          question: 'What is 2 + 2?',
+          options: [{ A: '1' }, { B: '2' }, { C: '3' }, { D: '4' }],
+          correctAnswer: 'D'
+        },
+        {
+          questionId: 2,
+          question: 'What is 7 + 2?',
+          options: [{ A: '1' }, { B: '9' }, { C: '3' }, { D: '4' }],
+          correctAnswer: 'B'
+        },
+        {
+          questionId: 3,
+          question: 'What is 7 + 7?',
+          options: [{ A: '1' }, { B: '14' }, { C: '3' }, { D: '4' }],
+          correctAnswer: 'B'
+        }
+        // Add more math-related questions here
+      ], correctAnswersCount: 0, // Initialize count
+      wrongAnswersCount: 0,   // Initialize count
+      unattemptedCount: 0 ,    //
     },
-    { questionId:2,
-      question: 'What is the capital of France?', 
-      options: [{A: 'Paris'}, {B: 'London'}, {C: 'Rome'}, {D: 'Berlin'}], 
-      correctAnswer: 'A'
-    },
-    { questionId:3,
-      question: 'What is the powerhouse of the cell?', 
-      options: [{A: 'Nucleus'}, {B: 'Mitochondria'}, {C: 'Ribosome'}, {D: 'Endoplasmic reticulum'}], 
-      correctAnswer: 'B'
-    },
-    // Add more questions here
-    { questionId:4,
-      question: 'What is the chemical symbol for water?', 
-      options: [{A: 'H2O'}, {B: 'CO2'}, {C: 'NaCl'}, {D: 'O2'}], 
-      correctAnswer: 'A'
-    },
-    { questionId:5,
-      question: 'Who wrote "To Kill a Mockingbird"?', 
-      options: [{A: 'Harper Lee'}, {B: 'J.K. Rowling'}, {C: 'Stephen King'}, {D: 'Ernest Hemingway'}], 
-      correctAnswer: 'A'
+    {
+      section: 'Geography',
+      questions: [
+        {
+          questionId: 7,
+          question: 'What is the capital of France?',
+          options: [{ A: 'Paris' }, { B: 'London' }, { C: 'Rome' }, { D: 'Berlin' }],
+          correctAnswer: 'A'
+        },
+        {
+          questionId: 8,
+          question: 'What is the capital of India?',
+          options: [{ A: 'Delhi' }, { B: 'London' }, { C: 'Rome' }, { D: 'Mumbai' }],
+          correctAnswer: 'A'
+        }
+        // Add more geography-related questions here
+      ],
+      correctAnswersCount: 0, // Initialize count
+      wrongAnswersCount: 0,   // Initialize count
+      unattemptedCount: 0 ,    //
     }
-    // Add more questions here
+    // Add more sections here
   ];
-  allQuestionAnswers:any;
-  allQ: any;
-constructor(private quizService:QuizService){
-  this.resetTimeTracking();
-}
+
+  currentQuestionIndex = 0;
+  currentSectionIndex = 0;
+  
+  selectedOptions: (number | null)[][] = []; // Array of arrays to hold selected options for each section
+  quizSubmitted = false;
+
+  questionStartTime: number[] = []; // Store start time for each question
+  timeTakenPerQuestion: number[] = []; // Store time taken for each question in seconds
+
+  constructor(private quizService: QuizService) {
+    this.resetTimeTracking();
+  }
+
   ngOnInit(): void {
     this.getAllQuestions();
   }
-  currentQuestionIndex = 0;
-  selectedOptions: (number | null)[] = []; 
 
-  correctness: boolean[] = Array(this.questions.length).fill(false);
-  quizSubmitted = false;
-// Time tracking
-questionStartTime: number[] = []; // Store start time for each question
-timeTakenPerQuestion: number[] = []; // Store time taken for each question in seconds
+  get currentSectionQuestions() {
+    return this.sections[this.currentSectionIndex]?.questions || [];
+  }
 
   moveToPreviousQuestion() {
     this.recordTimeForCurrentQuestion();
     if (this.currentQuestionIndex > 0) {
       this.currentQuestionIndex--;
+    } else if (this.currentSectionIndex > 0) {
+      // Move to the last question of the previous section
+      this.currentSectionIndex--;
+      this.currentQuestionIndex = this.sections[this.currentSectionIndex].questions.length - 1;
     }
     this.startTimerForCurrentQuestion();
   }
 
   moveToNextQuestion() {
-    if (this.currentQuestionIndex < this.questions.length - 1) {
+    this.recordTimeForCurrentQuestion();
+    if (this.currentQuestionIndex < this.currentSectionQuestions.length - 1) {
       this.currentQuestionIndex++;
+    } else {
+      console.log("move to another section");
+      
+      this.moveToNextSection();
     }
     this.startTimerForCurrentQuestion(); // Start timer for new question
   }
-
-  handleOptionSelected(event: { questionIndex: number; option: string; correct: boolean }) {
-    const questionIndex = event.questionIndex; // Get the current question index
-    this.selectedOptions[questionIndex] = this.getOptionIndex(event.option); // Store only the index of the selected option
-    console.log(`Question ${questionIndex + 1}: Option ${event.option}`);
-    this.startTimerForCurrentQuestion(); // Restart timer after selection
+  moveToNextSection() {
+    this.recordTimeForCurrentQuestion(); // Record time for the current question
+    if (this.currentSectionIndex < this.sections.length - 1) {
+      this.currentSectionIndex++; // Move to the next section
+      this.currentQuestionIndex = 0; // Reset to the first question in the new section
+      this.resetTimeTracking(); // Reset the timing for the new section
+    } else {
+      // Handle the end of the quiz (e.g., submit quiz or show results)
+      this.submitQuiz(); // Example: Automatically submit when all sections are done
+    }
   }
+  
+  handleOptionSelected(event: { sectionIndex: number; questionIndex: number; option: string; correct: boolean }) {
+    const sectionIndex = event.sectionIndex;
+    const questionIndex = event.questionIndex;
+    const optionLabel = Object.keys(event.option)[0];
+    // Ensure that selectedOptions is initialized for the section
+    if (!this.selectedOptions[sectionIndex]) {
+      this.selectedOptions[sectionIndex] = [];
+    }
+    // Store only the index of the selected option for the specific section and question
+    this.selectedOptions[sectionIndex][questionIndex] = this.getOptionIndex(optionLabel);
+    console.log(`Section ${sectionIndex + 1}, Question ${questionIndex + 1}: Option ${optionLabel}`);
+    // Restart timer after selection
+    this.startTimerForCurrentQuestion();
+}
 
-   getOptionIndex(option: string): number {
-    const question = this.questions[this.currentQuestionIndex]; // Get current question
+  
+
+  getOptionIndex(option: string): number {
+    const question = this.currentSectionQuestions[this.currentQuestionIndex]; // Get current question
     return question.options.findIndex((opt: any) => this.getOptionLetter(opt) === option); // Find index of the selected option
   }
 
-   getOptionLetter(option: any): string {
+  getOptionLetter(option: any): string {
     if (!option || typeof option !== 'object') {
       return ''; // Return an empty string or handle the case as needed
     }
     const keys = Object.keys(option);
     return keys.length > 0 ? keys[0] : ''; // Return the first key or an empty string
   }
+
+  isSelectedOption(sectionIndex: number, questionIndex: number, optionLetter: string): boolean {
+    const selected = this.selectedOptions[sectionIndex]?.[questionIndex]; // Access the selected option for the section and question
+    return selected !== null && this.getOptionLetter(this.currentSectionQuestions[questionIndex].options[selected]) === optionLetter;
+}
+
   
 
-
-  isSelectedOption(questionIndex: number, optionLetter: string): boolean {
-    const selected = this.selectedOptions[questionIndex]; // This should be of type number | null
-    return selected !== null && this.getOptionLetter(this.questions[questionIndex].options[selected]) === optionLetter;
-}
-
-isCorrectOption(questionIndex: number, optionLetter: string): boolean {
-    return this.questions[questionIndex].correctAnswer === optionLetter; // Assuming optionLetter is a string like 'A', 'B', etc.
-}
-
-
-  getAllQuestions(){
-this.quizService.getQuestions().subscribe((data)=>{
-  this.allQ=data;
-console.log(" this.allQ ", this.allQ);
-
-})
+  isCorrectOption(questionIndex: number, optionLetter: string): boolean {
+    return this.currentSectionQuestions[questionIndex].correctAnswer === optionLetter; // Assuming optionLetter is a string like 'A', 'B', etc.
   }
+
+  getAllQuestions() {
+   
+      // Assuming data is structured like your sections
+      this.sections = this.sections; // Update sections with fetched data
+      console.log("Fetched Sections: ", this.sections);
+ 
+  }
+
   allQuestionsAnswered(): boolean {
-    return this.selectedOptions.length === this.questions.length && 
+    return this.selectedOptions.length === this.currentSectionQuestions.length && 
            this.selectedOptions.every(option => option !== null);
   }
 
@@ -121,42 +188,51 @@ console.log(" this.allQ ", this.allQ);
     this.quizSubmitted = true;
     this.recordTimeForCurrentQuestion();
     // Reset counts
-    this.correctCount = 0;
-    this.wrongCount = 0;
-    this.unattemptedCount = 0;
-
     // Calculate correct, wrong, and unattempted questions
-    this.questions.forEach((question, index) => {
-      const selectedOptionIndex = this.selectedOptions[index];
-      if (selectedOptionIndex === null || selectedOptionIndex === undefined) {
-        this.unattemptedCount++;
-      } else {
-        const selectedOptionLetter = this.getOptionLetter(question.options[selectedOptionIndex]);
-        if (selectedOptionLetter === question.correctAnswer) {
-          this.correctCount++;
+    this.sections.forEach(section => {
+      section.correctAnswersCount = 0; // Initialize
+      section.wrongAnswersCount = 0; // Initialize
+      section.unattemptedCount = 0; // Initialize
+  
+      section.questions.forEach(question => {
+       // Assuming this.selectedOptions[question.questionId] might return a number.
+       const userAnswer: string | null = this.selectedOptions[question.questionId]?.toString() || null;
+
+// Assuming questionId maps to selectedOptions
+        if (userAnswer === null) {
+          console.log("useranswer null ",userAnswer);
+          
+          section.unattemptedCount++; // If no answer is selected
+        } else if (userAnswer === question.correctAnswer) {
+          console.log("useranswer correct ",userAnswer);
+          
+          section.correctAnswersCount++; // If the answer is correct
         } else {
-          this.wrongCount++;
+          console.log("useranswer wrong ",userAnswer);
+          section.wrongAnswersCount++; // If the answer is wrong
         }
-      }
+      });
     });
+
     console.log("Quiz Submitted. Correct: ", this.correctCount, "Wrong: ", this.wrongCount, "Unattempted: ", this.unattemptedCount);
     console.log("Time taken per question (in seconds): ", this.timeTakenPerQuestion);
-      }
-  resetTimeTracking(): void {
-    this.questionStartTime = new Array(this.questions.length).fill(0); // Track the start time of each question
-    this.timeTakenPerQuestion = new Array(this.questions.length).fill(0); // Track the time taken for each question
+    console.log(this.sections);
   }
-// Start the timer for the current question
-startTimerForCurrentQuestion(): void {
-  this.questionStartTime[this.currentQuestionIndex] = Date.now();
-}
 
-// Record the time spent on the current question
-recordTimeForCurrentQuestion(): void {
-  const startTime = this.questionStartTime[this.currentQuestionIndex];
-  const timeSpent = (Date.now() - startTime) / 1000; // Time spent in seconds
-  this.timeTakenPerQuestion[this.currentQuestionIndex] += timeSpent;
-}
+  resetTimeTracking(): void {
+    this.questionStartTime = new Array(this.currentSectionQuestions.length).fill(0); // Track the start time of each question
+    this.timeTakenPerQuestion = new Array(this.currentSectionQuestions.length).fill(0); // Track the time taken for each question
+  }
 
+  // Start the timer for the current question
+  startTimerForCurrentQuestion(): void {
+    this.questionStartTime[this.currentQuestionIndex] = Date.now();
+  }
 
+  // Record the time spent on the current question
+  recordTimeForCurrentQuestion(): void {
+    const startTime = this.questionStartTime[this.currentQuestionIndex];
+    const timeSpent = (Date.now() - startTime) / 1000; // Time spent in seconds
+    this.timeTakenPerQuestion[this.currentQuestionIndex] += timeSpent;
+  }
 }
