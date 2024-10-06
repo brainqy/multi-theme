@@ -62,7 +62,7 @@
     </div>
     
     
-    <div *ngFor="let question of allQuestions; let index = index">
+    <div *ngFor="let question of allQuestions; let index = index" class="question-container">
       <!-- Display section name if needed -->
       <h3>Q {{ index + 1 }}: {{ question.question }}</h3>
     

@@ -1,3 +1,15 @@
+.question-container {
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Padding inside the container */
+    margin: 10px 0; /* Margin between questions */
+    background-color: #f9f9f9; /* Light background color */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .question-container:hover {
+    background-color: #e9e9e9; /* Darker background on hover */
+  }
 .card {
     border: 1px solid #e0e0e0; /* Add a border to the card */
     border-radius: 5px; /* Rounded corners */
@@ -104,6 +116,7 @@
     background-color: #f9f9f9; /* Light gray background */
     font-size: 0.9rem;      /* Slightly smaller font size */
     color: #333;            /* Darker text color */
-    border-radius: 4px;     /* Rounded corners */
+    border-radius: 4px; 
+    font-style: italic;    /* Rounded corners */
   }
   
