@@ -13,7 +13,7 @@
   </nav>
   <div>
 <div>
-<h2 *ngIf="sections.length > 0">Section: {{ sections[currentSectionIndex].section }}</h2>
+<h2 *ngIf="sections.length > 0  && !quizSubmitted">Section: {{ sections[currentSectionIndex].section }}</h2>
 
 
   <!-- Display only the current question in the current section -->
@@ -44,46 +44,47 @@
   <div *ngIf="!quizSubmitted">
     <button  (click)="submitQuiz()">Submit</button>
   </div>
-  
-
   <!-- Dashboard after quiz submission -->
-  <div *ngIf="quizSubmitted" class="dashboard">
-    <div class="row">
-      <div class="col-md-4 mb-3" *ngFor="let stat of getStatistics()">
-        <div class="card">
-          <div class="card-body">
-            <h3 class="card-title">{{ stat.section }}</h3>
-            <p class="card-text">Total Questions: {{ stat.totalQuestions }}</p>
-            <p class="card-text">Correct Answers: {{ stat.correctAnswers }}</p>
-            <p class="card-text">Percentage: {{ stat.percentage }}%</p>
-          </div>
+</div>
+<div *ngIf="quizSubmitted" class="dashboard">
+  <h2>Result Analysis</h2>
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let stat of getStatistics()">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">{{ stat.section }}</h3>
+          <p class="card-text">Total Questions: {{ stat.totalQuestions }}</p>
+          <p class="card-text">Correct Answers: {{ stat.correctAnswers }}</p>
+          <p class="card-text">Unattempted Questions: {{ stat.unattemptedQuestions }}</p>
+          <p class="card-text">Percentage: {{ stat.percentage }}%</p>
         </div>
-      </div>
-    </div>
-    
-    
-    <div *ngFor="let question of allQuestions; let index = index" class="question-container">
-      <!-- Display section name if needed -->
-      <h3>Q {{ index + 1 }}: {{ question.question }}</h3>
-    
-      <!-- Loop through the options for the current question -->
-      <div class="options-container">
-        <div *ngFor="let option of question.options" class="option-circle"
-             [ngClass]="{
-               'selected': isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)),
-               'correct': isCorrectOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)) && isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)),
-               'wrong': !isCorrectOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)) && isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option))
-             }">
-          <ng-container *ngIf="getOptionLetter(option) as optionLetter">
-            <!-- Display option letter inside a circle -->
-            <span class="option-letter">{{ optionLetter }}</span>
-            <span>{{ getOptionValue(option, optionLetter) }}</span>
-          </ng-container>
-        </div>
-        <p class="explanation" *ngIf="question.explaination">Explaination: {{ question?.explaination }}</p>
       </div>
     </div>
   </div>
+  
+  
+  <div *ngFor="let question of allQuestions; let index = index" class="question-container">
+    <!-- Display section name if needed -->
+    <h3>Q {{ index + 1 }}: {{ question.question }}</h3>
+  
+    <!-- Loop through the options for the current question -->
+    <div class="options-container">
+      <div *ngFor="let option of question.options" class="option-circle"
+           [ngClass]="{
+             'selected': isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)),
+             'correct': isCorrectOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)) && isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)),
+             'wrong': !isCorrectOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)) && isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option))
+           }">
+        <ng-container *ngIf="getOptionLetter(option) as optionLetter">
+          <!-- Display option letter inside a circle -->
+          <span class="option-letter">{{ optionLetter }}</span>
+          <span>{{ getOptionValue(option, optionLetter) }}</span>
+        </ng-container>
+      </div>
+      <p class="explanation" *ngIf="question.explaination">Explaination: {{ question?.explaination }}</p>
+    </div>
+  </div>
+
 </div>
   </div>
   

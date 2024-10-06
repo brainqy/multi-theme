@@ -163,25 +163,33 @@ export class QuizPlayerComponent implements OnInit{
     console.log("selected options ",JSON.stringify(this.sections));
     this.startTimerForCurrentQuestion();
 }
-getStatistics(): { section: string; totalQuestions: number; correctAnswers: number; percentage: number }[] {
+getStatistics(): { section: string; totalQuestions: number; correctAnswers: number; unattemptedQuestions: number; percentage: number }[] {
   return this.sections.map((sectionData) => {
     const totalQuestions = sectionData.questions.length;
 
+    // Count correct answers
     const correctAnswers = sectionData.questions.filter((question) => {
-      // Compare the selectedAnswer with the correctAnswer
       return question.selectedAnswer && question.selectedAnswer === question.correctAnswer;
     }).length;
 
+    // Count unattempted questions
+    const unattemptedQuestions = sectionData.questions.filter((question) => {
+      return question.selectedAnswer === undefined || question.selectedAnswer === null;
+    }).length;
+
+    // Calculate the percentage of correct answers
     const percentage = totalQuestions > 0 ? (correctAnswers / totalQuestions) * 100 : 0;
 
     return {
       section: sectionData.section,
       totalQuestions,
       correctAnswers,
+      unattemptedQuestions, // Include unattempted questions in the return value
       percentage: parseFloat(percentage.toFixed(2)) // Keep two decimal places
     };
   });
 }
+
 
 
 
