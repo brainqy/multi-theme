@@ -25,4 +25,50 @@
   .wrong {
     color: red;
   }
+  /* question.component.css */
+.options-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .option-circle {
+    display: flex; /* Flexbox for layout */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 10px; /* Space between options */
+  }
+  
+  .option-letter {
+    width: 30px; /* Circle size */
+    height: 30px; /* Circle size */
+    border-radius: 50%; /* Circular shape */
+    background-color: #fff; /* Circle background */
+    border: 2px solid #000; /* Circle border */
+    display: inline-flex; /* Inline flex to center text */
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center text vertically */
+    font-weight: bold; /* Bold text */
+    margin-right: 10px; /* Space between letter and text */
+  }
+  
+  /* Styles for the selected option */
+  .option-circle.selected .option-letter {
+    background-color: #00f; /* Blue background for selected */
+    color: #fff; /* White text for selected */
+  }
+  
+  /* Styles for correct and wrong answers */
+  .option-circle.correct .option-letter {
+    background-color: green; /* Green background for correct */
+    color: #fff; /* White text for correct */
+  }
+  
+  .option-circle.wrong .option-letter {
+    background-color: red; /* Red background for wrong */
+    color: #fff; /* White text for wrong */
+  }
+  
+  /* Optionally add hover effects */
+  .option-circle:hover {
+    background-color: #f0f0f0; /* Light grey background on hover */
+  }
   

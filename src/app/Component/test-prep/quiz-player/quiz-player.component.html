@@ -60,17 +60,21 @@
       <h3>{{ question.section }} - Question {{ index + 1 }}: {{ question.question }}</h3>
     
       <!-- Loop through the options for the current question -->
-      <div *ngFor="let option of question.options">
-        <ng-container *ngIf="getOptionLetter(option) as optionLetter">
-          <!-- Display option letter and value -->
-          <span>{{ optionLetter }}. {{ getOptionValue(option, optionLetter) }}</span>
-    
-          <!-- Show selected, correct, or wrong status based on the user's answer -->
-          <span *ngIf="isSelectedOption(question.sectionIndex, question.questionIndex, optionLetter)" class="selected">(Selected)</span>
-          <span *ngIf="isCorrectOption(question.sectionIndex, question.questionIndex, optionLetter)" class="correct">(Correct)</span>
-          <span *ngIf="!isCorrectOption(question.sectionIndex, question.questionIndex, optionLetter) && isSelectedOption(question.sectionIndex, question.questionIndex, optionLetter)" class="wrong">(Wrong)</span>
-        </ng-container>
+      <div class="options-container">
+        <div *ngFor="let option of question.options" class="option-circle"
+             [ngClass]="{
+               'selected': isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)),
+               'correct': isCorrectOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)) && isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)),
+               'wrong': !isCorrectOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)) && isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option))
+             }">
+          <ng-container *ngIf="getOptionLetter(option) as optionLetter">
+            <!-- Display option letter inside a circle -->
+            <span class="option-letter">{{ optionLetter }}</span>
+            <span>{{ getOptionValue(option, optionLetter) }}</span>
+          </ng-container>
+        </div>
       </div>
+      
     </div>
     
   </div>
