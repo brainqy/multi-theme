@@ -6,7 +6,7 @@
       class="option-circle" 
       [class.selected]="i === selectedOptionIndex" 
       (click)="selectOption(question.options[i],question.questionId)">
-      <span class="option-letter">{{ getOptionLetter(option) }}</span>. {{ getOptionText(option) }}
+      <span class="option-letter">{{ getOptionLetter(option) }}</span> {{ getOptionText(option) }}
     </div>
   </div>
   

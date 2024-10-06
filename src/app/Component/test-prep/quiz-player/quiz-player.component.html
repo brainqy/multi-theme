@@ -1,79 +1,96 @@
-
-<div class="quiz-container">
-<div>
-<h2 *ngIf="sections.length > 0  && !quizSubmitted">Section: {{ sections[currentSectionIndex].section }}</h2>
-
-
-  <!-- Display only the current question in the current section -->
-  <div *ngIf="currentSectionQuestions.length > 0 && !quizSubmitted">
-    <h4>Question {{ currentQuestionIndex + 1 }}:</h4>
-    
-    <app-question
-    [sectionIndex]="currentSectionIndex"
-      [question]="currentSectionQuestions[currentQuestionIndex]"
-      [questionIndex]="currentQuestionIndex"
-      [selectedOptionIndex]="selectedOptions[currentSectionIndex]?.[currentQuestionIndex] ?? null"
-      (previous)="moveToPreviousQuestion()"
-      (next)="moveToNextQuestion()"
-      (optionSelected)="handleOptionSelected($event)"
-    ></app-question>
-  </div>
-
-  <!-- Navigation buttons -->
-  <div class="navigation-buttons" *ngIf="!quizSubmitted">
-    <button (click)="moveToPreviousQuestion()" 
-            [disabled]="(currentSectionIndex === 0 && currentQuestionIndex === 0)">Previous</button>
-    
-    <button (click)="moveToNextQuestion()" 
-            [disabled]="(currentSectionIndex === sections.length - 1 && currentQuestionIndex === currentSectionQuestions.length - 1)">Next</button>
-            
-    <button (click)="submitQuiz()" class="submit-button">Submit</button>
-  </div>
-  
-  
-  <!-- Dashboard after quiz submission -->
+<div class="instructions-container" *ngIf="!quizStarted">
+  <h2>Quiz Instructions</h2>
+  <p>
+    Welcome to the quiz! Please read the instructions carefully before starting:
+  </p>
+  <ul>
+    <li>You will have {{timeMinutes}} minutes to complete the quiz.</li>
+    <li>Each question has multiple-choice answers. Select the correct answer.</li>
+    <li>Once you submit the quiz, you will not be able to go back.</li>
+    <li>Make sure to read each question and its options carefully.</li>
+    <li>You have total {{totalQuestions}} questions</li>
+  </ul>
+  <button (click)="startQuiz()" class="start-quiz-button">Start Quiz</button>
 </div>
-<div *ngIf="quizSubmitted" class="dashboard">
-  <h2>Result Analysis</h2>
-  <div class="row">
-    <div class="col-md-4 mb-3" *ngFor="let stat of getStatistics()">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="card-title">{{ stat.section }}</h3>
-          <p class="card-text">Total Questions: {{ stat.totalQuestions }}</p>
-          <p class="card-text">Correct Answers: {{ stat.correctAnswers }}</p>
-          <p class="card-text">Unattempted Questions: {{ stat.unattemptedQuestions }}</p>
-          <p class="card-text">Percentage: {{ stat.percentage }}%</p>
+
+<div *ngIf="quizStarted">
+  <div class="quiz-container">
+    <div>
+    <h2 *ngIf="sections.length > 0  && !quizSubmitted">Section: {{ sections[currentSectionIndex].section }}</h2>
+    <div class="timer" *ngIf="!quizSubmitted">
+      {{ getFormattedTime() }}
+    </div>
+    
+    
+      <!-- Display only the current question in the current section -->
+      <div *ngIf="currentSectionQuestions.length > 0 && !quizSubmitted">
+        <h4>Question {{ currentQuestionIndex + 1 }}:</h4>
+        
+        <app-question
+        [sectionIndex]="currentSectionIndex"
+          [question]="currentSectionQuestions[currentQuestionIndex]"
+          [questionIndex]="currentQuestionIndex"
+          [selectedOptionIndex]="selectedOptions[currentSectionIndex]?.[currentQuestionIndex] ?? null"
+          (previous)="moveToPreviousQuestion()"
+          (next)="moveToNextQuestion()"
+          (optionSelected)="handleOptionSelected($event)"
+        ></app-question>
+      </div>
+    
+      <!-- Navigation buttons -->
+      <div class="navigation-buttons" *ngIf="!quizSubmitted">
+        <button (click)="moveToPreviousQuestion()" 
+                [disabled]="(currentSectionIndex === 0 && currentQuestionIndex === 0)">Previous</button>
+        
+        <button (click)="moveToNextQuestion()" 
+                [disabled]="(currentSectionIndex === sections.length - 1 && currentQuestionIndex === currentSectionQuestions.length - 1)">Next</button>
+                <button> Mark for Review</button>
+        <button (click)="submitQuiz()" class="submit-button">Submit</button>
+      </div>
+      
+      
+      <!-- Dashboard after quiz submission -->
+    </div>
+    <div *ngIf="quizSubmitted" class="dashboard">
+      <h2>Result Analysis</h2>
+      <div class="row">
+        <div class="col-md-4 mb-3" *ngFor="let stat of getStatistics()">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">{{ stat.section }}</h3>
+              <p class="card-text">Total Questions: {{ stat.totalQuestions }}</p>
+              <p class="card-text">Correct Answers: {{ stat.correctAnswers }}</p>
+              <p class="card-text">Unattempted Questions: {{ stat.unattemptedQuestions }}</p>
+              <p class="card-text">Percentage: {{ stat.percentage }}%</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  
-  
-  <div *ngFor="let question of allQuestions; let index = index" class="question-container">
-    <!-- Display section name if needed -->
-    <h3>Q {{ index + 1 }}: {{ question.question }}</h3>
-  
-    <!-- Loop through the options for the current question -->
-    <div class="options-container">
-      <div *ngFor="let option of question.options" class="option-circle"
-           [ngClass]="{
-             'selected': isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)),
-             'correct': isCorrectOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)) && isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)),
-             'wrong': !isCorrectOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)) && isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option))
-           }">
-        <ng-container *ngIf="getOptionLetter(option) as optionLetter">
-          <!-- Display option letter inside a circle -->
-          <span class="option-letter">{{ optionLetter }}</span>
-          <span>{{ getOptionValue(option, optionLetter) }}</span>
-        </ng-container>
+      
+      
+      <div *ngFor="let question of allQuestions; let index = index" class="question-container">
+        <!-- Display section name if needed -->
+        <h3>Q {{ index + 1 }}: {{ question.question }}</h3>
+      
+        <!-- Loop through the options for the current question -->
+        <div class="options-container">
+          <div *ngFor="let option of question.options" class="option-circle"
+               [ngClass]="{
+                 'selected': isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)),
+                 'correct': isCorrectOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)) && isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)),
+                 'wrong': !isCorrectOption(question.sectionIndex, question.questionIndex, getOptionLetter(option)) && isSelectedOption(question.sectionIndex, question.questionIndex, getOptionLetter(option))
+               }">
+            <ng-container *ngIf="getOptionLetter(option) as optionLetter">
+              <!-- Display option letter inside a circle -->
+              <span class="option-letter">{{ optionLetter }}</span>
+              <span>{{ getOptionValue(option, optionLetter) }}</span>
+            </ng-container>
+          </div>
+          <p class="explanation" *ngIf="question.explaination">Explaination: {{ question?.explaination }}</p>
+        </div>
       </div>
-      <p class="explanation" *ngIf="question.explaination">Explaination: {{ question?.explaination }}</p>
+    
     </div>
-  </div>
-
+      </div>  
 </div>
-  </div>
-  
-  
 

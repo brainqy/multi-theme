@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Subscription, interval } from 'rxjs';
 import { QuizService } from 'src/app/Core/services/quiz.service';
 interface Section {
   section: string;
@@ -17,7 +18,13 @@ interface Question{
   templateUrl: './quiz-player.component.html',
   styleUrls: ['./quiz-player.component.scss']
 })
-export class QuizPlayerComponent implements OnInit{
+export class QuizPlayerComponent implements  OnInit, OnDestroy{
+  timeMinutes:number=1;
+  timeRemaining: number = this.timeMinutes * 10; // 30 minutes in seconds
+  timerSubscription: Subscription | undefined;
+  quizStarted:boolean=false;
+  totalQuestions:number=0;
+
   sideNavStatus!:false;
    correctCount = 0;
   wrongCount = 0;
@@ -98,11 +105,24 @@ export class QuizPlayerComponent implements OnInit{
   constructor(private quizService: QuizService,private cdr: ChangeDetectorRef) {
     this.resetTimeTracking();
   }
-
+  ngOnDestroy(): void {
+    this.timerSubscription?.unsubscribe();
+    this.submitQuiz();
+  }
+  startQuiz(){
+    this.quizStarted=true;
+    this.startTimer();
+  }
   ngOnInit(): void {
     this.allQuestions = this.getAllQuestions();
     console.log("All ",this.allQuestions);
+    this.totalQuestions=this.allQuestions.length;
     
+  }
+  getFormattedTime() {
+    const minutes = Math.floor(this.timeRemaining / 60);
+    const seconds = this.timeRemaining % 60;
+    return `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   }
 
   get currentSectionQuestions() {
@@ -315,5 +335,15 @@ isCorrectOption(sectionIndex: number, questionIndex: number, optionLetter: strin
     const startTime = this.questionStartTime[this.currentQuestionIndex];
     const timeSpent = (Date.now() - startTime) / 1000; // Time spent in seconds
     this.timeTakenPerQuestion[this.currentQuestionIndex] += timeSpent;
+  }
+  startTimer() {
+    this.timerSubscription = interval(1000).subscribe(() => {
+      if (this.timeRemaining > 0) {
+        this.timeRemaining--;
+      } else {
+        this.submitQuiz(); // Automatically submit when time runs out
+        this.timerSubscription?.unsubscribe(); // Stop the timer
+      }
+    });
   }
 }
