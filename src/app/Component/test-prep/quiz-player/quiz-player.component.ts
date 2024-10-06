@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
 import { QuizService } from 'src/app/Core/services/quiz.service';
+import Swal from 'sweetalert2';
 interface Section {
   section: string;
   questions: Question[];
@@ -291,44 +292,59 @@ isCorrectOption(sectionIndex: number, questionIndex: number, optionLetter: strin
 
   // Submit the quiz
   submitQuiz(): void {
-    this.quizSubmitted = true;
-    this.recordTimeForCurrentQuestion();
-  
-    // Reset counts for each section
-    this.sections.forEach((section) => {
-      section.correctAnswersCount = 0; // Initialize
-      section.wrongAnswersCount = 0; // Initialize
-      section.unattemptedCount = 0; // Initialize
-  
-      section.questions.forEach((question) => {
-        console.log("Question ", JSON.stringify(question));
-  
-        // Access the selected answer directly from the question
-        const userAnswer: string | null = question.selectedAnswer ?? null;
-  
-        // Check the user's answer
-        if (!userAnswer) {
-          console.log("User answer is null (unattempted) for question: ", question.questionId);
-          section.unattemptedCount++; // If no answer is selected
-        } else if (userAnswer === question.correctAnswer) {
-          console.log("User answer is correct for question: ", question.questionId);
-          section.correctAnswersCount++; // If the answer is correct
-        } else {
-          console.log("User answer is wrong for question: ", question.questionId);
-          section.wrongAnswersCount++; // If the answer is wrong
-        }
-      });
+    Swal.fire({
+      title: 'Are you Sure?',
+      text: 'You want to Submit the Quiz',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Submit it',
+      cancelButtonText: 'No, Dont submit'
+    }).then((result) => {
+      // If user confirms the action
+      if (result.isConfirmed) {
+       
+        this.quizSubmitted = true;
+        this.recordTimeForCurrentQuestion();
+      
+        // Reset counts for each section
+        this.sections.forEach((section) => {
+          section.correctAnswersCount = 0; // Initialize
+          section.wrongAnswersCount = 0; // Initialize
+          section.unattemptedCount = 0; // Initialize
+      
+          section.questions.forEach((question) => {
+            console.log("Question ", JSON.stringify(question));
+      
+            // Access the selected answer directly from the question
+            const userAnswer: string | null = question.selectedAnswer ?? null;
+      
+            // Check the user's answer
+            if (!userAnswer) {
+              console.log("User answer is null (unattempted) for question: ", question.questionId);
+              section.unattemptedCount++; // If no answer is selected
+            } else if (userAnswer === question.correctAnswer) {
+              console.log("User answer is correct for question: ", question.questionId);
+              section.correctAnswersCount++; // If the answer is correct
+            } else {
+              console.log("User answer is wrong for question: ", question.questionId);
+              section.wrongAnswersCount++; // If the answer is wrong
+            }
+          });
+        });
+      
+        // Calculate overall counts
+        const totalCorrect = this.sections.reduce((acc, section) => acc + section.correctAnswersCount, 0);
+        const totalWrong = this.sections.reduce((acc, section) => acc + section.wrongAnswersCount, 0);
+        const totalUnattempted = this.sections.reduce((acc, section) => acc + section.unattemptedCount, 0);
+      
+        console.log("Quiz Submitted. Correct: ", totalCorrect, "Wrong: ", totalWrong, "Unattempted: ", totalUnattempted);
+        console.log("Time taken per question (in seconds): ", this.timeTakenPerQuestion);
+        console.log(this.sections);
+        this.cdr.detectChanges();
+       
+      }
     });
-  
-    // Calculate overall counts
-    const totalCorrect = this.sections.reduce((acc, section) => acc + section.correctAnswersCount, 0);
-    const totalWrong = this.sections.reduce((acc, section) => acc + section.wrongAnswersCount, 0);
-    const totalUnattempted = this.sections.reduce((acc, section) => acc + section.unattemptedCount, 0);
-  
-    console.log("Quiz Submitted. Correct: ", totalCorrect, "Wrong: ", totalWrong, "Unattempted: ", totalUnattempted);
-    console.log("Time taken per question (in seconds): ", this.timeTakenPerQuestion);
-    console.log(this.sections);
-    this.cdr.detectChanges();
+   
   }
   
   
