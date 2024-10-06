@@ -1,17 +1,5 @@
-<div class="container-fluid g-0">
-  <app-dash-header></app-dash-header>
-  <main>
-    <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
 
-<div class="p-3">
-  <!-- Breadcrumb navigation -->
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="">Home</a></li>
-      <li class="breadcrumb-item"><a href="quiz-test">Quiz</a></li> <!-- Link to forum homepage -->
-           </ol>
-  </nav>
-  <div>
+<div class="quiz-container">
 <div>
 <h2 *ngIf="sections.length > 0  && !quizSubmitted">Section: {{ sections[currentSectionIndex].section }}</h2>
 
@@ -38,12 +26,11 @@
     
     <button (click)="moveToNextQuestion()" 
             [disabled]="(currentSectionIndex === sections.length - 1 && currentQuestionIndex === currentSectionQuestions.length - 1)">Next</button>
+            
+    <button (click)="submitQuiz()" class="submit-button">Submit</button>
   </div>
   
-  <!-- Submit button -->
-  <div *ngIf="!quizSubmitted">
-    <button  (click)="submitQuiz()">Submit</button>
-  </div>
+  
   <!-- Dashboard after quiz submission -->
 </div>
 <div *ngIf="quizSubmitted" class="dashboard">
@@ -90,4 +77,3 @@
   
   
 
-</div></div></main></div>
