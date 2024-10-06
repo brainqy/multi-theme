@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { QuizService } from 'src/app/Core/services/quiz.service';
 interface Section {
   section: string;
@@ -32,7 +32,8 @@ export class QuizPlayerComponent implements OnInit{
           question: 'What is 2 + 2?',
           options: [{ A: '1' }, { B: '2' }, { C: '3' }, { D: '4' }],
           selectedAnswer:'',
-          correctAnswer: 'D'
+          correctAnswer: 'D',
+          explaination:'',
         },
         {
           questionId: 2,
@@ -40,6 +41,7 @@ export class QuizPlayerComponent implements OnInit{
           options: [{ A: '1' }, { B: '9' }, { C: '3' }, { D: '4' }],
           correctAnswer: 'B',
           selectedAnswer:'',
+          explaination:'',
         },
         {
           questionId: 3,
@@ -47,6 +49,7 @@ export class QuizPlayerComponent implements OnInit{
           options: [{ A: '1' }, { B: '14' }, { C: '3' }, { D: '4' }],
           correctAnswer: 'B',
           selectedAnswer:'',
+          explaination:'',
         }
         // Add more math-related questions here
       ], correctAnswersCount: 0, // Initialize count
@@ -63,6 +66,7 @@ export class QuizPlayerComponent implements OnInit{
           options: [{ A: 'Paris' }, { B: 'London' }, { C: 'Rome' }, { D: 'Berlin' }],
           correctAnswer: 'A',
           selectedAnswer:'',
+          explaination:'',
         },
         {
           questionId: 8,
@@ -70,6 +74,7 @@ export class QuizPlayerComponent implements OnInit{
           options: [{ A: 'Delhi' }, { B: 'London' }, { C: 'Rome' }, { D: 'Mumbai' }],
           correctAnswer: 'A',
           selectedAnswer:'',
+          explaination:'this is explaination',
         }
         // Add more geography-related questions here
       ],
@@ -90,7 +95,7 @@ export class QuizPlayerComponent implements OnInit{
   questionStartTime: number[] = []; // Store start time for each question
   timeTakenPerQuestion: number[] = []; // Store time taken for each question in seconds
 
-  constructor(private quizService: QuizService) {
+  constructor(private quizService: QuizService,private cdr: ChangeDetectorRef) {
     this.resetTimeTracking();
   }
 
@@ -283,6 +288,7 @@ isCorrectOption(sectionIndex: number, questionIndex: number, optionLetter: strin
     console.log("Quiz Submitted. Correct: ", totalCorrect, "Wrong: ", totalWrong, "Unattempted: ", totalUnattempted);
     console.log("Time taken per question (in seconds): ", this.timeTakenPerQuestion);
     console.log(this.sections);
+    this.cdr.detectChanges();
   }
   
   

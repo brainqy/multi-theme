@@ -64,7 +64,7 @@
     
     <div *ngFor="let question of allQuestions; let index = index">
       <!-- Display section name if needed -->
-      <h3>{{ question.section }} - Question {{ index + 1 }}: {{ question.question }}</h3>
+      <h3>Q {{ index + 1 }}: {{ question.question }}</h3>
     
       <!-- Loop through the options for the current question -->
       <div class="options-container">
@@ -80,10 +80,9 @@
             <span>{{ getOptionValue(option, optionLetter) }}</span>
           </ng-container>
         </div>
+        <p class="explanation" *ngIf="question.explaination">Explaination: {{ question?.explaination }}</p>
       </div>
-      
     </div>
-    
   </div>
 </div>
   </div>
