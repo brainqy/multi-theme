@@ -19,8 +19,8 @@ interface Question{
   styleUrls: ['./quiz-player.component.scss']
 })
 export class QuizPlayerComponent implements  OnInit, OnDestroy{
-  timeMinutes:number=1;
-  timeRemaining: number = this.timeMinutes * 10; // 30 minutes in seconds
+  timeMinutes:number=5;
+  timeRemaining: number = this.timeMinutes * 60; // 30 minutes in seconds
   timerSubscription: Subscription | undefined;
   quizStarted:boolean=false;
   totalQuestions:number=0;
@@ -29,7 +29,11 @@ export class QuizPlayerComponent implements  OnInit, OnDestroy{
    correctCount = 0;
   wrongCount = 0;
   unattemptedCount = 0;
+  isDrawerHidden = false;
 
+  toggleDrawer() {
+    this.isDrawerHidden = !this.isDrawerHidden;
+  }
   sections = [
     {
       section: 'Mathematics',
@@ -57,7 +61,15 @@ export class QuizPlayerComponent implements  OnInit, OnDestroy{
           correctAnswer: 'B',
           selectedAnswer:'',
           explaination:'',
-        }
+        }, 
+        {
+          questionId: 4,
+          question: 'What is 2 + 9?',
+          options: [{ A: '1' }, { B: '2' }, { C: '3' }, { D: '11' }],
+          selectedAnswer:'',
+          correctAnswer: 'D',
+          explaination:'',
+        },
         // Add more math-related questions here
       ], correctAnswersCount: 0, // Initialize count
       wrongAnswersCount: 0,   // Initialize count

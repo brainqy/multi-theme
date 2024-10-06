@@ -44,6 +44,7 @@
         
         <button (click)="moveToNextQuestion()" 
                 [disabled]="(currentSectionIndex === sections.length - 1 && currentQuestionIndex === currentSectionQuestions.length - 1)">Next</button>
+                <button> Bookmark</button>
                 <button> Mark for Review</button>
         <button (click)="submitQuiz()" class="submit-button">Submit</button>
       </div>
@@ -91,6 +92,20 @@
       </div>
     
     </div>
+    <div  *ngIf="!quizSubmitted" class="toggle-arrow" (click)="toggleDrawer()" [ngClass]="{ 'drawer-hidden': isDrawerHidden }">
+      <span>&#10095;</span> <!-- Right arrow icon -->
+    </div>
+    <div *ngIf="!quizSubmitted && !isDrawerHidden" class="question-drawer bg-light border-start" style="width: 250px; height: 100vh; position: fixed; right: 0; top: 0; overflow-y: auto;">
+      <div class="drawer-container p-3">
+        <h6>Question Palette</h6>
+        <div class="question-grid">
+          <div *ngFor="let question of allQuestions; let index = index" class="option-circle">
+            <span class="option-letter">{{ index + 1 }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
       </div>  
 </div>
 

@@ -47,7 +47,7 @@
   .timer {
     position: absolute; /* Position it at the top right */
     top: 10px; /* Distance from the top */
-    right: 20px; /* Distance from the right */
+    right: 260px; /* Distance from the right */
     font-size: 24px; /* Font size for visibility */
     font-weight: bold; /* Bold text */
     background-color: rgba(255, 255, 255, 0.8); /* Light background */
@@ -230,5 +230,55 @@
     color: #333;            /* Darker text color */
     border-radius: 4px; 
     font-style: italic;    /* Rounded corners */
+  }
+  .question-drawer {
+    transition: transform 0.6s ease-in-out; /* Slow transition duration and smooth easing */
+    padding-right: 30px;
+  }
+  
+  .drawer-hidden .question-drawer {
+    transform: translateX(250px); /* Move the drawer off screen */
+  }
+  
+  .toggle-arrow {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 1000; /* Ensure the arrow is above other elements */
+    transition: transform 0.6s ease-in-out; /* Slow arrow rotation transition */
+  }
+  
+  .toggle-arrow span {
+    display: inline-block;
+    transform: rotate(0deg);
+    transition: transform 0.6s ease-in-out; /* Slow arrow rotation */
+  }
+  
+  .drawer-hidden .toggle-arrow span {
+    transform: rotate(180deg); /* Rotate the arrow when the drawer is hidden */
+  }
+  
+  .question-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns per row */
+    gap: 10px;
+  }
+  
+  .option-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e0e0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 16px;
   }
   
