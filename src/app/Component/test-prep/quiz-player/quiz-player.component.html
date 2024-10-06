@@ -55,19 +55,24 @@
       <p>Percentage: {{ stat.percentage }}%</p>
     </div>
     
-    <div *ngFor="let section of sections">
-      <h3>{{ section.section }}</h3>
-    <!-- Show the results for each question -->
-    <div *ngFor="let question of currentSectionQuestions; let index = index">
-      <h4>Question {{ index + 1 }}: {{ question.question }}</h4>
-      <p *ngFor="let option of question.options; let optIndex = index">
-        <!-- {{ getOptionLetter(option) }}. {{ option[getOptionLetter(option)] }}  -->
-        <span *ngIf="isSelectedOption(currentSectionIndex, index, getOptionLetter(option))" class="selected">(Selected)</span>
-        <span *ngIf="isCorrectOption(index, getOptionLetter(option))" class="correct">(Correct)</span>
-        <span *ngIf="!isCorrectOption(index, getOptionLetter(option)) && isSelectedOption(currentSectionIndex, index, getOptionLetter(option))" class="wrong">(Wrong)</span>
-      </p>
+    <div *ngFor="let question of allQuestions; let index = index">
+      <!-- Display section name if needed -->
+      <h3>{{ question.section }} - Question {{ index + 1 }}: {{ question.question }}</h3>
+    
+      <!-- Loop through the options for the current question -->
+      <div *ngFor="let option of question.options">
+        <ng-container *ngIf="getOptionLetter(option) as optionLetter">
+          <!-- Display option letter and value -->
+      
+    
+          <!-- Show selected, correct, or wrong status based on the user's answer -->
+          <span *ngIf="isSelectedOption(question.sectionIndex, question.questionIndex, optionLetter)" class="selected">(Selected)</span>
+          <span *ngIf="isCorrectOption(question.sectionIndex, question.questionIndex, optionLetter)" class="correct">(Correct)</span>
+          <span *ngIf="!isCorrectOption(question.sectionIndex, question.questionIndex, optionLetter) && isSelectedOption(question.sectionIndex, question.questionIndex, optionLetter)" class="wrong">(Wrong)</span>
+        </ng-container>
+      </div>
     </div>
-    </div>
+    
   </div>
 </div>
   </div>
