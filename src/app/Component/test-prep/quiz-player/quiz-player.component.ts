@@ -132,18 +132,22 @@ export class QuizPlayerComponent implements OnInit{
     }
   }
   
-  handleOptionSelected(event: { sectionIndex: number; questionIndex: number; option: string; correct: boolean }) {
+  handleOptionSelected(event: { sectionIndex: number; questionIndex: number;question:any, option: string; correct: boolean }) {
     const sectionIndex = event.sectionIndex;
     const questionIndex = event.questionIndex;
+    const questionId=event.question.questionId;
     const optionLabel = Object.keys(event.option)[0];
     // Ensure that selectedOptions is initialized for the section
     if (!this.selectedOptions[sectionIndex]) {
       this.selectedOptions[sectionIndex] = [];
     }
+    console.log("questionId",questionId);  
+    
     // Store only the index of the selected option for the specific section and question
     this.selectedOptions[sectionIndex][questionIndex] = this.getOptionIndex(optionLabel);
     console.log(`Section ${sectionIndex + 1}, Question ${questionIndex + 1}: Option ${optionLabel}`);
     // Restart timer after selection
+    console.log("selected options ",JSON.stringify(this.selectedOptions));
     this.startTimerForCurrentQuestion();
 }
 getStatistics(): { section: string; totalQuestions: number; correctAnswers: number; percentage: number }[] {

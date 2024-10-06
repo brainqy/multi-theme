@@ -14,13 +14,14 @@ export class QuestionComponent {
   @Output() previous = new EventEmitter<void>();
   @Output() next = new EventEmitter<void>();
   //@Output() optionSelected = new EventEmitter<{ questionIndex: number; option: string; correct: boolean }>();
-  @Output() optionSelected = new EventEmitter<{ sectionIndex: number; questionIndex: number; option: string; correct: boolean }>();
+  @Output() optionSelected = new EventEmitter<{ sectionIndex: number; questionIndex: number; question:any, option: string; correct: boolean }>();
   correctAnswer!: string;
 
-  selectOption(option: string) {
+  selectOption(option: string,questionId:number) {
     this.optionSelected.emit({
       sectionIndex: this.sectionIndex, // Assuming sectionIndex is passed to this component
       questionIndex: this.questionIndex,
+      question:this.question,
       option: option,
       correct: option === this.correctAnswer // Compare with the correct answer
     });
