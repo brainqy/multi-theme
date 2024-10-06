@@ -1,3 +1,25 @@
+.card {
+    border: 1px solid #e0e0e0; /* Add a border to the card */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .card-title {
+    font-size: 1.5rem; /* Increase title font size */
+    font-weight: bold; /* Make title bold */
+  }
+  
+  .card-text {
+    font-size: 1rem; /* Standard font size for text */
+  }
+  
+  /* Additional responsive styles */
+  @media (max-width: 768px) {
+    .card {
+      margin: 10px; /* Adjust margin for smaller screens */
+    }
+  }
+  
+
 .correct {
     color: green; /* Color for correct options */
   }
@@ -66,7 +88,11 @@
     background-color: red; /* Red background for wrong */
     color: #fff; /* White text for wrong */
   }
-  
+  /* Style for unanswered options */
+.option-circle.unattempted .option-letter {
+    background-color: gray; /* Gray background for unanswered */
+    color: #fff; /* White text for unanswered */
+  }
   /* Optionally add hover effects */
   .option-circle:hover {
     background-color: #f0f0f0; /* Light grey background on hover */

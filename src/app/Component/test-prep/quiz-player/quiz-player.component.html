@@ -48,12 +48,19 @@
 
   <!-- Dashboard after quiz submission -->
   <div *ngIf="quizSubmitted" class="dashboard">
-    <div *ngFor="let stat of getStatistics()">
-      <h3>{{ stat.section }}</h3>
-      <p>Total Questions: {{ stat.totalQuestions }}</p>
-      <p>Correct Answers: {{ stat.correctAnswers }}</p>
-      <p>Percentage: {{ stat.percentage }}%</p>
+    <div class="row">
+      <div class="col-md-4 mb-3" *ngFor="let stat of getStatistics()">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">{{ stat.section }}</h3>
+            <p class="card-text">Total Questions: {{ stat.totalQuestions }}</p>
+            <p class="card-text">Correct Answers: {{ stat.correctAnswers }}</p>
+            <p class="card-text">Percentage: {{ stat.percentage }}%</p>
+          </div>
+        </div>
+      </div>
     </div>
+    
     
     <div *ngFor="let question of allQuestions; let index = index">
       <!-- Display section name if needed -->
