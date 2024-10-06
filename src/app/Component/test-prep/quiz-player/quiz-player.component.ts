@@ -211,7 +211,11 @@ getStatistics(): { section: string; totalQuestions: number; correctAnswers: numb
     return false;
   }
   
-
+  getOptionValue(option: { [key: string]: string }, optionLetter: string): string | undefined {
+    // Return the value associated with the optionLetter key in the option object
+    return option[optionLetter];
+  }
+  
   
 
 isCorrectOption(sectionIndex: number, questionIndex: number, optionLetter: string): boolean {

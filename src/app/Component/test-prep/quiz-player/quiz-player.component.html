@@ -63,7 +63,7 @@
       <div *ngFor="let option of question.options">
         <ng-container *ngIf="getOptionLetter(option) as optionLetter">
           <!-- Display option letter and value -->
-      
+          <span>{{ optionLetter }}. {{ getOptionValue(option, optionLetter) }}</span>
     
           <!-- Show selected, correct, or wrong status based on the user's answer -->
           <span *ngIf="isSelectedOption(question.sectionIndex, question.questionIndex, optionLetter)" class="selected">(Selected)</span>
