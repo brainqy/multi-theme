@@ -15,19 +15,19 @@
 
 <div *ngIf="quizStarted">
   <div class="quiz-container">
-    <div>
-    <h2 *ngIf="sections.length > 0  && !quizSubmitted">Section: {{ sections[currentSectionIndex].section }}</h2>
-    <div class="timer" *ngIf="!quizSubmitted">
-      {{ getFormattedTime() }}
-    </div>
+    <div class="quiz-container">
+      <h2 *ngIf="sections.length > 0  && !quizSubmitted">Section: {{ sections[currentSectionIndex].section }}</h2>
     
+      <div class="timer" *ngIf="!quizSubmitted">
+        {{ getFormattedTime() }}
+      </div>
     
       <!-- Display only the current question in the current section -->
-      <div *ngIf="currentSectionQuestions.length > 0 && !quizSubmitted">
+      <div *ngIf="currentSectionQuestions.length > 0 && !quizSubmitted" class="question-section">
         <h4>Question {{ currentQuestionIndex + 1 }}:</h4>
-        
+    
         <app-question
-        [sectionIndex]="currentSectionIndex"
+          [sectionIndex]="currentSectionIndex"
           [question]="currentSectionQuestions[currentQuestionIndex]"
           [questionIndex]="currentQuestionIndex"
           [selectedOptionIndex]="selectedOptions[currentSectionIndex]?.[currentQuestionIndex] ?? null"
@@ -39,16 +39,21 @@
     
       <!-- Navigation buttons -->
       <div class="navigation-buttons" *ngIf="!quizSubmitted">
-        <button (click)="moveToPreviousQuestion()" 
-                [disabled]="(currentSectionIndex === 0 && currentQuestionIndex === 0)">Previous</button>
-        
+        <button (click)="moveToPreviousQuestion()" [disabled]="(currentSectionIndex === 0 && currentQuestionIndex === 0)">
+          Previous
+        </button>
+    
         <button (click)="moveToNextQuestion()" 
-                [disabled]="(currentSectionIndex === sections.length - 1 && currentQuestionIndex === currentSectionQuestions.length - 1)">Next</button>
-                <button> Bookmark</button>
-                <button> Mark for Review</button>
+                [disabled]="(currentSectionIndex === sections.length - 1 && currentQuestionIndex === currentSectionQuestions.length - 1)">
+          Next
+        </button>
+    
+        <button> Bookmark</button>
+        <button> Mark for Review</button>
         <button (click)="submitQuiz()" class="submit-button">Submit</button>
       </div>
-      
+    </div>
+    
       
       <!-- Dashboard after quiz submission -->
     </div>
@@ -107,5 +112,5 @@
     </div>
     
       </div>  
-</div>
+
 

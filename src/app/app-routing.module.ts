@@ -155,7 +155,7 @@ const routes: Routes = [
   {
     path: "quiz-test",
     component: QuizPlayerComponent,
-    canActivate: [AuthGuard]
+
   },
   {
     path: "forum/:id",

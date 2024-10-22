@@ -270,4 +270,44 @@
     gap: 5px;
   }
   
-  
+  .timer {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #f00;
+  }
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  /* Stack the buttons vertically on smaller screens */
+  .navigation-buttons {
+    flex-direction: column;
+  }
+
+  /* Adjust the font size for better readability on small screens */
+  h2, h4 {
+    font-size: 1.2rem;
+  }
+
+  .timer {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Make the buttons full width on mobile */
+  .navigation-buttons button {
+    min-width: 100%;
+  }
+
+  /* Reduce padding for small screens */
+  .quiz-container {
+    padding: 10px;
+  }
+
+  h2, h4 {
+    font-size: 1rem;
+  }
+
+  .timer {
+    font-size: 0.9rem;
+  }
+}
