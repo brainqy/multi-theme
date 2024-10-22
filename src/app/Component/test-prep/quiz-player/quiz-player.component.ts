@@ -37,74 +37,155 @@ export class QuizPlayerComponent implements  OnInit, OnDestroy{
   }
   sections = [
     {
-      section: 'Mathematics',
+      section: 'Java',
       questions: [
         {
           questionId: 1,
-          question: 'What is 2 + 2?',
-          options: [{ A: '1' }, { B: '2' }, { C: '3' }, { D: '4' }],
-          selectedAnswer:'',
-          correctAnswer: 'D',
-          explaination:'',
+          question: 'What is the default value of a boolean in Java?',
+          options: [{ A: 'true' }, { B: 'false' }, { C: 'null' }, { D: 'undefined' }],
+          selectedAnswer: '',
+          correctAnswer: 'B',
+          explaination: 'The default value of a boolean in Java is false.',
         },
         {
           questionId: 2,
-          question: 'What is 7 + 2?',
-          options: [{ A: '1' }, { B: '9' }, { C: '3' }, { D: '4' }],
-          correctAnswer: 'B',
-          selectedAnswer:'',
-          explaination:'',
+          question: 'Which keyword is used to inherit a class in Java?',
+          options: [{ A: 'extends' }, { B: 'implements' }, { C: 'inherits' }, { D: 'derives' }],
+          selectedAnswer: '',
+          correctAnswer: 'A',
+          explaination: 'The "extends" keyword is used to inherit a class in Java.',
         },
         {
           questionId: 3,
-          question: 'What is 7 + 7?',
-          options: [{ A: '1' }, { B: '14' }, { C: '3' }, { D: '4' }],
-          correctAnswer: 'B',
-          selectedAnswer:'',
-          explaination:'',
-        }, 
-        {
-          questionId: 4,
-          question: 'What is 2 + 9?',
-          options: [{ A: '1' }, { B: '2' }, { C: '3' }, { D: '11' }],
-          selectedAnswer:'',
-          correctAnswer: 'D',
-          explaination:'',
+          question: 'What is the size of an int in Java?',
+          options: [{ A: '8 bits' }, { B: '16 bits' }, { C: '32 bits' }, { D: '64 bits' }],
+          selectedAnswer: '',
+          correctAnswer: 'C',
+          explaination: 'The int in Java has a size of 32 bits (4 bytes).',
         },
-        // Add more math-related questions here
-      ], correctAnswersCount: 0, // Initialize count
-      wrongAnswersCount: 0,   // Initialize count
-      unattemptedCount: 0 ,    //
-      sectionIndex: 0, // Assign a section index
+      ],
+      correctAnswersCount: 0,
+      wrongAnswersCount: 0,
+      unattemptedCount: 0,
+      sectionIndex: 0,
     },
     {
-      section: 'Geography',
+      section: 'Collection API',
       questions: [
         {
-          questionId: 7,
-          question: 'What is the capital of France?',
-          options: [{ A: 'Paris' }, { B: 'London' }, { C: 'Rome' }, { D: 'Berlin' }],
-          correctAnswer: 'A',
-          selectedAnswer:'',
-          explaination:'',
+          questionId: 4,
+          question: 'Which interface does java.util.HashMap implement?',
+          options: [{ A: 'List' }, { B: 'Set' }, { C: 'Map' }, { D: 'Queue' }],
+          selectedAnswer: '',
+          correctAnswer: 'C',
+          explaination: 'HashMap implements the Map interface in Java.',
         },
         {
-          questionId: 8,
-          question: 'What is the capital of India?',
-          options: [{ A: 'Delhi' }, { B: 'London' }, { C: 'Rome' }, { D: 'Mumbai' }],
+          questionId: 5,
+          question: 'What is the time complexity of retrieving an element from a HashMap?',
+          options: [{ A: 'O(1)' }, { B: 'O(n)' }, { C: 'O(log n)' }, { D: 'O(n^2)' }],
+          selectedAnswer: '',
           correctAnswer: 'A',
-          selectedAnswer:'',
-          explaination:'this is explaination',
-        }
-        // Add more geography-related questions here
+          explaination: 'Retrieving an element from a HashMap has an average time complexity of O(1).',
+        },
       ],
-      correctAnswersCount: 0, // Initialize count
-      wrongAnswersCount: 0,   // Initialize count
-      unattemptedCount: 0 ,    //
-      sectionIndex: 1, // Assign a section index
-    }
-    // Add more sections here
+      correctAnswersCount: 0,
+      wrongAnswersCount: 0,
+      unattemptedCount: 0,
+      sectionIndex: 1,
+    },
+    {
+      section: 'Java 8',
+      questions: [
+        {
+          questionId: 6,
+          question: 'Which feature was introduced in Java 8?',
+          options: [{ A: 'Streams API' }, { B: 'Generics' }, { C: 'Annotations' }, { D: 'Reflection' }],
+          selectedAnswer: '',
+          correctAnswer: 'A',
+          explaination: 'The Streams API was introduced in Java 8 to facilitate functional programming.',
+        },
+        {
+          questionId: 7,
+          question: 'What is a lambda expression in Java?',
+          options: [
+            { A: 'An anonymous function' },
+            { B: 'A class definition' },
+            { C: 'A new type of method' },
+            { D: 'A package' },
+          ],
+          selectedAnswer: '',
+          correctAnswer: 'A',
+          explaination: 'Lambda expressions are anonymous functions in Java.',
+        },
+      ],
+      correctAnswersCount: 0,
+      wrongAnswersCount: 0,
+      unattemptedCount: 0,
+      sectionIndex: 2,
+    },
+    {
+      section: 'Microservices',
+      questions: [
+        {
+          questionId: 8,
+          question: 'Which protocol is commonly used for communication between microservices?',
+          options: [{ A: 'HTTP' }, { B: 'FTP' }, { C: 'SMTP' }, { D: 'POP3' }],
+          selectedAnswer: '',
+          correctAnswer: 'A',
+          explaination: 'HTTP is the most commonly used protocol for communication between microservices.',
+        },
+        {
+          questionId: 9,
+          question: 'Which of the following is a key characteristic of microservices?',
+          options: [
+            { A: 'Monolithic architecture' },
+            { B: 'Single deployment unit' },
+            { C: 'Small, independently deployable services' },
+            { D: 'Tightly coupled services' },
+          ],
+          selectedAnswer: '',
+          correctAnswer: 'C',
+          explaination: 'Microservices are small, independently deployable services.',
+        },
+      ],
+      correctAnswersCount: 0,
+      wrongAnswersCount: 0,
+      unattemptedCount: 0,
+      sectionIndex: 3,
+    },
+    {
+      section: 'Spring Boot',
+      questions: [
+        {
+          questionId: 10,
+          question: 'What annotation is used to mark a class as a Spring Boot application?',
+          options: [
+            { A: '@SpringBootApplication' },
+            { B: '@RestController' },
+            { C: '@Service' },
+            { D: '@Component' },
+          ],
+          selectedAnswer: '',
+          correctAnswer: 'A',
+          explaination: 'The @SpringBootApplication annotation is used to mark a class as the main entry point for a Spring Boot application.',
+        },
+        {
+          questionId: 11,
+          question: 'Which tool does Spring Boot use for dependency management?',
+          options: [{ A: 'Maven' }, { B: 'Ant' }, { C: 'Jenkins' }, { D: 'Gradle' }],
+          selectedAnswer: '',
+          correctAnswer: 'A',
+          explaination: 'Spring Boot commonly uses Maven for dependency management, though Gradle can also be used.',
+        },
+      ],
+      correctAnswersCount: 0,
+      wrongAnswersCount: 0,
+      unattemptedCount: 0,
+      sectionIndex: 4,
+    },
   ];
+  
 
   currentQuestionIndex = 0;
   currentSectionIndex = 0;
