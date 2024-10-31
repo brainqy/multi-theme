@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Import For
 import { Job, JobService } from 'src/app/Core/services/job.service';
 import Swal from 'sweetalert2';
 import { InterviewService } from 'src/app/Core/services/interview.service';
+import { ResumeService } from 'src/app/Core/services/resume.service';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -20,6 +22,8 @@ export class ModalComponent implements OnInit {
   interviewForm: FormGroup;
   @Input() interviews: any[] = [];
   //activeTab = 'search';
+  selectedFile: File | null = null;
+  jobOpportunityId: number = 1;  // Example job opportunity ID
 
   extras = {
     coverLetterText: 'Sample cover letter text...',
@@ -51,7 +55,7 @@ export class ModalComponent implements OnInit {
   }
   time = { hour: 13, minute: 30 };
   constructor(
-    public activeModal: NgbActiveModal,
+    public activeModal: NgbActiveModal,private resumeService: ResumeService,
     private formBuilder: FormBuilder,private interviewService:InterviewService,
     private jobService: JobService,private fb: FormBuilder
   ) {
@@ -80,6 +84,9 @@ export class ModalComponent implements OnInit {
     this.slts=this.interviews
     console.log("slts",this.slts);
     
+  }
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
   }
   isEmptyJob(): boolean {
     return !this.job.jobRole && !this.job.company && !this.job.jobDescription && !this.job.jobLocation && !this.job.jobListingUrl && this.job.salary === 0 && !this.job.dateSpecified && !this.job.status;
@@ -135,7 +142,6 @@ export class ModalComponent implements OnInit {
       console.log('Form is invalid');
     }
   }
-
 /*   clearError() {
     this.errorMessage = null;
   }; */

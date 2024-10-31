@@ -67,7 +67,7 @@ export class RequesterSidebarComponent {
       number: 7,
       name: 'Test ',
       icon: 'fas fa-building',
-      link: '/quiz-test'
+      link: '/quiz-store'
     },
 /*     {
       number: 7,
