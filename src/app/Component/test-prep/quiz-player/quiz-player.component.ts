@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, interval } from 'rxjs';
+import { CanComponentDeactivate } from 'src/app/Core/guard/can-deactivate.guard';
 import { QuizService } from 'src/app/Core/services/quiz.service';
 import Swal from 'sweetalert2';
 interface Section {
@@ -26,7 +27,7 @@ interface Question {
   templateUrl: './quiz-player.component.html',
   styleUrls: ['./quiz-player.component.scss']
 })
-export class QuizPlayerComponent implements  OnInit, OnDestroy{
+export class QuizPlayerComponent implements CanComponentDeactivate, OnInit, OnDestroy{
   timeMinutes:number=5;
   timeRemaining: number = this.timeMinutes * 60; // 30 minutes in seconds
   timerSubscription: Subscription | undefined;
@@ -212,7 +213,10 @@ export class QuizPlayerComponent implements  OnInit, OnDestroy{
   }
   ngOnDestroy(): void {
     this.timerSubscription?.unsubscribe();
-    this.submitQuiz();
+  }
+  canDeactivate(): boolean {
+    // Show a confirmation dialog or return true/false
+    return confirm('Do you really want to leave the quiz? Your progress may not be saved!');
   }
   startQuiz(){
     this.quizStarted=true;
@@ -338,11 +342,6 @@ getStatistics(): { section: string; totalQuestions: number; correctAnswers: numb
   });
 }
 
-
-
-
-  
-
   getOptionIndex(option: string): number {
     const question = this.currentSectionQuestions[this.currentQuestionIndex]; // Get current question
     return question.options.findIndex((opt: any) => this.getOptionLetter(opt) === option); // Find index of the selected option
@@ -412,6 +411,7 @@ getAllQuestions(quizId: string) {
 
   // Submit the quiz
   submitQuiz(): void {
+
     Swal.fire({
       title: 'Are you Sure?',
       text: 'You want to Submit the Quiz',
@@ -423,7 +423,10 @@ getAllQuestions(quizId: string) {
       // If user confirms the action
       if (result.isConfirmed) {
        
-        this.quizSubmitted = true;
+        if (this.quizSubmitted) return;
+        this.quizSubmitted = true; // Set to true to avoid resubmitting
+        this.timerSubscription?.unsubscribe(); // Stop the timer
+    
         this.recordTimeForCurrentQuestion();
       
         // Reset counts for each section

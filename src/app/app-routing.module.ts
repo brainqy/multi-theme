@@ -49,6 +49,7 @@ import { ResumeFormComponent } from './Component/resume-manager/resume-form/resu
 import { ResumesComponent } from './Component/resume-manager/resumes/resumes.component';
 import { BookmarksComponent } from './Component/bookmarks/bookmarks.component';
 import { QuizStoreComponent } from './Component/test-prep/quiz-store/quiz-store.component';
+import { CanDeactivateGuard } from './Core/guard/can-deactivate.guard';
 
 
 const routes: Routes = [
@@ -156,7 +157,7 @@ const routes: Routes = [
   {
     path: "quiz-test/:quizId",
     component: QuizPlayerComponent,
-
+    canDeactivate: [CanDeactivateGuard]
   },
   {
     path: "quiz-store",
