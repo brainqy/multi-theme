@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class QuizService {
   private baseUrl=environment.baseUrl+environment.contextUrl;
-
+  private dataUrl = 'assets/quizzes/${quizId}-quizdata.json';
   private chatUrl = '/quiz';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,5 +16,9 @@ export class QuizService {
   constructor(private http: HttpClient) { }
   getQuestions(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl+this.chatUrl+"/get-all-questions"}`);
+  }
+  getQuizData(quizId: string): Observable<any> {
+    const dataUrl = `assets/quizzes/${quizId}-quizdata.json`;
+    return this.http.get<any>(dataUrl);
   }
 }

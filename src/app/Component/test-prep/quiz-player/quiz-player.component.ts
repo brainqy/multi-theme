@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription, interval } from 'rxjs';
 import { QuizService } from 'src/app/Core/services/quiz.service';
 import Swal from 'sweetalert2';
@@ -10,9 +11,15 @@ interface Section {
   unattemptedCount: number; // Add this line
   sectionIndex: number; // Add this property
 }
-interface Question{
-  
+interface Question {
+  questionId: number; // Add this line
+  text: string;
+  options: string[];
+  correctAnswer: string;
+  selectedAnswer?: string;
 }
+
+
 
 @Component({
   selector: 'app-quiz-player',
@@ -25,17 +32,20 @@ export class QuizPlayerComponent implements  OnInit, OnDestroy{
   timerSubscription: Subscription | undefined;
   quizStarted:boolean=false;
   totalQuestions:number=0;
-
+  questionsWithMetadata: any[] = []; // This holds the questions with metadata
   sideNavStatus!:false;
    correctCount = 0;
   wrongCount = 0;
   unattemptedCount = 0;
   isDrawerHidden = false;
-
+  loading: boolean = true;
+  
+  quizId: string = 'quiz1';
   toggleDrawer() {
     this.isDrawerHidden = !this.isDrawerHidden;
   }
-  sections = [
+  sections: Section[] = [];
+/*   sections = [
     {
       section: 'Java',
       questions: [
@@ -184,7 +194,7 @@ export class QuizPlayerComponent implements  OnInit, OnDestroy{
       unattemptedCount: 0,
       sectionIndex: 4,
     },
-  ];
+  ]; */
   
 
   currentQuestionIndex = 0;
@@ -196,7 +206,8 @@ export class QuizPlayerComponent implements  OnInit, OnDestroy{
   questionStartTime: number[] = []; // Store start time for each question
   timeTakenPerQuestion: number[] = []; // Store time taken for each question in seconds
 
-  constructor(private quizService: QuizService,private cdr: ChangeDetectorRef) {
+  constructor(private quizService: QuizService,private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute) {
     this.resetTimeTracking();
   }
   ngOnDestroy(): void {
@@ -208,7 +219,30 @@ export class QuizPlayerComponent implements  OnInit, OnDestroy{
     this.startTimer();
   }
   ngOnInit(): void {
-    this.allQuestions = this.getAllQuestions();
+    this.route.params.subscribe(params => {
+      this.quizId = params['quizId']; // Assuming your route has a parameter named quizId
+    });
+this.quizService.getQuizData(this.quizId).subscribe({
+      next: data => {
+        console.log("Quiz Data:", data.sections);
+        
+        // Store sections in the component
+        this.sections = data.sections;
+        // Load all questions from the sections
+        this.totalQuestions = this.allQuestions.length; // Update totalQuestions
+      },
+      error: err => {
+        // Handle error scenario using SweetAlert
+        console.error("Error loading quiz data:", err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Failed to load quiz data. Please try again later.',
+          confirmButtonText: 'Okay'
+        });
+      }
+    });
+    this.getAllQuestions(this.quizId);
     console.log("All ",this.allQuestions);
     this.totalQuestions=this.allQuestions.length;
     
@@ -354,16 +388,21 @@ isCorrectOption(sectionIndex: number, questionIndex: number, optionLetter: strin
 }
 
 
-  getAllQuestions() {
-    return this.sections.flatMap((section, sectionIndex) => 
+getAllQuestions(quizId: string) {
+  this.quizService.getQuizData(quizId).subscribe(data => {
+    this.allQuestions = data.sections.flatMap((section: { questions: any[]; section: any; }, sectionIndex: any) =>
       section.questions.map((question, questionIndex) => ({
         ...question,
-        section: section.section, // Keep track of the section name
+        section: section.section,
         sectionIndex,
         questionIndex
       }))
     );
-  }
+
+    this.loading = false; // Set loading to false after data is loaded
+  });
+}
+
   
 
   allQuestionsAnswered(): boolean {

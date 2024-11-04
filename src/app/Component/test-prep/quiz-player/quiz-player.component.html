@@ -73,8 +73,13 @@
         </div>
       </div>
       
-      
+      <div *ngIf="loading">Loading questions...</div>
+<div *ngIf="!loading">
+  <div *ngFor="let question of allQuestions; let index = index" class="question-container">
+
+
       <div *ngFor="let question of allQuestions; let index = index" class="question-container">
+        <p>Hello P</p>
         <!-- Display section name if needed -->
         <h3>Q {{ index + 1 }}: {{ question.question }}</h3>
       
@@ -113,4 +118,6 @@
     
       </div>  
 
+    </div>
+</div>
 

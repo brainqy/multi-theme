@@ -9,12 +9,12 @@ import { AddquizService } from 'src/app/Core/services/addquiz.service';
 })
 export class QuizStoreComponent {
   quizzes = [
-    { subject: 'Mathematics', numberOfQuestions: 20, time: 30, level: 'Hard', attempts: 5 },
-    { subject: 'Science', numberOfQuestions: 25, time: 35, level: 'Medium', attempts: 3 },
-    { subject: 'History', numberOfQuestions: 15, time: 20, level: 'Easy', attempts: 2 },
-    { subject: 'Geography', numberOfQuestions: 18, time: 25, level: 'Medium', attempts: 1 },
-    { subject: 'English', numberOfQuestions: 30, time: 40, level: 'Hard', attempts: 4 },
-    { subject: 'Computer Science', numberOfQuestions: 22, time: 30, level: 'Easy', attempts: 6 }
+    { subject: 'Mathematics', numberOfQuestions: 20, time: 30, level: 'Hard', attempts: 5 ,quizId:'quiz1000'},
+    { subject: 'Science', numberOfQuestions: 25, time: 35, level: 'Medium', attempts: 3 ,quizId:'quiz1001'},
+    { subject: 'History', numberOfQuestions: 15, time: 20, level: 'Easy', attempts: 2 ,quizId:'quiz1002'},
+    { subject: 'Geography', numberOfQuestions: 18, time: 25, level: 'Medium', attempts: 1 ,quizId:'quiz1003'},
+    { subject: 'English', numberOfQuestions: 30, time: 40, level: 'Hard', attempts: 4 ,quizId:'quiz1004'},
+    { subject: 'Computer Science', numberOfQuestions: 22, time: 30, level: 'Easy', attempts: 6 ,quizId:'quiz1005'}
   ]; 
   //quizzes: any[] = [];
   filteredQuizzes = this.quizzes;

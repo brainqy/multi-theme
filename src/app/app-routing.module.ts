@@ -154,7 +154,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: "quiz-test",
+    path: "quiz-test/:quizId",
     component: QuizPlayerComponent,
 
   },

@@ -8,7 +8,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="">Home</a></li>
-        <li class="breadcrumb-item"><a href="bookmarks">Bookmarks</a></li> <!-- Link to forum homepage -->
+        <li class="breadcrumb-item"><a href="quiz-store">Quiz Store</a></li> <!-- Link to forum homepage -->
              </ol>
     </nav>
 
@@ -41,7 +41,7 @@
               <strong>Time:</strong> {{ quiz.time }} mins<br>
               <strong>Attempts:</strong> {{ quiz.attempts }}
             </p>
-            <button class="btn btn-primary btn-sm mt-3 w-100" routerLink="/quiz-test">Start Quiz</button>
+            <button class="btn btn-primary btn-sm mt-3 w-100"  [routerLink]="['/quiz-test', quiz.quizId]">Start Quiz</button>
           </div>
         </div>
       </div>
