@@ -2,6 +2,8 @@ import {Inject, Injectable} from '@angular/core';
 import {EncryptDecryptService} from "./encrypt-decrypt.service";
 import {SESSION_STORAGE, StorageService} from 'ngx-webstorage-service';
 import { JwtService } from './jwt.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { Router } from '@angular/router';
 import { environment } from '../application_constant/environment';
@@ -12,10 +14,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
   private baseUrl = environment.baseUrl+environment.contextUrl;
-  constructor(@Inject(SESSION_STORAGE) private storage: StorageService,
+  constructor(@Inject(SESSION_STORAGE) private storage: StorageService,private afAuth: AngularFireAuth,
               private encryption: EncryptDecryptService,private router: Router,private http: HttpClient) {
   }
-
+  private app = initializeApp(environment.firebaseConfig);
+    private auth = getAuth(this.app); // Initialize Firebase Auth
 
 
   isAuthenticated(): boolean {
@@ -54,7 +57,10 @@ export class AuthService {
   removeToken() {
     return this.storage.remove("auth_token");
   }
-
+  loginWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(this.auth, provider);
+}
 verifyToken(email: string): Observable<any> { // Change type to boolean to match backend
   return this.http.post<any>(`${this.baseUrl}/verify-token`, { email: email });
 }

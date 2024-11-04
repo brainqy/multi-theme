@@ -1,7 +1,9 @@
 
 import {Component} from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {FormBuilder, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthService } from 'src/app/Core/services/auth.service';
 import { JwtService } from 'src/app/Core/services/jwt.service';
 import { LoginService } from 'src/app/Core/services/login.service';
@@ -31,7 +33,8 @@ export class LoginComponent {
               private router: Router,
               private authService: AuthService,
               private jwtService: JwtService,
-              private loginService: LoginService) {
+              private loginService: LoginService,
+              private afAuth: AngularFireAuth) {
   }
 
   ngOnInit(): void {
@@ -77,6 +80,36 @@ console.log("log res ",res);
     if (role == 'ROLE_REQUESTER')
       this.router.navigateByUrl('/requester-home');
   }
-
+  async onLoginWithGoogle() {
+    try {
+        const userCredential = await this.authService.loginWithGoogle(); // Wait for the Google login to complete
+        const email = await userCredential.user.email; // Wait for the ID token to be retrieved
+        console.log("userCredential ",userCredential);
+        if(email){
+          this.authService.verifyToken(email).subscribe(
+            res => {
+                console.log('Backend verification response:', res);
+                if (res.status === 'SUCCESS') {
+                  Swal.fire('Daily Streak',res.dailyStreakDto.streakNumber.toString(),'success');
+                  this.authService.storeToken(res.token);
+                  this.authService.storeStreak(res.dailyStreakDto.streakNumber);
+                  this.authService.storeBalance(res.dailyStreakDto.userBalance);
+                  this.routeUserDashboard();
+                } else {
+                  Swal.fire('Error', res.message, 'error');
+                }
+            },
+            error => {
+                console.error('Error verifying token with backend:', error);
+            }
+        ); 
+        }
+        // Call backend service to verify token
+         
+    } catch (error) {
+        // Handle Google login error
+        console.error('Google login error:', error);
+    }
+}
 
 }

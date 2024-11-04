@@ -8,7 +8,7 @@ export const environment = {
   baseUrl: "http://localhost:8083",
   contextUrl: "/ytms",
   signupUrl: "/ytms/register",
-  loginUrl: "/ytms/login",
+  loginUrl: "/ytms/login"
 };
 
 /*
