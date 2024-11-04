@@ -15,6 +15,7 @@ interface WeeklySlots {
   styleUrls: ['./booked-interviews.component.scss']
 })
 export class BookedInterviewsComponent {
+  emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   sideNavStatus=false;
   selectedSlot: { day: string, slot: string } | null = null;
   currentWeekStart: moment.Moment = moment().startOf('week'); // Start of current week
@@ -54,7 +55,7 @@ isTheSelectedkindOfInterviewType:boolean=false;
     this.getAllSlots();
     this.generateDatesWithSlots();
     this.invitationForm = this.fb.group({
-      friendEmail: ['', [Validators.required, Validators.email]]
+      friendEmail: ['', [Validators.required, Validators.pattern(this.emailPattern)]]
     });
     
   }
@@ -146,6 +147,14 @@ isTheSelectedkindOfInterviewType:boolean=false;
       // Add selected kind of interview type to the data object
       data.kindOfInterviewType = this.selectedKindOfInterviewType;
     }
+      // Assuming `friendEmail` is a form control in a FormGroup
+  if (this.invitationForm.get('friendEmail')?.valid) {
+    data.hrEmail = this.invitationForm.get('friendEmail')?.value;
+    console.log("data ",data);
+    
+  } else {
+    console.warn("Friend's email is not valid");
+  }
 
   this.interviewService.saveinterviewSlot(data).subscribe((res)=>{
 console.log(" called interview service",res);

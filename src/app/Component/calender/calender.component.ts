@@ -59,7 +59,7 @@ export class CalenderComponent {
   trainerSearchTerm: string = '';
   selectedTrainer!: any;
   allTrainers: any = [];
-  emailpattern = /^[^\s@]+@\.com$/;
+  emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   event!: CalendarEvent;
   private searchTerms = new Subject<string>();
 

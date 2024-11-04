@@ -17,7 +17,7 @@ export class LoginComponent {
   
 
   reg!: User[];
-  emailpattern = /^[^\s@]+@gmail\.com$/;
+  emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   userLoginForm = this.formBuilder.group(
     {
       email: ['', [Validators.required, Validators.pattern(this.emailpattern)]],
