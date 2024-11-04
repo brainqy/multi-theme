@@ -8,15 +8,7 @@ export const environment = {
   //baseUrl: "http://localhost:8083",
   contextUrl: "/ytms",
   signupUrl: "/ytms/register",
-  loginUrl: "/ytms/login",
-  firebaseConfig : {
-    apiKey: '${process.env.FIREBASE_BRAINQ_API_KEY}' as string,
-    authDomain: "brainqy.firebaseapp.com",
-    projectId: "brainqy",
-    storageBucket: "brainqy.appspot.com",
-    messagingSenderId: "397991376734",
-    appId: "1:397991376734:web:135ad2b5ba830dcfec41cf"
-  },
+  loginUrl: "/ytms/login"
 };
 
 /*

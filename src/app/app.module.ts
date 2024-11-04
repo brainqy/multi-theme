@@ -87,12 +87,6 @@ import { AddbadgesComponent } from './Component/addbadges/addbadges.component';
 import { ResumeFormComponent } from './Component/resume-manager/resume-form/resume-form.component';
 import { ResumesComponent } from './Component/resume-manager/resumes/resumes.component';
 import { BookmarksComponent } from './Component/bookmarks/bookmarks.component';
-import { environment } from './Core/application_constant/environment';
-import { AngularFireModule } from "@angular/fire/compat";
-import { AngularFireAuthModule } from "@angular/fire/compat/auth";
-import { QuizStoreComponent } from './Component/test-prep/quiz-store/quiz-store.component';
-import { CreateQuizComponent } from './Component/test-prep/create-quiz/create-quiz.component';
-import { SelectQueComponent } from './Component/test-prep/select-que/select-que.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -163,10 +157,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddbadgesComponent,
     ResumeFormComponent,
     ResumesComponent,
-    BookmarksComponent,
-    QuizStoreComponent,
-    CreateQuizComponent,
-    SelectQueComponent
+    BookmarksComponent
   ],
   imports: [
     BrowserModule,
@@ -179,8 +170,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     QuillModule.forRoot(),
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
     NgCircleProgressModule.forRoot({
       // set defaults here
       backgroundColor: "teal",

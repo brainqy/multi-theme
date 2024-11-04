@@ -48,9 +48,6 @@ import { AddbadgesComponent } from './Component/addbadges/addbadges.component';
 import { ResumeFormComponent } from './Component/resume-manager/resume-form/resume-form.component';
 import { ResumesComponent } from './Component/resume-manager/resumes/resumes.component';
 import { BookmarksComponent } from './Component/bookmarks/bookmarks.component';
-import { QuizStoreComponent } from './Component/test-prep/quiz-store/quiz-store.component';
-import { CreateQuizComponent } from './Component/test-prep/create-quiz/create-quiz.component';
-import { SelectQueComponent } from './Component/test-prep/select-que/select-que.component';
 
 
 const routes: Routes = [
@@ -158,17 +155,6 @@ const routes: Routes = [
   {
     path: "quiz-test",
     component: QuizPlayerComponent,
-
-  },
-  {
-    path: "quiz-store",
-    component: QuizStoreComponent,
-
-  },
-  { path: 'select-questions', component: SelectQueComponent },
-  {
-    path: "create-quiz",
-    component: CreateQuizComponent,
 
   },
   {
