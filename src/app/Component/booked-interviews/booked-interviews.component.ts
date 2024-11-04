@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment'; // Import moment library for date manipulation
@@ -32,25 +33,40 @@ isTheSelectedkindOfInterviewType:boolean=false;
     'Microservices',
     'Angular',
     'MySql',
-    'Practice with Friends'
     // Add more interview types as needed
   ];
   interviewItems: string[] = [
-    'Practice with peers',
+    'Practice with Friends',
     'Practice with experts',
-    'Practice with AI'
+    'Practice with AI',
 
     // Add more interview types as needed
   ];
   interviewSlots:any;
-
+  invitationForm: FormGroup;
   datesWithSlots: { date: string, slots: string[] }[] = [];
   interviewBalance!: number;
 
-  constructor(private modalService: NgbModal,private interviewService:InterviewService,private router: Router) {
+  constructor(private modalService: NgbModal,
+    private interviewService:InterviewService,
+    private router: Router,
+    private fb: FormBuilder) {
     this.getAllSlots();
     this.generateDatesWithSlots();
+    this.invitationForm = this.fb.group({
+      friendEmail: ['', [Validators.required, Validators.email]]
+    });
     
+  }
+  get friendEmail() {
+    return this.invitationForm.get('friendEmail');
+  }
+  onSubmit(): void {
+    if (this.invitationForm.valid) {
+      const email = this.invitationForm.value.friendEmail;
+      console.log('Sending invitation to:', email);
+      // Add further logic for sending the invitation here
+    }
   }
   generateDatesWithSlots() {
     const today = new Date();
@@ -168,7 +184,10 @@ window.location.reload();
       this.isTheSelectedInterviewType=true;
     }
   }
-  
+
+  onSelectInterviewType(item: string): void {
+    this.selectedInterviewType = item;
+  }
   isSelectedInterviewType(item: string): boolean {
     return this.selectedInterviewType === item;
   }

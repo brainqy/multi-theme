@@ -173,12 +173,44 @@
                 </div>
               </div>
             </div>
+            <div class="container" *ngIf="!isSchedulePageVisible && !isKindOfPracticePageVisible">
+              <!-- Conditionally display content based on selected interview type -->
+              <div *ngIf="isSelectedInterviewType('Practice with Friends')">
+                <p>Show if selected interview type is 'Practice with Friends'</p>
+            
+                <!-- Email input with validation -->
+                <form [formGroup]="invitationForm" (ngSubmit)="onSubmit()">
+                  <input
+                    type="email"
+                    formControlName="friendEmail"
+                    placeholder="Friend's Email"
+                    aria-label="Friend's Email"
+                    class="form-control my-2"
+                  />
+            
+                  <!-- Display error if email is invalid -->
+                  <div *ngIf="friendEmail?.invalid && friendEmail?.touched" class="text-danger">
+                    Please enter a valid email address.
+                  </div>
+            
+                  <!-- Send Invitation button, only enabled if email is valid -->
+                  <button type="submit" class="btn btn-primary" [disabled]="invitationForm.invalid">
+                    Send Invitation
+                  </button>
+                </form>
+              </div>
+            </div>
+            
             <!-- Modal footer -->
             <div class="modal-footer">
               <!-- Next button -->
               <button type="button" class="btn btn-primary" [disabled]="!isTheSelectedInterviewType" (click)="hideInterviewTypePage()">Next</button>
             </div>
           </div>
+          
+          
+          
+          
 
           <div *ngIf="isKindOfPracticePageVisible">
             <div class="modal-header">
@@ -230,7 +262,7 @@
               <div class="week">
                 <div *ngFor="let dayWithSlots of datesWithSlots" class="day">
                   <p>{{ dayWithSlots.date | date: 'EEE, MMM d' }}</p>
-                  <div class="slot-buttons">
+                  <div>
                     <button *ngFor="let slot of dayWithSlots.slots"
                             class="slot-button"
                             [class.selected]="isSlotSelected(dayWithSlots.date, slot)"
