@@ -1,0 +1,217 @@
+{
+    "sections": [
+      {
+        "section": "Java Basics",
+        "questions": [
+          {
+            "questionId": 1,
+            "question": "What is the default value of a boolean in Java?",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "null" },
+              { "D": "undefined" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The default value of a boolean in Java is false."
+          },
+          {
+            "questionId": 2,
+            "question": "Which keyword is used to inherit a class in Java?",
+            "options": [
+              { "A": "extends" },
+              { "B": "implements" },
+              { "C": "inherits" },
+              { "D": "derives" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The \"extends\" keyword is used to inherit a class in Java."
+          }
+          
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 0
+      },
+      {
+        "section": "Java OOP",
+        "questions": [
+          {
+            "questionId": 11,
+            "question": "What is encapsulation in Java?",
+            "options": [
+              { "A": "A method to bundle data and methods" },
+              { "B": "A keyword to hide classes" },
+              { "C": "Inheritance of data" },
+              { "D": "None of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Encapsulation is the process of bundling data with methods that operate on that data."
+          },
+          {
+            "questionId": 12,
+            "question": "Which concept allows reusing code in Java?",
+            "options": [
+              { "A": "Encapsulation" },
+              { "B": "Inheritance" },
+              { "C": "Polymorphism" },
+              { "D": "Abstraction" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Inheritance allows reusing code by creating new classes from existing ones."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 1
+      },
+      {
+        "section": "Collection API",
+        "questions": [
+          {
+            "questionId": 21,
+            "question": "Which interface does java.util.HashMap implement?",
+            "options": [
+              { "A": "List" },
+              { "B": "Set" },
+              { "C": "Map" },
+              { "D": "Queue" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "HashMap implements the Map interface in Java."
+          },
+          {
+            "questionId": 22,
+            "question": "What is the time complexity of retrieving an element from a HashMap?",
+            "options": [
+              { "A": "O(1)" },
+              { "B": "O(n)" },
+              { "C": "O(log n)" },
+              { "D": "O(n^2)" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Retrieving an element from a HashMap has an average time complexity of O(1)."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 2
+      },
+      {
+        "section": "Java 8",
+        "questions": [
+          {
+            "questionId": 31,
+            "question": "Which feature was introduced in Java 8?",
+            "options": [
+              { "A": "Streams API" },
+              { "B": "Generics" },
+              { "C": "Annotations" },
+              { "D": "Reflection" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Streams API was introduced in Java 8 to facilitate functional programming."
+          },
+          {
+            "questionId": 32,
+            "question": "What is a lambda expression in Java?",
+            "options": [
+              { "A": "An anonymous function" },
+              { "B": "A class definition" },
+              { "C": "A new type of method" },
+              { "D": "A package" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Lambda expressions are anonymous functions in Java."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 3
+      },
+      {
+        "section": "Microservices",
+        "questions": [
+          {
+            "questionId": 41,
+            "question": "Which protocol is commonly used for communication between microservices?",
+            "options": [
+              { "A": "HTTP" },
+              { "B": "FTP" },
+              { "C": "SMTP" },
+              { "D": "POP3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "HTTP is the most commonly used protocol for communication between microservices."
+          },
+          {
+            "questionId": 42,
+            "question": "Which of the following is a key characteristic of microservices?",
+            "options": [
+              { "A": "Monolithic architecture" },
+              { "B": "Single deployment unit" },
+              { "C": "Small, independently deployable services" },
+              { "D": "Tightly coupled services" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Microservices are small, independently deployable services."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 4
+      },
+      {
+        "section": "Spring Boot",
+        "questions": [
+          {
+            "questionId": 51,
+            "question": "What annotation is used to mark a class as a Spring Boot application?",
+            "options": [
+              { "A": "@SpringBootApplication" },
+              { "B": "@RestController" },
+              { "C": "@Service" },
+              { "D": "@Component" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The @SpringBootApplication annotation is used to mark a class as the main entry point for a Spring Boot application."
+          },
+          {
+            "questionId": 52,
+            "question": "Which tool does Spring Boot use for dependency management?",
+            "options": [
+              { "A": "Maven" },
+              { "B": "Ant" },
+              { "C": "Jenkins" },
+              { "D": "Gradle" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Spring Boot commonly uses Maven for dependency management, though Gradle can also be used."
+          }
+          
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 5
+      }
+    ]
+  }
+  

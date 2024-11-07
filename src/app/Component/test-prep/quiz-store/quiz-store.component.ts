@@ -9,12 +9,16 @@ import { AddquizService } from 'src/app/Core/services/addquiz.service';
 })
 export class QuizStoreComponent {
   quizzes = [
-    { subject: 'Mathematics', numberOfQuestions: 20, time: 30, level: 'Hard', attempts: 5 ,quizId:'quiz1000'},
-    { subject: 'Science', numberOfQuestions: 25, time: 35, level: 'Medium', attempts: 3 ,quizId:'quiz1001'},
-    { subject: 'History', numberOfQuestions: 15, time: 20, level: 'Easy', attempts: 2 ,quizId:'quiz1002'},
-    { subject: 'Geography', numberOfQuestions: 18, time: 25, level: 'Medium', attempts: 1 ,quizId:'quiz1003'},
-    { subject: 'English', numberOfQuestions: 30, time: 40, level: 'Hard', attempts: 4 ,quizId:'quiz1004'},
-    { subject: 'Computer Science', numberOfQuestions: 22, time: 30, level: 'Easy', attempts: 6 ,quizId:'quiz1005'}
+    { subject: 'Java', numberOfQuestions: 20, time: 5, level: 'Hard', attempts: 5 ,quizId:'quiz1000'},
+    { subject: 'Java', numberOfQuestions: 25, time: 5, level: 'Medium', attempts: 3 ,quizId:'quiz1001'},
+    { subject: 'Java', numberOfQuestions: 15, time: 5, level: 'Easy', attempts: 2 ,quizId:'quiz1002'},
+    { subject: 'Angular', numberOfQuestions: 18, time: 5, level: 'Medium', attempts: 1 ,quizId:'quiz1003'},
+    { subject: 'AWS', numberOfQuestions: 30, time: 5, level: 'Hard', attempts: 4 ,quizId:'quiz1004'},
+    { subject: 'React', numberOfQuestions: 22, time: 5, level: 'Easy', attempts: 6 ,quizId:'quiz1005'},
+    { subject: 'Javascript', numberOfQuestions: 22, time: 5, level: 'Easy', attempts: 6 ,quizId:'quiz1006'},
+    { subject: 'SQL', numberOfQuestions: 22, time: 5, level: 'Easy', attempts: 6 ,quizId:'quiz1007'}
+
+
   ]; 
   //quizzes: any[] = [];
   filteredQuizzes = this.quizzes;

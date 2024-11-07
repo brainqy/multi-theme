@@ -1,0 +1,180 @@
+{
+    "sections": [
+      {
+        "section": "SQL Basics",
+        "questions": [
+          {
+            "questionId": 1,
+            "question": "What does the SQL keyword SELECT do?",
+            "options": [
+              { "A": "Deletes data from a table" },
+              { "B": "Updates data in a table" },
+              { "C": "Selects data from a table" },
+              { "D": "Creates a new table" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The SELECT keyword is used to retrieve data from a database table."
+          },
+          {
+            "questionId": 2,
+            "question": "Which clause is used to filter the rows returned by a SELECT query?",
+            "options": [
+              { "A": "FROM" },
+              { "B": "WHERE" },
+              { "C": "GROUP BY" },
+              { "D": "ORDER BY" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The WHERE clause filters records in a SELECT query based on a condition."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 0
+      },
+      {
+        "section": "Joins",
+        "questions": [
+          {
+            "questionId": 11,
+            "question": "Which type of JOIN returns all records when there is a match in either left or right table?",
+            "options": [
+              { "A": "INNER JOIN" },
+              { "B": "LEFT JOIN" },
+              { "C": "RIGHT JOIN" },
+              { "D": "FULL OUTER JOIN" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "A FULL OUTER JOIN returns all records where there is a match in either the left or right table."
+          },
+          {
+            "questionId": 12,
+            "question": "What will an INNER JOIN return?",
+            "options": [
+              { "A": "Only unmatched records from both tables" },
+              { "B": "All records from both tables" },
+              { "C": "Only matched records from both tables" },
+              { "D": "Only unmatched records from the left table" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "An INNER JOIN returns only the rows where there is a match between both tables."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 1
+      },
+      {
+        "section": "Aggregate Functions",
+        "questions": [
+          {
+            "questionId": 21,
+            "question": "Which aggregate function in SQL is used to count the number of rows in a result set?",
+            "options": [
+              { "A": "SUM()" },
+              { "B": "COUNT()" },
+              { "C": "AVG()" },
+              { "D": "MAX()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The COUNT() function returns the number of rows in a result set."
+          },
+          {
+            "questionId": 22,
+            "question": "Which SQL function is used to calculate the average value of a column?",
+            "options": [
+              { "A": "SUM()" },
+              { "B": "COUNT()" },
+              { "C": "AVG()" },
+              { "D": "MIN()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The AVG() function calculates the average of a numeric column."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 2
+      },
+      {
+        "section": "Subqueries",
+        "questions": [
+          {
+            "questionId": 31,
+            "question": "What is a subquery in SQL?",
+            "options": [
+              { "A": "A way to filter data based on conditions" },
+              { "B": "A SELECT query nested within another query" },
+              { "C": "A way to join tables together" },
+              { "D": "A constraint applied to a column" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "A subquery is a query nested inside another SQL query, typically within SELECT, WHERE, or FROM clauses."
+          },
+          {
+            "questionId": 32,
+            "question": "Which clause often includes a subquery?",
+            "options": [
+              { "A": "FROM" },
+              { "B": "WHERE" },
+              { "C": "GROUP BY" },
+              { "D": "ORDER BY" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Subqueries are often used in the WHERE clause to filter data based on a nested query result."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 3
+      },
+      {
+        "section": "Constraints",
+        "questions": [
+          {
+            "questionId": 41,
+            "question": "Which constraint enforces a unique value for a column in SQL?",
+            "options": [
+              { "A": "FOREIGN KEY" },
+              { "B": "CHECK" },
+              { "C": "UNIQUE" },
+              { "D": "NOT NULL" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The UNIQUE constraint ensures that all values in a column are different."
+          },
+          {
+            "questionId": 42,
+            "question": "What is the PRIMARY KEY constraint used for?",
+            "options": [
+              { "A": "To enforce unique values and prevent NULLs in a column" },
+              { "B": "To enforce a specific data range" },
+              { "C": "To allow NULL values in a column" },
+              { "D": "To reference columns in another table"}
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "A PRIMARY KEY constraint uniquely identifies each record in a table and does not allow NULL values."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 4
+      }
+    ]
+  }
+  

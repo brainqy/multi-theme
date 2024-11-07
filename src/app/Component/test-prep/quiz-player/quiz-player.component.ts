@@ -229,6 +229,8 @@ export class QuizPlayerComponent implements CanComponentDeactivate, OnInit, OnDe
 this.quizService.getQuizData(this.quizId).subscribe({
       next: data => {
         console.log("Quiz Data:", data.sections);
+        console.log(" this.getAllQuestions(this.quizId)",this.getAllQuestions(this.quizId));
+        
         
         // Store sections in the component
         this.sections = data.sections;
@@ -387,20 +389,55 @@ isCorrectOption(sectionIndex: number, questionIndex: number, optionLetter: strin
 }
 
 
-getAllQuestions(quizId: string) {
-  this.quizService.getQuizData(quizId).subscribe(data => {
-    this.allQuestions = data.sections.flatMap((section: { questions: any[]; section: any; }, sectionIndex: any) =>
-      section.questions.map((question, questionIndex) => ({
-        ...question,
-        section: section.section,
-        sectionIndex,
-        questionIndex
-      }))
-    );
+getAllQuestions(quizId: string): void {
+  this.quizService.getQuizData(quizId).subscribe({
+    next: (data) => {
+      // Check if data and sections are valid
+      if (!data || !data.sections || data.sections.length === 0) {
+        console.error('No sections found in the response');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'No questions found for this quiz.',
+          confirmButtonText: 'Okay'
+        });
+        this.loading = false;
+        return;
+      }
 
-    this.loading = false; // Set loading to false after data is loaded
+      console.log('Data received:', data);  // Debugging: Check the structure of the response
+      
+      // Store the sections in the component
+      this.sections = data.sections;
+
+      // Load all questions from the sections
+      this.allQuestions = data.sections.flatMap((section: { questions: any[]; section: any }, sectionIndex: number) =>
+        section.questions.map((question, questionIndex) => ({
+          ...question,
+          section: section.section,
+          sectionIndex,
+          questionIndex
+        }))
+      );
+
+      // Calculate the total number of questions
+      this.totalQuestions = this.allQuestions.length;
+
+      this.loading = false;  // Set loading to false after data is loaded
+    },
+    error: (err) => {
+      console.error('Error loading quiz data:', err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Failed to load quiz data. Please try again later.',
+        confirmButtonText: 'Okay'
+      });
+      this.loading = false;
+    }
   });
 }
+
 
   
 

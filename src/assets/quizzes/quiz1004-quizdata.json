@@ -1,0 +1,145 @@
+{
+    "sections": [
+      {
+        "section": "AWS Cloud Concepts",
+        "questions": [
+          {
+            "questionId": 1,
+            "question": "What is the main benefit of using cloud computing?",
+            "options": [
+              { "A": "Fixed cost of infrastructure" },
+              { "B": "High upfront capital expenses" },
+              { "C": "On-demand resource availability" },
+              { "D": "Limited scalability" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Cloud computing provides on-demand availability of resources without the need for large upfront investments."
+          },
+          {
+            "questionId": 2,
+            "question": "Which of the following is a core service model provided by AWS?",
+            "options": [
+              { "A": "Platform as a Service (PaaS)" },
+              { "B": "Software as a Service (SaaS)" },
+              { "C": "Infrastructure as a Service (IaaS)" },
+              { "D": "All of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "AWS provides all three core service models: SaaS, PaaS, and IaaS."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 0
+      },
+      {
+        "section": "Security and Compliance",
+        "questions": [
+          {
+            "questionId": 11,
+            "question": "What is the primary responsibility of AWS under the shared responsibility model?",
+            "options": [
+              { "A": "Securing customer data" },
+              { "B": "Managing operating system patches" },
+              { "C": "Securing the infrastructure" },
+              { "D": "Configuring network access" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Under the shared responsibility model, AWS is responsible for securing the underlying infrastructure."
+          },
+          {
+            "questionId": 12,
+            "question": "Which AWS service can be used to control access to AWS resources?",
+            "options": [
+              { "A": "Amazon CloudWatch" },
+              { "B": "AWS Identity and Access Management (IAM)" },
+              { "C": "AWS CloudFormation" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Identity and Access Management (IAM) is used to manage permissions and access to AWS resources."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 1
+      },
+      {
+        "section": "Technology",
+        "questions": [
+          {
+            "questionId": 21,
+            "question": "What type of database is Amazon RDS?",
+            "options": [
+              { "A": "NoSQL database" },
+              { "B": "Document database" },
+              { "C": "Relational database" },
+              { "D": "Graph database" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Amazon RDS is a managed relational database service."
+          },
+          {
+            "questionId": 22,
+            "question": "Which AWS service can be used to deploy and manage Docker containers?",
+            "options": [
+              { "A": "AWS Lambda" },
+              { "B": "Amazon ECS" },
+              { "C": "Amazon RDS" },
+              { "D": "AWS CloudFormation" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Amazon ECS (Elastic Container Service) is used for deploying and managing Docker containers on AWS."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 2
+      },
+      {
+        "section": "Billing and Pricing",
+        "questions": [
+          {
+            "questionId": 31,
+            "question": "Which AWS pricing model allows users to pay for computing capacity on an as-needed basis?",
+            "options": [
+              { "A": "Reserved Instances" },
+              { "B": "On-Demand Instances" },
+              { "C": "Spot Instances" },
+              { "D": "Dedicated Hosts" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "On-Demand Instances allow users to pay only for the compute capacity they need with no long-term commitments."
+          },
+          {
+            "questionId": 32,
+            "question": "What tool does AWS offer to help estimate costs for a particular architecture?",
+            "options": [
+              { "A": "AWS CloudTrail" },
+              { "B": "AWS TCO Calculator" },
+              { "C": "AWS Cost Explorer" },
+              { "D": "AWS Pricing Calculator" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "The AWS Pricing Calculator helps users estimate the cost of specific AWS services and architectures."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 3
+      }
+    ]
+  }
+  

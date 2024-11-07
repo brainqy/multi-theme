@@ -1,0 +1,180 @@
+{
+    "sections": [
+      {
+        "section": "React Basics",
+        "questions": [
+          {
+            "questionId": 1,
+            "question": "What is the primary purpose of React?",
+            "options": [
+              { "A": "To manage the backend of an application" },
+              { "B": "To build user interfaces" },
+              { "C": "To create databases" },
+              { "D": "To develop server-side logic" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "React is a JavaScript library used for building user interfaces, primarily for single-page applications."
+          },
+          {
+            "questionId": 2,
+            "question": "Which function is used to create components in React?",
+            "options": [
+              { "A": "createElement" },
+              { "B": "createComponent" },
+              { "C": "createReactElement" },
+              { "D": "createDOM" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "React.createElement() is the function used to create elements in React."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 0
+      },
+      {
+        "section": "React Components",
+        "questions": [
+          {
+            "questionId": 11,
+            "question": "What is the difference between a functional and a class component?",
+            "options": [
+              { "A": "Functional components do not return JSX" },
+              { "B": "Class components are stateless by default" },
+              { "C": "Functional components lack lifecycle methods" },
+              { "D": "Class components cannot have state" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Functional components do not have lifecycle methods by default, unlike class components."
+          },
+          {
+            "questionId": 12,
+            "question": "What method is used to render components in React?",
+            "options": [
+              { "A": "React.createComponent" },
+              { "B": "React.renderComponent" },
+              { "C": "ReactDOM.render" },
+              { "D": "ReactDOM.show" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "ReactDOM.render() is used to render components into the DOM."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 1
+      },
+      {
+        "section": "React Hooks",
+        "questions": [
+          {
+            "questionId": 21,
+            "question": "Which hook is used to manage state in a functional component?",
+            "options": [
+              { "A": "useContext" },
+              { "B": "useState" },
+              { "C": "useEffect" },
+              { "D": "useReducer" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "useState is the hook used to manage state in a functional component."
+          },
+          {
+            "questionId": 22,
+            "question": "What is the purpose of the useEffect hook?",
+            "options": [
+              { "A": "To manage component state" },
+              { "B": "To handle component side effects" },
+              { "C": "To render components" },
+              { "D": "To create refs for DOM elements" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "useEffect is used to manage side effects in functional components, such as fetching data or updating the DOM."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 2
+      },
+      {
+        "section": "State Management",
+        "questions": [
+          {
+            "questionId": 31,
+            "question": "Which of the following is a popular state management library in React?",
+            "options": [
+              { "A": "Redux" },
+              { "B": "Angular" },
+              { "C": "Vuex" },
+              { "D": "Backbone" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Redux is a popular state management library often used with React."
+          },
+          {
+            "questionId": 32,
+            "question": "What is the purpose of React's Context API?",
+            "options": [
+              { "A": "To manage server-side rendering" },
+              { "B": "To manage component lifecycle" },
+              { "C": "To handle global state" },
+              { "D": "To style components" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "React's Context API allows global state management, making it easier to pass data through the component tree without prop drilling."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 3
+      },
+      {
+        "section": "React Performance Optimization",
+        "questions": [
+          {
+            "questionId": 41,
+            "question": "Which hook is used to optimize expensive calculations in React?",
+            "options": [
+              { "A": "useEffect" },
+              { "B": "useMemo" },
+              { "C": "useReducer" },
+              { "D": "useRef" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "useMemo is used to memoize expensive calculations, improving performance by preventing unnecessary recalculations."
+          },
+          {
+            "questionId": 42,
+            "question": "How can React.memo help improve performance?",
+            "options": [
+              { "A": "It prevents components from re-rendering unnecessarily" },
+              { "B": "It adds lifecycle methods to functional components" },
+              { "C": "It allows direct manipulation of the DOM" },
+              { "D": "It manages state updates more efficiently" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "React.memo prevents a component from re-rendering if its props haven’t changed, thus improving performance."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 4
+      }
+    ]
+  }
+  

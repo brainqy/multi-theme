@@ -1,0 +1,215 @@
+{
+    "sections": [
+      {
+        "section": "Angular Basics",
+        "questions": [
+          {
+            "questionId": 1,
+            "question": "What command is used to create a new Angular project?",
+            "options": [
+              { "A": "ng init" },
+              { "B": "ng new" },
+              { "C": "ng create" },
+              { "D": "ng start" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The 'ng new' command is used to create a new Angular project."
+          },
+          {
+            "questionId": 2,
+            "question": "Which directive is used for two-way data binding in Angular?",
+            "options": [
+              { "A": "[()] (banana in a box)" },
+              { "B": "*ngIf" },
+              { "C": "*ngFor" },
+              { "D": "ngSwitch" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The syntax [(ngModel)] (banana in a box) is used for two-way data binding."
+          } 
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 0
+      },
+      {
+        "section": "Components",
+        "questions": [
+          {
+            "questionId": 11,
+            "question": "Which decorator is used to define an Angular component?",
+            "options": [
+              { "A": "@Injectable" },
+              { "B": "@NgModule" },
+              { "C": "@Component" },
+              { "D": "@Directive" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "@Component is the decorator used to define an Angular component."
+          },
+          {
+            "questionId": 12,
+            "question": "Which file typically defines the component’s HTML template?",
+            "options": [
+              { "A": "component.ts" },
+              { "B": "component.css" },
+              { "C": "component.html" },
+              { "D": "component.spec.ts" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The component.html file is where the HTML template of a component is defined."
+          } 
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 1
+      },
+      {
+        "section": "Services and Dependency Injection",
+        "questions": [
+          {
+            "questionId": 21,
+            "question": "What is the purpose of the @Injectable decorator in Angular?",
+            "options": [
+              { "A": "It defines a component" },
+              { "B": "It makes a class injectable as a dependency" },
+              { "C": "It sets up routing" },
+              { "D": "It handles HTTP requests" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The @Injectable decorator marks a class as a service and makes it available for dependency injection."
+          },
+          {
+            "questionId": 22,
+            "question": "Which lifecycle hook is called when the service is created?",
+            "options": [
+              { "A": "ngOnInit" },
+              { "B": "ngOnDestroy" },
+              { "C": "ngOnChanges" },
+              { "D": "No lifecycle hook is called for services" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "Services in Angular do not have lifecycle hooks like components."
+          } 
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 2
+      },
+      {
+        "section": "Routing",
+        "questions": [
+          {
+            "questionId": 31,
+            "question": "Which module provides Angular’s routing capabilities?",
+            "options": [
+              { "A": "RouterModule" },
+              { "B": "HttpClientModule" },
+              { "C": "FormsModule" },
+              { "D": "CommonModule" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "RouterModule provides Angular’s routing capabilities."
+          },
+          {
+            "questionId": 32,
+            "question": "What does the RouterLink directive do?",
+            "options": [
+              { "A": "It fetches data from a server" },
+              { "B": "It binds form data" },
+              { "C": "It defines a route path" },
+              { "D": "It navigates to a specified route" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "The RouterLink directive is used to navigate to different routes within the application."
+          } 
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 3
+      },
+      {
+        "section": "HTTP Client",
+        "questions": [
+          {
+            "questionId": 41,
+            "question": "Which module is needed to use HttpClient in Angular?",
+            "options": [
+              { "A": "FormsModule" },
+              { "B": "HttpClientModule" },
+              { "C": "RouterModule" },
+              { "D": "CommonModule" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The HttpClientModule is required to use HttpClient for making HTTP requests."
+          },
+          {
+            "questionId": 42,
+            "question": "Which method is used to send GET requests with HttpClient?",
+            "options": [
+              { "A": "httpClient.post" },
+              { "B": "httpClient.put" },
+              { "C": "httpClient.get" },
+              { "D": "httpClient.delete" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The httpClient.get method is used to send GET requests to fetch data."
+          } 
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 4
+      },
+      {
+        "section": "Angular Material",
+        "questions": [
+          {
+            "questionId": 51,
+            "question": "What is the purpose of Angular Material?",
+            "options": [
+              { "A": "To create unit tests" },
+              { "B": "To provide a UI component library" },
+              { "C": "To configure routing" },
+              { "D": "To handle HTTP requests" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Angular Material provides a set of reusable UI components for Angular."
+          },
+          {
+            "questionId": 52,
+            "question": "Which component is used for displaying modals in Angular Material?",
+            "options": [
+              { "A": "MatModal" },
+              { "B": "MatDialog" },
+              { "C": "MatPopup" },
+              { "D": "MatOverlay" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The MatDialog component in Angular Material is used to display modals."
+          } 
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 5
+      }
+    ]
+  }
+  

@@ -62,6 +62,7 @@ isTheSelectedkindOfInterviewType:boolean=false;
   get friendEmail() {
     return this.invitationForm.get('friendEmail');
   }
+  
   onSubmit(): void {
     if (this.invitationForm.valid) {
       const email = this.invitationForm.value.friendEmail;

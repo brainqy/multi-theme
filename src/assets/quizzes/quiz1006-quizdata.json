@@ -1,0 +1,180 @@
+{
+    "sections": [
+      {
+        "section": "JavaScript Basics",
+        "questions": [
+          {
+            "questionId": 1,
+            "question": "What will the following code output?\n\nconsole.log(typeof null);",
+            "options": [
+              { "A": "\"object\"" },
+              { "B": "\"null\"" },
+              { "C": "\"undefined\"" },
+              { "D": "\"boolean\"" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "In JavaScript, `typeof null` returns 'object', which is a well-known peculiarity."
+          },
+          {
+            "questionId": 2,
+            "question": "What is the correct syntax for a single-line comment in JavaScript?",
+            "options": [
+              { "A": "# This is a comment" },
+              { "B": "// This is a comment" },
+              { "C": "<!-- This is a comment -->" },
+              { "D": "/* This is a comment */"}
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "// is used for single-line comments in JavaScript."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 0
+      },
+      {
+        "section": "Functions and Scope",
+        "questions": [
+          {
+            "questionId": 11,
+            "question": "What will the following code output?\n\n(function() { var a = b = 3; })(); console.log(typeof b);",
+            "options": [
+              { "A": "\"undefined\"" },
+              { "B": "\"number\"" },
+              { "C": "\"object\"" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The variable `b` is implicitly created as a global variable, making it accessible outside the function scope as `number`."
+          },
+          {
+            "questionId": 12,
+            "question": "Which keyword is used to define a constant in JavaScript?",
+            "options": [
+              { "A": "let" },
+              { "B": "const" },
+              { "C": "var" },
+              { "D": "define"}
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The `const` keyword is used to define constants in JavaScript."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 1
+      },
+      {
+        "section": "Objects and Arrays",
+        "questions": [
+          {
+            "questionId": 21,
+            "question": "How do you access the property 'name' in the object `let person = { name: \"John\" };`?",
+            "options": [
+              { "A": "person.name" },
+              { "B": "person['name']" },
+              { "C": "Both A and B" },
+              { "D": "person(name)" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Both dot notation (`person.name`) and bracket notation (`person['name']`) are valid ways to access properties."
+          },
+          {
+            "questionId": 22,
+            "question": "What does the Array.prototype.map() method do?",
+            "options": [
+              { "A": "Mutates the original array" },
+              { "B": "Creates a new array with the results of calling a function on each element" },
+              { "C": "Filters the array based on a condition" },
+              { "D": "Reduces the array to a single value" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The map() method creates a new array with the results of a function applied to each element in the original array."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 2
+      },
+      {
+        "section": "ES6+ Features",
+        "questions": [
+          {
+            "questionId": 31,
+            "question": "What will the following code output?\n\nlet [a, , b] = [1, 2, 3]; console.log(a, b);",
+            "options": [
+              { "A": "1 2" },
+              { "B": "1 3" },
+              { "C": "undefined 3" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The destructuring syntax allows skipping elements by leaving an empty slot between commas."
+          },
+          {
+            "questionId": 32,
+            "question": "Which new data structure was introduced in ES6 for unique values?",
+            "options": [
+              { "A": "Array" },
+              { "B": "Object" },
+              { "C": "Map" },
+              { "D": "Set" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "The `Set` data structure allows storing unique values and was introduced in ES6."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 3
+      },
+      {
+        "section": "Asynchronous JavaScript",
+        "questions": [
+          {
+            "questionId": 41,
+            "question": "Which statement is used to handle errors in a promise chain?",
+            "options": [
+              { "A": ".catch()" },
+              { "B": ".then()" },
+              { "C": ".finally()" },
+              { "D": ".error()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The .catch() method is used to handle errors in a promise chain."
+          },
+          {
+            "questionId": 42,
+            "question": "What will the following code output?\n\nasync function foo() { return 'Hello'; } foo().then(console.log);",
+            "options": [
+              { "A": "Promise { <pending> }" },
+              { "B": "Hello" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The async function `foo` resolves to 'Hello', and `.then(console.log)` outputs 'Hello'."
+          }
+        ],
+        "correctAnswersCount": 0,
+        "wrongAnswersCount": 0,
+        "unattemptedCount": 0,
+        "sectionIndex": 4
+      }
+    ]
+  }
+  
