@@ -20,25 +20,38 @@
                   </div>
 
                   <!-- Profile Completion Section -->
+
+
+                  <!-- Profile Picture Section -->
                   <div class="row mt-4">
-                      <div class="col-12">
-                          <div class="profile-completion">
-                              <h5 class="text-center">Profile Completion</h5>
-                              <div class="progress">
-                                  <div class="progress-bar" role="progressbar" [style.width]="profileCompletion + '%'"
-                                       [attr.aria-valuenow]="profileCompletion" aria-valuemin="0" aria-valuemax="100"
-                                       [ngClass]="{
-                                         'bg-success': profileCompletion >= 80,
-                                         'bg-warning': profileCompletion < 80 && profileCompletion >= 50,
-                                         'bg-danger': profileCompletion < 50
-                                       }">
-                                      {{ profileCompletion }}%
-                                  </div>
-                              </div>
+                      <div class="col-12 text-center">
+                          <div class="profile-picture-container">
+                              <img [src]="profilePictureUrl" alt="Profile Picture" class="rounded-circle" width="150" height="150">
+                          </div>
+                          <div class="mt-2">
+                              <button class="btn btn-primary" (click)="fileInput.click()">Update Profile Picture</button>
+                              <input #fileInput type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;">
                           </div>
                       </div>
                   </div>
-
+                  <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="profile-completion">
+                            <h5 class="text-center">Profile Completion</h5>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" [style.width]="profileCompletion + '%'"
+                                     [attr.aria-valuenow]="profileCompletion" aria-valuemin="0" aria-valuemax="100"
+                                     [ngClass]="{
+                                       'bg-success': profileCompletion >= 80,
+                                       'bg-warning': profileCompletion < 80 && profileCompletion >= 50,
+                                       'bg-danger': profileCompletion < 50
+                                     }">
+                                    {{ profileCompletion }}%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                   <!-- Tabs Section -->
                   <div class="row mt-4">
                       <div class="col-12">
@@ -55,19 +68,12 @@
                                   <a class="nav-link" [ngClass]="{'active': activeTab === 'settings'}" 
                                      (click)="setActiveTab('settings')" id="settings-tab" data-bs-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
                               </li>
-                              <li class="nav-item" role="presentation">
-                                <a class="nav-link" [ngClass]="{'active': activeTab === 'activity'}" 
-                                   (click)="setActiveTab('activity')" id="activity-tab" data-bs-toggle="tab" href="#activity" role="tab" aria-controls="settings" aria-selected="false">Activity</a>
-                            </li>
                           </ul>
                           <div class="tab-content mt-2" id="profileTabsContent">
                               <!-- Profile Tab Content -->
                               <div class="tab-pane fade" [ngClass]="{'show active': activeTab === 'profile'}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                  <!-- Profile content goes here -->
                                   <p>Profile Information</p>
                                   <p>Name: {{ username }}</p>
-                                
-                                  <!-- Additional profile details -->
                               </div>
                               <!-- Badges Tab Content -->
                               <div class="tab-pane fade" [ngClass]="{'show active': activeTab === 'badges'}" id="badges" role="tabpanel" aria-labelledby="badges-tab">
@@ -88,12 +94,7 @@
                               <!-- Settings Tab Content -->
                               <div class="tab-pane fade" [ngClass]="{'show active': activeTab === 'settings'}" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                                   <p>Settings content goes here.</p>
-                                  <!-- Add form fields or settings options here -->
                               </div>
-                              <div class="tab-pane fade" [ngClass]="{'show active': activeTab === 'activity'}" id="activity" role="tabpanel" aria-labelledby="activity-tab">
-                                <p>Activity content goes here.</p>
-                                <!-- Add form fields or settings options here -->
-                            </div>
                           </div>
                       </div>
                   </div>

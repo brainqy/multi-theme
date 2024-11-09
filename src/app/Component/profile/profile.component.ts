@@ -13,6 +13,8 @@ import { JwtService } from 'src/app/Core/services/jwt.service';
 export class ProfileComponent {
   profileCompletion: number = 65; 
   activeTab: string = 'profile'; 
+  profilePictureUrl: string = 'assets/img/profile.png'; // Default profile picture
+
   sideNavStatus: boolean = true;
   username: string = '';
   isLoggedIn = false;
@@ -52,6 +54,13 @@ setActiveTab(tab: string): void {
   this.activeTab = tab;
 }
 
+onFileSelected(event: Event): void {
+  const input = event.target as HTMLInputElement;
+  if (input?.files?.[0]) {
+    const file = input.files[0];
+    this.profilePictureUrl = URL.createObjectURL(file); // Set the profile picture to the selected file
+  }
+}
   loadBadges(): void {
     this.badgeService.getAllBadges().subscribe(
       (badges: BadgeDto[]) => this.badges = badges,
