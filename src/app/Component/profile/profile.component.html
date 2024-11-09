@@ -69,6 +69,10 @@
                                   <a class="nav-link" [ngClass]="{'active': activeTab === 'settings'}" 
                                      (click)="setActiveTab('settings')" id="settings-tab" data-bs-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
                               </li>
+                              <li class="nav-item" role="presentation">
+                                <a class="nav-link" [ngClass]="{'active': activeTab === 'activity'}" 
+                                   (click)="setActiveTab('activity')" id="activity-tab" data-bs-toggle="tab" href="#activity" role="tab" aria-controls="activity" aria-selected="false">Activity</a>
+                            </li>
                           </ul>
                           <div class="tab-content mt-2" id="profileTabsContent">
                               <!-- Profile Tab Content -->
@@ -96,6 +100,9 @@
                               <div class="tab-pane fade" [ngClass]="{'show active': activeTab === 'settings'}" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                                   <p>Settings content goes here.</p>
                               </div>
+                              <div class="tab-pane fade" [ngClass]="{'show active': activeTab === 'activity'}" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+                                <p>activity content goes here.</p>
+                            </div>
                           </div>
                       </div>
                   </div>
