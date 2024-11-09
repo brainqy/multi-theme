@@ -1,0 +1,12 @@
+{
+    "profileFields": [
+      { "field": "profilePicture", "weight": 10, "completed": false },
+      { "field": "username", "weight": 15, "completed": true },
+      { "field": "email", "weight": 15, "completed": true },
+      { "field": "bio", "weight": 10, "completed": false },
+      { "field": "location", "weight": 10, "completed": false },
+      { "field": "skills", "weight": 20, "completed": true },
+      { "field": "experience", "weight": 20, "completed": true }
+    ]
+  }
+  
