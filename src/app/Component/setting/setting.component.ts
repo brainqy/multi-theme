@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SecretService } from 'src/app/Core/services/secret.service';
 import { ThemeService } from 'src/app/Core/services/theme.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-setting',
@@ -11,7 +12,10 @@ export class SettingComponent {
   sideNavStatus: boolean = true;
   selectedTheme!: string;
  // themes: string[];
- secret: string = ''; // Variable to store the secret
+ openaiSecret: string = ''; // Variable to store the secret
+ gmailSecret: string = ''; // Variable to store the secret
+ openAiSecretKey: string = 'openaiKey'; // Variable to store the secret
+ gmailSecretKey: string = 'gmailApiKey'; // Variable to store the secret
  themes: string[] = ['light', 'dark'];
 
   constructor(private themeService: ThemeService,private theme: ThemeService,
@@ -31,22 +35,71 @@ public switchTheme(): void {
       this.theme.current = 'light';
   }
 }
-saveSecret(): void {
-  if (this.secret) {
-    this.secretService.saveSecret(this.secret).subscribe(
-      response => {
-        console.log('Secret saved successfully', response);
-      },
-      error => {
-        console.error('Error saving secret', error);
+saveOpenAISecret() {
+  if (this.openaiSecret && this.openAiSecretKey) { // Ensure both key and secret are provided
+    // Ask for confirmation before saving
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You are about to save the secret.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, save it!',
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.secretService.saveSecret(this.openAiSecretKey, this.openaiSecret).subscribe(
+          response => {
+            console.log('Secret saved successfully', response);
+            Swal.fire("Success", "Secret updated", 'success');
+          },
+          error => {
+            console.error('Error saving secret', error);
+            Swal.fire("Error", "Failed to save secret", 'error');
+          }
+        );
+      } else {
+        console.log('Secret save operation was canceled.');
+        Swal.fire("Canceled", "Secret save operation was canceled", 'info');
       }
-    );
+    });
   } else {
-    console.log('Secret is empty. Please enter a valid secret.');
+    console.log('Key or secret is empty. Please enter valid values.');
+    Swal.fire("Warning", "Key and secret cannot be empty", 'warning');
   }
 }
-handleSecretChange(newSecret: string): void {
-  this.secret = newSecret;
-  console.log('Secret updated:', this.secret); // For debugging (remove in production)
+
+
+saveGmailSecret(): void {
+  if (this.gmailSecret && this.gmailSecretKey) { // Ensure both key and secret are provided
+    // Ask for confirmation before saving
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You are about to save the Gmail secret.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, save it!',
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.secretService.saveSecret(this.gmailSecretKey, this.gmailSecret).subscribe(
+          response => {
+            console.log('Secret saved successfully', response);
+            Swal.fire("Success", "Secret updated", 'success');
+          },
+          error => {
+            console.error('Error saving secret', error);
+            Swal.fire("Error", "Failed to save secret", 'error');
+          }
+        );
+      } else {
+        console.log('Secret save operation was canceled.');
+        Swal.fire("Canceled", "Secret save operation was canceled", 'info');
+      }
+    });
+  } else {
+    console.log('Key or secret is empty. Please enter valid values.');
+    Swal.fire("Warning", "Key and secret cannot be empty", 'warning');
+  }
 }
+
 }
