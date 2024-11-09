@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SecretService } from 'src/app/Core/services/secret.service';
 import { ThemeService } from 'src/app/Core/services/theme.service';
 import Swal from 'sweetalert2';
-
+declare var bootstrap: any;
 @Component({
   selector: 'app-setting',
   templateUrl: './setting.component.html',
@@ -101,5 +101,18 @@ saveGmailSecret(): void {
     Swal.fire("Warning", "Key and secret cannot be empty", 'warning');
   }
 }
-
+openopenaiHelpModal(): void {
+  const modalElement = document.getElementById('gmailHelpModal');
+  if (modalElement) {
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+  }
+}
+opengmailHelpModal(): void {
+  const modalElement = document.getElementById('openaiHelpModal');
+  if (modalElement) {
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+  }
+}
 }

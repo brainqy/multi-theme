@@ -54,6 +54,7 @@
                 style="max-width: 300px;"
               />
               <button class="btn btn-success" (click)="saveOpenAISecret()">Save Secret</button>
+              <i class="bi bi-question-circle text-muted me-2" style="cursor: pointer;" (click)="openopenaiHelpModal()"></i>
             </div>
             
             <div class="d-flex align-items-center mt-3">
@@ -68,6 +69,8 @@
                 style="max-width: 300px;"
               />
               <button class="btn btn-success" (click)="saveGmailSecret()">Save Secret</button>
+              <i class="bi bi-question-circle text-muted me-2" style="cursor: pointer;" (click)="opengmailHelpModal()"></i>
+
             </div>
           </div>
   
@@ -88,5 +91,59 @@
         </div>
       </div>
     </main>
+  </div>
+  
+  <div class="modal fade" id="gmailHelpModal" tabindex="-1" aria-labelledby="gmailHelpModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="gmailHelpModalLabel">Gmail API Secret Information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>The Gmail API Secret is used to authenticate with Gmail and is required for accessing Gmail programmatically.</p>
+          <p>To obtain your Gmail API Secret, follow these steps:</p>
+          <ol>
+            <li>Go to the <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a>.</li>
+            <li>Create a new project or select an existing project.</li>
+            <li>Enable the Gmail API by navigating to the "API Library" and searching for "Gmail API".</li>
+            <li>Go to the "Credentials" page and click on "Create Credentials" for OAuth 2.0.</li>
+            <li>Configure the OAuth consent screen and set up an OAuth 2.0 client ID.</li>
+            <li>Download the JSON file containing your client secret information and save it securely.</li>
+          </ol>
+          <p>If you need further assistance, please visit the <a href="https://developers.google.com/gmail/api" target="_blank">Gmail API documentation</a>.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="modal fade" id="openaiHelpModal" tabindex="-1" aria-labelledby="openaiHelpModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="openaiHelpModalLabel">OpenAI API Key Information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>The OpenAI API Key is used to authenticate requests to OpenAI’s API, enabling access to AI models for various applications.</p>
+          <p>To obtain your OpenAI API Key, follow these steps:</p>
+          <ol>
+            <li>Go to the <a href="https://platform.openai.com/account/api-keys" target="_blank">OpenAI API Keys page</a>.</li>
+            <li>Log in to your OpenAI account. If you don’t have one, you can create an account on the OpenAI website.</li>
+            <li>Click on “Create new secret key” to generate a new API key.</li>
+            <li>Copy the API key and save it securely, as it will not be shown again after you leave the page.</li>
+            <li>Paste the API key in the required field to connect to OpenAI’s API services.</li>
+          </ol>
+          <p>If you need further assistance, please visit the <a href="https://platform.openai.com/docs/introduction" target="_blank">OpenAI API documentation</a>.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
   

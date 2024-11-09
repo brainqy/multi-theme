@@ -4,8 +4,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/Core/services/auth.service';
 import { BadgeDto, BadgeService } from 'src/app/Core/services/badge.service';
 import { JwtService } from 'src/app/Core/services/jwt.service';
+import { ProfileCompletionService } from 'src/app/Core/services/profile-completion.service';
 
-interface ProfileField {
+export interface ProfileField {
   field: string;
   weight: number;
   completed: boolean;
@@ -32,18 +33,10 @@ export class ProfileComponent {
   userBalance: any;
   badges: BadgeDto[] = [];
 
-  profileFields: ProfileField[] = [
-    { field: "profilePicture", weight: 10, completed: false },
-    { field: "username", weight: 15, completed: true },
-    { field: "email", weight: 15, completed: true },
-    { field: "bio", weight: 10, completed: false },
-    { field: "location", weight: 10, completed: false },
-    { field: "skills", weight: 20, completed: true },
-    { field: "experience", weight: 20, completed: true }
-  ];
   constructor(public authService: AuthService,
               private jwtService: JwtService,
               private router: Router,
+              private profileCompletionService: ProfileCompletionService,
               private translate: TranslateService,
               private badgeService: BadgeService) {
   }
@@ -85,18 +78,15 @@ onFileSelected(event: Event): void {
       error => console.error('Error loading badges', error)
     );
   }
-  get profileCompletion(): number {
-    const totalWeight = this.profileFields.reduce((sum, field) => sum + field.weight, 0);
-    const completedWeight = this.profileFields
-      .filter(field => field.completed)
-      .reduce((sum, field) => sum + field.weight, 0);
+  get profileFields(): ProfileField[] {
+    return this.profileCompletionService.getProfileFields();
+  }
 
-    return Math.round((completedWeight / totalWeight) * 100);
+  get profileCompletion(): number {
+    return this.profileCompletionService.calculateProfileCompletion();
   }
-  updateProfileField(field: string, status: boolean): void {
-    const profileField = this.profileFields.find(f => f.field === field);
-    if (profileField) {
-      profileField.completed = status;
-    }
+   updateProfileField(field: string, status: boolean): void {
+    this.profileCompletionService.updateProfileField(field, status);
   }
+
 }
