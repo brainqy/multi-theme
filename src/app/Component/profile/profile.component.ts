@@ -11,6 +11,8 @@ import { JwtService } from 'src/app/Core/services/jwt.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
+  profileCompletion: number = 65; 
+  activeTab: string = 'profile'; 
   sideNavStatus: boolean = true;
   username: string = '';
   isLoggedIn = false;
@@ -46,7 +48,9 @@ getMyBadge(){
       error => console.error('Error loading badges', error)
   );
 }
-
+setActiveTab(tab: string): void {
+  this.activeTab = tab;
+}
 
   loadBadges(): void {
     this.badgeService.getAllBadges().subscribe(

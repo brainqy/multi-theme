@@ -1,57 +1,91 @@
 <div class="container-fluid g-0">
-    <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
-    </app-requester-header>
+    <app-requester-header (sideNavToggled)="sideNavStatus=$event;"></app-requester-header>
   
     <main>
       <app-requester-sidebar [sideNavStatus]="sideNavStatus" class="black-border"></app-requester-sidebar>
-      <div [ngClass]="{'display-area-shrink':!sideNavStatus}" class="display-area p-3">
-        <div class="block-container">
-          <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <select class="form-select" [(ngModel)]="selectedTheme" name="themeSelect">
-                <option [value]="'light'" [selected]="selectedTheme === 'light'">Light Theme</option>
-                <option [value]="'dark'" [selected]="selectedTheme === 'dark'">Dark Theme</option>
-              </select>
-            </li>
-            <li class="nav-item">
-              <button class="btn btn-primary" (click)="switchTheme()">Apply</button>
-            </li>
-          </ul>
-        </div>
+      <div [ngClass]="{'display-area-shrink': !sideNavStatus}" class="display-area p-3">
+        <!-- Tabs Navigation -->
+        <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="themes-tab" data-bs-toggle="tab" href="#themes" role="tab" aria-controls="themes" aria-selected="true">Themes</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="secrets-tab" data-bs-toggle="tab" href="#secrets" role="tab" aria-controls="secrets" aria-selected="false">Secrets</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="availability-tab" data-bs-toggle="tab" href="#availability" role="tab" aria-controls="availability" aria-selected="false">Availability</a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link" id="other-tab" data-bs-toggle="tab" href="#other" role="tab" aria-controls="other" aria-selected="false">Other</a>
+          </li>
+        </ul>
   
-        <div class="block-container">
-          <button class="btn btn-secondary">My Availability</button>
-        </div>
-  
-        <div class="d-flex align-items-center mt-3">
-            <!-- OpenAI Secret input -->
-            <label for="openai-secret" class="me-2 mb-0" style="width: 150px;">Enter OpenAI Secret:</label>
-            <input
-              type="password"
-              id="openai-secret"
-              class="form-control me-2"
-              [(ngModel)]="openaiSecret"
-              placeholder="Enter chatgpt secret"
-              style="max-width: 300px;"
-            />
-            <button class="btn btn-success" (click)="saveOpenAISecret()">Save Secret</button>
+        <!-- Tab Content -->
+        <div class="tab-content mt-3" id="dashboardTabsContent">
+          
+          <!-- Themes Tab -->
+          <div class="tab-pane fade show active" id="themes" role="tabpanel" aria-labelledby="themes-tab">
+            <div class="block-container">
+              <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <select class="form-select" [(ngModel)]="selectedTheme" name="themeSelect">
+                    <option [value]="'light'" [selected]="selectedTheme === 'light'">Light Theme</option>
+                    <option [value]="'dark'" [selected]="selectedTheme === 'dark'">Dark Theme</option>
+                  </select>
+                </li>
+                <li class="nav-item">
+                  <button class="btn btn-primary" (click)="switchTheme()">Apply</button>
+                </li>
+              </ul>
+            </div>
           </div>
           
-          <div class="d-flex align-items-center mt-3">
-            <!-- Gmail API Secret input -->
-            <label for="gmail-secret" class="me-2 mb-0" style="width: 150px;">Enter Gmail API:</label>
-            <input
-              type="password"
-              id="gmail-secret"
-              class="form-control me-2"
-              [(ngModel)]="gmailSecret"
-              placeholder="Enter gmail secret"
-              style="max-width: 300px;"
-            />
-            <button class="btn btn-success" (click)="saveGmailSecret()">Save Secret</button>
+          <!-- Secrets Tab -->
+          <div class="tab-pane fade" id="secrets" role="tabpanel" aria-labelledby="secrets-tab">
+            <div class="d-flex align-items-center mt-3">
+              <!-- OpenAI Secret input -->
+              <label for="openai-secret" class="me-2 mb-0" style="width: 150px;">Enter OpenAI Secret:</label>
+              <input
+                type="password"
+                id="openai-secret"
+                class="form-control me-2"
+                [(ngModel)]="openaiSecret"
+                placeholder="Enter OpenAI secret"
+                style="max-width: 300px;"
+              />
+              <button class="btn btn-success" (click)="saveOpenAISecret()">Save Secret</button>
+            </div>
+            
+            <div class="d-flex align-items-center mt-3">
+              <!-- Gmail API Secret input -->
+              <label for="gmail-secret" class="me-2 mb-0" style="width: 150px;">Enter Gmail API:</label>
+              <input
+                type="password"
+                id="gmail-secret"
+                class="form-control me-2"
+                [(ngModel)]="gmailSecret"
+                placeholder="Enter Gmail secret"
+                style="max-width: 300px;"
+              />
+              <button class="btn btn-success" (click)="saveGmailSecret()">Save Secret</button>
+            </div>
           </div>
-          
- 
+  
+          <!-- Availability Tab -->
+          <div class="tab-pane fade" id="availability" role="tabpanel" aria-labelledby="availability-tab">
+            <div class="block-container">
+              <button class="btn btn-secondary">My Availability</button>
+            </div>
+          </div>
+  
+          <!-- Other Tab -->
+          <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
+            <!-- Any content you want to add under "Other" tab -->
+            <div class="block-container">
+              <p>Additional settings or information can go here.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   </div>

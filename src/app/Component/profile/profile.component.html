@@ -1,69 +1,104 @@
-<!-- Your existing HTML structure -->
 <div class="container-fluid g-0">
-    <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
-    </app-requester-header>
-    <main class="d-flex">
-      <app-requester-sidebar  [sideNavStatus]="sideNavStatus" [ngClass]="{'collapsed': !sideNavStatus}"
+  <app-requester-header (sideNavToggled)="sideNavStatus=$event;">
+  </app-requester-header>
+  <main class="d-flex">
+      <app-requester-sidebar [sideNavStatus]="sideNavStatus" [ngClass]="{'collapsed': !sideNavStatus}"
                              class="black-border side-nav-container"></app-requester-sidebar>
-                             <div [ngClass]="{'display-area-expand': sideNavStatus, 'display-area-shrink': !sideNavStatus}"
-                             class="display-area p-3 flex-grow-1">
-        <div class="container">
-         <div class="col">
-         <div class="row">
-          <div class="col-lg-5"></div>
-          <div class="col-lg-1 stat text-center fw-bold p-2 m-2">
-            100 XP
-          </div>
-          
-          <div class="col-lg-1 stat text-center fw-bold p-2 m-2">
-            {{userBalance}} <i class="bi bi-coin"></i>
-          </div>
-          <div class="col-lg-1"></div>
-     
-          <div class="row">
-            <div class="col left-column"></div>
-            <div class="col middle-column">
-              <div class="banner-row">
-                <img src="assets/img/banner.png" alt="Banner Image">
-              </div>
-              <div class="recommendation-row">
-                <p class="fs-fw-bold fst-italic text-center">{{ this.username }}, {{'greeting' | translate}}</p>
-                <h5>{{ 'welcome' | translate }}</h5>
-                <!-- Recommendation content goes here -->
-              </div>
-              <div class="upcoming-events-row">
-                <!-- Upcoming events content goes here -->
-                hello
-              </div>
-            </div>
-            <div class="col right-column"></div>
-          </div>
-         </div>
-     
-          
-                <div class="badge-container">
-                    <h3 class="text-center w-100">My Badges</h3>
-                    <div class="row">
-                      <div *ngFor="let badge of badges" class="col-6 col-md-3 mb-3">
-                        <div>{{ badge.name }}</div>
-                        <div class="badge-preview" [ngStyle]="{ 'background-color': badge.backgroundColor}">
-                            <i class="bi" [ngClass]="badge.icon"></i>
-                          </div>
-                          
-                        <div>{{ badge.rule }}</div>
-                        <div>Threshold: {{ badge.threshold }}</div>
+      <div [ngClass]="{'display-area-expand': sideNavStatus, 'display-area-shrink': !sideNavStatus}"
+           class="display-area p-3 flex-grow-1">
+          <div class="container">
+              <div class="col">
+                  <div class="row">
+                      <div class="col-lg-5"></div>
+                      <div class="col-lg-1 stat text-center fw-bold p-2 m-2">
+                          100 XP
                       </div>
-                    </div>
+                      <div class="col-lg-1 stat text-center fw-bold p-2 m-2">
+                          {{userBalance}} <i class="bi bi-coin"></i>
+                      </div>
+                      <div class="col-lg-1"></div>
                   </div>
-                  
-            
-          
-        
-          
-         </div>
-         
-        </div>
+
+                  <!-- Profile Completion Section -->
+                  <div class="row mt-4">
+                      <div class="col-12">
+                          <div class="profile-completion">
+                              <h5 class="text-center">Profile Completion</h5>
+                              <div class="progress">
+                                  <div class="progress-bar" role="progressbar" [style.width]="profileCompletion + '%'"
+                                       [attr.aria-valuenow]="profileCompletion" aria-valuemin="0" aria-valuemax="100"
+                                       [ngClass]="{
+                                         'bg-success': profileCompletion >= 80,
+                                         'bg-warning': profileCompletion < 80 && profileCompletion >= 50,
+                                         'bg-danger': profileCompletion < 50
+                                       }">
+                                      {{ profileCompletion }}%
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Tabs Section -->
+                  <div class="row mt-4">
+                      <div class="col-12">
+                          <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+                              <li class="nav-item" role="presentation">
+                                  <a class="nav-link" [ngClass]="{'active': activeTab === 'profile'}" 
+                                     (click)="setActiveTab('profile')" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
+                              </li>
+                              <li class="nav-item" role="presentation">
+                                  <a class="nav-link" [ngClass]="{'active': activeTab === 'badges'}" 
+                                     (click)="setActiveTab('badges')" id="badges-tab" data-bs-toggle="tab" href="#badges" role="tab" aria-controls="badges" aria-selected="false">Badges</a>
+                              </li>
+                              <li class="nav-item" role="presentation">
+                                  <a class="nav-link" [ngClass]="{'active': activeTab === 'settings'}" 
+                                     (click)="setActiveTab('settings')" id="settings-tab" data-bs-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
+                              </li>
+                              <li class="nav-item" role="presentation">
+                                <a class="nav-link" [ngClass]="{'active': activeTab === 'activity'}" 
+                                   (click)="setActiveTab('activity')" id="activity-tab" data-bs-toggle="tab" href="#activity" role="tab" aria-controls="settings" aria-selected="false">Activity</a>
+                            </li>
+                          </ul>
+                          <div class="tab-content mt-2" id="profileTabsContent">
+                              <!-- Profile Tab Content -->
+                              <div class="tab-pane fade" [ngClass]="{'show active': activeTab === 'profile'}" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                  <!-- Profile content goes here -->
+                                  <p>Profile Information</p>
+                                  <p>Name: {{ username }}</p>
+                                
+                                  <!-- Additional profile details -->
+                              </div>
+                              <!-- Badges Tab Content -->
+                              <div class="tab-pane fade" [ngClass]="{'show active': activeTab === 'badges'}" id="badges" role="tabpanel" aria-labelledby="badges-tab">
+                                  <div class="badge-container">
+                                      <h3 class="text-center w-100">My Badges</h3>
+                                      <div class="row">
+                                          <div *ngFor="let badge of badges" class="col-6 col-md-3 mb-3">
+                                              <div>{{ badge.name }}</div>
+                                              <div class="badge-preview" [ngStyle]="{ 'background-color': badge.backgroundColor}">
+                                                  <i class="bi" [ngClass]="badge.icon"></i>
+                                              </div>
+                                              <div>{{ badge.rule }}</div>
+                                              <div>Threshold: {{ badge.threshold }}</div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <!-- Settings Tab Content -->
+                              <div class="tab-pane fade" [ngClass]="{'show active': activeTab === 'settings'}" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                                  <p>Settings content goes here.</p>
+                                  <!-- Add form fields or settings options here -->
+                              </div>
+                              <div class="tab-pane fade" [ngClass]="{'show active': activeTab === 'activity'}" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+                                <p>Activity content goes here.</p>
+                                <!-- Add form fields or settings options here -->
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
-    </main>
-  </div>
-  
+  </main>
+</div>
