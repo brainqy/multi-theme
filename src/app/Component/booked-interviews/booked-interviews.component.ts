@@ -26,7 +26,8 @@ selectedKindOfInterviewType: string | null = null;
 istheSlotSelected:boolean=false;
 isTheSelectedInterviewType:boolean=false;
 isTheSelectedkindOfInterviewType:boolean=false;
-  
+availableSlots: { [date: string]: { slotStart: Date; slotEnd: Date }[] } = {};
+
    kindOfInterview: string[] = [
     'Data Structures and algorithms',
     'System Design',
@@ -45,7 +46,8 @@ isTheSelectedkindOfInterviewType:boolean=false;
   ];
   interviewSlots:any;
   invitationForm: FormGroup;
-  datesWithSlots: { date: string, slots: string[] }[] = [];
+  datesWithSlots: { date: string; slots: { slotStart: Date; slotEnd: Date; }[] }[] = [];
+
   interviewBalance!: number;
 
   constructor(private modalService: NgbModal,
@@ -62,6 +64,7 @@ isTheSelectedkindOfInterviewType:boolean=false;
   ngOnInit(): void {
         this.generateDatesWithSlots();
     this.getAvailableInterviewSLots();
+ this.generateAllAvailableSlots();
   }
   get friendEmail() {
     return this.invitationForm.get('friendEmail');
@@ -74,15 +77,61 @@ isTheSelectedkindOfInterviewType:boolean=false;
       // Add further logic for sending the invitation here
     }
   }
-  generateDatesWithSlots() {
-    const today = new Date();
-    for (let i = 0; i < 7; i++) {
-      const date = new Date(today.getTime() + i * 24 * 60 * 60 * 1000);
-      const formattedDate = date.toISOString().split('T')[0];
-      const slots = this.generateSlotsForDate(date);
-      this.datesWithSlots.push({ date: formattedDate, slots: slots });
-    }
+  allslots: any;
+  generateAllAvailableSlots(){
+  this.allslots= this.interviewService.generateAllAvailableSlots();
+   console.log("allslots avl",this.allslots);
+   
   }
+  isSlotAvailable(date: string, slot: { slotStart: Date, slotEnd: Date }): boolean {
+    // Convert date and slotStart to Date objects
+    const dateTime = new Date(`${date} ${slot.slotStart.toISOString()}`);
+    
+    // Retrieve available slots for this date
+    const slotsForDate = this.allslots[date];
+    
+    // Check if any slot in available slots matches the given time range
+    return slotsForDate && slotsForDate.some((availableSlot: { slotStart: string | number | Date; slotEnd: string | number | Date; }) => {
+      const slotStart = new Date(availableSlot.slotStart);
+      const slotEnd = new Date(availableSlot.slotEnd);
+  
+      return dateTime >= slotStart && dateTime < slotEnd;
+    });
+  }
+  
+  
+  
+  
+  
+  
+  formatSlotTime(slotStart: Date, slotEnd: Date): string {
+    const startHours = slotStart.getHours().toString().padStart(2, '0');
+    const startMinutes = slotStart.getMinutes().toString().padStart(2, '0');
+    const endHours = slotEnd.getHours().toString().padStart(2, '0');
+    const endMinutes = slotEnd.getMinutes().toString().padStart(2, '0');
+    
+    return `${startHours}:${startMinutes} - ${endHours}:${endMinutes}`;
+  }
+  
+generateDatesWithSlots() {
+  const today = new Date();
+  
+  // Loop for 7 days to generate dates with slots
+  for (let i = 0; i < 7; i++) {
+    const date = new Date(today.getTime() + i * 24 * 60 * 60 * 1000);
+    const formattedDate = date.toISOString().split('T')[0]; // Format date as 'YYYY-MM-DD'
+    
+    // Generate slots for the specific date
+    const slots = this.interviewService.generateAllAvailableSlotsForDate(date);
+    
+    // Push the date with its available slots to the datesWithSlots array
+    this.datesWithSlots.push({ date: formattedDate, slots: slots });
+    console.log("datesWithSlots", this.datesWithSlots);
+  }
+}
+
+// This method will generate slots for a specific date, similar to `generateAllAvailableSlots`
+
 
   generateSlotsForDate(date: Date): string[] {
     // Assuming slots from 8 AM to 6 PM with 30 minutes interval
@@ -93,23 +142,22 @@ isTheSelectedkindOfInterviewType:boolean=false;
 
     for (let hour = startHour; hour <= endHour; hour++) {
       for (let minute = 0; minute < 60; minute += interval) {
-        const slot = `${hour < 10 ? '0' + hour : hour}:${minute === 0 ? '00' : minute} ${hour < 12 ? 'AM' : 'PM'}`;
+        const slot = `${hour < 10 ? '0' + hour : hour}:${minute === 0 ? '00' : minute} ${hour < 12 ? 'PM' : 'AM'}`;
         slots.push(slot);
       }
     }
   
     return slots;
   }
-  toggleSlot(day: string, slot: string) {
-    if (this.selectedSlot && this.selectedSlot.day === day && this.selectedSlot.slot === slot) {
-      this.selectedSlot = null; // Deselect slot if already selected
-      this.istheSlotSelected = false;
-    } else {
-      this.selectedSlot = { day, slot }; // Select slot
-      this.istheSlotSelected = true;
-    }
+  toggleSlot(date: string, slot: { slotStart: Date, slotEnd: Date }) {
+    this.selectedSlot = {
+      day: date,
+      slot: slot.slotStart.toISOString() // You may store this as an ISO string for comparison
+    };
+    console.log("Selected Slot:", this.selectedSlot);
   }
-
+  
+  
   openBookingModal(content:any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
@@ -130,9 +178,18 @@ isTheSelectedkindOfInterviewType:boolean=false;
 
 
 
-  isSlotSelected(day: string, slot: string): boolean {
-    return !!this.selectedSlot && this.selectedSlot.day === day && this.selectedSlot.slot === slot;
-  }
+// Assuming selectedSlot now includes 'slotStart' and 'slotEnd'
+isSlotSelected(date: string, slot: { slotStart: Date, slotEnd: Date }): boolean {
+  return (
+    !!this.selectedSlot && 
+    this.selectedSlot.day === date && 
+    this.selectedSlot.slot === slot.slotStart.toISOString() // Compare ISO strings
+  );
+}
+
+
+  
+  
   confirmAndSchedule() {
     const data: any = {};
   
@@ -312,11 +369,11 @@ Swal.fire("Info","No Upcoming Interviews Found",'info');
     return slots.filter(slot => slot.status === 'CANCELED');
   }
   // Sample Availability Data
-  availableSlots: { slotStart: Date, slotEnd: Date }[] = [];
+  availableSlotswithid: { slotStart: Date, slotEnd: Date }[] = [];
   selectedEventId: number | null = null;
   showAvailableSlots(eventId: number): void {
     this.selectedEventId = eventId;
-    this.availableSlots = this.interviewService.generateAvailableSlots(eventId);
+    this.availableSlotswithid = this.interviewService.generateAvailableSlots(eventId);
   }
 
   bookavilableSlot(eventId: number, slotStart: Date, slotEnd: Date): void {
