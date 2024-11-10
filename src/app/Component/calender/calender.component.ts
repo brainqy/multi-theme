@@ -329,7 +329,7 @@ export class CalenderComponent {
       // Your logic to add interview schedule goes here
     }
 
-  addNewEvent(newEventForm: NgForm) {
+  addNewEvent(newEventForm: NgForm,modal:any) {
     // Validate and add the new event to the events array
     if (newEventForm.valid) {
       const newEvent: any = {

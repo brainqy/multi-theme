@@ -5,7 +5,7 @@
   <main>
     <app-requester-sidebar [ngClass]="{'app-side-nav-open':sideNavStatus}" [sideNavStatus]="sideNavStatus"
                            class="black-border"></app-requester-sidebar>
-    <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
+    <div [ngClass]="{'display-area-shrink':!sideNavStatus}" class="display-area p-3">
  
 <!-- Add the dropdown for trainer selection -->
 <div class="calendar-container">
@@ -192,56 +192,55 @@
   <!-- Add the modal template at the end of your HTML -->
 <!-- Add the modal template at the end of your HTML -->
 <ng-template #newEventModal let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title">Add New Event</h4>
-      <button type="button" class="close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <!-- Your form to collect new event details -->
-      <form #newEventForm="ngForm" (ngSubmit)="addNewEvent(newEventForm)">
-        <!-- Title -->
-     
-        
-        <!-- Start Date and Time -->
-        <div class="form-group">
-          <label for="startDate">Start Date and Time:</label>
-          <input type="datetime-local" id="startDate" name="startDate" ngModel required class="form-control">
-          <div
-          *ngIf="
-        newEventForm.controls['startDate']?.touched &&
-        newEventForm.controls['startDate']?.invalid
-      "
-          style="color: red;font-size: small;"
-        >
+  <div class="modal-header">
+    <h4 class="modal-title">Add New Event</h4>
+    <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!-- Form to collect new event details -->
+    <form #newEventForm="ngForm" (ngSubmit)="addNewEvent(newEventForm, modal)">
+  
+      <!-- Start Date and Time -->
+      <div class="form-group">
+        <label for="startDate">Start Date and Time:</label>
+        <input type="datetime-local" id="startDate" name="startDate" ngModel required class="form-control">
+        <div *ngIf="newEventForm.controls['startDate']?.touched && newEventForm.controls['startDate']?.invalid" style="color: red;font-size: small;">
           <span *ngIf="newEventForm.controls['startDate'].hasError('required')">
             Start date is required
           </span>
         </div>
-        </div>
-   
-        <!-- End Date and Time -->
-        <div class="form-group">
-          <label for="endDate">End Date and Time:</label>
-          <input type="datetime-local" id="endDate" name="endDate" ngModel required class="form-control">
-          <div
-          *ngIf="
-        newEventForm.controls['endDate']?.touched &&
-        newEventForm.controls['endDate']?.invalid
-      "
-          style="color: red;font-size: small;"
-        >
+      </div>
+  
+      <!-- End Date and Time -->
+      <div class="form-group">
+        <label for="endDate">End Date and Time:</label>
+        <input type="datetime-local" id="endDate" name="endDate" ngModel required class="form-control">
+        <div *ngIf="newEventForm.controls['endDate']?.touched && newEventForm.controls['endDate']?.invalid" style="color: red;font-size: small;">
           <span *ngIf="newEventForm.controls['endDate'].hasError('required')">
-            Start date is required
+            End date is required
           </span>
         </div>
-        </div>
-   
-        <button type="submit" class="btn btn-primary" [disabled]="newEventForm.invalid">Add Event</button>
-      </form>
-    </div>
-  </ng-template>
+      </div>
+  
+      <!-- Recurrence Frequency -->
+      <div class="form-group">
+        <label for="recurrence">Recurrence:</label>
+        <select id="recurrence" name="recurrence" ngModel class="form-control">
+          <option value="none">Does Not Repeat</option>
+          <option value="daily">Every Day</option>
+          <option value="weekly">Every Week</option>
+          <option value="monthly">Every Month</option>
+          <option value="yearly">Every Year</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="newEventForm.invalid">Add Event</button>
+    </form>
+  </div>
+</ng-template>
+
 
 
   <ng-template #editEventModal let-modal>

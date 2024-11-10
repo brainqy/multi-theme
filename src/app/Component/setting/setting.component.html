@@ -78,6 +78,54 @@
           <div class="tab-pane fade" id="availability" role="tabpanel" aria-labelledby="availability-tab">
             <div class="block-container">
               <button class="btn btn-secondary">My Availability</button>
+              <div class="container mt-5">
+                <h2 class="text-center mb-4">Set Your Availability for Interviews</h2>
+                
+                <form (ngSubmit)="submitAvailability()">
+                  <div class="row">
+                    <!-- Select Days of the Week -->
+                    <div class="col-md-6">
+                      <label for="days" class="form-label">Choose Available Days</label>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="monday" [(ngModel)]="availability.monday" name="monday">
+                        <label class="form-check-label" for="monday">Monday</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="tuesday" [(ngModel)]="availability.tuesday" name="tuesday">
+                        <label class="form-check-label" for="tuesday">Tuesday</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="wednesday" [(ngModel)]="availability.wednesday" name="wednesday">
+                        <label class="form-check-label" for="wednesday">Wednesday</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="thursday" [(ngModel)]="availability.thursday" name="thursday">
+                        <label class="form-check-label" for="thursday">Thursday</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="friday" [(ngModel)]="availability.friday" name="friday">
+                        <label class="form-check-label" for="friday">Friday</label>
+                      </div>
+                    </div>
+              
+                    <!-- Select Time Slot -->
+                    <div class="col-md-6">
+                      <label for="timeSlot" class="form-label">Select Time Slot</label>
+                      <div class="mb-3">
+                        <input class="form-control" type="time" id="startTime" [(ngModel)]="availability.startTime" name="startTime">
+                      </div>
+                      <div class="mb-3">
+                        <input class="form-control" type="time" id="endTime" [(ngModel)]="availability.endTime" name="endTime">
+                      </div>
+                    </div>
+                  </div>
+              
+                  <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Save Availability</button>
+                  </div>
+                </form>
+              </div>
+              
             </div>
           </div>
   

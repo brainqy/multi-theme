@@ -114,6 +114,22 @@ table {
     background-color: #28a745;
     color: white;
   }
+  .slot-button {
+    padding: 8px;
+    margin: 4px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .slot-available {
+    background-color: gray;
+    color: white;
+  }
+  
+  .selected {
+    background-color: green;
+    color: white;
+  }
   
   
   

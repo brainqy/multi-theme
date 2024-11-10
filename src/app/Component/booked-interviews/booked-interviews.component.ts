@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -14,7 +14,7 @@ interface WeeklySlots {
   templateUrl: './booked-interviews.component.html',
   styleUrls: ['./booked-interviews.component.scss']
 })
-export class BookedInterviewsComponent {
+export class BookedInterviewsComponent implements OnInit{
   emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   sideNavStatus=false;
   selectedSlot: { day: string, slot: string } | null = null;
@@ -49,15 +49,19 @@ isTheSelectedkindOfInterviewType:boolean=false;
   interviewBalance!: number;
 
   constructor(private modalService: NgbModal,
-    private interviewService:InterviewService,
+    public interviewService:InterviewService,
     private router: Router,
     private fb: FormBuilder) {
     this.getAllSlots();
-    this.generateDatesWithSlots();
+
     this.invitationForm = this.fb.group({
       friendEmail: ['', [Validators.required, Validators.pattern(this.emailPattern)]]
     });
     
+  }
+  ngOnInit(): void {
+        this.generateDatesWithSlots();
+    this.getAvailableInterviewSLots();
   }
   get friendEmail() {
     return this.invitationForm.get('friendEmail');
@@ -236,7 +240,12 @@ window.location.reload();
     });
   }
   
-  
+  getAvailableInterviewSLots(){
+    this.interviewService.getAllAvailableInterviewSlots().subscribe(res=>{
+      console.log("available interview slots ",res);
+      
+    })
+  }
   
   getAllSlots(){
     this.interviewService.getAllInterviewSlots().subscribe((res)=>{
@@ -302,5 +311,22 @@ Swal.fire("Info","No Upcoming Interviews Found",'info');
     }
     return slots.filter(slot => slot.status === 'CANCELED');
   }
-  
+  // Sample Availability Data
+  availableSlots: { slotStart: Date, slotEnd: Date }[] = [];
+  selectedEventId: number | null = null;
+  showAvailableSlots(eventId: number): void {
+    this.selectedEventId = eventId;
+    this.availableSlots = this.interviewService.generateAvailableSlots(eventId);
+  }
+
+  bookavilableSlot(eventId: number, slotStart: Date, slotEnd: Date): void {
+    const success = this.interviewService.bookavilableSlot(eventId, slotStart, slotEnd);
+    if (success) {
+      alert(`Slot booked successfully from ${slotStart} to ${slotEnd}`);
+      // Refresh the available slots
+      this.showAvailableSlots(eventId);
+    } else {
+      alert('This slot is already booked.');
+    }
+  } 
 }

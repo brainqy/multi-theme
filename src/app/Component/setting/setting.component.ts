@@ -115,4 +115,18 @@ opengmailHelpModal(): void {
     modal.show();
   }
 }
+availability = {
+  monday: false,
+  tuesday: false,
+  wednesday: false,
+  thursday: false,
+  friday: false,
+  startTime: '',
+  endTime: ''
+};
+
+submitAvailability(): void {
+  console.log('Availability Submitted:', this.availability);
+  // Here, you can send the availability data to the backend or handle it accordingly
+}
 }
