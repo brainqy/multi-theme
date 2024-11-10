@@ -79,25 +79,28 @@ availableSlots: { [date: string]: { slotStart: Date; slotEnd: Date }[] } = {};
   }
   allslots: any;
   generateAllAvailableSlots(){
-  this.allslots= this.interviewService.generateAllAvailableSlots();
+  this.allslots= this.interviewService.getAllAvailableSlots();
    console.log("allslots avl",this.allslots);
    
   }
   isSlotAvailable(date: string, slot: { slotStart: Date, slotEnd: Date }): boolean {
-    // Convert date and slotStart to Date objects
-    const dateTime = new Date(`${date} ${slot.slotStart.toISOString()}`);
-    
+    // Combine date with slot's start time to create a complete Date object for comparison
+    const dateTime = new Date(date + ' ' + slot.slotStart.toISOString().substring(11, 19)); // Only take the time part from ISO string
+  
     // Retrieve available slots for this date
-    const slotsForDate = this.allslots[date];
-    
+    const slotsForDate = this.interviewService.getAllAvailableSlotsByDate(date);
+//  console.log("slotsForDate ",slotsForDate);
+  
     // Check if any slot in available slots matches the given time range
     return slotsForDate && slotsForDate.some((availableSlot: { slotStart: string | number | Date; slotEnd: string | number | Date; }) => {
       const slotStart = new Date(availableSlot.slotStart);
       const slotEnd = new Date(availableSlot.slotEnd);
   
+      // Check if the dateTime is within the range of slotStart and slotEnd
       return dateTime >= slotStart && dateTime < slotEnd;
     });
   }
+  
   
   
   
@@ -154,7 +157,7 @@ generateDatesWithSlots() {
       day: date,
       slot: slot.slotStart.toISOString() // You may store this as an ISO string for comparison
     };
-    console.log("Selected Slot:", this.selectedSlot);
+    console.log("Selected Slot:", new Date(this.selectedSlot.slot)  );
   }
   
   
