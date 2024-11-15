@@ -72,5 +72,51 @@ height: 100%;
     text-align: center;
   }
   
-
+  .container {
+    max-width: 1200px;
+  }
+  
+  .card {
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .nav-tabs .nav-link {
+    font-weight: 600;
+  }
+  
+  .nav-tabs .nav-link.active {
+    color: #495057;
+    border-color: #e0e0e0 #e0e0e0 #fff;
+    font-weight: bold;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .card h2 {
+    font-size: 2rem;
+    color: #343a40;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+    color: #343a40;
+    border: none;
+  }
+  
+  .btn-light {
+    background-color: #f8f9fa;
+    color: #343a40;
+  }
+  
+  .rounded-circle {
+    object-fit: cover;
+  }
+  
+  .text-muted {
+    font-size: 0.9rem;
+  }
+  
   

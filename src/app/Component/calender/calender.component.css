@@ -65,3 +65,26 @@ height: 100%;
     margin-left: auto; /* Push the button to the right */
     padding-bottom: 10px;
   }  
+
+  .date-box {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    width: 50px;
+  }
+  
+  .date-box.selected {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .time-slot.selected {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .time-slot {
+    cursor: pointer;
+  }
+  

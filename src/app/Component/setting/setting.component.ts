@@ -124,6 +124,44 @@ availability = {
   startTime: '',
   endTime: ''
 };
+weekDays = [
+  { name: 'Mon', date: 6, selected: false },
+  { name: 'Tue', date: 7, selected: true }, // default selected
+  { name: 'Wed', date: 8, selected: false },
+  { name: 'Thu', date: 9, selected: false },
+  { name: 'Fri', date: 10, selected: false },
+  { name: 'Sat', date: 11, selected: false },
+  { name: 'Sun', date: 12, selected: false }
+];
+
+timeSlots = [
+  { time: '08:30', selected: false },
+  { time: '09:30', selected: true }, // default selected
+  { time: '10:30', selected: false },
+  { time: '11:30', selected: false },
+  { time: '12:30', selected: false },
+  { time: '13:30', selected: false },
+  { time: '14:30', selected: false },
+  { time: '15:30', selected: false },
+  { time: '16:30', selected: false },
+  { time: '17:30', selected: false },
+  { time: '18:30', selected: false }
+];
+
+selectedDate = this.weekDays.find(day => day.selected)?.date;
+selectedTime = this.timeSlots.find(slot => slot.selected)?.time;
+
+selectDate(day: any) {
+  this.weekDays.forEach(d => d.selected = false);
+  day.selected = true;
+  this.selectedDate = day.date;
+}
+
+selectTime(slot: any) {
+  this.timeSlots.forEach(t => t.selected = false);
+  slot.selected = true;
+  this.selectedTime = slot.time;
+}
 
 submitAvailability(): void {
   console.log('Availability Submitted:', this.availability);

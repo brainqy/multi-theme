@@ -2,7 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from '../application_constant/environment';
-
+export interface BookedSlot {
+  eventId: number;
+  slotStart: Date;
+  slotEnd: Date;
+  bookerId: string;  // ID of the person booking the slot
+  ownerId: string;   // ID of the person whose slot is being booked
+  bookedStatus:boolean;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -57,7 +64,8 @@ private baseUrl=environment.baseUrl+environment.contextUrl;
       scheduleUser: { fullName: "Dnyanesh", emailAdd: "dvsomwanshi@gmail.com" }
     }
   ];
-  bookedSlots: Array<{ eventId: number, slotStart: Date, slotEnd: Date }> = [];
+  //bookedSlots: Array<{ eventId: number, slotStart: Date, slotEnd: Date }> = [];
+  bookedSlots: BookedSlot[] = [];
 
   // Convert start and end time arrays to Date objects
   public toDate(dateArray: number[]): Date {
@@ -203,6 +211,21 @@ getAllAvailableSlotsByDate(date: string, slotDuration: number = 30): { slotStart
 
   return allAvailableSlotsForDate; // Return all available slots for the specified date
 }
+// Inside interviewService
+isSlotAvailable(slotStart: string, slotEnd: string): boolean {
+  // Convert strings back to Date objects if needed
+  const start = new Date(slotStart);
+  const end = new Date(slotEnd);
+
+  // Perform your booking check logic
+  const isBooked = this.bookedSlots.some(
+    bookedSlot => bookedSlot.slotStart.getTime() === start.getTime() &&
+                  bookedSlot.slotEnd.getTime() === end.getTime()
+  );
+
+  // Return true if not booked, false otherwise
+  return !isBooked;
+}
 
 
 // Helper function to format time as "HH:mm"
@@ -257,16 +280,27 @@ generateAllAvailableSlotsForDate(date: Date, slotDuration: number = 30): { slotS
 
   
  // Book a specific slot
- bookavilableSlot(eventId: number, slotStart: Date, slotEnd: Date): boolean {
+ bookAvailableSlot(eventId: number, slotStart: Date, slotEnd: Date, bookerId: string, ownerId: string): boolean {
+  // Check if the slot is already booked
   const isAvailable = !this.bookedSlots.some(
-    s => s.eventId === eventId && s.slotStart.getTime() === slotStart.getTime()
+    s => s.eventId === eventId && s.slotStart.getTime() === slotStart.getTime() && s.bookedStatus
   );
 
   if (isAvailable) {
-    this.bookedSlots.push({ eventId, slotStart, slotEnd });
+    // If available, add a new booking with bookedStatus set to true
+    this.bookedSlots.push({
+      eventId,
+      slotStart,
+      slotEnd,
+      bookerId,
+      ownerId,
+      bookedStatus: true
+    });
     return true;
   }
+
   return false;  // Slot is already booked
 }
+
 
 }

@@ -78,6 +78,53 @@
           <div class="tab-pane fade" id="availability" role="tabpanel" aria-labelledby="availability-tab">
             <div class="block-container">
               <button class="btn btn-secondary">My Availability</button>
+              <div class="container my-4">
+                <!-- Doctor Selection Section -->
+                <h5>Choose doctor</h5>
+                <div class="d-flex gap-3 mb-4">
+                  <div class="card doctor-card border-primary">
+                    <div class="card-body text-center">
+                      <img src="assets/doctor1.jpg" class="rounded-circle mb-2" width="60" alt="Dnyaneshwar S">
+                      <h6>Dnyaneshwar S</h6>
+                      <p class="text-muted">Java Full Stack dev</p>
+                      <p><i class="bi bi-star-fill text-warning"></i> 5.0</p>
+                    </div>
+                  </div>
+                  <div class="card doctor-card">
+                    <div class="card-body text-center">
+                      <img src="assets/doctor2.jpg" class="rounded-circle mb-2" width="60" alt="Robert Wilson">
+                      <h6>Robert Wilson</h6>
+                      <p class="text-muted">Backend developer</p>
+                      <p><i class="bi bi-star-fill text-warning"></i> 4.5</p>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Date and Time Selection Section -->
+                <h5>Choose date and time</h5>
+                <div class="d-flex justify-content-between align-items-center my-3">
+                  <p class="text-muted mb-0">November, 2023</p>
+                  <button class="btn btn-light btn-sm"><i class="bi bi-calendar"></i></button>
+                </div>
+                <div class="d-flex gap-2 mb-4">
+                  <div *ngFor="let day of weekDays" class="date-box text-center" [class.selected]="day.selected" (click)="selectDate(day)">
+                    <p class="day">{{ day.name }}</p>
+                    <p class="date">{{ day.date }}</p>
+                  </div>
+                </div>
+                <div class="d-flex gap-2 flex-wrap">
+                  <button *ngFor="let time of timeSlots" class="btn btn-light time-slot" [class.selected]="time.selected" (click)="selectTime(time)">
+                    {{ time.time }}
+                  </button>
+                </div>
+              
+                <!-- Booking Button -->
+                <div class="d-flex justify-content-between align-items-center my-4 p-3 bg-light rounded">
+                  <p class="mb-0">{{ selectedDate }} November, 2023 | {{ selectedTime }}</p>
+                  <button class="btn btn-success">Book</button>
+                </div>
+              </div>
+              
               <div class="container mt-5">
                 <h2 class="text-center mb-4">Set Your Availability for Interviews</h2>
                 

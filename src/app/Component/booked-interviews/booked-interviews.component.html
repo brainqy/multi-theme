@@ -52,6 +52,7 @@
                         <th>Category</th>
                         
                         <th>Action</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,7 +62,9 @@
                     <td>{{ slot.kindOfInterviewType }}</td>
                     
                     <td><button class="btn btn-danger" (click)="cancelInterviewSlot(slot)">Cancel</button></td>
-                </tr>
+
+                    <td><button class="btn btn-primary" >Scheduled</button></td>
+                  </tr>
                 </tbody>
             </table>
         </div>
@@ -149,10 +152,13 @@
       <ul>
         <li *ngFor="let slot of availableSlotswithid">
           {{ slot.slotStart | date: 'mediumTime' }} - {{ slot.slotEnd | date: 'mediumTime' }}
-          <button (click)="bookavilableSlot(availability.eventId, slot.slotStart, slot.slotEnd)">Book</button>
+          <!-- Pass bookerId and ownerId as additional arguments -->
+          <button (click)="bookAvailableSlot(availability.eventId, slot.slotStart, slot.slotEnd, bookerId, ownerId)">Book</button>
         </li>
       </ul>
     </div>
+    
+    
   </div>
 
 
@@ -258,11 +264,11 @@
             <div class="modal-header">
               <!-- Previous and Next buttons -->
               <button type="button" class="btn btn-link" (click)="navigateWeek(-1)">
-                <span>&lt; Previous Week</span>
+                <!-- <span>&lt; Previous Week</span> -->
               </button>
               <h4 class="modal-title">Weekly Schedule</h4>
               <button type="button" class="btn btn-link" (click)="navigateWeek(1)">
-                <span>Next Week &gt;</span>
+                <!-- <span>Next Week &gt;</span> -->
               </button>
               <!-- Close button -->
               <button type="button" class="close" (click)="modal.dismiss('Cross click')">

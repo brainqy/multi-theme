@@ -26,3 +26,33 @@ nav-header {
   .block-container{
     padding: 10px;
   }
+  .doctor-card {
+    width: 150px;
+    cursor: pointer;
+  }
+  .doctor-card.border-primary {
+    border-width: 2px;
+  }
+  
+  .date-box {
+    width: 60px;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+  }
+  .date-box.selected {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .time-slot {
+    width: 80px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+  .time-slot.selected {
+    background-color: #007bff;
+    color: white;
+  }
+  

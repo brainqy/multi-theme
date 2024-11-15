@@ -64,8 +64,10 @@ export class CalenderComponent {
   private searchTerms = new Subject<string>();
 
   view: CalendarView = CalendarView.Month;
-
+  monthNames: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   CalendarView = CalendarView;
+  currentMonth: string = '';
+  currentYear: number = 0;
 
   viewDate: Date = new Date();
 
@@ -124,7 +126,8 @@ export class CalenderComponent {
     console.log("Fetching all events");
     this.fetchAllEvents();
     this.fetchAllTrainers();
-    console.log(" this.fetchAllTrainers(): ", JSON.stringify(this.fetchAllTrainers()));
+    this.populateWeekDays();
+     console.log(" this.fetchAllTrainers(): ", JSON.stringify(this.fetchAllTrainers()));
     this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
@@ -133,6 +136,10 @@ export class CalenderComponent {
       .subscribe((events) => {
         this.events = events;
       })
+      const today = new Date();
+      this.currentMonth = this.monthNames[today.getMonth()];  // Get the current month name as a string
+      this.currentYear = today.getFullYear();  // Get the current year
+  
   }
 
   onTrainerSearchChange(): void {
@@ -223,27 +230,6 @@ export class CalenderComponent {
     )
     this.modal.open(content, { size: 'lg' });
   }
-  formatDate(date: string): string {
-    // Check if the date string is valid
-    if (!date || isNaN(Date.parse(date))) {
-      return '';
-    }
-
-    // Convert the date string to a Date object
-    const parsedDate = new Date(date);
-    console.log(" Date modified", parsedDate);
-    // Check if the date object is valid
-    if (isNaN(parsedDate.getTime())) {
-      return '';
-    }
-
-    // Format the date to ISO string format suitable for datetime-local input
-    const isoString = parsedDate.toISOString();
-
-    // Remove milliseconds and the 'Z' (indicating UTC time)
-    return isoString.slice(0, 16); // Slice to remove the seconds and milliseconds
-  }
-
   deleteEvent(eventToDelete: any) {
     if (eventToDelete !== undefined) {
       this.events = this.events.filter((event) => event !== eventToDelete);
@@ -328,37 +314,145 @@ export class CalenderComponent {
       this.modal.dismissAll();
       // Your logic to add interview schedule goes here
     }
+   // Utility function to get the numeric index of the month
+   getMonthIndex(monthName: string): number {
+    return this.monthNames.indexOf(monthName);  // Convert month name to numeric index (0-11)
+  }
 
-  addNewEvent(newEventForm: NgForm,modal:any) {
-    // Validate and add the new event to the events array
+  addNewEvent(newEventForm: NgForm, modal: any) {
     if (newEventForm.valid) {
-      const newEvent: any = {
+      // Check if selectedDate and selectedTime are set
+      console.log("Selected Date: ", this.selectedDate);
+      console.log("Selected Time: ", this.selectedTime);
+  
+      // Ensure selectedDate and selectedTime are valid
+      if (!this.selectedDate || !this.selectedTime) {
+        Swal.fire('Error', 'Please select a date and time!', 'error');
+        return;
+      }
+  
+      // Create the start date using selectedDate and selectedTime
+      const eventDate = new Date();
+      eventDate.setFullYear(this.currentYear);
+  
+      // Ensure selectedMonth is valid
+      const monthIndex = this.getMonthIndex(this.currentMonth);
+      if (monthIndex === -1) {
+        console.error("Invalid Month: ", this.currentMonth);
+        return;
+      }
+      eventDate.setMonth(monthIndex);  // Convert month string to numeric index
+  
+      // Ensure selectedDate is a valid number
+      if (isNaN(Number(this.selectedDate))) {
+        console.error("Invalid Date: ", this.selectedDate);
+        return;
+      }
+      eventDate.setDate(Number(this.selectedDate));  // Set the date
+  
+      console.log("eventDate before setting time: ", eventDate);
+  
+      // Parse selectedTime (assumes time format "HH:MM AM/PM")
+      if (this.selectedTime) {
+        const timeParts = this.selectedTime.split(' '); // Split time and AM/PM
+        if (timeParts.length === 2) {
+          const [time, period] = timeParts;
+          let [hours, minutes] = time.split(':').map(Number);
+  
+          // Adjust hours for AM/PM format
+          if (period === 'AM' && hours === 12) {
+            hours = 0;  // 12 AM is midnight
+          } else if (period === 'PM' && hours !== 12) {
+            hours += 12;  // Convert PM hour to 24-hour format
+          }
+  
+          // Check if time values are valid
+          if (isNaN(hours) || isNaN(minutes)) {
+            console.error("Invalid Time Format: ", this.selectedTime);
+            return;
+          }
+  
+          // Set the time to the adjusted hours and minutes (local time first)
+          eventDate.setHours(hours, minutes, 0);
+  
+          // Adjust to IST (UTC +5:30)
+          const offsetIST = 5 * 60 + 30; // IST is UTC +5:30 (5 hours 30 minutes)
+          const currentTimezoneOffset = eventDate.getTimezoneOffset(); // Get the browser's current timezone offset
+          console.log("currentTimezoneOffset", currentTimezoneOffset);
+  
+          // Adjust the time to IST by adding the difference between UTC and IST
+          eventDate.setMinutes(eventDate.getMinutes()+offsetIST);
+           console.log(" data",JSON.stringify(eventDate));
+          
+        } else {
+          console.error("Invalid Time Format: ", this.selectedTime);
+          return;
+        }
+      }
+  
+      console.log("Event Start Date after setting time: ", eventDate);
+  
+      // Check if eventDate is valid
+      if (isNaN(eventDate.getTime())) {
+        console.error('Invalid Event Start Date');
+        return;
+      }
+  
+      // Set the end time to 1 hour after the start time
+      const endDate = new Date(eventDate.getTime() + 60 * 60 * 1000); // 1-hour duration
+      console.log("Event start Date: ", eventDate);
+      console.log("Event End Date: ", endDate);
+  
+      // Prepare the event data
+      const newEvent = {
         title: "AVAILABILITY",
-        start: new Date(newEventForm.value.startDate),
-        end: new Date(newEventForm.value.endDate),
+        start: eventDate,
+        end: endDate,
         color: "#90dd1d",
-        trainerEmail: newEventForm.value?.trainerEmail
-
+        trainerEmail: newEventForm.value.trainerEmail
       };
-      //this.events = [...this.events, newEvent];
-
+  
+      // Call your service to create the event
       this.calendarService.createEvent(newEvent).subscribe(
         (res) => {
           Swal.fire('Info', "Event Created Successfully", 'success');
-          console.log("res in create ", res);
-          this.events = [
-            ...this.events, res];
-          console.log('Event created successfully! ', this.events);
-        }, (error) => {
-          console.error('Error createing event ', error);
+          console.log("Response from creating event: ", res);
+          this.events = [...this.events, res]; // Add the new event to the list of events
+        },
+        (error) => {
+          console.error('Error creating event', error);
         }
-      )
-
+      );
+  
       // Close the modal
       this.modal.dismissAll();
     }
-    window.location.reload();
   }
+  
+  // Helper method to format time into "HH:MM AM/PM"
+  formatTime(time: string): string {
+    const [hours, minutes] = time.split(':').map(Number);
+    let period = 'AM';
+  
+    let formattedHours = hours;
+    if (formattedHours >= 12) {
+      period = 'PM';
+      if (formattedHours > 12) {
+        formattedHours -= 12; // Convert to 12-hour format
+      }
+    } else if (formattedHours === 0) {
+      formattedHours = 12; // Midnight case
+    }
+  
+    return `${formattedHours}:${minutes.toString().padStart(2, '0')} ${period}`;
+  }
+  
+
+  // Example of formatting time, assuming format like "HH:MM"
+    
+    
+    
+    
  
   fetchAllTrainers() {
     this.userService.getAllTrainers().subscribe(
@@ -374,7 +468,47 @@ export class CalenderComponent {
     );
   }
 
+  weekDays: { name: string; date: string; selected: boolean }[] = [];
 
+  timeSlots = [
+    { time: '09:00 AM', selected: false },
+    { time: '10:00 AM', selected: false },
+    { time: '11:00 AM', selected: false },
+    { time: '12:00 PM', selected: false },
+    { time: '01:00 PM', selected: false },
+    { time: '02:00 PM', selected: false },
+    { time: '03:00 PM', selected: false },
+    { time: '04:00 PM', selected: false }
+  ];
+
+
+  selectedTime: string = '';
+
+  selectDate(day: any) {
+    // Reset selection
+    this.weekDays.forEach(d => (d.selected = false));
+    day.selected = true;
+    this.selectedDate = day.date;
+  }
+
+  selectTime(time: any) {
+    // Reset selection
+    this.timeSlots.forEach(t => (t.selected = false));
+    time.selected = true;
+    this.selectedTime = time.time;
+  }
+  populateWeekDays() {
+    const today = new Date();
+    for (let i = 0; i < 7; i++) {
+      const currentDay = new Date(today);
+      currentDay.setDate(today.getDate() + i);
+      this.weekDays.push({
+        name: currentDay.toLocaleString('en-US', { weekday: 'short' }), // e.g., Mon, Tue
+        date: currentDay.getDate().toString(), // Day of the month
+        selected: false
+      });
+    }
+  }
 }
 
 export interface EventDto {

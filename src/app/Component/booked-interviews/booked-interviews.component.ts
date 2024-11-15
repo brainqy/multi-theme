@@ -15,6 +15,8 @@ interface WeeklySlots {
   styleUrls: ['./booked-interviews.component.scss']
 })
 export class BookedInterviewsComponent implements OnInit{
+  bookerId:string="";
+  ownerId:string="";
   emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   sideNavStatus=false;
   selectedSlot: { day: string, slot: string } | null = null;
@@ -86,7 +88,6 @@ availableSlots: { [date: string]: { slotStart: Date; slotEnd: Date }[] } = {};
   isSlotAvailable(date: string, slot: { slotStart: Date, slotEnd: Date }): boolean {
     // Combine date with slot's start time to create a complete Date object for comparison
     const dateTime = new Date(date + ' ' + slot.slotStart.toISOString().substring(11, 19)); // Only take the time part from ISO string
-  
     // Retrieve available slots for this date
     const slotsForDate = this.interviewService.getAllAvailableSlotsByDate(date);
 //  console.log("slotsForDate ",slotsForDate);
@@ -100,11 +101,6 @@ availableSlots: { [date: string]: { slotStart: Date; slotEnd: Date }[] } = {};
       return dateTime >= slotStart && dateTime < slotEnd;
     });
   }
-  
-  
-  
-  
-  
   
   
   formatSlotTime(slotStart: Date, slotEnd: Date): string {
@@ -123,19 +119,11 @@ generateDatesWithSlots() {
   for (let i = 0; i < 7; i++) {
     const date = new Date(today.getTime() + i * 24 * 60 * 60 * 1000);
     const formattedDate = date.toISOString().split('T')[0]; // Format date as 'YYYY-MM-DD'
-    
-    // Generate slots for the specific date
     const slots = this.interviewService.generateAllAvailableSlotsForDate(date);
-    
-    // Push the date with its available slots to the datesWithSlots array
     this.datesWithSlots.push({ date: formattedDate, slots: slots });
     console.log("datesWithSlots", this.datesWithSlots);
   }
 }
-
-// This method will generate slots for a specific date, similar to `generateAllAvailableSlots`
-
-
   generateSlotsForDate(date: Date): string[] {
     // Assuming slots from 8 AM to 6 PM with 30 minutes interval
     const slots = [];
@@ -157,6 +145,7 @@ generateDatesWithSlots() {
       day: date,
       slot: slot.slotStart.toISOString() // You may store this as an ISO string for comparison
     };
+    this.istheSlotSelected=true;
     console.log("Selected Slot:", new Date(this.selectedSlot.slot)  );
   }
   
@@ -223,14 +212,36 @@ isSlotSelected(date: string, slot: { slotStart: Date, slotEnd: Date }): boolean 
 
   this.interviewService.saveinterviewSlot(data).subscribe((res)=>{
 console.log(" called interview service",res);
+this.removeBookedSlotFromDatesWithSlots(data.day, data.slot);
 this.modalService.dismissAll();
-window.location.reload();
   })
     // Log or further process the data object
     console.log('Selected Data:', data);
   
     // Optionally, you can send the data object to a backend server for further processing
   }
+  removeBookedSlotFromDatesWithSlots(date: string, slotToRemove: { slotStart: Date; slotEnd: Date }) {
+    const dateWithSlots = this.datesWithSlots.find(d => d.date === date);
+  
+    if (dateWithSlots) {
+      // Filter out the slot to remove, ensuring slotStart and slotEnd are defined
+      dateWithSlots.slots = dateWithSlots.slots.filter(slot => {
+        const slotStart = slot.slotStart ? slot.slotStart.getTime() : null;
+        const slotEnd = slot.slotEnd ? slot.slotEnd.getTime() : null;
+        const removeStart = slotToRemove.slotStart ? slotToRemove.slotStart.getTime() : null;
+        const removeEnd = slotToRemove.slotEnd ? slotToRemove.slotEnd.getTime() : null;
+  
+        return !(slotStart === removeStart && slotEnd === removeEnd);
+      });
+  
+      // Optional: Remove date if no slots remain
+      if (dateWithSlots.slots.length === 0) {
+        this.datesWithSlots = this.datesWithSlots.filter(d => d !== dateWithSlots);
+      }
+    }
+  }
+  
+  
   
   navigateWeek(weekOffset: number) {
     this.currentWeekStart.add(weekOffset, 'weeks'); // Move to the previous or next week
@@ -379,14 +390,16 @@ Swal.fire("Info","No Upcoming Interviews Found",'info');
     this.availableSlotswithid = this.interviewService.generateAvailableSlots(eventId);
   }
 
-  bookavilableSlot(eventId: number, slotStart: Date, slotEnd: Date): void {
-    const success = this.interviewService.bookavilableSlot(eventId, slotStart, slotEnd);
+  bookAvailableSlot(eventId: number, slotStart: Date, slotEnd: Date, bookerId: string, ownerId: string): void {
+    const success = this.interviewService.bookAvailableSlot(eventId, slotStart, slotEnd, bookerId, ownerId);
+    
     if (success) {
-      alert(`Slot booked successfully from ${slotStart} to ${slotEnd}`);
-      // Refresh the available slots
+      alert(`Slot booked successfully from ${slotStart.toLocaleTimeString()} to ${slotEnd.toLocaleTimeString()}`);
+      // Refresh the available slots after successful booking
       this.showAvailableSlots(eventId);
     } else {
       alert('This slot is already booked.');
     }
-  } 
+  }
+  
 }
