@@ -404,8 +404,11 @@ export class CalenderComponent {
       const endDate = new Date(eventDate.getTime() + 60 * 60 * 1000); // 1-hour duration
       console.log("Event start Date: ", eventDate);
       console.log("Event End Date: ", endDate);
-      const selectedSkills = this.selectedSkills; // Assuming this.selectedSkills is an array of selected skill names
-
+      const selectedSkills = this.primarySkills.filter(skill => skill.selected).map(skill => skill.skill);
+      if (selectedSkills.length === 0) {
+        Swal.fire('Error', 'Please select at least one skill!', 'error');
+        return;
+      }
       console.log("Selected Skills: ", selectedSkills);
   
       this.createRecurringEvents(eventDate, endDate, recurrence, selectedSkills);
