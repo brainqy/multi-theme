@@ -201,6 +201,29 @@
   <div class="modal-body">
     <form #newEventForm="ngForm" (ngSubmit)="addNewEvent(newEventForm, modal)">
       <div class="container">
+        <!-- Doctor Selection Section -->
+        <h5>Choose Primary Skills</h5>
+        <div class="d-flex gap-2 flex-wrap">
+          <button
+            *ngFor="let skill of primarySkills"
+            type="button"
+            class="btn btn-light time-slot"
+            [class.selected]="skill.selected"
+            (click)="selectSkill(skill)"
+            style="min-width: 80px;"
+          >
+            {{ skill.skill }}
+          </button>
+        </div>
+        
+        <!-- Display the selected skills (optional) -->
+        <div *ngIf="selectedSkills.length > 0">
+          <h6>Selected Skills:</h6>
+          <ul>
+            <li *ngFor="let selectedSkill of selectedSkills">{{ selectedSkill }}</li>
+          </ul>
+        </div>
+        
         <h5>Choose Date and Time</h5>
     
         <!-- Current Month and Calendar Button -->

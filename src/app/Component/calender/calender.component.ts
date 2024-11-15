@@ -404,57 +404,66 @@ export class CalenderComponent {
       const endDate = new Date(eventDate.getTime() + 60 * 60 * 1000); // 1-hour duration
       console.log("Event start Date: ", eventDate);
       console.log("Event End Date: ", endDate);
+      const selectedSkills = this.selectedSkills; // Assuming this.selectedSkills is an array of selected skill names
+
+      console.log("Selected Skills: ", selectedSkills);
   
-      this.createRecurringEvents(eventDate, endDate, recurrence);
+      this.createRecurringEvents(eventDate, endDate, recurrence, selectedSkills);
       // Close the modal
       this.modal.dismissAll();
     }
   }
   // Helper method to handle recurrence
-createRecurringEvents(startDate: Date, endDate: Date, recurrence: string) {
-  let recurrenceCount = 5; // Example: Generate 5 occurrences for the selected recurrence
-  let recurrenceDuration = 0;
-console.log("recurrence",recurrence);
-
-if (!recurrence || recurrence === 'none') {
-  this.createEvent(startDate, endDate); // No recurrence, create only 1 event
-  return;
-}
-
-
-  // Determine the recurrence duration in milliseconds
-  switch (recurrence) {
-    case 'daily':
-      recurrenceDuration = 24 * 60 * 60 * 1000; // 1 day in milliseconds
-      break;
-    case 'weekly':
-      recurrenceDuration = 7 * 24 * 60 * 60 * 1000; // 1 week in milliseconds
-      break;
-    case 'monthly':
-      recurrenceDuration = 30 * 24 * 60 * 60 * 1000; // Approx 1 month in milliseconds
-      break;
-    case 'yearly':
-      recurrenceDuration = 365 * 24 * 60 * 60 * 1000; // Approx 1 year in milliseconds
-      break;
-  }
-
-  // Generate recurring events
-  for (let i = 0; i < recurrenceCount; i++) {
-    const recurringStartDate = new Date(startDate.getTime() + (recurrenceDuration * i));
-    const recurringEndDate = new Date(endDate.getTime() + (recurrenceDuration * i));
+  createRecurringEvents(startDate: Date, endDate: Date, recurrence: string, selectedSkills: string[]) {
+    let recurrenceCount = 5; // Example: Generate 5 occurrences for the selected recurrence
+    let recurrenceDuration = 0;
+    console.log("Recurrence: ", recurrence);
     
-    this.createEvent(recurringStartDate, recurringEndDate); // Create each recurring event
+    if (!recurrence || recurrence === 'none') {
+      // No recurrence, create only 1 event
+      this.createEvent(startDate, endDate, selectedSkills); 
+      return;
+    }
+  
+    // Determine the recurrence duration in milliseconds
+    switch (recurrence) {
+      case 'daily':
+        recurrenceDuration = 24 * 60 * 60 * 1000; // 1 day in milliseconds
+        break;
+      case 'weekly':
+        recurrenceDuration = 7 * 24 * 60 * 60 * 1000; // 1 week in milliseconds
+        break;
+      case 'monthly':
+        recurrenceDuration = 30 * 24 * 60 * 60 * 1000; // Approx 1 month in milliseconds
+        break;
+      case 'yearly':
+        recurrenceDuration = 365 * 24 * 60 * 60 * 1000; // Approx 1 year in milliseconds
+        break;
+      default:
+        console.error("Invalid Recurrence Option");
+        return;
+    }
+  
+    // Generate recurring events
+    for (let i = 0; i < recurrenceCount; i++) {
+      const recurringStartDate = new Date(startDate.getTime() + (recurrenceDuration * i));
+      const recurringEndDate = new Date(endDate.getTime() + (recurrenceDuration * i));
+      
+      // Create each recurring event, passing the selectedSkills along
+      this.createEvent(recurringStartDate, recurringEndDate, selectedSkills);
+    }
   }
-}
+  
 
 // Helper method to create a single event
-createEvent(startDate: Date, endDate: Date) {
+createEvent(startDate: Date, endDate: Date,selectedSkills: string[]) {
   const newEvent = {
     title: "AVAILABILITY",
     start: startDate,
     end: endDate,
     color: "#90dd1d",
-    trainerEmail: 'trainer@example.com'
+    trainerEmail: 'trainer@example.com',
+    skills:selectedSkills
   };
 
   // Call your event service to save the event
@@ -519,12 +528,44 @@ createEvent(startDate: Date, endDate: Date) {
     { time: '01:00 PM', selected: false },
     { time: '02:00 PM', selected: false },
     { time: '03:00 PM', selected: false },
-    { time: '04:00 PM', selected: false }
+    { time: '04:00 PM', selected: false },
+    { time: '05:00 PM', selected: false },
+    { time: '06:00 PM', selected: false },
+    { time: '07:00 PM', selected: false },
+    { time: '08:00 PM', selected: false }
   ];
+
+selectedSkills: string[] = []; // An array to hold selected skills
+
+primarySkills = [
+  { skill: 'java', selected: false },
+  { skill: 'Microservices', selected: false },
+  { skill: 'Angular', selected: false },
+  { skill: 'AWS', selected: false },
+  // Add more skills here
+];
+
+// Updated selectSkill method to toggle selection
+selectSkill(skill: any) {
+  // Toggle the selected state
+  skill.selected = !skill.selected;
+
+  // Add or remove skill from selectedSkills array
+  if (skill.selected) {
+    this.selectedSkills.push(skill.skill); // Add the skill to selectedSkills array
+  } else {
+    const index = this.selectedSkills.indexOf(skill.skill);
+    if (index > -1) {
+      this.selectedSkills.splice(index, 1); // Remove the skill from selectedSkills array
+    }
+  }
+  console.log("Selected Skills: ", this.selectedSkills);
+}
+
 
 
   selectedTime: string = '';
-
+  selectedSkill: string = '';
   selectDate(day: any) {
     // Reset selection
     this.weekDays.forEach(d => (d.selected = false));
