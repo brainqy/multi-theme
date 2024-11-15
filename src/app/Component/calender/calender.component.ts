@@ -324,6 +324,8 @@ export class CalenderComponent {
       // Check if selectedDate and selectedTime are set
       console.log("Selected Date: ", this.selectedDate);
       console.log("Selected Time: ", this.selectedTime);
+      const recurrence = newEventForm.value.recurrence;
+    console.log("Recurrence: ", recurrence);
   
       // Ensure selectedDate and selectedTime are valid
       if (!this.selectedDate || !this.selectedTime) {
@@ -403,32 +405,71 @@ export class CalenderComponent {
       console.log("Event start Date: ", eventDate);
       console.log("Event End Date: ", endDate);
   
-      // Prepare the event data
-      const newEvent = {
-        title: "AVAILABILITY",
-        start: eventDate,
-        end: endDate,
-        color: "#90dd1d",
-        trainerEmail: newEventForm.value.trainerEmail
-      };
-  
-      // Call your service to create the event
-      this.calendarService.createEvent(newEvent).subscribe(
-        (res) => {
-          Swal.fire('Info', "Event Created Successfully", 'success');
-          console.log("Response from creating event: ", res);
-          this.events = [...this.events, res]; // Add the new event to the list of events
-        },
-        (error) => {
-          console.error('Error creating event', error);
-        }
-      );
-  
+      this.createRecurringEvents(eventDate, endDate, recurrence);
       // Close the modal
       this.modal.dismissAll();
     }
   }
-  
+  // Helper method to handle recurrence
+createRecurringEvents(startDate: Date, endDate: Date, recurrence: string) {
+  let recurrenceCount = 5; // Example: Generate 5 occurrences for the selected recurrence
+  let recurrenceDuration = 0;
+console.log("recurrence",recurrence);
+
+if (!recurrence || recurrence === 'none') {
+  this.createEvent(startDate, endDate); // No recurrence, create only 1 event
+  return;
+}
+
+
+  // Determine the recurrence duration in milliseconds
+  switch (recurrence) {
+    case 'daily':
+      recurrenceDuration = 24 * 60 * 60 * 1000; // 1 day in milliseconds
+      break;
+    case 'weekly':
+      recurrenceDuration = 7 * 24 * 60 * 60 * 1000; // 1 week in milliseconds
+      break;
+    case 'monthly':
+      recurrenceDuration = 30 * 24 * 60 * 60 * 1000; // Approx 1 month in milliseconds
+      break;
+    case 'yearly':
+      recurrenceDuration = 365 * 24 * 60 * 60 * 1000; // Approx 1 year in milliseconds
+      break;
+  }
+
+  // Generate recurring events
+  for (let i = 0; i < recurrenceCount; i++) {
+    const recurringStartDate = new Date(startDate.getTime() + (recurrenceDuration * i));
+    const recurringEndDate = new Date(endDate.getTime() + (recurrenceDuration * i));
+    
+    this.createEvent(recurringStartDate, recurringEndDate); // Create each recurring event
+  }
+}
+
+// Helper method to create a single event
+createEvent(startDate: Date, endDate: Date) {
+  const newEvent = {
+    title: "AVAILABILITY",
+    start: startDate,
+    end: endDate,
+    color: "#90dd1d",
+    trainerEmail: 'trainer@example.com'
+  };
+
+  // Call your event service to save the event
+  this.calendarService.createEvent(newEvent).subscribe(
+    (res) => {
+      Swal.fire('Info', "Event Created Successfully", 'success');
+      console.log("Response from creating event: ", res);
+      this.events.push(res); // Add the event to the list
+    },
+    (error) => {
+      console.error('Error creating event', error);
+    }
+  );
+}
+
   // Helper method to format time into "HH:MM AM/PM"
   formatTime(time: string): string {
     const [hours, minutes] = time.split(':').map(Number);
