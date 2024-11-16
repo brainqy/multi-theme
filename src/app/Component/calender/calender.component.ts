@@ -127,7 +127,7 @@ export class CalenderComponent {
     this.fetchAllEvents();
     this.fetchAllTrainers();
     this.populateWeekDays();
-     console.log(" this.fetchAllTrainers(): ", JSON.stringify(this.fetchAllTrainers()));
+    // console.log(" this.fetchAllTrainers(): ", JSON.stringify(this.fetchAllTrainers()));
     this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
@@ -159,7 +159,7 @@ export class CalenderComponent {
             start: new Date(event.start[0], event.start[1] - 1, event.start[2], event.start[3], event.start[4]),
             end: new Date(event.end[0], event.end[1] - 1, event.end[2], event.end[3], event.end[4])
           }));
-          console.log("this events from server ", JSON.stringify(this.events))
+         // console.log("this events from server ", JSON.stringify(this.events))
         } else {
           console.error('Invalid response format:', response);
         }
