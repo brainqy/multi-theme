@@ -44,29 +44,27 @@
               <div>
                 <!-- interview-table.component.html -->
                 <h2>UPCOMING PRACTICE INTERVIEWS</h2>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Type</th>
-                      <th>Category</th>
-
-                      <th>Action</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let slot of getNonCanceledSlots(interviewSlots)">
-                      <td>{{ slot.day }} {{ slot.slot }}</td>
-                      <td>{{ slot.interviewType }}</td>
-                      <td>{{ slot.kindOfInterviewType }}</td>
-
-                      <td><button class="btn btn-danger" (click)="cancelInterviewSlot(slot)">Cancel</button></td>
-
-                      <td><button class="btn btn-primary">Scheduled</button></td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="row">
+                  <div class="col-md-4" *ngFor="let slot of getNonCanceledSlots(interviewSlots)">
+                    <div class="card shadow-sm mb-4">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ slot.slot }}</h5>
+                        <p><strong>Type:</strong> {{ slot.interviewType }}</p>
+                        <p><strong>Category:</strong> {{ slot.kindOfInterviewType }}</p>
+                        <div class="d-flex justify-content-between mt-3">
+                          <button
+                            class="btn btn-danger"
+                            (click)="cancelInterviewSlot(slot)"
+                          >
+                            Cancel
+                          </button>
+                          <button class="btn btn-primary">Scheduled</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
               </div>
 
 
@@ -74,66 +72,60 @@
             </table>
           </div>
           <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-            <table class="table table-striped"> <!-- Added table-striped class for striped rows -->
-              <div>
-                <!-- interview-table.component.html -->
-                <h2>ALL INTERVIEWS</h2>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Category</th>
-                      <th>Type</th>
-                      <th>Language</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let slot of interviewSlots">
-                      <td>{{ slot.day }}</td>
-                      <td>{{ slot.interviewType }}</td>
-                      <td>{{ slot.kindOfInterviewType }}</td>
-                      <td>Java</td>
-                      <td>
-                        <button *ngIf="slot.status !== 'CANCELED'" class="btn btn-danger"
-                          (click)="cancelInterviewSlot(slot.id)">Cancel</button>
-                        <span *ngIf="slot.status === 'CANCELED'" class="text-muted">CANCELED</span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+            <div class="row">
+              <div class="col-md-4 mb-3" *ngFor="let slot of interviewSlots">
+                <div class="card shadow-sm">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ slot.day }}</h5>
+                    <p><strong>Category:</strong> {{ slot.interviewType }}</p>
+                    <p><strong>Type:</strong> {{ slot.kindOfInterviewType }}</p>
+                    <p><strong>Language:</strong> Java</p>
+            
+                    <div>
+                      <button
+                        *ngIf="slot.status !== 'CANCELED'"
+                        class="btn btn-danger me-2"
+                        (click)="cancelInterviewSlot(slot.id)"
+                      >
+                        Cancel
+                      </button>
+                      <span *ngIf="slot.status === 'CANCELED'" class="text-muted">CANCELED</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </table>
+            </div>
+            
           </div>
           <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
             <table class="table table-striped"> <!-- Added table-striped class for striped rows -->
               <div>
                 <!-- interview-table.component.html -->
                 <h2>CANCELED INTERVIEWS</h2>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Category</th>
-                      <th>Type</th>
-                      <th>Language</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let slot of getCanceledSlots(interviewSlots)">
-                      <td>{{ slot.day }}</td>
-                      <td>{{ slot.interviewType }}</td>
-                      <td>{{ slot.kindOfInterviewType }}</td>
-                      <td>Java</td>
-                      <td>
-                        <button *ngIf="slot.status !== 'CANCELED'" class="btn btn-danger"
-                          (click)="cancelInterviewSlot(slot.id)">Cancel</button>
-                        <span *ngIf="slot.status === 'CANCELED'" class="text-muted">CANCELED</span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="row">
+                  <div class="col-md-4 mb-3" *ngFor="let slot of getCanceledSlots(interviewSlots)">
+                    <div class="card shadow-sm border-danger">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ slot.day }}</h5>
+                        <p><strong>Category:</strong> {{ slot.interviewType }}</p>
+                        <p><strong>Type:</strong> {{ slot.kindOfInterviewType }}</p>
+                        <p><strong>Language:</strong> Java</p>
+                
+                        <div>
+                          <button
+                            *ngIf="slot.status !== 'CANCELED'"
+                            class="btn btn-danger me-2"
+                            (click)="cancelInterviewSlot(slot.id)"
+                          >
+                            Cancel
+                          </button>
+                          <span *ngIf="slot.status === 'CANCELED'" class="text-muted">CANCELED</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
               </div>
 
 

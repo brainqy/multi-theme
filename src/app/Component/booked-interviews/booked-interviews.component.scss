@@ -133,6 +133,43 @@ table {
   .available-slot {
     background-color: yellow;
   }
+  .card {
+    border-radius: 8px;
+    border: none;
+  }
+  
+  .card-title {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .card-body {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .btn {
+    width: 45%;
+  }
+  .card {
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  
+  .card-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+  
+  .card-body {
+    background-color: #f9f9f9;
+  }
+  
+  .text-muted {
+    font-style: italic;
+    font-size: 0.9rem;
+  }
   
   
   

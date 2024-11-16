@@ -244,11 +244,9 @@ export class BookedInterviewsComponent implements OnInit {
       // Add selected interview type to the data object
       data.interviewType = this.selectedInterviewType;
     }
-
     if (data.interviewType === 'Practice with experts') {
       // Combine day and slot into a Date object for filtering
       console.log(" this.selectedSlot", this.selectedSlot);
-
       const eligibleUsers = this.filterEligibleUsers(
         this.availability,
         this.kindOfInterview,
@@ -258,14 +256,12 @@ export class BookedInterviewsComponent implements OnInit {
       if(eligibleUsers.length>0){
         const randomUser = eligibleUsers[Math.floor(Math.random() * eligibleUsers.length)];
         console.log("randomUser ",randomUser);
-        
         const randomUserEmail = randomUser.scheduleUser.emailAdd;
         console.log(`Random eligible user email: ${randomUserEmail}`);
         console.log('Eligible Users:', eligibleUsers);
         data.hrEmail = randomUserEmail;
       }else{
         console.log("No eligible users found");
-        
       }
       
     }
@@ -286,11 +282,10 @@ export class BookedInterviewsComponent implements OnInit {
     this.interviewService.saveinterviewSlot(data).subscribe((res) => {
       console.log("Called interview service", res);
       this.modalService.dismissAll();
-      
-      
     });
     // Log or further process the data object
     console.log('Selected Data:', data);
+    window.location.reload();
   }
 
 
@@ -332,7 +327,6 @@ export class BookedInterviewsComponent implements OnInit {
           if(res.status==='SUCCESS'){
             Swal.fire("Success","Interview Successfully Scheduled",'success');
           }
-
         })
         // Set the status as available again and clear bookedBy email
         dateWithSlots.status = 'BOOKED';
