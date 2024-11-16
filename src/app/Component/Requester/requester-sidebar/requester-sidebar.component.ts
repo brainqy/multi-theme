@@ -22,17 +22,17 @@ export class RequesterSidebarComponent {
       link: 'analytics'
     }, 
     {
-      number: 3,
-      name: 'Schedule meeting',
-      icon: 'fas fa-calendar-alt',
-      link: 'book-calendar'
-    },
-    {
       number: 4,
       name: 'Reports',
       icon: 'fas fa-file-alt',
       link: '/reports'
     }, */
+    {
+      number: 3,
+      name: 'Scheduler',
+      icon: 'fas fa-calendar-alt',
+      link: 'book-calendar'
+    },
     {
       number: 4,
       name: 'Wallet',

@@ -10,6 +10,20 @@ export interface BookedSlot {
   ownerId: string;   // ID of the person whose slot is being booked
   bookedStatus:boolean;
 }
+export interface ScheduleUser {
+  fullName: string;
+  emailAdd: string;
+}
+
+export interface Availability {
+  eventId: number;
+  title: string;
+  start: number[]; // Array of numbers [year, month, day, hour, minute]
+  end: number[];
+  color: string;
+  scheduleUser: ScheduleUser;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -72,160 +86,13 @@ private baseUrl=environment.baseUrl+environment.contextUrl;
     return new Date(dateArray[0], dateArray[1] - 1, dateArray[2], dateArray[3], dateArray[4]);
   }
 
-  generateAvailableSlots(eventId: number, slotDuration = 30): { slotStart: Date, slotEnd: Date }[] {
-    const availability = this.availability.find(a => a.eventId === eventId);
-    if (!availability) return [];
-  
-    const start = this.toDate(availability.start);
-    const end = this.toDate(availability.end);
-    const slots: { slotStart: Date, slotEnd: Date }[] = [];
-  
-    // Adjust start to the next closest half-hour mark
-    const currentSlot = new Date(start);
-    if (currentSlot.getMinutes() > 0 && currentSlot.getMinutes() < 30) {
-      currentSlot.setMinutes(30, 0, 0); // Set to :30
-    } else if (currentSlot.getMinutes() > 30) {
-      currentSlot.setHours(currentSlot.getHours() + 1, 0, 0, 0); // Set to the next hour
-    }
-  
-    while (currentSlot < end) {
-      const slotEnd = new Date(currentSlot);
-      slotEnd.setMinutes(slotEnd.getMinutes() + slotDuration);
-      
-      if (slotEnd > end) break;  // Stop if slot end exceeds availability
-  
-      // Check if slot is already booked
-      const isBooked = this.bookedSlots.some(
-        s => s.eventId === eventId && s.slotStart.getTime() === currentSlot.getTime()
-      );
-  
-      if (!isBooked) {
-        slots.push({ slotStart: new Date(currentSlot), slotEnd: new Date(slotEnd) });
-      }
-  
-      // Move to the next half-hour slot
-      currentSlot.setMinutes(currentSlot.getMinutes() + slotDuration);
-    }
-    return slots;
-  }
+
   // Generate slots for all events with title "AVAILABILITY"
 // Generate slots for all events with title "AVAILABILITY"
 isTheSelectedkindOfInterviewType:boolean=false;
 availableSlots: { [date: string]: {}[] } = {};
-getAllAvailableSlots(slotDuration: number = 30): { slotStart: Date, slotEnd: Date }[] {
-  const allAvailableSlots: { slotStart: Date, slotEnd: Date }[] = [];
-
-  // Iterate through each availability entry
-  this.availability.forEach(availability => {
-    const start = this.toDate(availability.start);
-    const end = this.toDate(availability.end);
-    
-    let currentSlot = new Date(start);
-
-    // Adjust start time to the nearest available half-hour
-    if (currentSlot.getMinutes() > 0 && currentSlot.getMinutes() < 30) {
-      currentSlot.setMinutes(30, 0, 0); // Set to :30
-    } else if (currentSlot.getMinutes() >= 30) {
-      currentSlot.setHours(currentSlot.getHours() + 1, 0, 0, 0); // Set to the next hour
-    }
-
-    // Loop through the available slots until the end time
-    while (currentSlot < end) {
-      const slotEnd = new Date(currentSlot);
-      slotEnd.setMinutes(slotEnd.getMinutes() + slotDuration); // Add duration to create slot end time
-
-      // Break if the slot end time exceeds the availability range
-      if (slotEnd > end) {
-        break;
-      }
-
-      // Check if this slot is already booked
-      const isBooked = this.bookedSlots.some(
-        bookedSlot => bookedSlot.slotStart.getTime() === currentSlot.getTime() && bookedSlot.eventId === availability.eventId
-      );
-
-      // If the slot is not booked, add it to the list
-      if (!isBooked) {
-        allAvailableSlots.push({ slotStart: new Date(currentSlot), slotEnd: new Date(slotEnd) });
-      }
-
-      // Move to the next slot (add slot duration to currentSlot)
-      currentSlot.setMinutes(currentSlot.getMinutes() + slotDuration);
-    }
-  });
-
-  return allAvailableSlots; // Return all available slots
-}
-getAllAvailableSlotsByDate(date: string, slotDuration: number = 30): { slotStart: Date, slotEnd: Date }[] {
-  const allAvailableSlotsForDate: { slotStart: Date, slotEnd: Date }[] = [];
-  
-  // Convert the string date to a Date object representing the start of the day (00:00)
-  const targetDate = new Date(date);
-  targetDate.setHours(0, 0, 0, 0); // Set to midnight to represent the start of the day
-
-  // Calculate the end of the day (23:59:59.999)
-  const endOfDay = new Date(targetDate);
-  endOfDay.setHours(23, 59, 59, 999); // Set to the end of the day
-
-  // Iterate through each availability entry
-  this.availability.forEach(availability => {
-    const start = this.toDate(availability.start);
-    const end = this.toDate(availability.end);
-    
-    // If the availability period overlaps with the target date
-    if (start <= endOfDay && end >= targetDate) {
-      let currentSlot = new Date(start);
-
-      // Adjust the currentSlot to the nearest available half-hour
-      if (currentSlot.getMinutes() > 0 && currentSlot.getMinutes() < 30) {
-        currentSlot.setMinutes(30, 0, 0); // Set to :30
-      } else if (currentSlot.getMinutes() >= 30) {
-        currentSlot.setHours(currentSlot.getHours() + 1, 0, 0, 0); // Set to the next hour
-      }
-
-      // Loop through the available slots until the end time
-      while (currentSlot < end && currentSlot <= endOfDay) {
-        const slotEnd = new Date(currentSlot);
-        slotEnd.setMinutes(slotEnd.getMinutes() + slotDuration); // Add duration to create slot end time
-
-        // Break if the slot end time exceeds the availability range or the end of the day
-        if (slotEnd > end || slotEnd > endOfDay) {
-          break;
-        }
-
-        // Check if this slot is already booked
-        const isBooked = this.bookedSlots.some(
-          bookedSlot => bookedSlot.slotStart.getTime() === currentSlot.getTime() && bookedSlot.eventId === availability.eventId
-        );
-
-        // If the slot is not booked, add it to the list
-        if (!isBooked) {
-          allAvailableSlotsForDate.push({ slotStart: new Date(currentSlot), slotEnd: new Date(slotEnd) });
-        }
-
-        // Move to the next slot (add slot duration to currentSlot)
-        currentSlot.setMinutes(currentSlot.getMinutes() + slotDuration);
-      }
-    }
-  });
-
-  return allAvailableSlotsForDate; // Return all available slots for the specified date
-}
 // Inside interviewService
-isSlotAvailable(slotStart: string, slotEnd: string): boolean {
-  // Convert strings back to Date objects if needed
-  const start = new Date(slotStart);
-  const end = new Date(slotEnd);
 
-  // Perform your booking check logic
-  const isBooked = this.bookedSlots.some(
-    bookedSlot => bookedSlot.slotStart.getTime() === start.getTime() &&
-                  bookedSlot.slotEnd.getTime() === end.getTime()
-  );
-
-  // Return true if not booked, false otherwise
-  return !isBooked;
-}
 
 
 // Helper function to format time as "HH:mm"
@@ -280,27 +147,6 @@ generateAllAvailableSlotsForDate(date: Date, slotDuration: number = 30): { slotS
 
   
  // Book a specific slot
- bookAvailableSlot(eventId: number, slotStart: Date, slotEnd: Date, bookerId: string, ownerId: string): boolean {
-  // Check if the slot is already booked
-  const isAvailable = !this.bookedSlots.some(
-    s => s.eventId === eventId && s.slotStart.getTime() === slotStart.getTime() && s.bookedStatus
-  );
-
-  if (isAvailable) {
-    // If available, add a new booking with bookedStatus set to true
-    this.bookedSlots.push({
-      eventId,
-      slotStart,
-      slotEnd,
-      bookerId,
-      ownerId,
-      bookedStatus: true
-    });
-    return true;
-  }
-
-  return false;  // Slot is already booked
-}
 
 
 }

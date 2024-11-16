@@ -3,11 +3,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment'; // Import moment library for date manipulation
-import { InterviewService } from 'src/app/Core/services/interview.service';
+import { Availability, InterviewService } from 'src/app/Core/services/interview.service';
 import Swal from 'sweetalert2';
 
 interface WeeklySlots {
   [day: string]: string[];
+}
+export interface BookedSlot {
+  eventId: number;
+  slotStart: Date;
+  slotEnd: Date;
+  bookerId: string;  // ID of the person booking the slot
+  ownerId: string;   // ID of the person whose slot is being booked
+  bookedStatus:boolean;
 }
 @Component({
   selector: 'app-booked-interviews',
@@ -29,7 +37,7 @@ istheSlotSelected:boolean=false;
 isTheSelectedInterviewType:boolean=false;
 isTheSelectedkindOfInterviewType:boolean=false;
 availableSlots: { [date: string]: { slotStart: Date; slotEnd: Date }[] } = {};
-
+availability!: Availability[];
    kindOfInterview: string[] = [
     'Data Structures and algorithms',
     'System Design',
@@ -51,7 +59,7 @@ availableSlots: { [date: string]: { slotStart: Date; slotEnd: Date }[] } = {};
   datesWithSlots: { date: string; slots: { slotStart: Date; slotEnd: Date; }[] }[] = [];
 
   interviewBalance!: number;
-
+  bookedSlots: BookedSlot[] = [];
   constructor(private modalService: NgbModal,
     public interviewService:InterviewService,
     private router: Router,
@@ -64,9 +72,8 @@ availableSlots: { [date: string]: { slotStart: Date; slotEnd: Date }[] } = {};
     
   }
   ngOnInit(): void {
-        this.generateDatesWithSlots();
     this.getAvailableInterviewSLots();
- this.generateAllAvailableSlots();
+    this.generateDatesWithSlots();
   }
   get friendEmail() {
     return this.invitationForm.get('friendEmail');
@@ -79,28 +86,33 @@ availableSlots: { [date: string]: { slotStart: Date; slotEnd: Date }[] } = {};
       // Add further logic for sending the invitation here
     }
   }
-  allslots: any;
-  generateAllAvailableSlots(){
-  this.allslots= this.interviewService.getAllAvailableSlots();
-   console.log("allslots avl",this.allslots);
-   
-  }
+
   isSlotAvailable(date: string, slot: { slotStart: Date, slotEnd: Date }): boolean {
-    // Combine date with slot's start time to create a complete Date object for comparison
-    const dateTime = new Date(date + ' ' + slot.slotStart.toISOString().substring(11, 19)); // Only take the time part from ISO string
+    const offsetIST = 5 * 60 + 30; // IST is UTC +5:30 (5 hours 30 minutes)
+    
+    // Combine the provided date with the slot's start time (UTC) to form a complete Date object.
+    let dateTime = new Date(date + 'T' + slot.slotStart.toISOString().substring(11, 19));
+  
+    // Adjust the dateTime for IST by adding the offset
+    dateTime = new Date(dateTime.getTime());
+  
     // Retrieve available slots for this date
-    const slotsForDate = this.interviewService.getAllAvailableSlotsByDate(date);
-//  console.log("slotsForDate ",slotsForDate);
+    const slotsForDate = this.getAllAvailableSlotsByDate(date);
   
     // Check if any slot in available slots matches the given time range
     return slotsForDate && slotsForDate.some((availableSlot: { slotStart: string | number | Date; slotEnd: string | number | Date; }) => {
       const slotStart = new Date(availableSlot.slotStart);
       const slotEnd = new Date(availableSlot.slotEnd);
   
-      // Check if the dateTime is within the range of slotStart and slotEnd
-      return dateTime >= slotStart && dateTime < slotEnd;
+      // Adjust available slot times for IST
+      const slotStartIST = new Date(slotStart.getTime() - offsetIST * 60 * 1000);
+      const slotEndIST = new Date(slotEnd.getTime() - offsetIST * 60 * 1000);
+  
+      // Check if the adjusted dateTime is within the range of the adjusted slotStart and slotEnd
+      return dateTime >= slotStartIST && dateTime < slotEndIST;
     });
   }
+  
   
   
   formatSlotTime(slotStart: Date, slotEnd: Date): string {
@@ -119,11 +131,46 @@ generateDatesWithSlots() {
   for (let i = 0; i < 7; i++) {
     const date = new Date(today.getTime() + i * 24 * 60 * 60 * 1000);
     const formattedDate = date.toISOString().split('T')[0]; // Format date as 'YYYY-MM-DD'
-    const slots = this.interviewService.generateAllAvailableSlotsForDate(date);
+    const slots = this.generateAllAvailableSlotsForDate(date);
     this.datesWithSlots.push({ date: formattedDate, slots: slots });
     console.log("datesWithSlots", this.datesWithSlots);
   }
 }
+generateAllAvailableSlotsForDate(date: Date, slotDuration: number = 30): { slotStart: Date, slotEnd: Date }[] {
+  const allAvailableSlots: { slotStart: Date, slotEnd: Date }[] = [];
+
+  // Define the start time (morning 8 am) and end time (night 8 pm)
+  const start = new Date(date.setHours(8, 0, 0, 0));  // Set to 8 AM
+  const end = new Date(date.setHours(20, 0, 0, 0));   // Set to 8 PM
+
+  // Adjust the start time to the nearest available half-hour
+  let currentSlot = new Date(start);
+  if (currentSlot.getMinutes() > 0 && currentSlot.getMinutes() < 30) {
+    currentSlot.setMinutes(30, 0, 0); // Set to the next half hour
+  } else if (currentSlot.getMinutes() >= 30) {
+    currentSlot.setHours(currentSlot.getHours() + 1, 0, 0, 0); // Set to the next hour
+  }
+
+  // Loop through the available slots until the end time
+  while (currentSlot < end) {
+    const slotEnd = new Date(currentSlot);
+    slotEnd.setMinutes(slotEnd.getMinutes() + slotDuration); // Add duration to create the end time
+
+    // Break if the slot end time exceeds the availability range
+    if (slotEnd > end) {
+      break;
+    }
+
+    // Add the slot to the available slots list
+    allAvailableSlots.push({ slotStart: new Date(currentSlot), slotEnd });
+
+    // Move to the next slot by adding the duration
+    currentSlot.setMinutes(currentSlot.getMinutes() + slotDuration);
+  }
+
+  return allAvailableSlots; // Return the available slots for this date
+}
+
   generateSlotsForDate(date: Date): string[] {
     // Assuming slots from 8 AM to 6 PM with 30 minutes interval
     const slots = [];
@@ -313,7 +360,8 @@ this.modalService.dismissAll();
   
   getAvailableInterviewSLots(){
     this.interviewService.getAllAvailableInterviewSlots().subscribe(res=>{
-      console.log("available interview slots ",res);
+      this.availability=res;
+      console.log("available interview slots in compo ",this.availability);
       
     })
   }
@@ -385,21 +433,65 @@ Swal.fire("Info","No Upcoming Interviews Found",'info');
   // Sample Availability Data
   availableSlotswithid: { slotStart: Date, slotEnd: Date }[] = [];
   selectedEventId: number | null = null;
-  showAvailableSlots(eventId: number): void {
-    this.selectedEventId = eventId;
-    this.availableSlotswithid = this.interviewService.generateAvailableSlots(eventId);
-  }
 
-  bookAvailableSlot(eventId: number, slotStart: Date, slotEnd: Date, bookerId: string, ownerId: string): void {
-    const success = this.interviewService.bookAvailableSlot(eventId, slotStart, slotEnd, bookerId, ownerId);
-    
-    if (success) {
-      alert(`Slot booked successfully from ${slotStart.toLocaleTimeString()} to ${slotEnd.toLocaleTimeString()}`);
-      // Refresh the available slots after successful booking
-      this.showAvailableSlots(eventId);
-    } else {
-      alert('This slot is already booked.');
-    }
+
+  public toDate(dateArray: number[]): Date {
+    return new Date(dateArray[0], dateArray[1] - 1, dateArray[2], dateArray[3], dateArray[4]);
   }
   
+  getAllAvailableSlotsByDate(date: string, slotDuration: number = 30): { slotStart: Date, slotEnd: Date }[] {
+    const allAvailableSlotsForDate: { slotStart: Date, slotEnd: Date }[] = [];
+    
+    // Convert the string date to a Date object representing the start of the day (00:00)
+    const targetDate = new Date(date);
+    targetDate.setHours(0, 0, 0, 0); // Set to midnight to represent the start of the day
+  
+    // Calculate the end of the day (23:59:59.999)
+    const endOfDay = new Date(targetDate);
+    endOfDay.setHours(23, 59, 59, 999); // Set to the end of the day
+  
+    // Iterate through each availability entry
+    this.availability.forEach(availability => {
+      const start = this.toDate(availability.start);
+      const end = this.toDate(availability.end);
+      
+      // If the availability period overlaps with the target date
+      if (start <= endOfDay && end >= targetDate) {
+        let currentSlot = new Date(start);
+  
+        // Adjust the currentSlot to the nearest available half-hour
+        if (currentSlot.getMinutes() > 0 && currentSlot.getMinutes() < 30) {
+          currentSlot.setMinutes(30, 0, 0); // Set to :30
+        } else if (currentSlot.getMinutes() >= 30) {
+          currentSlot.setHours(currentSlot.getHours() + 1, 0, 0, 0); // Set to the next hour
+        }
+  
+        // Loop through the available slots until the end time
+        while (currentSlot < end && currentSlot <= endOfDay) {
+          const slotEnd = new Date(currentSlot);
+          slotEnd.setMinutes(slotEnd.getMinutes() + slotDuration); // Add duration to create slot end time
+  
+          // Break if the slot end time exceeds the availability range or the end of the day
+          if (slotEnd > end || slotEnd > endOfDay) {
+            break;
+          }
+  
+          // Check if this slot is already booked
+          const isBooked = this.bookedSlots.some(
+            bookedSlot => bookedSlot.slotStart.getTime() === currentSlot.getTime() && bookedSlot.eventId === availability.eventId
+          );
+  
+          // If the slot is not booked, add it to the list
+          if (!isBooked) {
+            allAvailableSlotsForDate.push({ slotStart: new Date(currentSlot), slotEnd: new Date(slotEnd) });
+          }
+  
+          // Move to the next slot (add slot duration to currentSlot)
+          currentSlot.setMinutes(currentSlot.getMinutes() + slotDuration);
+        }
+      }
+    });
+  
+    return allAvailableSlotsForDate; // Return all available slots for the specified date
+  }
 }

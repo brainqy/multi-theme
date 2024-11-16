@@ -401,7 +401,7 @@ export class CalenderComponent {
       }
   
       // Set the end time to 1 hour after the start time
-      const endDate = new Date(eventDate.getTime() + 60 * 60 * 1000); // 1-hour duration
+      const endDate = new Date(eventDate.getTime() + 30 * 60 * 1000); // 1/2-hour duration
       console.log("Event start Date: ", eventDate);
       console.log("Event End Date: ", endDate);
       const selectedSkills = this.primarySkills.filter(skill => skill.selected).map(skill => skill.skill);
