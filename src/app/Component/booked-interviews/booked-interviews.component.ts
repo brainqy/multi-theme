@@ -290,55 +290,74 @@ export class BookedInterviewsComponent implements OnInit {
 
 
   removeBookedSlotFromAppointment(date: string, slotToRemove: Date, email: string): void {
-    console.log("Slot to remove:", slotToRemove); // Log the slotToRemove object
-
-    // Check if slotToRemove is properly structured
-    if (!(slotToRemove instanceof Date)) {
-      console.error("Invalid slotToRemove object, converting to Date:", slotToRemove);
-      slotToRemove = new Date(slotToRemove); // Convert to Date if not already
-    }
-
-    // Ensure it's a valid Date object after conversion
-    if (isNaN(slotToRemove.getTime())) {
-      console.error("Invalid Date object:", slotToRemove);
-      return;
-    }
-
-    // Find the availability object for the given date
-    const dateWithSlots = this.availability.find(d => {
-      const eventStart = new Date(d.start[0], d.start[1] - 1, d.start[2], d.start[3], d.start[4]);
-      console.log(`Checking availability for: ${eventStart.toDateString()}`);
-      return eventStart.toDateString() === new Date(date).toDateString(); // Compare date only
-    });
-
-    if (dateWithSlots) {
-      console.log("Found availability object:", dateWithSlots);
-
-      // Check if the booked slot start time matches the slotStart of the given slotToRemove
-      const eventStart = new Date(dateWithSlots.start[0], dateWithSlots.start[1] - 1, dateWithSlots.start[2], dateWithSlots.start[3], dateWithSlots.start[4]);
-
-      console.log("Event start:", eventStart.toISOString(), "Slot to remove:", slotToRemove.toISOString());
-
-      // Correct comparison: Use toISOString() to compare Date objects
-      if (eventStart.toISOString() === slotToRemove.toISOString()) {
-        console.log("Slot matches! Clearing booked slot...");
-        this.eventService.updateAppointmentEvent(dateWithSlots.eventId, { status: 'BOOKED', bookedBy: email }).subscribe(res => {
-          console.log("updated appointment", res);
-          if(res.status==='SUCCESS'){
-            Swal.fire("Success","Interview Successfully Scheduled",'success');
-          }
-        })
-        // Set the status as available again and clear bookedBy email
-        dateWithSlots.status = 'BOOKED';
-        dateWithSlots.bookedBy = email;
-        console.log("Booking cleared. Availability updated:", dateWithSlots);
-      } else {
-        console.log("No match for the slot or email.");
+    try {
+      console.log("Slot to remove:", slotToRemove); // Log the slotToRemove object
+  
+      // Check if slotToRemove is properly structured
+      if (!(slotToRemove instanceof Date)) {
+        console.warn("Invalid slotToRemove object, attempting to convert to Date:", slotToRemove);
+        slotToRemove = new Date(slotToRemove); // Convert to Date if not already
       }
-    } else {
-      console.log("No availability found for the given date.");
+  
+      // Ensure it's a valid Date object after conversion
+      if (isNaN(slotToRemove.getTime())) {
+        console.error("Invalid Date object after conversion:", slotToRemove);
+        Swal.fire("Error", "Invalid slot format provided.", "warning");
+        return;
+      }
+  
+      // Find the availability object for the given date
+      const dateWithSlots = this.availability.find(d => {
+        const eventStart = new Date(d.start[0], d.start[1] - 1, d.start[2], d.start[3], d.start[4]);
+        console.log(`Checking availability for: ${eventStart.toDateString()}`);
+        return eventStart.toDateString() === new Date(date).toDateString(); // Compare date only
+      });
+  
+      if (dateWithSlots) {
+        console.log("Found availability object:", dateWithSlots);
+  
+        // Check if the booked slot start time matches the slotStart of the given slotToRemove
+        const eventStart = new Date(dateWithSlots.start[0], dateWithSlots.start[1] - 1, dateWithSlots.start[2], dateWithSlots.start[3], dateWithSlots.start[4]);
+  
+        console.log("Event start:", eventStart.toISOString(), "Slot to remove:", slotToRemove.toISOString());
+  
+        // Correct comparison: Use toISOString() to compare Date objects
+        if (eventStart.toISOString() === slotToRemove.toISOString()) {
+          console.log("Slot matches! Clearing booked slot...");
+          this.eventService.updateAppointmentEvent(dateWithSlots.eventId, { status: 'BOOKED', bookedBy: email })
+            .subscribe({
+              next: res => {
+                console.log("Updated appointment:", res);
+                if (res.status === 'SUCCESS') {
+                  Swal.fire("Success", "Interview Successfully Scheduled", "success");
+                } else {
+                  Swal.fire("Error", "Failed to update appointment status.", "warning");
+                }
+              },
+              error: err => {
+                console.error("Error updating appointment:", err);
+                Swal.fire("Error", "Failed to update appointment on server.", "warning");
+              }
+            });
+  
+          // Set the status as booked again and clear bookedBy email
+          dateWithSlots.status = 'BOOKED';
+          dateWithSlots.bookedBy = email;
+          console.log("Booking cleared. Availability updated:", dateWithSlots);
+        } else {
+          console.warn("Slot or email mismatch. No updates made.");
+          Swal.fire("Warning", "Slot details do not match. Please verify.", "warning");
+        }
+      } else {
+        console.warn("No availability found for the given date.");
+        Swal.fire("Warning", "No slots available for the provided date.", "warning");
+      }
+    } catch (error) {
+      console.error("An error occurred while removing the booked slot:", error);
+      Swal.fire("Error", "An unexpected error occurred. Please try again later.", "error");
     }
   }
+  
 
 
 
