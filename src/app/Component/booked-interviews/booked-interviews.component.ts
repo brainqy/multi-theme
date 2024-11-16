@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment'; // Import moment library for date manipulation
+import { CalendarService } from 'src/app/Core/services/calendar.service';
 import { Availability, InterviewService } from 'src/app/Core/services/interview.service';
 import Swal from 'sweetalert2';
 
@@ -61,7 +62,7 @@ export class BookedInterviewsComponent implements OnInit {
   interviewBalance!: number;
   bookedSlots: BookedSlot[] = [];
   constructor(private modalService: NgbModal,
-    public interviewService: InterviewService,
+    public interviewService: InterviewService, private eventService: CalendarService,
     private router: Router,
     private fb: FormBuilder) {
     this.getAllSlots();
@@ -231,37 +232,40 @@ export class BookedInterviewsComponent implements OnInit {
 
   confirmAndSchedule() {
     const data: any = {};
-  
+
     if (this.selectedSlot) {
       // Add selected slot to the data object
       data.slot = this.selectedSlot.slot;
       data.day = this.selectedSlot.day;
       data.status = "SCHEDULED";
     }
-  
+
     if (this.selectedInterviewType) {
       // Add selected interview type to the data object
       data.interviewType = this.selectedInterviewType;
     }
-  
+
     if (data.interviewType === 'Practice with experts') {
       // Combine day and slot into a Date object for filtering
-          console.log(" this.selectedSlot",this.selectedSlot);
-            
+      console.log(" this.selectedSlot", this.selectedSlot);
+
       const eligibleUsers = this.filterEligibleUsers(
         this.availability,
         this.kindOfInterview,
         this.selectedSlot // Pass the Date object here
       );
-  
+      const randomUser = eligibleUsers[Math.floor(Math.random() * eligibleUsers.length)];
+      const randomUserEmail = randomUser.scheduleUser.emailAdd;
+      console.log(`Random eligible user email: ${randomUserEmail}`);
       console.log('Eligible Users:', eligibleUsers);
+      data.hrEmail = randomUserEmail;
     }
-  
+
     if (this.selectedKindOfInterviewType) {
       // Add selected kind of interview type to the data object
       data.kindOfInterviewType = this.selectedKindOfInterviewType;
     }
-  
+
     // Assuming `friendEmail` is a form control in a FormGroup
     if (this.invitationForm.get('friendEmail')?.valid) {
       data.hrEmail = this.invitationForm.get('friendEmail')?.value;
@@ -269,36 +273,64 @@ export class BookedInterviewsComponent implements OnInit {
     } else {
       console.warn("Friend's email is not valid");
     }
-  
+
     this.interviewService.saveinterviewSlot(data).subscribe((res) => {
       console.log("Called interview service", res);
-      this.removeBookedSlotFromDatesWithSlots(data.day, data.slot);
+      this.removeBookedSlotFromAppointment(data.day, data.slot, data.hrEmail);
       this.modalService.dismissAll();
     });
-  
+
     // Log or further process the data object
     console.log('Selected Data:', data);
   }
-  
-  
-  removeBookedSlotFromDatesWithSlots(date: string, slotToRemove: { slotStart: Date; slotEnd: Date }) {
-    const dateWithSlots = this.datesWithSlots.find(d => d.date === date);
+
+
+  removeBookedSlotFromAppointment(date: string, slotToRemove: Date, email: string): void {
+    console.log("Slot to remove:", slotToRemove); // Log the slotToRemove object
+
+    // Check if slotToRemove is properly structured
+    if (!(slotToRemove instanceof Date)) {
+      console.error("Invalid slotToRemove object, converting to Date:", slotToRemove);
+      slotToRemove = new Date(slotToRemove); // Convert to Date if not already
+    }
+
+    // Ensure it's a valid Date object after conversion
+    if (isNaN(slotToRemove.getTime())) {
+      console.error("Invalid Date object:", slotToRemove);
+      return;
+    }
+
+    // Find the availability object for the given date
+    const dateWithSlots = this.availability.find(d => {
+      const eventStart = new Date(d.start[0], d.start[1] - 1, d.start[2], d.start[3], d.start[4]);
+      console.log(`Checking availability for: ${eventStart.toDateString()}`);
+      return eventStart.toDateString() === new Date(date).toDateString(); // Compare date only
+    });
 
     if (dateWithSlots) {
-      // Filter out the slot to remove, ensuring slotStart and slotEnd are defined
-      dateWithSlots.slots = dateWithSlots.slots.filter(slot => {
-        const slotStart = slot.slotStart ? slot.slotStart.getTime() : null;
-        const slotEnd = slot.slotEnd ? slot.slotEnd.getTime() : null;
-        const removeStart = slotToRemove.slotStart ? slotToRemove.slotStart.getTime() : null;
-        const removeEnd = slotToRemove.slotEnd ? slotToRemove.slotEnd.getTime() : null;
+      console.log("Found availability object:", dateWithSlots);
 
-        return !(slotStart === removeStart && slotEnd === removeEnd);
-      });
+      // Check if the booked slot start time matches the slotStart of the given slotToRemove
+      const eventStart = new Date(dateWithSlots.start[0], dateWithSlots.start[1] - 1, dateWithSlots.start[2], dateWithSlots.start[3], dateWithSlots.start[4]);
 
-      // Optional: Remove date if no slots remain
-      if (dateWithSlots.slots.length === 0) {
-        this.datesWithSlots = this.datesWithSlots.filter(d => d !== dateWithSlots);
+      console.log("Event start:", eventStart.toISOString(), "Slot to remove:", slotToRemove.toISOString());
+
+      // Correct comparison: Use toISOString() to compare Date objects
+      if (eventStart.toISOString() === slotToRemove.toISOString()) {
+        console.log("Slot matches! Clearing booked slot...");
+        this.eventService.updateAppointmentEvent(dateWithSlots.eventId, { status: 'BOOKED', bookedBy: email }).subscribe(res => {
+          console.log("updated appointment", res);
+
+        })
+        // Set the status as available again and clear bookedBy email
+        dateWithSlots.status = 'BOOKED';
+        dateWithSlots.bookedBy = email;
+        console.log("Booking cleared. Availability updated:", dateWithSlots);
+      } else {
+        console.log("No match for the slot or email.");
       }
+    } else {
+      console.log("No availability found for the given date.");
     }
   }
 
@@ -379,17 +411,18 @@ export class BookedInterviewsComponent implements OnInit {
 
     })
   }
+
   filterEligibleUsers(data: any[], skills: string[], selectedSlot: { day: string; slot: string } | null): any[] {
     const offsetIST = 5 * 60 + 30; // IST Offset in minutes
-  
+
     if (!selectedSlot) {
       console.warn("No selected slot provided");
       return [];
     }
-  
+
     // Parse the selected slot's date and time and adjust for IST offset
     const selectedSlotTime = new Date(new Date(selectedSlot.slot).getTime() + offsetIST * 60 * 1000);
-  
+
     return data.filter((event) => {
       // Convert the start time from the event to a Date object
       const eventStart = new Date(
@@ -400,35 +433,35 @@ export class BookedInterviewsComponent implements OnInit {
         event.start[4], // Minute
         event.start[5] // Second
       );
-  
+
       // Adjust event start time for IST
       const eventStartIST = new Date(eventStart.getTime() + offsetIST * 60 * 1000);
-  
+
       // Check if skills match
       const skillsMatch = event.skills.some((skill: string) => skills.includes(skill));
       if (skillsMatch) {
         console.log(`Skills matched for event: ${JSON.stringify(event)}`);
       }
-  
+
       // Check if the slot time matches
       const slotTimeMatch = eventStartIST.getTime() === selectedSlotTime.getTime();
       console.log(`eventStartIST: ${eventStartIST}, selectedSlotTime: ${selectedSlotTime}`);
-  
+
       if (slotTimeMatch) {
         console.log(`Slot time matched for event: ${JSON.stringify(event)}`);
       }
-  
+
       // Log when both conditions are met
       if (skillsMatch && slotTimeMatch) {
         console.log(`Both conditions matched for event: ${JSON.stringify(event)}`);
       }
-  
+
       return skillsMatch && slotTimeMatch;
     });
   }
-  
-  
-  
+
+
+
 
   getAllSlots() {
     this.interviewService.getAllInterviewSlots().subscribe((res) => {
