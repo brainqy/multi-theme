@@ -129,28 +129,32 @@
     </h3>
     
     <div class="row">
-      <div class="col-md-4" *ngFor="let event of events">
+      <div class="col-md-4 mb-3" *ngFor="let event of allEventData">
         <div class="card text-white" [style.backgroundColor]="getPrimaryColor(event)">
           <div class="card-body">
             <h5 class="card-title">{{ event?.title }}</h5>
-            <p><strong>Starts at:</strong> {{ event?.start }}</p>
-            <p><strong>Ends at:</strong> {{ event?.end }}</p>
-            <button
-              class="btn btn-light text-dark me-2"
-              (click)="eventModal(editEventModal, event)"
-            >
+            <p><strong>Starts at:</strong> {{ event?.start ? formatDate(event?.start) : 'N/A' }}</p>
+            <p><strong>Ends at:</strong> {{ event?.end ? formatDate(event?.end) : 'N/A' }}</p>
+            
+            <ng-container *ngIf="event.skills && event.skills.length">
+              <p><strong>Skills:</strong> {{ event.skills.join(', ') }}</p>
+            </ng-container>
+    
+            <ng-container *ngIf="event.status">
+              <p><strong>Status:</strong> {{ event.status }}</p>
+            </ng-container>
+            
+            <button class="btn btn-light text-dark me-2" (click)="eventModal(editEventModal, event)">
               Edit
             </button>
-            <button
-              class="btn btn-danger"
-              (click)="deleteEvent(event)"
-            >
+            <button class="btn btn-danger" (click)="deleteEvent(event)">
               Delete
             </button>
           </div>
         </div>
       </div>
     </div>
+    
     
   </div>
   

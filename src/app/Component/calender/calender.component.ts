@@ -103,6 +103,7 @@ export class CalenderComponent {
     color: colors['']
   };
   trainer: any;
+allEventData: any;
 
   onDateSelect(date: string) {
     this.selectedDate = date;
@@ -154,6 +155,7 @@ export class CalenderComponent {
       (response: any) => {
         console.log("Response from server:", response);
         if (response) {
+          this.allEventData=response;
           this.events = response.map((event: any) => ({
             ...event,
             start: new Date(event.start[0], event.start[1] - 1, event.start[2], event.start[3], event.start[4]),
@@ -207,7 +209,16 @@ export class CalenderComponent {
     this.modalData = { event, action };
     this.modal.open(this.modalContent, { size: 'lg' });
   }
-
+  formatDate(dateArray?: number[]): string {
+    if (!dateArray || dateArray.length < 5) {
+      return 'Invalid date';
+    }
+  
+    const [year, month, day, hour, minute] = dateArray;
+    return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')} ${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+  }
+  
+  
   updateEvent(editedEvent: any) {
 
     this.calendarService.updateEvent(editedEvent.eventId, editedEvent).subscribe((res) => {
