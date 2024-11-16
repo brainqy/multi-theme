@@ -15,30 +15,30 @@ export interface BookedSlot {
   slotEnd: Date;
   bookerId: string;  // ID of the person booking the slot
   ownerId: string;   // ID of the person whose slot is being booked
-  bookedStatus:boolean;
+  bookedStatus: boolean;
 }
 @Component({
   selector: 'app-booked-interviews',
   templateUrl: './booked-interviews.component.html',
   styleUrls: ['./booked-interviews.component.scss']
 })
-export class BookedInterviewsComponent implements OnInit{
-  bookerId:string="";
-  ownerId:string="";
+export class BookedInterviewsComponent implements OnInit {
+  bookerId: string = "";
+  ownerId: string = "";
   emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  sideNavStatus=false;
+  sideNavStatus = false;
   selectedSlot: { day: string, slot: string } | null = null;
   currentWeekStart: moment.Moment = moment().startOf('week'); // Start of current week
-  isSchedulePageVisible:boolean=false;
+  isSchedulePageVisible: boolean = false;
   selectedInterviewType: string | null = null;
-  isKindOfPracticePageVisible:boolean=false;
-selectedKindOfInterviewType: string | null = null;
-istheSlotSelected:boolean=false;
-isTheSelectedInterviewType:boolean=false;
-isTheSelectedkindOfInterviewType:boolean=false;
-availableSlots: { [date: string]: { slotStart: Date; slotEnd: Date }[] } = {};
-availability!: Availability[];
-   kindOfInterview: string[] = [
+  isKindOfPracticePageVisible: boolean = false;
+  selectedKindOfInterviewType: string | null = null;
+  istheSlotSelected: boolean = false;
+  isTheSelectedInterviewType: boolean = false;
+  isTheSelectedkindOfInterviewType: boolean = false;
+  availableSlots: { [date: string]: { slotStart: Date; slotEnd: Date }[] } = {};
+  availability!: Availability[];
+  kindOfInterview: string[] = [
     'Data Structures and algorithms',
     'System Design',
     'Java ',
@@ -54,14 +54,14 @@ availability!: Availability[];
 
     // Add more interview types as needed
   ];
-  interviewSlots:any;
+  interviewSlots: any;
   invitationForm: FormGroup;
   datesWithSlots: { date: string; slots: { slotStart: Date; slotEnd: Date; }[] }[] = [];
 
   interviewBalance!: number;
   bookedSlots: BookedSlot[] = [];
   constructor(private modalService: NgbModal,
-    public interviewService:InterviewService,
+    public interviewService: InterviewService,
     private router: Router,
     private fb: FormBuilder) {
     this.getAllSlots();
@@ -69,7 +69,7 @@ availability!: Availability[];
     this.invitationForm = this.fb.group({
       friendEmail: ['', [Validators.required, Validators.pattern(this.emailPattern)]]
     });
-    
+
   }
   ngOnInit(): void {
     this.getAvailableInterviewSLots();
@@ -78,7 +78,7 @@ availability!: Availability[];
   get friendEmail() {
     return this.invitationForm.get('friendEmail');
   }
-  
+
   onSubmit(): void {
     if (this.invitationForm.valid) {
       const email = this.invitationForm.value.friendEmail;
@@ -89,87 +89,87 @@ availability!: Availability[];
 
   isSlotAvailable(date: string, slot: { slotStart: Date, slotEnd: Date }): boolean {
     const offsetIST = 5 * 60 + 30; // IST is UTC +5:30 (5 hours 30 minutes)
-    
+
     // Combine the provided date with the slot's start time (UTC) to form a complete Date object.
     let dateTime = new Date(date + 'T' + slot.slotStart.toISOString().substring(11, 19));
-  
+
     // Adjust the dateTime for IST by adding the offset
     dateTime = new Date(dateTime.getTime());
-  
+
     // Retrieve available slots for this date
     const slotsForDate = this.getAllAvailableSlotsByDate(date);
-  
+
     // Check if any slot in available slots matches the given time range
     return slotsForDate && slotsForDate.some((availableSlot: { slotStart: string | number | Date; slotEnd: string | number | Date; }) => {
       const slotStart = new Date(availableSlot.slotStart);
       const slotEnd = new Date(availableSlot.slotEnd);
-  
+
       // Adjust available slot times for IST
       const slotStartIST = new Date(slotStart.getTime() - offsetIST * 60 * 1000);
       const slotEndIST = new Date(slotEnd.getTime() - offsetIST * 60 * 1000);
-  
+
       // Check if the adjusted dateTime is within the range of the adjusted slotStart and slotEnd
       return dateTime >= slotStartIST && dateTime < slotEndIST;
     });
   }
-  
-  
-  
+
+
+
   formatSlotTime(slotStart: Date, slotEnd: Date): string {
     const startHours = slotStart.getHours().toString().padStart(2, '0');
     const startMinutes = slotStart.getMinutes().toString().padStart(2, '0');
     const endHours = slotEnd.getHours().toString().padStart(2, '0');
     const endMinutes = slotEnd.getMinutes().toString().padStart(2, '0');
-    
+
     return `${startHours}:${startMinutes} - ${endHours}:${endMinutes}`;
   }
-  
-generateDatesWithSlots() {
-  const today = new Date();
-  
-  // Loop for 7 days to generate dates with slots
-  for (let i = 0; i < 7; i++) {
-    const date = new Date(today.getTime() + i * 24 * 60 * 60 * 1000);
-    const formattedDate = date.toISOString().split('T')[0]; // Format date as 'YYYY-MM-DD'
-    const slots = this.generateAllAvailableSlotsForDate(date);
-    this.datesWithSlots.push({ date: formattedDate, slots: slots });
-    console.log("datesWithSlots", this.datesWithSlots);
+
+  generateDatesWithSlots() {
+    const today = new Date();
+
+    // Loop for 7 days to generate dates with slots
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(today.getTime() + i * 24 * 60 * 60 * 1000);
+      const formattedDate = date.toISOString().split('T')[0]; // Format date as 'YYYY-MM-DD'
+      const slots = this.generateAllAvailableSlotsForDate(date);
+      this.datesWithSlots.push({ date: formattedDate, slots: slots });
+      console.log("datesWithSlots", this.datesWithSlots);
+    }
   }
-}
-generateAllAvailableSlotsForDate(date: Date, slotDuration: number = 30): { slotStart: Date, slotEnd: Date }[] {
-  const allAvailableSlots: { slotStart: Date, slotEnd: Date }[] = [];
+  generateAllAvailableSlotsForDate(date: Date, slotDuration: number = 30): { slotStart: Date, slotEnd: Date }[] {
+    const allAvailableSlots: { slotStart: Date, slotEnd: Date }[] = [];
 
-  // Define the start time (morning 8 am) and end time (night 8 pm)
-  const start = new Date(date.setHours(8, 0, 0, 0));  // Set to 8 AM
-  const end = new Date(date.setHours(20, 0, 0, 0));   // Set to 8 PM
+    // Define the start time (morning 8 am) and end time (night 8 pm)
+    const start = new Date(date.setHours(8, 0, 0, 0));  // Set to 8 AM
+    const end = new Date(date.setHours(20, 0, 0, 0));   // Set to 8 PM
 
-  // Adjust the start time to the nearest available half-hour
-  let currentSlot = new Date(start);
-  if (currentSlot.getMinutes() > 0 && currentSlot.getMinutes() < 30) {
-    currentSlot.setMinutes(30, 0, 0); // Set to the next half hour
-  } else if (currentSlot.getMinutes() >= 30) {
-    currentSlot.setHours(currentSlot.getHours() + 1, 0, 0, 0); // Set to the next hour
-  }
-
-  // Loop through the available slots until the end time
-  while (currentSlot < end) {
-    const slotEnd = new Date(currentSlot);
-    slotEnd.setMinutes(slotEnd.getMinutes() + slotDuration); // Add duration to create the end time
-
-    // Break if the slot end time exceeds the availability range
-    if (slotEnd > end) {
-      break;
+    // Adjust the start time to the nearest available half-hour
+    let currentSlot = new Date(start);
+    if (currentSlot.getMinutes() > 0 && currentSlot.getMinutes() < 30) {
+      currentSlot.setMinutes(30, 0, 0); // Set to the next half hour
+    } else if (currentSlot.getMinutes() >= 30) {
+      currentSlot.setHours(currentSlot.getHours() + 1, 0, 0, 0); // Set to the next hour
     }
 
-    // Add the slot to the available slots list
-    allAvailableSlots.push({ slotStart: new Date(currentSlot), slotEnd });
+    // Loop through the available slots until the end time
+    while (currentSlot < end) {
+      const slotEnd = new Date(currentSlot);
+      slotEnd.setMinutes(slotEnd.getMinutes() + slotDuration); // Add duration to create the end time
 
-    // Move to the next slot by adding the duration
-    currentSlot.setMinutes(currentSlot.getMinutes() + slotDuration);
+      // Break if the slot end time exceeds the availability range
+      if (slotEnd > end) {
+        break;
+      }
+
+      // Add the slot to the available slots list
+      allAvailableSlots.push({ slotStart: new Date(currentSlot), slotEnd });
+
+      // Move to the next slot by adding the duration
+      currentSlot.setMinutes(currentSlot.getMinutes() + slotDuration);
+    }
+
+    return allAvailableSlots; // Return the available slots for this date
   }
-
-  return allAvailableSlots; // Return the available slots for this date
-}
 
   generateSlotsForDate(date: Date): string[] {
     // Assuming slots from 8 AM to 6 PM with 30 minutes interval
@@ -184,7 +184,7 @@ generateAllAvailableSlotsForDate(date: Date, slotDuration: number = 30): { slotS
         slots.push(slot);
       }
     }
-  
+
     return slots;
   }
   toggleSlot(date: string, slot: { slotStart: Date, slotEnd: Date }) {
@@ -192,12 +192,12 @@ generateAllAvailableSlotsForDate(date: Date, slotDuration: number = 30): { slotS
       day: date,
       slot: slot.slotStart.toISOString() // You may store this as an ISO string for comparison
     };
-    this.istheSlotSelected=true;
-    console.log("Selected Slot:", new Date(this.selectedSlot.slot)  );
+    this.istheSlotSelected = true;
+    console.log("Selected Slot:", new Date(this.selectedSlot.slot));
   }
-  
-  
-  openBookingModal(content:any) {
+
+
+  openBookingModal(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 
@@ -206,7 +206,7 @@ generateAllAvailableSlotsForDate(date: Date, slotDuration: number = 30): { slotS
     if (bookingForm.valid) {
       const bookingDate = bookingForm.value.bookingDate;
       const bookingTime = bookingForm.value.bookingTime;
-      
+
       // Here you can handle the booking logic, such as sending the booking request to the server.
       console.log('Booking slot for Date:', bookingDate, 'Time:', bookingTime);
 
@@ -217,26 +217,26 @@ generateAllAvailableSlotsForDate(date: Date, slotDuration: number = 30): { slotS
 
 
 
-// Assuming selectedSlot now includes 'slotStart' and 'slotEnd'
-isSlotSelected(date: string, slot: { slotStart: Date, slotEnd: Date }): boolean {
-  return (
-    !!this.selectedSlot && 
-    this.selectedSlot.day === date && 
-    this.selectedSlot.slot === slot.slotStart.toISOString() // Compare ISO strings
-  );
-}
+  // Assuming selectedSlot now includes 'slotStart' and 'slotEnd'
+  isSlotSelected(date: string, slot: { slotStart: Date, slotEnd: Date }): boolean {
+    return (
+      !!this.selectedSlot &&
+      this.selectedSlot.day === date &&
+      this.selectedSlot.slot === slot.slotStart.toISOString() // Compare ISO strings
+    );
+  }
 
 
-  
-  
+
+
   confirmAndSchedule() {
     const data: any = {};
   
     if (this.selectedSlot) {
       // Add selected slot to the data object
       data.slot = this.selectedSlot.slot;
-      data.day=this.selectedSlot.day;
-      data.status="SCHEDULED";
+      data.day = this.selectedSlot.day;
+      data.status = "SCHEDULED";
     }
   
     if (this.selectedInterviewType) {
@@ -244,32 +244,46 @@ isSlotSelected(date: string, slot: { slotStart: Date, slotEnd: Date }): boolean 
       data.interviewType = this.selectedInterviewType;
     }
   
+    if (data.interviewType === 'Practice with experts') {
+      // Combine day and slot into a Date object for filtering
+          console.log(" this.selectedSlot",this.selectedSlot);
+            
+      const eligibleUsers = this.filterEligibleUsers(
+        this.availability,
+        this.kindOfInterview,
+        this.selectedSlot // Pass the Date object here
+      );
+  
+      console.log('Eligible Users:', eligibleUsers);
+    }
+  
     if (this.selectedKindOfInterviewType) {
       // Add selected kind of interview type to the data object
       data.kindOfInterviewType = this.selectedKindOfInterviewType;
     }
-      // Assuming `friendEmail` is a form control in a FormGroup
-  if (this.invitationForm.get('friendEmail')?.valid) {
-    data.hrEmail = this.invitationForm.get('friendEmail')?.value;
-    console.log("data ",data);
-    
-  } else {
-    console.warn("Friend's email is not valid");
-  }
-
-  this.interviewService.saveinterviewSlot(data).subscribe((res)=>{
-console.log(" called interview service",res);
-this.removeBookedSlotFromDatesWithSlots(data.day, data.slot);
-this.modalService.dismissAll();
-  })
+  
+    // Assuming `friendEmail` is a form control in a FormGroup
+    if (this.invitationForm.get('friendEmail')?.valid) {
+      data.hrEmail = this.invitationForm.get('friendEmail')?.value;
+      console.log("data ", data);
+    } else {
+      console.warn("Friend's email is not valid");
+    }
+  
+    this.interviewService.saveinterviewSlot(data).subscribe((res) => {
+      console.log("Called interview service", res);
+      this.removeBookedSlotFromDatesWithSlots(data.day, data.slot);
+      this.modalService.dismissAll();
+    });
+  
     // Log or further process the data object
     console.log('Selected Data:', data);
-  
-    // Optionally, you can send the data object to a backend server for further processing
   }
+  
+  
   removeBookedSlotFromDatesWithSlots(date: string, slotToRemove: { slotStart: Date; slotEnd: Date }) {
     const dateWithSlots = this.datesWithSlots.find(d => d.date === date);
-  
+
     if (dateWithSlots) {
       // Filter out the slot to remove, ensuring slotStart and slotEnd are defined
       dateWithSlots.slots = dateWithSlots.slots.filter(slot => {
@@ -277,19 +291,19 @@ this.modalService.dismissAll();
         const slotEnd = slot.slotEnd ? slot.slotEnd.getTime() : null;
         const removeStart = slotToRemove.slotStart ? slotToRemove.slotStart.getTime() : null;
         const removeEnd = slotToRemove.slotEnd ? slotToRemove.slotEnd.getTime() : null;
-  
+
         return !(slotStart === removeStart && slotEnd === removeEnd);
       });
-  
+
       // Optional: Remove date if no slots remain
       if (dateWithSlots.slots.length === 0) {
         this.datesWithSlots = this.datesWithSlots.filter(d => d !== dateWithSlots);
       }
     }
   }
-  
-  
-  
+
+
+
   navigateWeek(weekOffset: number) {
     this.currentWeekStart.add(weekOffset, 'weeks'); // Move to the previous or next week
   }
@@ -301,19 +315,19 @@ this.modalService.dismissAll();
     this.isSchedulePageVisible = false;
   }
   hideInterviewTypePage() {
-    this.isKindOfPracticePageVisible=true;
-  }  
-  hideKindOfPracticePage(){
-    this.isKindOfPracticePageVisible=false;
-    this.isSchedulePageVisible=true;
+    this.isKindOfPracticePageVisible = true;
+  }
+  hideKindOfPracticePage() {
+    this.isKindOfPracticePageVisible = false;
+    this.isSchedulePageVisible = true;
   }
   toggleSelection(item: string) {
     if (this.selectedInterviewType === item) {
       this.selectedInterviewType = null; // Deselect item if already selected
-      this.isTheSelectedInterviewType=false;
+      this.isTheSelectedInterviewType = false;
     } else {
       this.selectedInterviewType = item; // Select item
-      this.isTheSelectedInterviewType=true;
+      this.isTheSelectedInterviewType = true;
     }
   }
 
@@ -329,10 +343,10 @@ this.modalService.dismissAll();
   toggleKindOfSelection(item: string) {
     if (this.selectedKindOfInterviewType === item) {
       this.selectedKindOfInterviewType = null; // Deselect item if already selected
-      this.isTheSelectedkindOfInterviewType=false;
+      this.isTheSelectedkindOfInterviewType = false;
     } else {
       this.selectedKindOfInterviewType = item; // Select item
-      this.isTheSelectedkindOfInterviewType=true;
+      this.isTheSelectedkindOfInterviewType = true;
     }
   }
   getMoreFree() {
@@ -357,27 +371,77 @@ this.modalService.dismissAll();
       }
     });
   }
-  
-  getAvailableInterviewSLots(){
-    this.interviewService.getAllAvailableInterviewSlots().subscribe(res=>{
-      this.availability=res;
-      console.log("available interview slots in compo ",this.availability);
-      
+
+  getAvailableInterviewSLots() {
+    this.interviewService.getAllAvailableInterviewSlots().subscribe(res => {
+      this.availability = res;
+      console.log("available interview slots in compo ", this.availability);
+
     })
   }
+  filterEligibleUsers(data: any[], skills: string[], selectedSlot: { day: string; slot: string } | null): any[] {
+    const offsetIST = 5 * 60 + 30; // IST Offset in minutes
   
-  getAllSlots(){
-    this.interviewService.getAllInterviewSlots().subscribe((res)=>{
-      console.log("all slots",res);
-      
-      this.interviewSlots=res.data.data;
+    if (!selectedSlot) {
+      console.warn("No selected slot provided");
+      return [];
+    }
+  
+    // Parse the selected slot's date and time and adjust for IST offset
+    const selectedSlotTime = new Date(new Date(selectedSlot.slot).getTime() + offsetIST * 60 * 1000);
+  
+    return data.filter((event) => {
+      // Convert the start time from the event to a Date object
+      const eventStart = new Date(
+        event.start[0], // Year
+        event.start[1] - 1, // Month (0-based)
+        event.start[2], // Day
+        event.start[3], // Hour
+        event.start[4], // Minute
+        event.start[5] // Second
+      );
+  
+      // Adjust event start time for IST
+      const eventStartIST = new Date(eventStart.getTime() + offsetIST * 60 * 1000);
+  
+      // Check if skills match
+      const skillsMatch = event.skills.some((skill: string) => skills.includes(skill));
+      if (skillsMatch) {
+        console.log(`Skills matched for event: ${JSON.stringify(event)}`);
+      }
+  
+      // Check if the slot time matches
+      const slotTimeMatch = eventStartIST.getTime() === selectedSlotTime.getTime();
+      console.log(`eventStartIST: ${eventStartIST}, selectedSlotTime: ${selectedSlotTime}`);
+  
+      if (slotTimeMatch) {
+        console.log(`Slot time matched for event: ${JSON.stringify(event)}`);
+      }
+  
+      // Log when both conditions are met
+      if (skillsMatch && slotTimeMatch) {
+        console.log(`Both conditions matched for event: ${JSON.stringify(event)}`);
+      }
+  
+      return skillsMatch && slotTimeMatch;
+    });
+  }
+  
+  
+  
+
+  getAllSlots() {
+    this.interviewService.getAllInterviewSlots().subscribe((res) => {
+      console.log("all slots", res);
+
+      this.interviewSlots = res.data.data;
       this.interviewBalance = Math.floor(res.data.coinBalance / 26);
-      console.log("interview Balance ",this.interviewBalance);
-      
-     console.log("all slots ",res);
-     if(this.interviewSlots.length==0){
-Swal.fire("Info","No Upcoming Interviews Found",'info');
-     }
+      console.log("interview Balance ", this.interviewBalance);
+
+      console.log("all slots ", res);
+      if (this.interviewSlots.length == 0) {
+        Swal.fire("Info", "No Upcoming Interviews Found", 'info');
+      }
     })
   }
   updateSlot(id: number, updatedSlot: any) {
@@ -438,60 +502,60 @@ Swal.fire("Info","No Upcoming Interviews Found",'info');
   public toDate(dateArray: number[]): Date {
     return new Date(dateArray[0], dateArray[1] - 1, dateArray[2], dateArray[3], dateArray[4]);
   }
-  
+
   getAllAvailableSlotsByDate(date: string, slotDuration: number = 30): { slotStart: Date, slotEnd: Date }[] {
     const allAvailableSlotsForDate: { slotStart: Date, slotEnd: Date }[] = [];
-    
+
     // Convert the string date to a Date object representing the start of the day (00:00)
     const targetDate = new Date(date);
     targetDate.setHours(0, 0, 0, 0); // Set to midnight to represent the start of the day
-  
+
     // Calculate the end of the day (23:59:59.999)
     const endOfDay = new Date(targetDate);
     endOfDay.setHours(23, 59, 59, 999); // Set to the end of the day
-  
+
     // Iterate through each availability entry
     this.availability.forEach(availability => {
       const start = this.toDate(availability.start);
       const end = this.toDate(availability.end);
-      
+
       // If the availability period overlaps with the target date
       if (start <= endOfDay && end >= targetDate) {
         let currentSlot = new Date(start);
-  
+
         // Adjust the currentSlot to the nearest available half-hour
         if (currentSlot.getMinutes() > 0 && currentSlot.getMinutes() < 30) {
           currentSlot.setMinutes(30, 0, 0); // Set to :30
         } else if (currentSlot.getMinutes() >= 30) {
           currentSlot.setHours(currentSlot.getHours() + 1, 0, 0, 0); // Set to the next hour
         }
-  
+
         // Loop through the available slots until the end time
         while (currentSlot < end && currentSlot <= endOfDay) {
           const slotEnd = new Date(currentSlot);
           slotEnd.setMinutes(slotEnd.getMinutes() + slotDuration); // Add duration to create slot end time
-  
+
           // Break if the slot end time exceeds the availability range or the end of the day
           if (slotEnd > end || slotEnd > endOfDay) {
             break;
           }
-  
+
           // Check if this slot is already booked
           const isBooked = this.bookedSlots.some(
             bookedSlot => bookedSlot.slotStart.getTime() === currentSlot.getTime() && bookedSlot.eventId === availability.eventId
           );
-  
+
           // If the slot is not booked, add it to the list
           if (!isBooked) {
             allAvailableSlotsForDate.push({ slotStart: new Date(currentSlot), slotEnd: new Date(slotEnd) });
           }
-  
+
           // Move to the next slot (add slot duration to currentSlot)
           currentSlot.setMinutes(currentSlot.getMinutes() + slotDuration);
         }
       }
     });
-  
+
     return allAvailableSlotsForDate; // Return all available slots for the specified date
   }
 }
