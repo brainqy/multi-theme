@@ -33,3 +33,22 @@ h6 {
 h3, h4 {
   font-weight: bold;
 }
+.bg-dark {
+  background-color: #343a40 !important;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+h4 {
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+hr {
+  border: 1px solid #ddd;
+}

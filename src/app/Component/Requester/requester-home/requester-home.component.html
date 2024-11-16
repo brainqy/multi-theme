@@ -6,75 +6,102 @@
     <div [ngClass]="{'display-area-expand': sideNavStatus, 'display-area-shrink': !sideNavStatus}"
          class="display-area p-3 flex-grow-1">
 
-<div class="container mt-4 p-3 bg-white rounded shadow-sm">
-  <!-- User Profile Header -->
-  <div class="d-flex align-items-center mb-3">
-    <div class="profile-icon bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-      <span class="fs-4">d</span>
-    </div>
-    <div class="ms-3">
-      <h5 class="mb-0">Hey, {{ username }}! {{ 'greeting' | translate }}</h5>
-      <small class="text-muted">Profile 30% complete</small>
-      <div class="progress" style="height: 4px; width: 100px;">
-        <div class="progress-bar bg-success" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- XP and Streak Section -->
-  <div class="row text-center mb-4">
-    <div class="col-md-6">
-      <h6>Daily XP</h6>
-      <h3>0/250</h3>
-    </div>
-    <div class="col-md-6">
-      <h6>Total XP</h6>
-      <h3>935</h3>
-    </div>
-  </div>
-
-  <!-- Daily Streak -->
-  <div class="row text-center mb-4">
-    <div class="col">
-      <h6>Daily Streak</h6>
-      <h3><i class="bi bi-lightning"></i> 0 days</h3>
-      <div class="d-flex justify-content-center gap-2 mt-3">
-        <span>M</span>
-        <span>T</span>
-        <span>W</span>
-        <span>T</span>
-        <span>F</span>
-        <span>S</span>
-        <span>S</span>
-      </div>
-      <div class="d-flex justify-content-center gap-2">
-        <span class="circle bg-light"></span>
-        <span class="circle bg-light"></span>
-        <span class="circle bg-light"></span>
-        <span class="circle bg-dark text-white"></span>
-        <span class="circle bg-light"></span>
-        <span class="circle bg-light"></span>
-        <span class="circle bg-light"></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Course, Track, Project Completion Stats -->
-  <div class="row text-center border-top pt-3">
-    <div class="col">
-      <h6>Courses completed</h6>
-      <h4>0</h4>
-    </div>
-    <div class="col border-start">
-      <h6>Tracks completed</h6>
-      <h4>0</h4>
-    </div>
-    <div class="col border-start">
-      <h6>Projects completed</h6>
-      <h4>0</h4>
-    </div>
-  </div>
-</div>
+         <div class="container-fluid p-3">
+          <div class="row">
+            <!-- Sidebar -->
+        
+            <!-- Main Content -->
+            <div class="col-12 col-md-9 col-lg-10 py-4">
+              <div class="d-flex align-items-center justify-content-between">
+                <div>
+                  <h4>Hey, dnyaneshwar!</h4>
+                  <p class="mb-0">Portfolio 30% complete</p>
+                  <div class="progress" style="height: 4px; width: 100px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+                 <!-- Daily Streak -->
+                 <div class="row text-center mb-4">
+                  <div class="col">
+                    <h6>Daily Streak</h6>
+                    <h3><i class="bi bi-lightning"></i> 0 days</h3>
+                    <div class="d-flex justify-content-center gap-2 mt-3">
+                      <span>M</span>
+                      <span>T</span>
+                      <span>W</span>
+                      <span>T</span>
+                      <span>F</span>
+                      <span>S</span>
+                      <span>S</span>
+                    </div>
+                    <div class="d-flex justify-content-center gap-2">
+                      <span class="circle bg-light"></span>
+                      <span class="circle bg-light"></span>
+                      <span class="circle bg-light"></span>
+                      <span class="circle bg-dark text-white"></span>
+                      <span class="circle bg-light"></span>
+                      <span class="circle bg-light"></span>
+                      <span class="circle bg-light"></span>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="row text-center mb-4">
+                    <div class="col-md-6">
+                      <h6>Daily XP</h6>
+                      <h3>0/250</h3>
+                    </div>
+                    <div class="col-md-6">
+                      <h6>Total XP</h6>
+                      <h3>935</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <!-- Cards -->
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Introduction to DataCamp Projects</h5>
+                      <p class="card-text">0%</p>
+                      <a href="#" class="btn btn-primary">Keep Making Progress</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Data Analysis in SQL</h5>
+                      <p class="card-text">(PostgreSQL)</p>
+                      <a href="#" class="btn btn-primary">Assess</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Data Manipulation in SQL</h5>
+                      <p class="card-text">Learn</p>
+                      <a href="#" class="btn btn-primary">Start</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Statistical Thinking in Python</h5>
+                      <p class="card-text">(Part 1)</p>
+                      <a href="#" class="btn btn-primary">Practice</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
 </div>
 </main>
 </div>

@@ -60,7 +60,7 @@ export class BookedInterviewsComponent implements OnInit {
   datesWithSlots: { date: string; slots: { slotStart: Date; slotEnd: Date; }[] }[] = [];
 
   interviewBalance!: number;
-  bookedSlots: BookedSlot[] = [];
+
   constructor(private modalService: NgbModal,
     public interviewService: InterviewService, private eventService: CalendarService,
     private router: Router,
@@ -254,11 +254,20 @@ export class BookedInterviewsComponent implements OnInit {
         this.kindOfInterview,
         this.selectedSlot // Pass the Date object here
       );
-      const randomUser = eligibleUsers[Math.floor(Math.random() * eligibleUsers.length)];
-      const randomUserEmail = randomUser.scheduleUser.emailAdd;
-      console.log(`Random eligible user email: ${randomUserEmail}`);
-      console.log('Eligible Users:', eligibleUsers);
-      data.hrEmail = randomUserEmail;
+      console.log("eligibleUsers",eligibleUsers);
+      if(eligibleUsers.length>0){
+        const randomUser = eligibleUsers[Math.floor(Math.random() * eligibleUsers.length)];
+        console.log("randomUser ",randomUser);
+        
+        const randomUserEmail = randomUser.scheduleUser.emailAdd;
+        console.log(`Random eligible user email: ${randomUserEmail}`);
+        console.log('Eligible Users:', eligibleUsers);
+        data.hrEmail = randomUserEmail;
+      }else{
+        console.log("No eligible users found");
+        
+      }
+      
     }
 
     if (this.selectedKindOfInterviewType) {
@@ -273,13 +282,13 @@ export class BookedInterviewsComponent implements OnInit {
     } else {
       console.warn("Friend's email is not valid");
     }
-
+    this.removeBookedSlotFromAppointment(data.day, data.slot, data.hrEmail);
     this.interviewService.saveinterviewSlot(data).subscribe((res) => {
       console.log("Called interview service", res);
-      this.removeBookedSlotFromAppointment(data.day, data.slot, data.hrEmail);
       this.modalService.dismissAll();
+      
+      
     });
-
     // Log or further process the data object
     console.log('Selected Data:', data);
   }
@@ -320,6 +329,9 @@ export class BookedInterviewsComponent implements OnInit {
         console.log("Slot matches! Clearing booked slot...");
         this.eventService.updateAppointmentEvent(dateWithSlots.eventId, { status: 'BOOKED', bookedBy: email }).subscribe(res => {
           console.log("updated appointment", res);
+          if(res.status==='SUCCESS'){
+            Swal.fire("Success","Interview Successfully Scheduled",'success');
+          }
 
         })
         // Set the status as available again and clear bookedBy email
@@ -414,6 +426,7 @@ export class BookedInterviewsComponent implements OnInit {
 
   filterEligibleUsers(data: any[], skills: string[], selectedSlot: { day: string; slot: string } | null): any[] {
     const offsetIST = 5 * 60 + 30; // IST Offset in minutes
+console.log("filteribg users ",data);
 
     if (!selectedSlot) {
       console.warn("No selected slot provided");
@@ -538,57 +551,64 @@ export class BookedInterviewsComponent implements OnInit {
 
   getAllAvailableSlotsByDate(date: string, slotDuration: number = 30): { slotStart: Date, slotEnd: Date }[] {
     const allAvailableSlotsForDate: { slotStart: Date, slotEnd: Date }[] = [];
-
+  
     // Convert the string date to a Date object representing the start of the day (00:00)
     const targetDate = new Date(date);
     targetDate.setHours(0, 0, 0, 0); // Set to midnight to represent the start of the day
-
+  
     // Calculate the end of the day (23:59:59.999)
     const endOfDay = new Date(targetDate);
     endOfDay.setHours(23, 59, 59, 999); // Set to the end of the day
-
+  
     // Iterate through each availability entry
     this.availability.forEach(availability => {
       const start = this.toDate(availability.start);
       const end = this.toDate(availability.end);
-
+  
       // If the availability period overlaps with the target date
       if (start <= endOfDay && end >= targetDate) {
         let currentSlot = new Date(start);
-
+  
         // Adjust the currentSlot to the nearest available half-hour
         if (currentSlot.getMinutes() > 0 && currentSlot.getMinutes() < 30) {
           currentSlot.setMinutes(30, 0, 0); // Set to :30
         } else if (currentSlot.getMinutes() >= 30) {
           currentSlot.setHours(currentSlot.getHours() + 1, 0, 0, 0); // Set to the next hour
         }
-
+  
         // Loop through the available slots until the end time
         while (currentSlot < end && currentSlot <= endOfDay) {
           const slotEnd = new Date(currentSlot);
           slotEnd.setMinutes(slotEnd.getMinutes() + slotDuration); // Add duration to create slot end time
-
+  
           // Break if the slot end time exceeds the availability range or the end of the day
           if (slotEnd > end || slotEnd > endOfDay) {
             break;
           }
-
+  
           // Check if this slot is already booked
-          const isBooked = this.bookedSlots.some(
-            bookedSlot => bookedSlot.slotStart.getTime() === currentSlot.getTime() && bookedSlot.eventId === availability.eventId
-          );
-
+          const isBooked = this.availability.some(bookedSlot => {
+            const bookedSlotStart = this.toDate(bookedSlot.start);
+            const bookedSlotEnd = this.toDate(bookedSlot.end);
+            
+            // Check for overlap with any booked slots
+            return bookedSlot.status === "BOOKED" &&
+                   bookedSlotStart < slotEnd && 
+                   bookedSlotEnd > currentSlot;
+          });
+  
           // If the slot is not booked, add it to the list
           if (!isBooked) {
             allAvailableSlotsForDate.push({ slotStart: new Date(currentSlot), slotEnd: new Date(slotEnd) });
           }
-
+  
           // Move to the next slot (add slot duration to currentSlot)
           currentSlot.setMinutes(currentSlot.getMinutes() + slotDuration);
         }
       }
     });
-
+  
     return allAvailableSlotsForDate; // Return all available slots for the specified date
   }
+  
 }
