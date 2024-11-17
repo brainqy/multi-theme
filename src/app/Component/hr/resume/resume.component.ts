@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { getBootstrapBaseClassPlacement } from '@ng-bootstrap/ng-bootstrap/util/positioning';
 
 @Component({
@@ -49,6 +50,9 @@ export class ResumeComponent {
   showSkillsModal = false;
   showSummaryModal = false;
   isSubmitted = false; // Flag to track form submission
+  constructor(private modalService: NgbModal){
+
+  }
   onSaveDetails() {
     console.log(this.personalDetails);
     this.isSubmitted = true; // Set to true after form submission
@@ -77,9 +81,10 @@ export class ResumeComponent {
     this.showSkillsModal = false;
   }
 
-  openSummaryModal() {
-    this.showSummaryModal = true;
-  }
+  openSummaryModal(content: any) {
+    this.modalService.open(content);
+}
+
 
   closeSummaryModal() {
     this.showSummaryModal = false;
@@ -106,6 +111,8 @@ export class ResumeComponent {
   }
 
   onSaveSummary() {
+    console.log("",this.summary);
+    
     this.closeSummaryModal();
   }
 }

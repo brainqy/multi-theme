@@ -34,14 +34,32 @@
             </div>
 
 
-            <!-- Summary Section -->
-            <div class="section mb-4 p-4 rounded shadow-sm">
-                <h4 class="section-title">Summary</h4>
-                <p>{{ summary }}</p>
-                <button class="btn btn-outline-primary btn-sm" (click)="openSummaryModal()">
-                    <i class="bi bi-pencil"></i> Edit Summary
-                </button>
+           <!-- Modal Trigger -->
+<button class="btn btn-outline-primary btn-sm" (click)="openSummaryModal(summaryModalContent)">
+    <i class="bi bi-pencil"></i> Edit Summary
+</button>
+
+<!-- Modal Template -->
+<ng-template #summaryModalContent let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title">Edit Summary</h5>
+        <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="onSaveSummary()">
+            <div class="mb-3">
+                <label for="summary" class="form-label">Summary</label>
+                <textarea class="form-control" id="summary" [(ngModel)]="summary" name="summary" rows="4"></textarea>
             </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+</ng-template>
+<!-- Display Summary Outside Modal -->
+<div class="summary-display mt-3">
+    <h5>Summary</h5>
+    <p>{{ summary || 'No summary available' }}</p>
+</div>
 
             <!-- Experience Section -->
             <div class="section mb-4 p-4 rounded shadow-sm">
@@ -71,6 +89,19 @@
                     <i class="bi bi-plus-circle"></i> Add Education
                 </button>
             </div>
+
+             <!-- Skills Section -->
+      <div class="section mb-4 p-4 rounded shadow-sm">
+        <h4 class="section-title">Skills</h4>
+        <ul class="list-unstyled">
+          <li *ngFor="let skill of skillsList">
+            <b>{{ skill }}</b>
+          </li>
+        </ul>
+        <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#addSkillsModal">
+            <i class="bi bi-plus-circle"></i> Add Skills
+        </button>
+      </div>
         </div>
 
         <!-- Right Section (Metrics, Scores, etc.) -->
@@ -267,26 +298,22 @@
 </div>
 
 <!-- Modal for Editing Summary -->
-<div class="modal fade" id="editSummaryModal" tabindex="-1" aria-labelledby="editSummaryModalLabel" aria-hidden="true"
-    [ngClass]="{'show': showSummaryModal}" style="display: none;" (click)="closeSummaryModal()">
+<!-- Modal -->
+<div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="summaryModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editSummaryModalLabel">Edit Summary</h5>
-                <button type="button" class="btn-close" (click)="closeSummaryModal()" aria-label="Close"></button>
+                <h5 class="modal-title" id="summaryModalLabel">Edit Summary</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form (ngSubmit)="onSaveSummary()" #summaryForm="ngForm">
+                <form (ngSubmit)="onSaveSummary()">
                     <div class="mb-3">
                         <label for="summary" class="form-label">Summary</label>
-                        <textarea class="form-control" id="summary" [(ngModel)]="summary" name="summary" rows="3"
-                            required></textarea>
+                        <textarea class="form-control" id="summary" [(ngModel)]="summary" name="summary" rows="4"></textarea>
                     </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="closeSummaryModal()">Close</button>
-                <button type="button" class="btn btn-primary" (click)="onSaveSummary()">Save Summary</button>
             </div>
         </div>
     </div>
