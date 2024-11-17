@@ -88,6 +88,8 @@ import { ResumeFormComponent } from './Component/resume-manager/resume-form/resu
 import { ResumesComponent } from './Component/resume-manager/resumes/resumes.component';
 import { BookmarksComponent } from './Component/bookmarks/bookmarks.component';
 import { QuizStoreComponent } from './Component/test-prep/quiz-store/quiz-store.component';
+import { HomeComponent } from './Component/hr/home/home.component';
+import { ResumeComponent } from './Component/hr/resume/resume.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -159,7 +161,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddbadgesComponent,
     ResumeFormComponent,
     ResumesComponent,
-    BookmarksComponent
+    BookmarksComponent,
+    HomeComponent,
+    ResumeComponent
   ],
   imports: [
     BrowserModule,

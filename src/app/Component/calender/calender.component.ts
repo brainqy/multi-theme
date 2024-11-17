@@ -122,10 +122,11 @@ allEventData: any;
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private modal: NgbModal, private calendarService: CalendarService, private userService: UsersService) { }
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private modal: NgbModal, private calendarService: CalendarService, private userService: UsersService) { 
+    this.fetchAllEvents();
+  }
   ngOnInit() {
     console.log("Fetching all events");
-    this.fetchAllEvents();
     this.fetchAllTrainers();
     this.populateWeekDays();
     // console.log(" this.fetchAllTrainers(): ", JSON.stringify(this.fetchAllTrainers()));

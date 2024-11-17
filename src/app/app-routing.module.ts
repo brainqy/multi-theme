@@ -50,6 +50,8 @@ import { ResumesComponent } from './Component/resume-manager/resumes/resumes.com
 import { BookmarksComponent } from './Component/bookmarks/bookmarks.component';
 import { QuizStoreComponent } from './Component/test-prep/quiz-store/quiz-store.component';
 import { CanDeactivateGuard } from './Core/guard/can-deactivate.guard';
+import { HomeComponent } from './Component/hr/home/home.component';
+import { ResumeComponent } from './Component/hr/resume/resume.component';
 
 
 const routes: Routes = [
@@ -149,6 +151,15 @@ const routes: Routes = [
     component: RequesterHomeComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: "hrhome",
+    component: HomeComponent,
+   
+  },
+  {
+  path: "hr-resume",
+  component: ResumeComponent,
+},
   {
     path: "quiz-bank",
     component: QuizBankComponent,

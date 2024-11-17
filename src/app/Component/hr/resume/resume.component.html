@@ -1,0 +1,273 @@
+<div class="container mt-5">
+    <div class="row">
+        <!-- Left Section (Personal Details, Experience, Education) -->
+        <div class="col-md-8">
+            <!-- Personal Details Section -->
+            <div class="section mb-4 p-4 rounded shadow-sm">
+                
+                <form (ngSubmit)="onSaveDetails()" #personalDetailsForm="ngForm" *ngIf="!isSubmitted">
+                    <h4 class="section-title text-center">Personal Details</h4>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" [(ngModel)]="personalDetails.name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="role" class="form-label">Role</label>
+                        <input type="text" class="form-control" id="role" [(ngModel)]="personalDetails.role" name="role" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact" class="form-label">Contact Details</label>
+                        <input type="text" class="form-control" id="contact" [(ngModel)]="personalDetails.contact" name="contact" required>
+                    </div>
+                    <!-- Save Button -->
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Save Details</button>
+                    </div>
+                </form>
+
+                <!-- Display Personal Details after Submission -->
+                <div *ngIf="isSubmitted" class="text-center">
+                    <h5><strong>{{ personalDetails.name }}</strong></h5>
+                    <p>{{ personalDetails.role }}</p>
+                    <p>{{ personalDetails.contact }}</p>
+                </div>
+            </div>
+
+
+            <!-- Summary Section -->
+            <div class="section mb-4 p-4 rounded shadow-sm">
+                <h4 class="section-title">Summary</h4>
+                <p>{{ summary }}</p>
+                <button class="btn btn-outline-primary btn-sm" (click)="openSummaryModal()">
+                    <i class="bi bi-pencil"></i> Edit Summary
+                </button>
+            </div>
+
+            <!-- Experience Section -->
+            <div class="section mb-4 p-4 rounded shadow-sm">
+                <h4 class="section-title">Experience</h4>
+                <ul class="list-unstyled">
+                    <li *ngFor="let exp of experienceList">
+                        <b>{{ exp.jobTitle }}, {{ exp.company }}</b><br>
+                        <small><i>{{ exp.location }} | {{ exp.dateRange }}</i></small><br>
+                        <p>{{ exp.description }}</p>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#addExperienceModal">
+                    <i class="bi bi-plus-circle"></i> Add Experience
+                </button>
+            </div>
+
+            <!-- Education Section -->
+            <div class="section mb-4 p-4 rounded shadow-sm">
+                <h4 class="section-title">Education</h4>
+                <ul class="list-unstyled">
+                    <li *ngFor="let edu of educationList">
+                        <b>{{ edu.degree }} - {{ edu.institution }}</b><br>
+                        <small><i>Graduated in {{ edu.year }}</i></small>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#addEducationModal">
+                    <i class="bi bi-plus-circle"></i> Add Education
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Section (Metrics, Scores, etc.) -->
+        <div class="col-md-4">
+            <!-- Overview Section -->
+            <div class="section p-4 rounded shadow-sm text-center mb-4">
+                <h4 class="section-title">Overview</h4>
+                <div class="progress-circle mb-3 mx-auto">
+                    <h1 class="text-success">88%</h1>
+                </div>
+                <p class="text-muted">Your resume scored 58 out of 100</p>
+            </div>
+
+            <!-- Metrics Section -->
+            <div class="section p-4 rounded shadow-sm">
+                <!-- 2x2 Grid Layout for Impact, Brevity, and Soft Skills -->
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <div class="card text-white bg-success">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Impact</h5>
+                                <p class="card-text">88%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <div class="card text-white bg-success">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Brevity</h5>
+                                <p class="card-text">92%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <div class="card text-white bg-warning">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Soft Skills</h5>
+                                <p class="card-text">70%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <div class="card text-white bg-primary">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Styling</h5>
+                                <p class="card-text">80%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Score Breakdown -->
+                <ul class="list-group mt-4">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Headline</span><span>10/10</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Summary</span><span>10/10</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Experience</span><span>10/10</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal for Adding Experience -->
+<div class="modal fade" id="addExperienceModal" tabindex="-1" aria-labelledby="addExperienceModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addExperienceModalLabel">Add Experience</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="onAddExperience()" #experienceForm="ngForm">
+                    <div class="mb-3">
+                        <label for="jobTitle" class="form-label">Job Title</label>
+                        <input type="text" class="form-control" id="jobTitle" [(ngModel)]="newExperience.jobTitle"
+                            name="jobTitle" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="company" class="form-label">Company</label>
+                        <input type="text" class="form-control" id="company" [(ngModel)]="newExperience.company"
+                            name="company" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" [(ngModel)]="newExperience.location"
+                            name="location" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dateRange" class="form-label">Date Range</label>
+                        <input type="text" class="form-control" id="dateRange" [(ngModel)]="newExperience.dateRange"
+                            name="dateRange" placeholder="MM/YYYY - MM/YYYY" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="experienceDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="experienceDescription"
+                            [(ngModel)]="newExperience.description" name="description" rows="3" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="onAddExperience()">Save Experience</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Adding Education -->
+<div class="modal fade" id="addEducationModal" tabindex="-1" aria-labelledby="addEducationModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addEducationModalLabel">Add Education</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="onAddEducation()" #educationForm="ngForm">
+                    <div class="mb-3">
+                        <label for="degree" class="form-label">Degree</label>
+                        <input type="text" class="form-control" id="degree" [(ngModel)]="newEducation.degree"
+                            name="degree" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="institution" class="form-label">Institution</label>
+                        <input type="text" class="form-control" id="institution" [(ngModel)]="newEducation.institution"
+                            name="institution" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="educationYear" class="form-label">Year of Graduation</label>
+                        <input type="text" class="form-control" id="educationYear" [(ngModel)]="newEducation.year"
+                            name="year" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="onAddEducation()">Save Education</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for Adding Skills -->
+<div class="modal fade" id="addSkillsModal" tabindex="-1" aria-labelledby="addSkillsModalLabel" aria-hidden="true"
+    [ngClass]="{'show': showSkillsModal}" style="display: none;" (click)="closeSkillsModal()">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addSkillsModalLabel">Add Skill</h5>
+                <button type="button" class="btn-close" (click)="closeSkillsModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="onAddSkill()" #skillsForm="ngForm">
+                    <div class="mb-3">
+                        <label for="skill" class="form-label">Skill</label>
+                        <input type="text" class="form-control" id="skill" [(ngModel)]="newSkill" name="skill" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeSkillsModal()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="onAddSkill()">Save Skill</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Editing Summary -->
+<div class="modal fade" id="editSummaryModal" tabindex="-1" aria-labelledby="editSummaryModalLabel" aria-hidden="true"
+    [ngClass]="{'show': showSummaryModal}" style="display: none;" (click)="closeSummaryModal()">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editSummaryModalLabel">Edit Summary</h5>
+                <button type="button" class="btn-close" (click)="closeSummaryModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="onSaveSummary()" #summaryForm="ngForm">
+                    <div class="mb-3">
+                        <label for="summary" class="form-label">Summary</label>
+                        <textarea class="form-control" id="summary" [(ngModel)]="summary" name="summary" rows="3"
+                            required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeSummaryModal()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="onSaveSummary()">Save Summary</button>
+            </div>
+        </div>
+    </div>
+</div>

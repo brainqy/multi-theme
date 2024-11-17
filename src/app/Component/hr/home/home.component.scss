@@ -1,0 +1,185 @@
+/* General Styles */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f9f7f2; /* Light beige background */
+  }
+  
+  .container-fluid {
+    padding: 0;
+  }
+  
+  .sidebar {
+    background-color: #f4f4f4; /* Light gray for sidebar */
+    height: 100vh;
+    border-right: 1px solid #e6e6e6;
+  }
+  
+  /* Candidate Profile */
+.candidate-details {
+    text-align: center;
+  }
+  
+  .candidate-details h5 {
+    font-weight: 600;
+  }
+  
+  .candidate-details button {
+    background-color: #edf5ff;
+    color: #007bff;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .candidate-details .job-match .badge {
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+  
+  /* Work Experience */
+  .work-card {
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+  }
+  
+  .work-card h6 {
+    font-weight: 600;
+  }
+  
+  .work-card .bi {
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+  }
+  
+  .work-card .bi:hover {
+    color: #007bff;
+  }
+  
+  .work-card p {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .nav-link {
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 5px 0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s;
+  }
+  
+  .nav-link.active {
+    background-color: #edf5ff; /* Light blue background for active state */
+    color: #007bff;
+  }
+  
+  .nav-link:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Candidate Profile */
+  .card {
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .card img {
+    border-radius: 50%;
+    border: 3px solid #f4f4f4; /* Border around profile picture */
+  }
+  
+  .candidate-details h5 {
+    font-weight: 600;
+  }
+  
+  .candidate-details p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .candidate-details button {
+    background-color: #edf5ff;
+    color: #007bff;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  
+  .candidate-details button:hover {
+    background-color: #d6eaff;
+  }
+  
+  /* Progress Bars */
+  .progress {
+    height: 8px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  .progress-bar {
+    border-radius: 5px;
+  }
+  
+  .progress-bar.bg-danger {
+    background-color: #f86d6d; /* Red */
+  }
+  
+  .progress-bar.bg-success {
+    background-color: #68d391; /* Green */
+  }
+  
+  /* Tabs */
+  .nav-pills .nav-link {
+    border-radius: 20px;
+    color: #333;
+    background-color: #f4f4f4;
+    font-weight: 500;
+    padding: 8px 20px;
+  }
+  
+  .nav-pills .nav-link.active {
+    color: white;
+    background-color: #007bff; /* Blue */
+  }
+  
+  /* Work Experience Section */
+  .card.work-card {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .card.work-card h6 {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .card.work-card p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .sidebar {
+      display: none;
+    }
+  
+    .container-fluid {
+      padding: 15px;
+    }
+  }
+  

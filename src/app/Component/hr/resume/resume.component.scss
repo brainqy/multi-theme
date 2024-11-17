@@ -1,0 +1,77 @@
+.progress-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 8px solid #d3d3d3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .progress-circle h1 {
+    margin: 0;
+    position: absolute;
+    color: #28a745;
+  }
+  /* General Styles */
+.section {
+    background-color: #f9f9f9; /* Light background for sections */
+    border: 1px solid #e0e0e0;
+  }
+  
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #4a4a4a; /* Neutral dark color */
+  }
+  
+  .text-muted {
+    font-size: 0.9rem;
+  }
+  
+  .btn-outline-success {
+    border-radius: 20px; /* Rounded button */
+    font-weight: 600;
+  }
+  
+  /* Progress Circle */
+  .progress-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 8px solid #d3d3d3; /* Gray border */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
+  
+  .progress-circle h1 {
+    font-size: 1.5rem;
+    color: #28a745; /* Green text */
+    margin: 0;
+  }
+  
+  /* List Styles */
+  .list-unstyled li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+  
+  /* Right Metrics Styles */
+  .badge {
+    font-size: 0.85rem;
+    padding: 0.5em 0.75em;
+    border-radius: 12px;
+  }
+  
+  .list-group-item {
+    border: none;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    color: #4a4a4a;
+  }
+  
