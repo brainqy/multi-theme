@@ -51,7 +51,11 @@
                         <h5 class="card-title">{{ slot.slot |date}}</h5>
                         <p><strong>Type:</strong> {{ slot.interviewType }}</p>
                         <p><strong>Category:</strong> {{ slot.kindOfInterviewType }}</p>
-                        <p><strong>Category:</strong> {{ slot.kindOfInterviewType }}</p>
+                        <p><strong>Category:</strong>
+                          <span *ngFor="let category of slot.kindOfInterviewType; let i = index">
+                            {{ category }}<span *ngIf="i < slot.kindOfInterviewType.length - 1">, </span>
+                          </span>
+                        </p>
                         <div class="d-flex justify-content-between mt-3">
                           <button
                             class="btn btn-danger"
