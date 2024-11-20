@@ -49,9 +49,9 @@
                     <div class="card shadow-sm mb-4">
                       <div class="card-body">
                         <h5 class="card-title">{{ slot.slot |date}}</h5>
-                        <p><strong>Type:</strong> {{ slot.interviewType }}</p>
-                        <p><strong>Category:</strong> {{ slot.kindOfInterviewType }}</p>
-                        <p><strong>Category:</strong>
+                        <p><strong>Category:</strong> {{ slot.interviewType }}</p>
+                        <p><strong>Type:</strong> {{ slot.kindOfInterviewType }}</p>
+                        <p><strong>Language:</strong>
                           <span *ngFor="let category of slot.kindOfInterviewType; let i = index">
                             {{ category }}<span *ngIf="i < slot.kindOfInterviewType.length - 1">, </span>
                           </span>
