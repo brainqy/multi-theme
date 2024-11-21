@@ -68,4 +68,9 @@ export class RequesterHomeComponent {
       this.currentPage = page;
     }
   }
+  recentVisited = [
+    { title: 'Introduction to Angular', description: 'Learn Angular basics', url: '/angular-basics' },
+    { title: 'RxJS Overview', description: 'Master reactive programming', url: '/rxjs-overview' },
+    { title: 'Bootstrap Tips', description: 'Make your designs shine', url: '/bootstrap-tips' },
+  ];
 }

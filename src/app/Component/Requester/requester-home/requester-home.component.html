@@ -10,83 +10,109 @@
           <div class="row">
             <!-- Main Content -->
             <div class="col-12 col-md-9 col-lg-10 py-4">
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <!-- Profile Progress -->
+              <div class="d-flex align-items-center justify-content-between">
                 <div>
                   <h4>Hey, Dnyaneshwar!</h4>
-                  <p class="mb-1">Profile 30% complete</p>
+                  <p class="mb-0">Profile 30% complete</p>
                   <div class="progress" style="height: 4px; width: 100px;">
                     <div class="progress-bar bg-success" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>
-        
+          
               <!-- Streak, XP, and Coins Section -->
-              <div class="row text-center mb-4">
-                <!-- Daily Streak -->
-                <div class="col-12 col-md-4 mb-3 mb-md-0">
-                  <h6>Daily Streak</h6>
-                  <h3><i class="bi bi-lightning"></i> {{streakNumber}} days</h3>
-                  <div class="d-flex justify-content-center gap-3 align-items-center">
-                    <ng-container *ngFor="let day of days">
-                      <div class="d-flex flex-column align-items-center">
-                        <span class="day-initial">{{ day.initial }}</span>
-                        <span [class.circle]="true" [class.bg-dark]="day.active" [class.bg-light]="!day.active"></span>
-                      </div>
-                    </ng-container>
+              <div class="container py-4">
+                <div class="row text-center mb-4">
+                  <!-- Daily Streak -->
+                  <div class="col-12 col-md-4 mb-3 mb-md-0">
+                    <h6>Daily Streak</h6>
+                    <h3><i class="bi bi-lightning"></i> {{streakNumber}} days</h3>
+                    <div class="d-flex justify-content-center gap-3 align-items-center">
+                      <ng-container *ngFor="let day of days">
+                        <div class="d-flex flex-column align-items-center">
+                          <span class="day-initial">{{ day.initial }}</span>
+                          <span [class.circle]="true" [class.bg-dark]="day.active" [class.bg-light]="!day.active"></span>
+                        </div>
+                      </ng-container>
+                    </div>
                   </div>
-                </div>
-        
-                <!-- Daily XP -->
-                <div class="col-12 col-md-4 mb-3 mb-md-0">
-                  <h6>Daily XP</h6>
-                  <h3>10/250</h3>
-                  <div class="progress" style="height: 8px; width: 80%; margin: 0 auto;">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="250"></div>
+          
+                  <!-- Daily XP -->
+                  <div class="col-12 col-md-4 mb-3 mb-md-0">
+                    <h6>Daily XP</h6>
+                    <h3>10/250</h3>
+                    <div class="progress" style="height: 8px; width: 80%; margin: 0 auto;">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 0%;" aria-valuenow="10" aria-valuemin="10" aria-valuemax="250"></div>
+                    </div>
                   </div>
-                </div>
-        
-                <!-- Coins -->
-                <div class="col-12 col-md-4">
-                  <h6>Coins</h6>
-                  <h3>{{userBalance}}</h3>
-                  <i class="bi bi-coin" style="font-size: 2rem; color: gold;"></i>
-                </div>
-              </div>
-        
-              <hr />
-        
-              <!-- Cards Section -->
-              <div class="row">
-                <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let card of cards">
-                  <div class="card h-100">
-                    <div class="card-body d-flex flex-column">
-                      <h5 class="card-title">{{ card.title }}</h5>
-                      <p class="card-text">{{ card.description }}</p>
-                      <a href="#" class="btn btn-primary mt-auto">{{ card.buttonText }}</a>
+          
+                  <!-- Coins -->
+                  <div class="col-12 col-md-4">
+                    <h6>Coins</h6>
+                    <h3>{{ userBalance }}</h3>
+                    <div>
+                      <i class="bi bi-coin" style="font-size: 2rem; color: gold;"></i>
                     </div>
                   </div>
                 </div>
-              </div>
-        
-              <!-- Pagination -->
-              <div class="d-flex justify-content-center mt-4">
-                <nav>
-                  <ul class="pagination">
-                    <li class="page-item" [class.disabled]="currentPage === 1">
-                      <a class="page-link" href="#" (click)="changePage(currentPage - 1)">Previous</a>
-                    </li>
-                    <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
-                      <a class="page-link" href="#" (click)="changePage(page)">{{ page }}</a>
-                    </li>
-                    <li class="page-item" [class.disabled]="currentPage === totalPages">
-                      <a class="page-link" href="#" (click)="changePage(currentPage + 1)">Next</a>
-                    </li>
-                  </ul>
-                </nav>
+          
+                <hr />
+
+                 <!-- Recent Visited Section -->
+                 <div class="recent-visited">
+                  <h4 class="mt-4">Recent Visited</h4>
+                  <div class="row">
+                    <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let visit of recentVisited">
+                      <div class="card h-100">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ visit.title }}</h5>
+                          <p class="card-text">{{ visit.description }}</p>
+                          <a [href]="visit.url" class="btn btn-outline-primary">Revisit</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <hr />
+          
+                <!-- Cards Section -->
+                <div class="row">
+                  <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let card of cards">
+                    <div class="card h-100">
+                      <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ card.title }}</h5>
+                        <p class="card-text">{{ card.description }}</p>
+                        <a href="#" class="btn btn-primary mt-auto">{{ card.buttonText }}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          
+                <!-- Pagination -->
+                <div class="d-flex justify-content-center mt-4">
+                  <nav>
+                    <ul class="pagination">
+                      <li class="page-item" [class.disabled]="currentPage === 1">
+                        <a class="page-link" href="#" (click)="changePage(currentPage - 1)">Previous</a>
+                      </li>
+                      <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+                        <a class="page-link" href="#" (click)="changePage(page)">{{ page }}</a>
+                      </li>
+                      <li class="page-item" [class.disabled]="currentPage === totalPages">
+                        <a class="page-link" href="#" (click)="changePage(currentPage + 1)">Next</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+          
+                <hr />
+          
+               
               </div>
             </div>
           </div>
+          
+          
         </div>
         
         
