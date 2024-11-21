@@ -42,4 +42,30 @@ export class RequesterHomeComponent {
     }
   }
  
+  days = [
+    { initial: 'M', active: false },
+    { initial: 'T', active: false },
+    { initial: 'W', active: false },
+    { initial: 'T', active: true },
+    { initial: 'F', active: false },
+    { initial: 'S', active: false },
+    { initial: 'S', active: false },
+  ];
+  
+  cards = [
+    { title: 'Introduction to DataCamp Projects', description: '0%', buttonText: 'Keep Making Progress' },
+    { title: 'Data Analysis in SQL', description: '(PostgreSQL)', buttonText: 'Assess' },
+    { title: 'Data Manipulation in SQL', description: 'Learn', buttonText: 'Start' },
+    { title: 'Statistical Thinking in Python', description: '(Part 1)', buttonText: 'Practice' },
+  ];
+  
+  currentPage = 1;
+  totalPages = 5;
+  pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  
+  changePage(page: number) {
+    if (page > 0 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
+  }
 }

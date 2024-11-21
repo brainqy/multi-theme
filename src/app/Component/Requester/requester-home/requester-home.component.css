@@ -52,3 +52,53 @@ h4 {
 hr {
   border: 1px solid #ddd;
 }
+
+/* Margins and Layout */
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Day Circle */
+.circle {
+  margin-top: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.bg-light {
+  background-color: #f8f9fa;
+}
+
+.bg-dark {
+  background-color: #212529;
+  color: white;
+}
+
+.day-initial {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Pagination */
+.pagination .page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #6c757d;
+}
+
+/* General Styling */
+h6 {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

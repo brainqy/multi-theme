@@ -56,6 +56,7 @@ export class ResumeComponent {
   onSaveDetails() {
     console.log(this.personalDetails);
     this.isSubmitted = true; // Set to true after form submission
+    this.modalService.dismissAll();
   }
 
   openExperienceModal() {
@@ -73,13 +74,7 @@ export class ResumeComponent {
   closeEducationModal() {
     this.showEducationModal = false;
   }
-  openSkillsModal() {
-    this.showSkillsModal = true;
-  }
 
-  closeSkillsModal() {
-    this.showSkillsModal = false;
-  }
 
   openSummaryModal(content: any) {
     this.modalService.open(content);
@@ -102,14 +97,26 @@ export class ResumeComponent {
     this.newEducation = { degree: '', institution: '', year: '' };
     this.closeEducationModal();
   }
+  openSkillsModal() {
+    this.showSkillsModal = true;
+  }
+
+  // Close Modal
+  closeSkillsModal() {
+    this.showSkillsModal = false;
+  }
+
+  // Add a New Skill
   onAddSkill() {
     if (this.newSkill && !this.skillsList.includes(this.newSkill)) {
-      this.skillsList.push(this.newSkill);
+      this.skillsList.push(this.newSkill.trim());
       this.newSkill = '';
       this.closeSkillsModal();
     }
   }
-
+  openPersonalDetailsModal(content: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+}
   onSaveSummary() {
     console.log("",this.summary);
     

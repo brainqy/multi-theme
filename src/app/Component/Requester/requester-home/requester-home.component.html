@@ -6,104 +6,89 @@
     <div [ngClass]="{'display-area-expand': sideNavStatus, 'display-area-shrink': !sideNavStatus}"
          class="display-area p-3 flex-grow-1">
 
-         <div class="container-fluid p-3">
+         <div class="container">
           <div class="row">
-            <!-- Sidebar -->
-        
             <!-- Main Content -->
             <div class="col-12 col-md-9 col-lg-10 py-4">
-              <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center justify-content-between mb-4">
+                <!-- Profile Progress -->
                 <div>
-                  <h4>Hey, dnyaneshwar!</h4>
-                  <p class="mb-0">Profile 30% complete</p>
+                  <h4>Hey, Dnyaneshwar!</h4>
+                  <p class="mb-1">Profile 30% complete</p>
                   <div class="progress" style="height: 4px; width: 100px;">
                     <div class="progress-bar bg-success" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
-                 <!-- Daily Streak -->
-                 <div class="row text-center mb-4">
-                  <div class="col">
-                    <h6>Daily Streak</h6>
-                    <h3><i class="bi bi-lightning"></i> {{streakNumber}} days</h3>
-                    <!-- Initials for Days -->
-                    <div class="d-flex justify-content-center gap-3 mt-3">
-                      <span class="day-initial">M</span>
-                      <span class="day-initial">T</span>
-                      <span class="day-initial">W</span>
-                      <span class="day-initial">T</span>
-                      <span class="day-initial">F</span>
-                      <span class="day-initial">S</span>
-                      <span class="day-initial">S</span>
-                    </div>
-                    <!-- Dots for Streak -->
-                    <div class="d-flex justify-content-center gap-3">
-                      <span class="circle bg-light"></span>
-                      <span class="circle bg-light"></span>
-                      <span class="circle bg-light"></span>
-                      <span class="circle bg-dark text-white"></span>
-                      <span class="circle bg-light"></span>
-                      <span class="circle bg-light"></span>
-                      <span class="circle bg-light"></span>
-                    </div>
+              </div>
+        
+              <!-- Streak, XP, and Coins Section -->
+              <div class="row text-center mb-4">
+                <!-- Daily Streak -->
+                <div class="col-12 col-md-4 mb-3 mb-md-0">
+                  <h6>Daily Streak</h6>
+                  <h3><i class="bi bi-lightning"></i> {{streakNumber}} days</h3>
+                  <div class="d-flex justify-content-center gap-3 align-items-center">
+                    <ng-container *ngFor="let day of days">
+                      <div class="d-flex flex-column align-items-center">
+                        <span class="day-initial">{{ day.initial }}</span>
+                        <span [class.circle]="true" [class.bg-dark]="day.active" [class.bg-light]="!day.active"></span>
+                      </div>
+                    </ng-container>
                   </div>
                 </div>
-                
-                <div>
-                  <div class="row text-center mb-4">
-                    <div class="col-md-6">
-                      <h6>Daily XP</h6>
-                      <h3>0/250</h3>
-                    </div>
-                    <div class="col-md-6">
-                      <h6>Coins</h6>
-                      <h3>{{userBalance}}</h3>
+        
+                <!-- Daily XP -->
+                <div class="col-12 col-md-4 mb-3 mb-md-0">
+                  <h6>Daily XP</h6>
+                  <h3>10/250</h3>
+                  <div class="progress" style="height: 8px; width: 80%; margin: 0 auto;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="250"></div>
+                  </div>
+                </div>
+        
+                <!-- Coins -->
+                <div class="col-12 col-md-4">
+                  <h6>Coins</h6>
+                  <h3>{{userBalance}}</h3>
+                  <i class="bi bi-coin" style="font-size: 2rem; color: gold;"></i>
+                </div>
+              </div>
+        
+              <hr />
+        
+              <!-- Cards Section -->
+              <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let card of cards">
+                  <div class="card h-100">
+                    <div class="card-body d-flex flex-column">
+                      <h5 class="card-title">{{ card.title }}</h5>
+                      <p class="card-text">{{ card.description }}</p>
+                      <a href="#" class="btn btn-primary mt-auto">{{ card.buttonText }}</a>
                     </div>
                   </div>
                 </div>
               </div>
-              <hr />
-              <div class="row">
-                <!-- Cards -->
-                <div class="col-12 col-md-6 col-lg-4 mb-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Introduction to DataCamp Projects</h5>
-                      <p class="card-text">0%</p>
-                      <a href="#" class="btn btn-primary">Keep Making Progress</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 mb-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Data Analysis in SQL</h5>
-                      <p class="card-text">(PostgreSQL)</p>
-                      <a href="#" class="btn btn-primary">Assess</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 mb-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Data Manipulation in SQL</h5>
-                      <p class="card-text">Learn</p>
-                      <a href="#" class="btn btn-primary">Start</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 mb-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Statistical Thinking in Python</h5>
-                      <p class="card-text">(Part 1)</p>
-                      <a href="#" class="btn btn-primary">Practice</a>
-                    </div>
-                  </div>
-                </div>
+        
+              <!-- Pagination -->
+              <div class="d-flex justify-content-center mt-4">
+                <nav>
+                  <ul class="pagination">
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                      <a class="page-link" href="#" (click)="changePage(currentPage - 1)">Previous</a>
+                    </li>
+                    <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+                      <a class="page-link" href="#" (click)="changePage(page)">{{ page }}</a>
+                    </li>
+                    <li class="page-item" [class.disabled]="currentPage === totalPages">
+                      <a class="page-link" href="#" (click)="changePage(currentPage + 1)">Next</a>
+                    </li>
+                  </ul>
+                </nav>
               </div>
             </div>
           </div>
         </div>
+        
         
 </div>
 </main>
