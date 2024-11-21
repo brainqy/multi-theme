@@ -1,16 +1,38 @@
-.badge-container{
-    padding: 20px;
-    margin: 14px;
+.badge-container {
+  padding: 20px;
 }
+
+.badge-preview {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 40px;
+  color: white;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+.card h5 {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 576px) {
   .badge-preview {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    font-size: 40px;
-    color: white;
-    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
   }
-  
+
+  .card h5 {
+    font-size: 1rem;
+  }
+
+  .form-control, .form-select {
+    font-size: 0.9rem;
+  }
+}

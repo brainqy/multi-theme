@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import { catchError, switchMap, throwError, timer } from 'rxjs';
 import { JobScanService } from 'src/app/Core/services/job-scan.service';
 
@@ -50,7 +52,14 @@ toggleVerify(item: any) {
   item.isVerify = !item.isVerify;
 }
 
-printwindows(){
-  window.print();
+downloadReport() {
+  const element = document.body; // Replace with a specific div if needed
+  html2canvas(element).then((canvas) => {
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const imgHeight = (canvas.height * 210) / canvas.width; // Maintain aspect ratio
+    pdf.addImage(imgData, 'PNG', 0, 0, 210, imgHeight);
+    pdf.save('report.pdf');
+  });
 }
 }

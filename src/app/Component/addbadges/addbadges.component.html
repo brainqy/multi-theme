@@ -1,143 +1,149 @@
 <div class="container-fluid g-0">
   <app-dash-header></app-dash-header>
   <main>
-    <div [ngClass]="{'display-area-shrink':sideNavStatus}" class="display-area p-3">
-
-      <nav aria-label="breadcrumb">
+    <div [ngClass]="{'display-area-shrink': sideNavStatus}" class="display-area p-3">
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="mb-4">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page"><a>Badge</a></li> <!-- Link to forum homepage -->
+          <li class="breadcrumb-item">
+            <a href="">Home</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            <a>Badge</a>
+          </li>
         </ol>
       </nav>
-    <div class="container">
-        <h2>Create Badge</h2>
-        <form [formGroup]="badgeForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="name">Badge Name</label>
-            <input formControlName="name" type="text" id="name" class="form-control" />
-          </div>
-          
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea formControlName="description" id="description" class="form-control"></textarea>
-          </div>
-      
-          <div class="form-group">
-            <label for="icon">Select Icon</label>
-            <select formControlName="icon" id="icon" class="form-control">
-              <option *ngFor="let icon of availableIcons" [value]="icon">{{ icon }}</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="backgroundColor">Select Background Color</label>
-            <input formControlName="backgroundColor" type="color" id="backgroundColor" class="form-control" />
-          </div>
-          
-      
-          <div class="form-group">
-            <label for="rule">Rule</label>
-            <select formControlName="rule" id="rule" class="form-control">
-              <option *ngFor="let rule of badgeRules" [value]="rule">{{ rule }}</option>
-            </select>
-          </div>
-          
-      
-          <div class="form-group">
-            <label for="threshold">Threshold</label>
-            <input formControlName="threshold" type="number" id="threshold" class="form-control" />
-          </div>
-      
-          <button type="submit" class="btn btn-primary" [disabled]="badgeForm.invalid">Create Badge</button>
-        </form>
+
+      <!-- Badge Creation Form -->
+      <div class="container">
+        <div class="card shadow p-4 mb-4">
+          <h2 class="text-center mb-4">Create Badge</h2>
+          <form [formGroup]="badgeForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="name" class="form-label">Badge Name</label>
+                <input
+                  formControlName="name"
+                  type="text"
+                  id="name"
+                  class="form-control"
+                  placeholder="Enter badge name"
+                />
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea
+                  formControlName="description"
+                  id="description"
+                  class="form-control"
+                  rows="2"
+                  placeholder="Enter description"
+                ></textarea>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="icon" class="form-label">Select Icon</label>
+                <select formControlName="icon" id="icon" class="form-select">
+                  <option *ngFor="let icon of availableIcons" [value]="icon">
+                    {{ icon }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="backgroundColor" class="form-label">Select Background Color</label>
+                <input
+                  formControlName="backgroundColor"
+                  type="color"
+                  id="backgroundColor"
+                  class="form-control form-control-color"
+                />
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="rule" class="form-label">Rule</label>
+                <select formControlName="rule" id="rule" class="form-select">
+                  <option *ngFor="let rule of badgeRules" [value]="rule">
+                    {{ rule }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="threshold" class="form-label">Threshold</label>
+                <input
+                  formControlName="threshold"
+                  type="number"
+                  id="threshold"
+                  class="form-control"
+                  placeholder="Enter threshold value"
+                />
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary" [disabled]="badgeForm.invalid">
+                Create Badge
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
+
+      <!-- Badge Tabs -->
       <div class="badge-container">
-        <div id="tabs" #tabs>
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <button class="nav-link" (click)="getAllBadges()">
-                        <a class="nav-link" [ngClass]="{ 'active': activeTab === 'all' }" data-toggle="tab" (click)="search('all')">All Badges</a>
-                    </button>
-                </li>
-                
-              <li class="nav-item">
-                <button class="nav-link" (click)="getMyBadges()">
-                <a class="nav-link" [ngClass]="{ 'active': activeTab === 'myBadges' }" data-toggle="tab" (click)="search('myBadges')">My Badges</a>
-                </button>  
-            </li>
-              <li class="nav-item">
-                <button class="nav-link">
-                <a class="nav-link" [ngClass]="{ 'active': activeTab === 'xp' }" data-toggle="tab" (click)="search('xp')">XP Based Badges</a>
-            </button>  
-            </li>
-              <li class="nav-item">
-                <button class="nav-link">
-                <a class="nav-link" [ngClass]="{ 'active': activeTab === 'task' }" data-toggle="tab" (click)="search('task')">Task Completion Badges</a>
+        <ul class="nav nav-tabs mb-3" role="tablist">
+          <li class="nav-item">
+            <button class="nav-link" [ngClass]="{ active: activeTab === 'all' }" (click)="search('all')">
+              All Badges
             </button>
-        </li>
-              <li class="nav-item">
-            <button class="nav-link">
-                <a class="nav-link" [ngClass]="{ 'active': activeTab === 'course' }" data-toggle="tab" (click)="search('course')">Course Completion Badges</a>
-            </button> 
-            </li>
-              <li class="nav-item">
-            <button class="nav-link">
-                <a class="nav-link" [ngClass]="{ 'active': activeTab === 'time' }" data-toggle="tab" (click)="search('time')">Time Completion Badges</a>
-            </button>  
-            </li>
-              
-            </ul>
-          
-            <div class="tab-content">
-              <div class="tab-pane" id="myBadges" [ngClass]="{ 'active': activeTab === 'myBadges' }">
-                <!-- Content for My Badges -->
-                <h3 class="text-center w-100">My Badges</h3>
-                <div class="row">
-                  <div *ngFor="let badge of badges" class="col-6 col-md-3 mb-3">
-                    <div>{{ badge.name }}</div>
-                    <div class="badge-preview" [ngStyle]="{ 'background-color': badge.backgroundColor}">
-                        <i class="bi" [ngClass]="badge.icon"></i>
-                      </div>
-                      
-                    <div>{{ badge.rule }}</div>
-                    <div>Threshold: {{ badge.threshold }}</div>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" [ngClass]="{ active: activeTab === 'myBadges' }" (click)="search('myBadges')">
+              My Badges
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" [ngClass]="{ active: activeTab === 'xp' }" (click)="search('xp')">
+              XP Based
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" [ngClass]="{ active: activeTab === 'task' }" (click)="search('task')">
+              Task Completion
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" [ngClass]="{ active: activeTab === 'course' }" (click)="search('course')">
+              Course Completion
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" [ngClass]="{ active: activeTab === 'time' }" (click)="search('time')">
+              Time Completion
+            </button>
+          </li>
+        </ul>
+
+        <!-- Badge Content -->
+        <div class="tab-content">
+          <div *ngFor="let tab of ['all', 'myBadges', 'xp', 'task', 'course', 'time']" class="tab-pane" [ngClass]="{ active: activeTab === tab }">
+            <h3 class="text-center">{{ tab | titlecase }} Badges</h3>
+            <div class="row mt-4">
+              <div *ngFor="let badge of badges" class="col-6 col-md-3 mb-3">
+                <div class="card text-center shadow-sm p-3">
+                  <div class="badge-preview mx-auto" [ngStyle]="{ 'background-color': badge.backgroundColor }">
+                    <i class="bi" [ngClass]="badge.icon"></i>
                   </div>
-                </div>
-               
-              </div>
-              <div class="tab-pane" id="xp" [ngClass]="{ 'active': activeTab === 'xp' }">
-                <!-- Content for XP Based Badges -->
-                XP Based Badges
-              </div>
-              <div class="tab-pane" id="task" [ngClass]="{ 'active': activeTab === 'task' }">
-                <!-- Content for Task Completion Badges -->
-                Task Completion Badges
-              </div>
-              <div class="tab-pane" id="course" [ngClass]="{ 'active': activeTab === 'course' }">
-                <!-- Content for Course Completion Badges -->
-                Course Completion Badges
-              </div>
-              <div class="tab-pane" id="time" [ngClass]="{ 'active': activeTab === 'time' }">
-                <!-- Content for Time Completion Badges -->
-                Time Completion Badges
-              </div>
-              <div class="tab-pane" id="all" [ngClass]="{ 'active': activeTab === 'all' }">
-                <!-- Content for Time Completion Badges -->
-                <h3 class="text-center w-100">All Badges</h3>
-                <div class="row">
-                  <div *ngFor="let badge of badges" class="col-6 col-md-3 mb-3">
-                    <div>{{ badge.name }}</div>
-                    <div class="badge-preview" [ngStyle]="{ 'background-color': badge.backgroundColor}">
-                        <i class="bi" [ngClass]="badge.icon"></i>
-                      </div>
-                      
-                    <div>{{ badge.rule }}</div>
-                    <div>Threshold: {{ badge.threshold }}</div>
-                  </div>
+                  <h5 class="mt-2">{{ badge.name }}</h5>
+                  <p class="text-muted mb-1">{{ badge.rule }}</p>
+                  <p class="text-muted small">Threshold: {{ badge.threshold }}</p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
       </div>
-      
-    </div></main></div>
+    </div>
+  </main>
+</div>
