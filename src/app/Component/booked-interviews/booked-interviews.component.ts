@@ -3,8 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment'; // Import moment library for date manipulation
+import { AuthService } from 'src/app/Core/services/auth.service';
 import { CalendarService } from 'src/app/Core/services/calendar.service';
 import { Availability, InterviewService } from 'src/app/Core/services/interview.service';
+import { JwtService } from 'src/app/Core/services/jwt.service';
 import Swal from 'sweetalert2';
 
 interface WeeklySlots {
@@ -33,7 +35,7 @@ export class BookedInterviewsComponent implements OnInit {
   isSchedulePageVisible: boolean = false;
   selectedInterviewType: string | null = null;
   isKindOfPracticePageVisible: boolean = false;
-  selectedKindOfInterviewType: string []| null = null;
+  selectedKindOfInterviewType: string[] | null = null;
   istheSlotSelected: boolean = false;
   isTheSelectedInterviewType: boolean = false;
   isTheSelectedkindOfInterviewType: boolean = false;
@@ -60,21 +62,33 @@ export class BookedInterviewsComponent implements OnInit {
   datesWithSlots: { date: string; slots: { slotStart: Date; slotEnd: Date; }[] }[] = [];
 
   interviewBalance!: number;
+  username: string = '';
+  isLoggedIn = false;
 
   constructor(private modalService: NgbModal,
     public interviewService: InterviewService, private eventService: CalendarService,
-    private router: Router,
+    private router: Router, public authService: AuthService,
+    private jwtService: JwtService,
     private fb: FormBuilder) {
-    this.getAllSlots();
+    this.getAllSlotsExceptLoggedInUser();
 
     this.invitationForm = this.fb.group({
       friendEmail: ['', [Validators.required, Validators.pattern(this.emailPattern)]]
     });
 
   }
+
   ngOnInit(): void {
     this.getAvailableInterviewSLots();
     this.generateDatesWithSlots();
+    this.isLoggedIn = this.authService.isAuthenticated();
+    if (this.isLoggedIn) {
+      const token = this.authService.getToken();
+      this.username = this.jwtService.getUserNameFromToken(token);
+      console.log("this.username  ",this.username );
+      
+    }
+
   }
   get friendEmail() {
     return this.invitationForm.get('friendEmail');
@@ -88,6 +102,10 @@ export class BookedInterviewsComponent implements OnInit {
     }
   }
 
+  isKindOfInterviewAvailable(kind: string): boolean {
+    // Replace with logic to check availability
+    return kind === 'Java'; // Example: AI Mock is unavailable
+  }
   isSlotAvailable(date: string, slot: { slotStart: Date, slotEnd: Date }): boolean {
     const offsetIST = 5 * 60 + 30; // IST is UTC +5:30 (5 hours 30 minutes)
 
@@ -229,7 +247,7 @@ export class BookedInterviewsComponent implements OnInit {
 
   confirmAndSchedule() {
     const data: any = {};
-  
+
     if (this.selectedSlot) {
       data.slot = this.selectedSlot.slot;
       data.day = this.selectedSlot.day;
@@ -240,39 +258,39 @@ export class BookedInterviewsComponent implements OnInit {
         text: `Slot: ${data.slot}, Day: ${data.day}`,
       });
     }
-  
+
     if (this.selectedInterviewType) {
       data.interviewType = this.selectedInterviewType;
       console.log("Selected Interview Type:", this.selectedInterviewType);
     }
-  
+
     if (data.interviewType === 'Practice with experts') {
       console.log("Selected interview type is 'Practice with experts'");
       console.log("Selected slot for filtering:", this.selectedSlot);
-      data.selectedKindOfInterviewType=this.selectedKindOfInterviewType;
-      console.log("data inf of interview",data);
-      
-  
+      data.selectedKindOfInterviewType = this.selectedKindOfInterviewType;
+      console.log("data inf of interview", data);
+
+
       const eligibleUsers = this.filterEligibleUsers(
         this.availability,
         this.selectedKindOfInterviewType || [], // Fallback to an empty array if null
         this.selectedSlot
       );
-      
+
       console.log("Filtered Eligible Users:", eligibleUsers);
-  
+
       if (eligibleUsers.length > 0) {
         const randomUser = eligibleUsers[Math.floor(Math.random() * eligibleUsers.length)];
         const randomUserEmail = randomUser.scheduleUser.emailAdd;
         console.log("Random Eligible User:", randomUser);
         console.log(`Random eligible user email: ${randomUserEmail}`);
-        
+
         Swal.fire({
           icon: 'success',
           title: 'Random User Found',
           text: `Random User Email: ${randomUserEmail}`,
         });
-  
+
         data.hrEmail = randomUserEmail;
         data.status = "SCHEDULED";
       } else {
@@ -281,55 +299,63 @@ export class BookedInterviewsComponent implements OnInit {
           icon: 'warning',
           title: 'No Eligible Users',
           text: 'Could not find any eligible users for this slot.',
+          showCancelButton: true,
+          confirmButtonText: 'Request Slot',
+          cancelButtonText: 'Cancel',
+        }).then((result) => {
+          if (result.isConfirmed) {
+           console.log(" requesting slot ... ");
+           
+          }
         });
         return; // Stop execution if no eligible users are found
       }
     }
-  
+
     if (this.selectedKindOfInterviewType) {
       data.kindOfInterviewType = this.selectedKindOfInterviewType;
       console.log("Selected Kind of Interview Type:", this.selectedKindOfInterviewType);
-    }console.log(" selected interview type ",this.selectedInterviewType);
-    
-  
+    } console.log(" selected interview type ", this.selectedInterviewType);
+
+
     console.log('Current interview type:', this.selectedInterviewType);
 
     // Log the current value of selectedInterviewType for debugging
-console.log('Current interview type:', this.selectedInterviewType);
+    console.log('Current interview type:', this.selectedInterviewType);
 
-if (this.selectedInterviewType === 'Practice with Friends') {
-  // Check if the friend's email is valid
-  if (this.invitationForm.get('friendEmail')?.valid) {
-    data.hrEmail = this.invitationForm.get('friendEmail')?.value;
-    console.log("Friend's Email Added:", data.hrEmail);
-    Swal.fire({
-      icon: 'info',
-      title: 'Friend Email Added',
-      text: `Friend's Email: ${data.hrEmail}`,
-    });
-  } else {
-    console.warn("Friend's email is not valid");
-    Swal.fire({
-      icon: 'error',
-      title: 'Invalid Email',
-      text: "Friend's email is not valid. Please check the email address.",
-    });
-    return; // Stop execution if the email is invalid
-  }
-} else {
-  // If interview type is not "Practice with Friends", don't check email
-  console.log("Selected interview type is not 'Practice with Friends', skipping email validation.");
-}
+    if (this.selectedInterviewType === 'Practice with Friends') {
+      // Check if the friend's email is valid
+      if (this.invitationForm.get('friendEmail')?.valid) {
+        data.hrEmail = this.invitationForm.get('friendEmail')?.value;
+        console.log("Friend's Email Added:", data.hrEmail);
+        Swal.fire({
+          icon: 'info',
+          title: 'Friend Email Added',
+          text: `Friend's Email: ${data.hrEmail}`,
+        });
+      } else {
+        console.warn("Friend's email is not valid");
+        Swal.fire({
+          icon: 'error',
+          title: 'Invalid Email',
+          text: "Friend's email is not valid. Please check the email address.",
+        });
+        return; // Stop execution if the email is invalid
+      }
+    } else {
+      // If interview type is not "Practice with Friends", don't check email
+      console.log("Selected interview type is not 'Practice with Friends', skipping email validation.");
+    }
 
-    
-  
+
+
     console.log("Data before removing booked slot:", data);
-    
+
     // Remove the booked slot before saving the schedule
     this.removeBookedSlotFromAppointment(data.day, data.slot, data.hrEmail)
       .then(() => {
         console.log("Slot removed successfully, proceeding to save schedule.");
-        
+
         this.interviewService.saveinterviewSlot(data).subscribe(
           (res) => {
             console.log("Interview service response:", res);
@@ -358,52 +384,52 @@ if (this.selectedInterviewType === 'Practice with Friends') {
           text: 'Failed to remove the booked slot. Cannot proceed with scheduling.',
         });
       });
-  
+
     console.log("Final Selected Data:", data);
   }
-  
+
 
 
   removeBookedSlotFromAppointment(date: string, slotToRemove: Date, email: string): Promise<void> {
     return new Promise((resolve, reject) => {
       try {
         console.log("Slot to remove:", slotToRemove);
-        
+
         // Ensure slotToRemove is a Date object
         if (!(slotToRemove instanceof Date)) {
           slotToRemove = new Date(slotToRemove);
         }
-  
+
         // Validate that the slotToRemove is a valid date
         if (isNaN(slotToRemove.getTime())) {
           Swal.fire("Error", "Invalid slot format provided.", "warning");
           reject("Invalid slot format");
           return;
         }
-  
+
         // Find the matching date in the availability list
         const dateWithSlots = this.availability.find(d => {
           const eventStart = new Date(d.start[0], d.start[1] - 1, d.start[2], d.start[3], d.start[4]);
-  
+
           // Normalize both date to a comparable format (ISO strings) for better precision and timezone handling
           const eventStartNormalized = eventStart.toISOString().split('.')[0]; // Remove milliseconds
           const slotToRemoveNormalized = slotToRemove.toISOString().split('.')[0]; // Remove milliseconds
-  
+
           console.log(`Event Start Normalized: ${eventStartNormalized}`);
           console.log(`Slot To Remove Normalized: ${slotToRemoveNormalized}`);
-  
+
           return eventStartNormalized === slotToRemoveNormalized;
         });
-  
+
         if (dateWithSlots) {
           const eventStart = new Date(dateWithSlots.start[0], dateWithSlots.start[1] - 1, dateWithSlots.start[2], dateWithSlots.start[3], dateWithSlots.start[4]);
           const eventStartNormalized = eventStart.toISOString().split('.')[0]; // Remove milliseconds
           const slotToRemoveNormalized = slotToRemove.toISOString().split('.')[0]; // Remove milliseconds
-  
+
           // Compare the normalized eventStart and slotToRemove (without milliseconds)
           if (eventStartNormalized === slotToRemoveNormalized) {
             console.log(`Slot found, attempting to remove: ${slotToRemoveNormalized}`);
-            
+
             // Update the appointment status
             this.eventService.updateAppointmentEvent(dateWithSlots.eventId, { status: 'BOOKED', bookedBy: email })
               .subscribe({
@@ -424,7 +450,7 @@ if (this.selectedInterviewType === 'Practice with Friends') {
                   reject("Error updating appointment: " + err);
                 }
               });
-  
+
             // Update the local availability object
             dateWithSlots.status = 'BOOKED';
             dateWithSlots.bookedBy = email;
@@ -447,10 +473,10 @@ if (this.selectedInterviewType === 'Practice with Friends') {
       }
     });
   }
-  
-  
-  
-  
+
+
+
+
 
 
 
@@ -491,15 +517,15 @@ if (this.selectedInterviewType === 'Practice with Friends') {
     // Check if the item is in the selectedKindOfInterviewType array
     return this.selectedKindOfInterviewType?.includes(item) ?? false;
   }
-  
+
   toggleKindOfSelection(item: string): void {
     if (!this.selectedKindOfInterviewType) {
       // Initialize the array if it's null
       this.selectedKindOfInterviewType = [];
     }
-  
+
     const index = this.selectedKindOfInterviewType.indexOf(item);
-  
+
     if (index > -1) {
       // Item is already selected; deselect it
       this.selectedKindOfInterviewType.splice(index, 1);
@@ -507,11 +533,11 @@ if (this.selectedInterviewType === 'Practice with Friends') {
       // Item is not selected; add it to the array
       this.selectedKindOfInterviewType.push(item);
     }
-  
+
     // Optionally, you can log the current selection for debugging
     console.log("Updated selectedKindOfInterviewType:", this.selectedKindOfInterviewType);
   }
-    getMoreFree() {
+  getMoreFree() {
     Swal.fire({
       title: "Info",
       html: `
@@ -535,7 +561,7 @@ if (this.selectedInterviewType === 'Practice with Friends') {
   }
 
   getAvailableInterviewSLots() {
-    this.interviewService.getAllAvailableInterviewSlots().subscribe(res => {
+    this.eventService.getAllInterviewSlotsExceptLogedInUser().subscribe(res => {
       this.availability = res;
       console.log("available interview slots in compo ", this.availability);
 
@@ -549,17 +575,17 @@ if (this.selectedInterviewType === 'Practice with Friends') {
   ): any[] {
     const offsetIST = 5 * 60 + 30; // IST Offset in minutes
     console.log("Filtering users ", data);
-  
+
     if (!selectedSlot) {
       console.warn("No selected slot provided");
       return [];
     }
-  
+
     // Parse the selected slot's date and time and adjust for IST offset
     const selectedSlotTime = new Date(
       new Date(selectedSlot.slot).getTime() + offsetIST * 60 * 1000
     );
-  
+
     return data.filter((event) => {
       // Convert the start time from the event to a Date object
       const eventStart = new Date(
@@ -570,50 +596,45 @@ if (this.selectedInterviewType === 'Practice with Friends') {
         event.start[4], // Minute
         event.start[5] // Second
       );
-  
+
       // Adjust event start time for IST
       const eventStartIST = new Date(eventStart.getTime() + offsetIST * 60 * 1000);
-  
+
       // Check if skills match (case-insensitive)
       console.log("Looking for ", skills, " available ", event.skills);
-  
+
       const skillsMatch = event.skills.some((skill: string) =>
         skills.map((s) => s.toLowerCase()).includes(skill.toLowerCase())
       );
-  
+
       if (skillsMatch) {
         console.log(`Skills matched for event: ${JSON.stringify(event)}`);
       }
-  
+
       // Check if the slot time matches
       const slotTimeMatch = eventStartIST.getTime() === selectedSlotTime.getTime();
       console.log(`eventStartIST: ${eventStartIST}, selectedSlotTime: ${selectedSlotTime}`);
-  
+
       if (slotTimeMatch) {
         console.log(`Slot time matched for event: ${JSON.stringify(event)}`);
       }
-  
+
       // Log when both conditions are met
       if (skillsMatch && slotTimeMatch) {
         console.log(`Both conditions matched for event: ${JSON.stringify(event)}`);
       }
-  
+
       return skillsMatch && slotTimeMatch;
     });
   }
-  
 
 
-
-
-  getAllSlots() {
-    this.interviewService.getAllInterviewSlots().subscribe((res) => {
+  getAllSlotsExceptLoggedInUser() {
+    this.eventService.getAllInterviewSlotsExceptLogedInUser().subscribe((res) => {
       console.log("all slots", res);
-
       this.interviewSlots = res.data.data;
       this.interviewBalance = Math.floor(res.data.coinBalance / 26);
       console.log("interview Balance ", this.interviewBalance);
-
       console.log("all slots ", res);
       if (this.interviewSlots.length == 0) {
         Swal.fire("Info", "No Upcoming Interviews Found", 'info');
@@ -658,14 +679,14 @@ if (this.selectedInterviewType === 'Practice with Friends') {
   }
   getNonCanceledSlots(slots: any[]): any[] {
     if (!slots) {
-      console.log('No slots found');
+      console.log('No Non canceled slots found');
       return [];
     }
     return slots.filter(slot => slot.status !== 'CANCELED');
   }
   getCanceledSlots(slots: any[]): any[] {
     if (!slots) {
-      console.log('No slots found');
+      console.log('No canceled slots found');
       return [];
     }
     return slots.filter(slot => slot.status === 'CANCELED');
@@ -680,36 +701,48 @@ if (this.selectedInterviewType === 'Practice with Friends') {
   }
 
   getAllAvailableSlotsByDate(date: string, slotDuration: number = 30): { slotStart: Date, slotEnd: Date }[] {
+    // Ensure availability is defined and initialized
+    if (!this.availability || !Array.isArray(this.availability)) {
+      console.warn('Availability is not defined or not an array.');
+      return [];
+    }
+  
     const allAvailableSlotsForDate: { slotStart: Date, slotEnd: Date }[] = [];
   
     // Convert the string date to a Date object representing the start of the day (00:00)
     const targetDate = new Date(date);
-    targetDate.setHours(0, 0, 0, 0); // Set to midnight to represent the start of the day
+    targetDate.setHours(0, 0, 0, 0); // Start of the day
   
     // Calculate the end of the day (23:59:59.999)
     const endOfDay = new Date(targetDate);
-    endOfDay.setHours(23, 59, 59, 999); // Set to the end of the day
+    endOfDay.setHours(23, 59, 59, 999); // End of the day
   
     // Iterate through each availability entry
-    this.availability.forEach(availability => {
+    this.availability.forEach((availability) => {
       const start = this.toDate(availability.start);
       const end = this.toDate(availability.end);
   
-      // If the availability period overlaps with the target date
+      // Validate that start and end are valid Date objects
+      if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+        console.warn('Invalid availability dates detected:', availability);
+        return; // Skip invalid entries
+      }
+  
+      // Check if the availability overlaps with the target date
       if (start <= endOfDay && end >= targetDate) {
         let currentSlot = new Date(start);
   
-        // Adjust the currentSlot to the nearest available half-hour
+        // Adjust currentSlot to the nearest available half-hour
         if (currentSlot.getMinutes() > 0 && currentSlot.getMinutes() < 30) {
           currentSlot.setMinutes(30, 0, 0); // Set to :30
         } else if (currentSlot.getMinutes() >= 30) {
-          currentSlot.setHours(currentSlot.getHours() + 1, 0, 0, 0); // Set to the next hour
+          currentSlot.setHours(currentSlot.getHours() + 1, 0, 0, 0); // Set to next hour
         }
   
         // Loop through the available slots until the end time
         while (currentSlot < end && currentSlot <= endOfDay) {
           const slotEnd = new Date(currentSlot);
-          slotEnd.setMinutes(slotEnd.getMinutes() + slotDuration); // Add duration to create slot end time
+          slotEnd.setMinutes(slotEnd.getMinutes() + slotDuration); // Add duration to get slot end time
   
           // Break if the slot end time exceeds the availability range or the end of the day
           if (slotEnd > end || slotEnd > endOfDay) {
@@ -717,19 +750,30 @@ if (this.selectedInterviewType === 'Practice with Friends') {
           }
   
           // Check if this slot is already booked
-          const isBooked = this.availability.some(bookedSlot => {
+          const isBooked = this.availability.some((bookedSlot) => {
             const bookedSlotStart = this.toDate(bookedSlot.start);
             const bookedSlotEnd = this.toDate(bookedSlot.end);
-            
-            // Check for overlap with any booked slots
-            return bookedSlot.status === "BOOKED" &&
-                   bookedSlotStart < slotEnd && 
-                   bookedSlotEnd > currentSlot;
+  
+            // Validate that bookedSlotStart and bookedSlotEnd are valid Date objects
+            if (isNaN(bookedSlotStart.getTime()) || isNaN(bookedSlotEnd.getTime())) {
+              console.warn('Invalid booked slot dates detected:', bookedSlot);
+              return false;
+            }
+  
+            // Check for overlap with booked slots
+            return (
+              bookedSlot.status === 'BOOKED' &&
+              bookedSlotStart < slotEnd &&
+              bookedSlotEnd > currentSlot
+            );
           });
   
           // If the slot is not booked, add it to the list
           if (!isBooked) {
-            allAvailableSlotsForDate.push({ slotStart: new Date(currentSlot), slotEnd: new Date(slotEnd) });
+            allAvailableSlotsForDate.push({
+              slotStart: new Date(currentSlot),
+              slotEnd: new Date(slotEnd),
+            });
           }
   
           // Move to the next slot (add slot duration to currentSlot)
@@ -741,4 +785,5 @@ if (this.selectedInterviewType === 'Practice with Friends') {
     return allAvailableSlotsForDate; // Return all available slots for the specified date
   }
   
+
 }
