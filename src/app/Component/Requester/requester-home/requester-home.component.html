@@ -26,16 +26,22 @@
                   <!-- Daily Streak -->
                   <div class="col-12 col-md-4 mb-3 mb-md-0">
                     <h6>Daily Streak</h6>
-                    <h3><i class="bi bi-lightning"></i> {{streakNumber}} days</h3>
+                    <h3><i class="bi bi-lightning"></i> {{ streakNumber }} days</h3>
                     <div class="d-flex justify-content-center gap-3 align-items-center">
                       <ng-container *ngFor="let day of days">
                         <div class="d-flex flex-column align-items-center">
                           <span class="day-initial">{{ day.initial }}</span>
-                          <span [class.circle]="true" [class.bg-dark]="day.active" [class.bg-light]="!day.active"></span>
+                          <span
+                            class="circle"
+                            [class.bg-dark]="day.active"
+                            [class.bg-light]="!day.active"
+                          ></span>
                         </div>
                       </ng-container>
                     </div>
                   </div>
+                  
+                  
           
                   <!-- Daily XP -->
                   <div class="col-12 col-md-4 mb-3 mb-md-0">

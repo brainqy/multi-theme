@@ -61,25 +61,22 @@ hr {
 
 /* Day Circle */
 .circle {
-  margin-top: 4px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  display: inline-block;
-}
-
-.bg-light {
-  background-color: #f8f9fa;
 }
 
 .bg-dark {
-  background-color: #212529;
-  color: white;
+  background-color: black;
+}
+
+.bg-light {
+  background-color: lightgray;
 }
 
 .day-initial {
-  font-size: 0.85rem;
-  color: #666;
+  font-size: 12px;
+  margin-bottom: 5px;
 }
 
 /* Pagination */

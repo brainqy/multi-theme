@@ -40,17 +40,9 @@ export class RequesterHomeComponent {
     for (let i = 0; i < maxIcons; i++) {
       this.fireIcons.push({});
     }
+    this.generateDays();
   }
- 
-  days = [
-    { initial: 'M', active: false },
-    { initial: 'T', active: false },
-    { initial: 'W', active: false },
-    { initial: 'T', active: true },
-    { initial: 'F', active: false },
-    { initial: 'S', active: false },
-    { initial: 'S', active: false },
-  ];
+  days: { initial: string; active: boolean }[] = [];
   
   cards = [
     { title: 'Introduction to DataCamp Projects', description: '0%', buttonText: 'Keep Making Progress' },
@@ -63,6 +55,20 @@ export class RequesterHomeComponent {
   totalPages = 5;
   pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
   
+  generateDays() {
+    const dayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S']; // Day initials
+    const todayIndex = new Date().getDay(); // Get the current day index (0 = Sunday, 6 = Saturday)
+
+    // Generate the past 7 days, starting from today and moving backward
+    this.days = Array.from({ length: 7 }, (_, i) => {
+      const dayIndex = (todayIndex - i + 7) % 7; // Calculate day index (wrap around)
+      return {
+        initial: dayNames[dayIndex],
+        active: i < this.streakNumber, // Active if within the streak count
+      };
+    }).reverse(); // Reverse to display in proper order
+  }
+
   changePage(page: number) {
     if (page > 0 && page <= this.totalPages) {
       this.currentPage = page;
