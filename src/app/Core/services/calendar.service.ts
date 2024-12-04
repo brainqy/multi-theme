@@ -28,7 +28,7 @@ export class CalendarService {
 
 
   public getAllEvents(): Observable<any> {
-    return this.http.get<any>(this.baseurl + '/get/all').pipe(
+    return this.http.get<any>(this.baseurl + '/loggedInUser-events').pipe(
       map((response: any) => {
         // If response needs processing, do it here
         try {
@@ -79,5 +79,9 @@ export class CalendarService {
     console.log("in calendar.service " + JSON.stringify(updatedEvent));
     console.log("url is" + updateUrl)
     return this.http.patch<any>(updateUrl, updatedEvent, httpOptions);
+  }
+  getAllInterviewSlotsExceptLogedInUser():Observable<any>{
+
+    return this.http.get(this.baseurl+"/available-appointments");
   }
 }
