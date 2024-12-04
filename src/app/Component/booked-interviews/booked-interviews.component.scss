@@ -170,3 +170,8 @@ table {
     font-style: italic;
     font-size: 0.9rem;
   }
+  .grid-item.unavailable {
+    background-color: #f44336;
+    color: white;
+    cursor: not-allowed;
+  }

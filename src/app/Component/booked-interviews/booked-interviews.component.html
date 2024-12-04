@@ -217,7 +217,10 @@
       <div class="grid-container">
         <!-- Grid items -->
         <div *ngFor="let kind of kindOfInterview" class="grid-item"
-          [class.selected]="isSelectedkindOfInterviewType(kind)" (click)="toggleKindOfSelection(kind)">
+          [class.selected]="isSelectedkindOfInterviewType(kind)"
+          [class.unavailable]="!isKindOfInterviewAvailable(kind)"
+          (click)="toggleKindOfSelection(kind)">
+          
           {{ kind }}
         </div>
       </div>
