@@ -12,19 +12,32 @@ export class CreateForumComponent {
   sideNavStatus:boolean=false;
   editorContent: string = '';
   newPostForm: FormGroup;
+  selectedPostType: 'forum' | 'blog' = 'forum'; // Default to 'forum'
 
   constructor(private forumService: ForumService, private fb: FormBuilder, private router:Router) {
     this.newPostForm = this.fb.group({
       forum_title: ['', Validators.required],
-      forum_body: ['', Validators.required] // Assuming forum_body is required
+      forum_body: ['', Validators.required], // Assuming forum_body is required
+      blog_tags: [''] // Optional for blog posts
     });
   }
-
+  setPostType(type: 'forum' | 'blog') {
+    this.selectedPostType = type;
+    if (type === 'forum') {
+      this.newPostForm.get('blog_tags')?.disable();
+    } else {
+      this.newPostForm.get('blog_tags')?.enable();
+    }
+  }
   onSubmit() {
     if (this.newPostForm.valid) {
-      console.log('New post:', this.newPostForm.value);
-      this.forumService.createForum(this.newPostForm.value).subscribe((res) => {
-        console.log("response",res);
+      const postData = {
+        type: this.selectedPostType,
+        ...this.newPostForm.value
+      };
+      console.log('New post:', postData);
+      this.forumService.createForum(postData).subscribe((res) => {
+        console.log("response after obs",res);
         this.router.navigateByUrl("/forum-list");
         // Handle success or other logic
       });

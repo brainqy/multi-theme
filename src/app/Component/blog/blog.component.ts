@@ -32,7 +32,7 @@ export class BlogComponent implements OnInit{
     this.helloService.getAllPosts().subscribe((res: any) => {
       console.log("res",res);
       
-      this.forumPosts = res;
+      this.forumPosts = res.filter((post: any) => post.type === 'blog');
       this.totalPages = Math.ceil(this.forumPosts.length / this.pageSize);
       this.generatePageNumbers();
       this.setCurrentPagePosts();

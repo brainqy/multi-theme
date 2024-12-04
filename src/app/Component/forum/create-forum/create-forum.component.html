@@ -9,22 +9,45 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-md-8">
+              <!-- Toggle Button Group -->
+              <div class="btn-group mb-3" role="group" aria-label="Post Type Toggle">
+                <button 
+                  type="button" 
+                  class="btn btn-outline-primary" 
+                  [class.active]="selectedPostType === 'forum'" 
+                  (click)="setPostType('forum')">
+                  Forum Post
+                </button>
+                <button 
+                  type="button" 
+                  class="btn btn-outline-primary" 
+                  [class.active]="selectedPostType === 'blog'" 
+                  (click)="setPostType('blog')">
+                  Blog Post
+                </button>
+              </div>
+              
+              <!-- Form -->
               <form [formGroup]="newPostForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
-                  <label for="forum_title">Title:</label>
+                  <label for="forum_title">{{ selectedPostType === 'forum' ? 'Forum Title:' : 'Blog Title:' }}</label>
                   <input type="text" id="forum_title" formControlName="forum_title" class="form-control">
                   <div *ngIf="newPostForm?.get('forum_title')?.invalid && newPostForm?.get('forum_title')?.touched" class="text-danger">
                     Title is required.
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="forum_body">Content:</label>
+                  <label for="forum_body">{{ selectedPostType === 'forum' ? 'Forum Content:' : 'Blog Content:' }}</label>
                   <quill-editor formControlName="forum_body"></quill-editor>
                   <div *ngIf="newPostForm?.get('forum_body')?.invalid && newPostForm?.get('forum_body')?.touched" class="text-danger">
                     Content is required.
                   </div>
                 </div>
-                <button class="btn btn-primary" type="submit" [disabled]="newPostForm.invalid">Create Post</button>
+                <div *ngIf="selectedPostType === 'blog'" class="form-group">
+                  <label for="blog_tags">Tags:</label>
+                  <input type="text" id="blog_tags" formControlName="blog_tags" class="form-control" placeholder="Add tags (comma-separated)">
+                </div>
+                <button class="btn btn-primary" type="submit" [disabled]="newPostForm.invalid">Create {{ selectedPostType === 'forum' ? 'Forum Post' : 'Blog Post' }}</button>
               </form>
             </div>
           </div>

@@ -24,14 +24,18 @@ export class ForumListComponent {
   }
   loadForumPosts(): void {
     this.forumService.getAllForumPosts().subscribe((res: any) => {
-      console.log(" res",res);
-      
-      this.forumPosts = res;
+      console.log("All posts:", res);
+  
+      // Filter posts to include only forum posts
+      this.forumPosts = res.filter((post: any) => post.type === 'forum');
+  
+      // Pagination logic
       this.totalPages = Math.ceil(this.forumPosts.length / this.pageSize);
       this.generatePageNumbers();
       this.setCurrentPagePosts();
     });
   }
+  
 
   setCurrentPagePosts(): void {
     const startIndex = this.currentPage * this.pageSize;
