@@ -561,8 +561,11 @@ export class BookedInterviewsComponent implements OnInit {
   }
 
   getAvailableInterviewSLots() {
-    this.eventService.getAllInterviewSlotsExceptLogedInUser().subscribe(res => {
+    this.interviewService.getAllInterviewSlots().subscribe(res => {
       this.availability = res;
+      this.interviewSlots = res.data.data;
+      this.interviewBalance = Math.floor(res.data.coinBalance / 26);
+      console.log("interview Balance ", this.interviewBalance);
       console.log("available interview slots in compo ", this.availability);
 
     })

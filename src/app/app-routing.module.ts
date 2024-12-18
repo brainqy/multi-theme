@@ -68,30 +68,27 @@ const routes: Routes = [
     path: "slider",
     component: CustomSliderComponent
   },
-
-
   {
     path:"book-calendar",component:CalenderComponent,
     canActivate: [AuthGuard]
-
   },
   {
     path:"landing",component:LandingComponent
   },
   {
-    path:"resume",component:ResumeFormComponent
+    path:"resume",component:ResumeFormComponent,canActivate: [AuthGuard]
   },
   {
-    path:"bookmarks",component:BookmarksComponent
+    path:"bookmarks",component:BookmarksComponent,canActivate: [AuthGuard]
   },
   {
-    path:"resume-list",component:ResumesComponent
+    path:"resume-list",component:ResumesComponent,canActivate: [AuthGuard]
   },
   {
-    path:"badge",component:AddbadgesComponent
+    path:"badge",component:AddbadgesComponent,canActivate: [AuthGuard]
   },
   {
-    path:"profile",component:ProfileComponent
+    path:"profile",component:ProfileComponent,canActivate: [AuthGuard]
   },
   { path: 'common', component: CommonSplitComponent },
   { path: 'launch', component: WeRLaunchingComponent },
@@ -124,7 +121,8 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path:"job-tracker",component:JobTrackerComponent
+    path:"job-tracker",component:JobTrackerComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"plans",component:PlansComponent
