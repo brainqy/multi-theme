@@ -46,6 +46,10 @@ private baseUrl=environment.baseUrl+environment.contextUrl;
 
     return this.http.get(this.baseUrl+this.chatUrl);
   }
+  getAllInterviewSlotsExceptLoggedInUser():Observable<any>{
+
+    return this.http.get(this.baseUrl+this.chatUrl+"/interview-slots-except-loggedIn");
+  }
   getAllInterviewSlotsByJobId(jobId:any):Observable<any>{
 
     return this.http.get(this.baseUrl+this.chatUrl+"/jobId/"+jobId);

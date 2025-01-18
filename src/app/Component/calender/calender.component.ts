@@ -152,7 +152,7 @@ allEventData: any;
   }
   fetchAllEvents() {
     console.log("Fetching all events");
-    this.calendarService.getAllEvents().subscribe(
+    this.calendarService.getAllEventsExceptLoggedIn().subscribe(
       (response: any) => {
         console.log("Response from server:", response);
         if (response) {

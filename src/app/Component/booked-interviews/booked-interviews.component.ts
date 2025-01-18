@@ -48,6 +48,7 @@ export class BookedInterviewsComponent implements OnInit {
     'Microservices',
     'Angular',
     'MySql',
+    'SAP',
     // Add more interview types as needed
   ];
   interviewItems: string[] = [
@@ -70,16 +71,16 @@ export class BookedInterviewsComponent implements OnInit {
     private router: Router, public authService: AuthService,
     private jwtService: JwtService,
     private fb: FormBuilder) {
-    this.getAllSlotsExceptLoggedInUser();
+   // this.getAllSlotsExceptLoggedInUser();
 
     this.invitationForm = this.fb.group({
       friendEmail: ['', [Validators.required, Validators.pattern(this.emailPattern)]]
     });
-
   }
 
   ngOnInit(): void {
     this.getAvailableInterviewSLots();
+    this.getAllSlotsExceptLoggedInUser();
     this.generateDatesWithSlots();
     this.isLoggedIn = this.authService.isAuthenticated();
     if (this.isLoggedIn) {
@@ -563,11 +564,11 @@ export class BookedInterviewsComponent implements OnInit {
   getAvailableInterviewSLots() {
     this.interviewService.getAllInterviewSlots().subscribe(res => {
       this.availability = res;
+      console.log("this.availability",this.availability);
       this.interviewSlots = res.data.data;
       this.interviewBalance = Math.floor(res.data.coinBalance / 26);
       console.log("interview Balance ", this.interviewBalance);
       console.log("available interview slots in compo ", this.availability);
-
     })
   }
 
@@ -633,13 +634,14 @@ export class BookedInterviewsComponent implements OnInit {
 
 
   getAllSlotsExceptLoggedInUser() {
-    this.eventService.getAllInterviewSlotsExceptLogedInUser().subscribe((res) => {
-      console.log("all slots", res);
-      this.interviewSlots = res.data.data;
-      this.interviewBalance = Math.floor(res.data.coinBalance / 26);
+    this.eventService.getAllEventsExceptLoggedIn().subscribe((res) => {
+    //  this.interviewService.getAllInterviewSlotsExceptLoggedInUser().subscribe((res) => {
+      this.availability = res;
+      console.log("all slots getAllSlotsExceptLoggedInUser", this.availability);
+      //this.interviewBalance = Math.floor(res.data?.coinBalance / 26);
       console.log("interview Balance ", this.interviewBalance);
       console.log("all slots ", res);
-      if (this.interviewSlots.length == 0) {
+      if (this.interviewSlots?.length == 0) {
         Swal.fire("Info", "No Upcoming Interviews Found", 'info');
       }
     })

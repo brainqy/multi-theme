@@ -27,8 +27,8 @@ export class CalendarService {
   }
 
 
-  public getAllEvents(): Observable<any> {
-    return this.http.get<any>(this.baseurl + '/loggedInUser-events').pipe(
+  public getAllEventsExceptLoggedIn(): Observable<any> {
+    return this.http.get<any>(this.baseurl + '/available-appointments').pipe(
       map((response: any) => {
         // If response needs processing, do it here
         try {
