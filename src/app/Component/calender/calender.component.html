@@ -121,66 +121,98 @@
   <div *ngIf="events.length==0">No Appointments Found</div>
   <div *ngIf="events.length>0">
     <h3>
-      Upcoming Appointments
+     Appointments
   <!--     <button class="btn btn-primary float-end" (click)="addEvent()">
         Add new
       </button> -->
       <div class="clearfix"></div>
     </h3>
-<div>
-  <ul class="nav nav-tabs" id="myTabs" role="tablist" *ngIf="events.length!=0">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button"
-        role="tab" aria-controls="tab1" aria-selected="true">My Upcoming Appointments
-      </button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab"
-        aria-controls="tab2" aria-selected="false">Overdue Appointments
-      </button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab"
-        aria-controls="tab3" aria-selected="false">All Appointments
-      </button>
-    </li>
-  </ul>
-  <div class="tab-content" id="myTabsContent">
-    <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
-      <table class="table table-striped"> <!-- Added table-striped class for striped rows -->
-        <div>
-          <!-- interview-table.component.html -->
-          <h2>UPCOMING PRACTICE INTERVIEWS</h2>
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                  <h5 class="card-title"></h5>
-                  <p><strong>Category:</strong></p>
-                  <p><strong>Type:</strong> </p>
-                  <p><strong>Language:</strong>
-                   
-                  </p>
-                  <div class="d-flex justify-content-between mt-3">
-                    <button
-                      class="btn btn-danger"
-                      
-                    >
-                      Cancel
-                    </button>
-                    <button class="btn btn-primary"></button>
-                  </div>
-                </div>
+    <ul class="nav nav-tabs" id="myTabs" role="tablist" *ngIf="events.length !== 0">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button"
+          role="tab" aria-controls="tab1"  aria-selected="true">
+          My Upcoming Appointments
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button"
+          role="tab" aria-controls="tab2"  aria-selected="false" >
+          Overdue Appointments
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button"
+          role="tab" aria-controls="tab3" aria-selected="false">
+          All Appointments
+        </button>
+      </li>
+    </ul>
+    
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+        <!-- Content for My Upcoming Appointments -->
+        <h5>Upcoming Appointments</h5>
+        <div class="row">
+          <div class="col-md-4 mb-3" *ngFor="let event of upcomingEvents">
+            <div class="card text-white" [style.backgroundColor]="getPrimaryColor(event)">
+              <div class="card-body">
+                <h5 class="card-title">{{ event?.title }}</h5>
+                <p><strong>Starts at:</strong> {{ event?.start ? formatDate(event?.start) : 'N/A' }}</p>
+                <p><strong>Ends at:</strong> {{ event?.end ? formatDate(event?.end) : 'N/A' }}</p>
+                
+                <ng-container *ngIf="event.skills && event.skills.length">
+                  <p><strong>Skills:</strong> {{ event.skills.join(', ') }}</p>
+                </ng-container>
+        
+                <ng-container *ngIf="event.status">
+                  <p><strong>Status:</strong> {{ event.status }}</p>
+                </ng-container>
+                
+                <button class="btn btn-light text-dark me-2" (click)="eventModal(editEventModal, event)">
+                  Edit
+                </button>
+                <button class="btn btn-danger" (click)="deleteEvent(event)">
+                  Delete
+                </button>
               </div>
             </div>
           </div>
         </div>
-      </table>
-    </div>
-</div>
-</div>
-    <div class="row">
-      <div class="col-md-4 mb-3" *ngFor="let event of allEventData">
+      </div>
+      <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+        <h5>Overdue Appointments</h5>
+        <div class="row">
+          <div class="col-md-4 mb-3" *ngFor="let event of overdueEvents">
+            <div class="card text-white" [style.backgroundColor]="getPrimaryColor(event)">
+              <div class="card-body">
+                <h5 class="card-title">{{ event?.title }}</h5>
+                <p><strong>Starts at:</strong> {{ event?.start ? formatDate(event?.start) : 'N/A' }}</p>
+                <p><strong>Ends at:</strong> {{ event?.end ? formatDate(event?.end) : 'N/A' }}</p>
+                
+                <ng-container *ngIf="event.skills && event.skills.length">
+                  <p><strong>Skills:</strong> {{ event.skills.join(', ') }}</p>
+                </ng-container>
+        
+                <ng-container *ngIf="event.status">
+                  <p><strong>Status:</strong> {{ event.status }}</p>
+                </ng-container>
+                
+                <button class="btn btn-light text-dark me-2" (click)="eventModal(editEventModal, event)">
+                  Edit
+                </button>
+                <button class="btn btn-danger" (click)="deleteEvent(event)">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+        <!-- Content for All Appointments -->
+        <h5>All Appointments</h5>
+            <div class="row">
+      <div class="col-md-4 mb-3" *ngFor="let event of allEventOfLoggedInUser">
         <div class="card text-white" [style.backgroundColor]="getPrimaryColor(event)">
           <div class="card-body">
             <h5 class="card-title">{{ event?.title }}</h5>
@@ -205,6 +237,10 @@
         </div>
       </div>
     </div>
+      </div>
+    </div>
+    
+
     
     
   </div>

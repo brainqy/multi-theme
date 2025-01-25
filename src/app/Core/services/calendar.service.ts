@@ -64,6 +64,24 @@ export class CalendarService {
       })
     );
   }
+  public getAllAppointments(): Observable<any> {
+    return this.http.get<any>(this.baseurl + '/get/all').pipe(
+      map((response: any) => {
+        // If response needs processing, do it here
+        try {
+          // Ensure response is parsed correctly
+          return typeof response === 'string' ? JSON.parse(response) : response;
+        } catch (error) {
+          throw new Error('Response parsing failed.');
+        }
+      }),
+      catchError((error: HttpErrorResponse) => {
+        console.error('Error fetching events:', error);
+        // Customize the error message for the caller
+        return throwError(() => new Error('Failed to fetch events. Please try again later.'));
+      })
+    );
+  }
   public updateEvent(eventId: any, updatedEvent: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })

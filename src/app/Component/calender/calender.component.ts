@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   ViewChild,
   TemplateRef,
+  OnInit,
 } from '@angular/core';
 import {
   startOfDay,
@@ -52,7 +53,7 @@ const colors: Record<string, EventColor> = {
   templateUrl: './calender.component.html',
   styleUrls: ['./calender.component.css']
 })
-export class CalenderComponent {
+export class CalenderComponent  implements OnInit{
   sideNavStatus: boolean = false;
 
   @ViewChild('modalContent', { static: true }) modalContent!: TemplateRef<any>;
@@ -62,13 +63,17 @@ export class CalenderComponent {
   emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   event!: CalendarEvent;
   private searchTerms = new Subject<string>();
-
+  overdueEvents: any;
+  upcomingEvents:any;
+  overdueAllEvents: any;
+  upcomingAllEvents:any;
+  allEventOfLoggedInUser: any;
+  allEventOfAll:any;
   view: CalendarView = CalendarView.Month;
   monthNames: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   CalendarView = CalendarView;
   currentMonth: string = '';
   currentYear: number = 0;
-
   viewDate: Date = new Date();
 
   modalData!: {
@@ -103,7 +108,6 @@ export class CalenderComponent {
     color: colors['']
   };
   trainer: any;
-allEventData: any;
 
   onDateSelect(date: string) {
     this.selectedDate = date;
@@ -119,10 +123,11 @@ allEventData: any;
   }
   events: CalendarEvent[] = [];
 
-
+  allEvents: CalendarEvent[] = [];
   activeDayIsOpen: boolean = true;
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder, private modal: NgbModal, private calendarService: CalendarService, private userService: UsersService) { 
+    this.fetchMyAllEvents();
     this.fetchAllEvents();
   }
   ngOnInit() {
@@ -141,7 +146,6 @@ allEventData: any;
       const today = new Date();
       this.currentMonth = this.monthNames[today.getMonth()];  // Get the current month name as a string
       this.currentYear = today.getFullYear();  // Get the current year
-  
   }
 
   onTrainerSearchChange(): void {
@@ -150,19 +154,34 @@ allEventData: any;
   ngOnDestroy() {
     this.searchTerms.unsubscribe();
   }
-  fetchAllEvents() {
-    console.log("Fetching all events");
+  fetchMyAllEvents() {
+    console.log("Fetching all my events");
     this.calendarService.getAllAppointmentsOfLoggedIn().subscribe(
       (response: any) => {
         console.log("Response from server:", response);
         if (response) {
-          this.allEventData=response;
+          this.allEventOfLoggedInUser=response;
           this.events = response.map((event: any) => ({
             ...event,
             start: new Date(event.start[0], event.start[1] - 1, event.start[2], event.start[3], event.start[4]),
             end: new Date(event.end[0], event.end[1] - 1, event.end[2], event.end[3], event.end[4])
           }));
-         // console.log("this events from server ", JSON.stringify(this.events))
+          const currentDate = new Date();
+          this.upcomingEvents = this.allEventOfLoggedInUser.filter((event: any) => {
+            // Convert the start field to a Date object for comparison
+            const eventStartDate = new Date(event.start[0], event.start[1] - 1, event.start[2], event.start[3], event.start[4]);
+            console.log("Event start date is ", eventStartDate);
+            return eventStartDate > currentDate;
+        });
+        console.log("It's Running...", this.upcomingEvents);
+          this.overdueEvents = this.allEventOfLoggedInUser.filter((event: any) => {
+            // Convert the start field to a Date object for comparison
+            const eventStartDate = new Date(event.start[0], event.start[1] - 1, event.start[2], event.start[3], event.start[4]);
+            console.log("Event start date is ", eventStartDate);
+            return eventStartDate < currentDate;
+        });
+        console.log("It's Running...", this.overdueEvents);
+               // console.log("this events from server ", JSON.stringify(this.events))
         } else {
           console.error('Invalid response format:', response);
         }
@@ -173,6 +192,47 @@ allEventData: any;
       }
     );
   }
+
+  fetchAllEvents() {
+    console.log("Fetching all events");
+    this.calendarService.getAllAppointments().subscribe(
+      (response: any) => {
+        console.log("Response from server for all events:", response);
+        if (response) {
+          this.allEventOfAll=response;
+          this.allEvents = response.map((event: any) => ({
+            ...event,
+            start: new Date(event.start[0], event.start[1] - 1, event.start[2], event.start[3], event.start[4]),
+            end: new Date(event.end[0], event.end[1] - 1, event.end[2], event.end[3], event.end[4])
+          }));
+          const currentDate = new Date();
+          this.upcomingAllEvents = this.allEventOfAll.filter((event: any) => {
+            // Convert the start field to a Date object for comparison
+            const eventStartDate = new Date(event.start[0], event.start[1] - 1, event.start[2], event.start[3], event.start[4]);
+           console.log("eventStartDate for all events ",eventStartDate);
+           
+            return eventStartDate > currentDate;
+        });
+        console.log("It's Running upcomingAllEvents...", this.upcomingAllEvents);
+          this.overdueAllEvents = this.allEventOfAll.filter((event: any) => {
+            // Convert the start field to a Date object for comparison
+            const eventStartDate = new Date(event.start[0], event.start[1] - 1, event.start[2], event.start[3], event.start[4]);
+            console.log("eventStartDate for all events ",eventStartDate);
+            return eventStartDate < currentDate;
+        });
+        console.log("It's Running overdueAllEvents...", this.overdueAllEvents);
+               // console.log("this events from server ", JSON.stringify(this.events))
+        } else {
+          console.error('Invalid response format:', response);
+        }
+      },
+      (error) => {
+        Swal.fire("ERROR", "Error fetching events", 'error');
+        console.error('Error fetching events:', error);
+      }
+    );
+  }
+
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
