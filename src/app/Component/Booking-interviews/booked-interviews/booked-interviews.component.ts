@@ -98,13 +98,15 @@ export class BookedInterviewsComponent implements OnInit {
 
   isKindOfInterviewAvailable(kind: string): boolean {
     if (!Array.isArray(this.availability)) {
-      console.error('interviewSlots is not an array:', this.availability);
+      console.error('this.availability is not an array:', this.availability);
       return false;
     }
+  
     return this.availability.some((event) =>
-      event.skills.includes(kind.toLowerCase())
+      event.skills.some((skill) => skill.toLowerCase() === kind.toLowerCase())
     );
   }
+  
   
   isSlotAvailable(date: string, slot: { slotStart: Date, slotEnd: Date }): boolean {
     const offsetIST = 5 * 60 + 30; // IST is UTC +5:30 (5 hours 30 minutes)
