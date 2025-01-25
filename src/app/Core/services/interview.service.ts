@@ -22,6 +22,7 @@ export interface Availability {
   end: number[];
   color: string;
   scheduleUser: ScheduleUser;
+  skills:string[];
   bookedBy: string | null;  // null if not booked, email if booked
   status: string | null; // "BOOKED" or null if not booked
 }

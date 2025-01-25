@@ -33,6 +33,7 @@ import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/Core/services/auth.service';
 import { UsersService } from 'src/app/Core/services/users.service';
 import { IcsRequest } from 'src/app/Core/services/transaction.service';
+import { Skill } from '../skill-enum';
 const colors: Record<string, EventColor> = {
   red: {
     primary: '#ad2121',
@@ -613,10 +614,10 @@ createEvent(startDate: Date, endDate: Date,selectedSkills: string[]) {
 selectedSkills: string[] = []; // An array to hold selected skills
 
 primarySkills = [
-  { skill: 'java', selected: false },
-  { skill: 'Microservices', selected: false },
-  { skill: 'Angular', selected: false },
-  { skill: 'AWS', selected: false },
+  { skill: Skill.Java, selected: false },
+  { skill: Skill.Microservices, selected: false },
+  { skill: Skill.Angular, selected: false },
+  { skill: Skill.AWS, selected: false },
   // Add more skills here
 ];
 

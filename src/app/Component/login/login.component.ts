@@ -57,18 +57,18 @@ export class LoginComponent implements OnInit{
       Swal.fire('Validation Error', 'Please fill in all required fields correctly.', 'error');
       return;
     }
-
+  
     // Prepare user object from form values
     const user = {
       email: this.userLoginForm.value.email,
       password: this.userLoginForm.value.password
     };
-
+  
     // Call login service
     this.loginService.login(user).subscribe(
       (res: any) => {
         console.log('Login response:', res);
-
+  
         if (res.status === 'SUCCESS') {
           Swal.fire('Daily Streak', res.dailyStreakDto.streakNumber.toString(), 'success');
           this.handleLoginSuccess(res);
@@ -81,36 +81,37 @@ export class LoginComponent implements OnInit{
       }
     );
   }
-
+  
   private handleLoginSuccess(res: any): void {
     this.authService.storeToken(res.token);
     this.authService.storeStreak(res.dailyStreakDto.streakNumber);
     this.authService.storeBalance(res.dailyStreakDto.userBalance);
-    this.routeUserDashboard();
+  
+    // Retrieve the redirect URL or use a default
+    const redirectUrl = localStorage.getItem('redirectUrl') || this.getDefaultDashboardUrl();
+    this.router.navigateByUrl(redirectUrl);
+    localStorage.removeItem('redirectUrl'); // Clear stored redirect URL
   }
-
+  
   private handleLoginError(err: any): void {
     this.authService.removeToken();
     const errorMessage = err.error?.message || 'An unexpected error occurred.';
     Swal.fire('Error', errorMessage, 'error');
   }
-
-  private routeUserDashboard(): void {
+  
+  private getDefaultDashboardUrl(): string {
     const token = this.authService.getToken();
     const role = this.jwtService.getRoleFromToken(token);
-
-    // Navigate based on role
+  
+    // Return default dashboard URL based on role
     switch (role) {
       case 'ROLE_TECHNICAL_MANAGER':
-        this.router.navigateByUrl('/tm-dashboard');
-        break;
+        return '/tm-dashboard';
       case 'ROLE_REQUESTER':
-        this.router.navigateByUrl('/requester-home');
-        break;
+        return '/requester-home';
       default:
-        Swal.fire('Error', 'Invalid role detected. Please contact support.', 'error');
-        break;
+        return '/'; // Fallback to home page
     }
   }
-
+  
 }

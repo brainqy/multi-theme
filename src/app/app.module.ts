@@ -11,7 +11,7 @@ import {TmSidebarComponent} from './Component/Technical-Manager/tm-sidebar/tm-si
 import {RegistrationComponent} from "./Component/registration/registration.component";
 import { ResetPasswordComponent } from './Component/reset-password/reset-password.component';
 import { ChangePasswordComponent } from './Component/change-password/change-password.component';
-import { CalenderComponent } from './Component/calender/calender.component';
+import { CalenderComponent } from './Component/Booking-interviews/calender/calender.component';
 import { DateFormatPipe } from './pipes/date-format.pipe';
 import { MnHomeComponent } from './Component/Manager/mn-home/mn-home.component';
 import { MnSidebarComponent } from './Component/Manager/mn-sidebar/mn-sidebar.component';
@@ -55,7 +55,7 @@ import { SignupComponent } from './Component/signup/signup.component';
 import { RequesterHomeComponent } from './Component/Requester/requester-home/requester-home.component';
 import { AnalyticsComponent } from './Component/analytics/analytics.component';
 import { PracticeWithFrndsComponent } from './Component/practice-with-frnds/practice-with-frnds.component';
-import { BookedInterviewsComponent } from './Component/booked-interviews/booked-interviews.component';
+import { BookedInterviewsComponent } from './Component/Booking-interviews/booked-interviews/booked-interviews.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { ReportComponent } from './Component/resume-scan/report/report.component';
 import { CreateForumComponent } from './Component/forum/create-forum/create-forum.component';

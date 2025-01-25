@@ -8,6 +8,7 @@ import { CalendarService } from 'src/app/Core/services/calendar.service';
 import { Availability, InterviewService } from 'src/app/Core/services/interview.service';
 import { JwtService } from 'src/app/Core/services/jwt.service';
 import Swal from 'sweetalert2';
+import { Skill } from '../skill-enum';
 
 interface WeeklySlots {
   [day: string]: string[];
@@ -41,16 +42,7 @@ export class BookedInterviewsComponent implements OnInit {
   isTheSelectedkindOfInterviewType: boolean = false;
   availableSlots: { [date: string]: { slotStart: Date; slotEnd: Date }[] } = {};
   availability!: Availability[];
-  kindOfInterview: string[] = [
-    'Data Structures and algorithms',
-    'System Design',
-    'Java',
-    'Microservices',
-    'Angular',
-    'MySql',
-    'SAP',
-    // Add more interview types as needed
-  ];
+  kindOfInterview: string[] = Object.values(Skill);
   interviewItems: string[] = [
     'Practice with Friends',
     'Practice with experts',
@@ -58,13 +50,14 @@ export class BookedInterviewsComponent implements OnInit {
 
     // Add more interview types as needed
   ];
-  interviewSlots: any;
+
   invitationForm: FormGroup;
   datesWithSlots: { date: string; slots: { slotStart: Date; slotEnd: Date; }[] }[] = [];
 
   interviewBalance!: number;
   username: string = '';
   isLoggedIn = false;
+  interviewSlots: any;
 
   constructor(private modalService: NgbModal,
     public interviewService: InterviewService, private eventService: CalendarService,
@@ -104,9 +97,15 @@ export class BookedInterviewsComponent implements OnInit {
   }
 
   isKindOfInterviewAvailable(kind: string): boolean {
-    // Replace with logic to check availability
-    return kind === 'Java'; // Example: AI Mock is unavailable
+    if (!Array.isArray(this.availability)) {
+      console.error('interviewSlots is not an array:', this.availability);
+      return false;
+    }
+    return this.availability.some((event) =>
+      event.skills.includes(kind.toLowerCase())
+    );
   }
+  
   isSlotAvailable(date: string, slot: { slotStart: Date, slotEnd: Date }): boolean {
     const offsetIST = 5 * 60 + 30; // IST is UTC +5:30 (5 hours 30 minutes)
 
@@ -563,12 +562,11 @@ export class BookedInterviewsComponent implements OnInit {
 
   getAvailableInterviewSLots() {
     this.interviewService.getAllInterviewSlots().subscribe(res => {
-      this.availability = res;
-      console.log("this.availability",this.availability);
+      console.log("this.res",res);
       this.interviewSlots = res.data.data;
       this.interviewBalance = Math.floor(res.data.coinBalance / 26);
       console.log("interview Balance ", this.interviewBalance);
-      console.log("available interview slots in compo ", this.availability);
+ 
     })
   }
 
@@ -636,13 +634,16 @@ export class BookedInterviewsComponent implements OnInit {
   getAllSlotsExceptLoggedInUser() {
     this.eventService.getAllEventsExceptLoggedIn().subscribe((res) => {
     //  this.interviewService.getAllInterviewSlotsExceptLoggedInUser().subscribe((res) => {
-      this.availability = res;
+
+      if (Array.isArray(res)) {  
+    this.availability = res;
       console.log("all slots getAllSlotsExceptLoggedInUser", this.availability);
       //this.interviewBalance = Math.floor(res.data?.coinBalance / 26);
-      console.log("interview Balance ", this.interviewBalance);
-      console.log("all slots ", res);
-      if (this.interviewSlots?.length == 0) {
+      if (this.availability?.length == 0) {
         Swal.fire("Info", "No Upcoming Interviews Found", 'info');
+      }}else {
+        console.error('API response is not an array');
+        this.availability = [];
       }
     })
   }

@@ -9,7 +9,7 @@ import {AdminGuard} from "./Core/guard/admin.guard";
 import {RegistrationComponent} from "./Component/registration/registration.component";
 import { ResetPasswordComponent } from './Component/reset-password/reset-password.component';
 import { ChangePasswordComponent } from './Component/change-password/change-password.component';
-import {CalenderComponent} from './Component/calender/calender.component';
+import {CalenderComponent} from './Component/Booking-interviews/calender/calender.component';
 import { MnHomeComponent } from './Component/Manager/mn-home/mn-home.component';
 import { MnGuard } from './Core/guard/mn.guard';
 import { MyOrgComponent } from './Component/my-org/my-org.component';
@@ -23,7 +23,7 @@ import { ForumListComponent } from './Component/forum/forum-list/forum-list.comp
 import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 import { AnalyticsComponent } from './Component/analytics/analytics.component';
 import { PracticeWithFrndsComponent } from './Component/practice-with-frnds/practice-with-frnds.component';
-import { BookedInterviewsComponent } from './Component/booked-interviews/booked-interviews.component';
+import { BookedInterviewsComponent } from './Component/Booking-interviews/booked-interviews/booked-interviews.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { ReportComponent } from './Component/resume-scan/report/report.component';
 import { CreateForumComponent } from './Component/forum/create-forum/create-forum.component';
