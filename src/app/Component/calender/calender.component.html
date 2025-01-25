@@ -127,7 +127,58 @@
       </button> -->
       <div class="clearfix"></div>
     </h3>
-    
+<div>
+  <ul class="nav nav-tabs" id="myTabs" role="tablist" *ngIf="events.length!=0">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="tab1-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button"
+        role="tab" aria-controls="tab1" aria-selected="true">My Upcoming Appointments
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="tab2-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab"
+        aria-controls="tab2" aria-selected="false">Overdue Appointments
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="tab3-tab" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab"
+        aria-controls="tab3" aria-selected="false">All Appointments
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabsContent">
+    <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+      <table class="table table-striped"> <!-- Added table-striped class for striped rows -->
+        <div>
+          <!-- interview-table.component.html -->
+          <h2>UPCOMING PRACTICE INTERVIEWS</h2>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                  <h5 class="card-title"></h5>
+                  <p><strong>Category:</strong></p>
+                  <p><strong>Type:</strong> </p>
+                  <p><strong>Language:</strong>
+                   
+                  </p>
+                  <div class="d-flex justify-content-between mt-3">
+                    <button
+                      class="btn btn-danger"
+                      
+                    >
+                      Cancel
+                    </button>
+                    <button class="btn btn-primary"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </table>
+    </div>
+</div>
+</div>
     <div class="row">
       <div class="col-md-4 mb-3" *ngFor="let event of allEventData">
         <div class="card text-white" [style.backgroundColor]="getPrimaryColor(event)">

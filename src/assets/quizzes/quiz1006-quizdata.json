@@ -23,11 +23,635 @@
               { "A": "# This is a comment" },
               { "B": "// This is a comment" },
               { "C": "<!-- This is a comment -->" },
-              { "D": "/* This is a comment */"}
+              { "D": "/* This is a comment */" }
             ],
             "selectedAnswer": "",
             "correctAnswer": "B",
             "explanation": "// is used for single-line comments in JavaScript."
+          },
+          {
+            "questionId": 3,
+            "question": "Which method is used to join all elements of an array into a single string?",
+            "options": [
+              { "A": "join()" },
+              { "B": "concat()" },
+              { "C": "push()" },
+              { "D": "slice()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `join()` method joins all elements of an array into a single string."
+          },
+          {
+            "questionId": 4,
+            "question": "Which of the following is NOT a primitive data type in JavaScript?",
+            "options": [
+              { "A": "String" },
+              { "B": "Number" },
+              { "C": "Boolean" },
+              { "D": "Object" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "Objects are non-primitive data types in JavaScript."
+          },
+          {
+            "questionId": 5,
+            "question": "What does the `parseInt()` function do in JavaScript?",
+            "options": [
+              { "A": "Converts a string into a number" },
+              { "B": "Converts a number into a string" },
+              { "C": "Parses a string into an array" },
+              { "D": "Returns the length of a string" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`parseInt()` converts a string into an integer number."
+          },
+          {
+            "questionId": 6,
+            "question": "How do you declare a variable in JavaScript?",
+            "options": [
+              { "A": "var" },
+              { "B": "let" },
+              { "C": "const" },
+              { "D": "All of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "You can declare variables using `var`, `let`, or `const` in JavaScript."
+          },
+          {
+            "questionId": 7,
+            "question": "What will be the output of the following code?\n\nconsole.log(2 + '2');",
+            "options": [
+              { "A": "4" },
+              { "B": "22" },
+              { "C": "Error" },
+              { "D": "undefined" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The number `2` will be coerced to a string and concatenated, resulting in '22'."
+          },
+          {
+            "questionId": 8,
+            "question": "Which of the following operators is used to assign a value to a variable?",
+            "options": [
+              { "A": "=" },
+              { "B": "==" },
+              { "C": "===" },
+              { "D": "!=" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `=` operator is used for assignment in JavaScript."
+          },
+          {
+            "questionId": 9,
+            "question": "Which of the following is a JavaScript framework?",
+            "options": [
+              { "A": "React" },
+              { "B": "Angular" },
+              { "C": "Vue" },
+              { "D": "All of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "React, Angular, and Vue are all popular JavaScript frameworks."
+          },
+          {
+            "questionId": 10,
+            "question": "What will the following code output?\n\nconsole.log(1 == '1');",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "Error" },
+              { "D": "undefined" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "In JavaScript, the `==` operator performs type coercion and compares values."
+          },
+          {
+            "questionId": 11,
+            "question": "What is the result of `typeof NaN` in JavaScript?",
+            "options": [
+              { "A": "number" },
+              { "B": "NaN" },
+              { "C": "undefined" },
+              { "D": "object" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The result of `typeof NaN` is 'number', as `NaN` is a special numeric value."
+          },
+          {
+            "questionId": 12,
+            "question": "What is the output of `0 === false` in JavaScript?",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "Error" },
+              { "D": "undefined" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`===` checks both value and type, so `0` (a number) is not strictly equal to `false` (a boolean)."
+          },
+          {
+            "questionId": 13,
+            "question": "What will the following code output?\n\nconsole.log([] == []);",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "Error" },
+              { "D": "undefined" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Arrays are reference types, and two separate arrays do not point to the same reference."
+          },
+          {
+            "questionId": 14,
+            "question": "Which method can be used to remove the last element from an array in JavaScript?",
+            "options": [
+              { "A": "pop()" },
+              { "B": "shift()" },
+              { "C": "unshift()" },
+              { "D": "push()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `pop()` method removes the last element of an array."
+          },
+          {
+            "questionId": 15,
+            "question": "Which function is used to convert a string to uppercase in JavaScript?",
+            "options": [
+              { "A": "toUpper()" },
+              { "B": "toUpperCase()" },
+              { "C": "upperCase()" },
+              { "D": "uppercase()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The correct function is `toUpperCase()`."
+          },
+          {
+            "questionId": 16,
+            "question": "Which of the following is the correct way to create a new object in JavaScript?",
+            "options": [
+              { "A": "var obj = {};" },
+              { "B": "var obj = [];" },
+              { "C": "var obj = new Object();" },
+              { "D": "Both A and C" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "Both `var obj = {}` and `var obj = new Object()` create a new object in JavaScript."
+          },
+          {
+            "questionId": 17,
+            "question": "What does the `isNaN()` function do in JavaScript?",
+            "options": [
+              { "A": "Checks if a value is NaN" },
+              { "B": "Checks if a value is not a number" },
+              { "C": "Converts a string to a number" },
+              { "D": "Both A and B" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "`isNaN()` checks if a value is `NaN` (Not-a-Number). It also returns `true` if the value is not a valid number."
+          },
+          {
+            "questionId": 18,
+            "question": "What is the output of `2 + 3 + '4'` in JavaScript?",
+            "options": [
+              { "A": "9" },
+              { "B": "23" },
+              { "C": "234" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "JavaScript performs addition from left to right. The numbers `2` and `3` are added to get `5`, and then concatenated with the string '4', resulting in '234'."
+          },
+          {
+            "questionId": 19,
+            "question": "Which keyword is used to define a constant in JavaScript?",
+            "options": [
+              { "A": "var" },
+              { "B": "let" },
+              { "C": "const" },
+              { "D": "constant" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The `const` keyword is used to declare constants in JavaScript."
+          },
+          {
+            "questionId": 20,
+            "question": "Which method is used to find the index of the first occurrence of a value in an array?",
+            "options": [
+              { "A": "indexOf()" },
+              { "B": "find()" },
+              { "C": "search()" },
+              { "D": "locate()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`indexOf()` returns the index of the first occurrence of a specified value in an array."
+          },
+          {
+            "questionId": 21,
+            "question": "Which of the following operators is used to compare both value and type?",
+            "options": [
+              { "A": "==" },
+              { "B": "===" },
+              { "C": "!=" },
+              { "D": "<>" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`===` compares both value and type."
+          },
+          {
+            "questionId": 22,
+            "question": "What does the `toString()` method do in JavaScript?",
+            "options": [
+              { "A": "Converts a value to a string" },
+              { "B": "Converts a value to a number" },
+              { "C": "Returns the type of a value" },
+              { "D": "Returns the length of a string" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`toString()` converts a value to a string representation."
+          },
+          {
+            "questionId": 23,
+            "question": "What does the `push()` method do in JavaScript?",
+            "options": [
+              { "A": "Removes an element from the array" },
+              { "B": "Adds an element to the array" },
+              { "C": "Returns the first element of the array" },
+              { "D": "Reverses the array" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`push()` adds a new element to the end of an array."
+          },
+          {
+            "questionId": 24,
+            "question": "What is the result of `true + 1` in JavaScript?",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "2" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "`true` is coerced into `1`, so the result is `2`."
+          },
+          {
+            "questionId": 25,
+            "question": "What will be the output of the following code?\n\nconsole.log('5' - 3);",
+            "options": [
+              { "A": "2" },
+              { "B": "53" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "JavaScript will coerce the string '5' into a number before performing the subtraction."
+          },
+          {
+            "questionId": 26,
+            "question": "How do you create an empty array in JavaScript?",
+            "options": [
+              { "A": "var arr = [];" },
+              { "B": "var arr = {};" },
+              { "C": "var arr = null;" },
+              { "D": "var arr = '';" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "An empty array can be created using `[]`."
+          },
+          {
+            "questionId": 27,
+            "question": "Which of the following methods can be used to check if a value is an array?",
+            "options": [
+              { "A": "isArray()" },
+              { "B": "Array.isArray()" },
+              { "C": "Array.check()" },
+              { "D": "isArray.check()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`Array.isArray()` is the method used to check if a value is an array."
+          },
+          {
+            "questionId": 28,
+            "question": "What will the following code output?\n\nconsole.log(5 == '5');",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "Error" },
+              { "D": "undefined" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `==` operator performs type coercion and compares values, so the result is `true`."
+          },
+          {
+            "questionId": 29,
+            "question": "What will be the output of the following code?\n\nconsole.log(3 * '3');",
+            "options": [
+              { "A": "9" },
+              { "B": "33" },
+              { "C": "Error" },
+              { "D": "undefined" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The string '3' is coerced into a number before performing the multiplication."
+          },
+          {
+            "questionId": 30,
+            "question": "What does `Object.keys()` return in JavaScript?",
+            "options": [
+              { "A": "An array of an object's property names" },
+              { "B": "An array of an object's property values" },
+              { "C": "The object's length" },
+              { "D": "The object itself" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`Object.keys()` returns an array of the object's own property names."
+          },
+          {
+            "questionId": 31,
+            "question": "Which method is used to remove the first element of an array?",
+            "options": [
+              { "A": "pop()" },
+              { "B": "shift()" },
+              { "C": "unshift()" },
+              { "D": "push()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`shift()` removes the first element of an array."
+          },
+          {
+            "questionId": 32,
+            "question": "What does the `console.log()` method do in JavaScript?",
+            "options": [
+              { "A": "Prints a message to the console" },
+              { "B": "Prints a message to the browser" },
+              { "C": "Executes a function" },
+              { "D": "Displays a pop-up" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`console.log()` is used to print messages to the console."
+          },
+          {
+            "questionId": 33,
+            "question": "What is the output of the following code?\n\nconsole.log([1,2] == [1,2]);",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Arrays are reference types, so two different arrays with the same values are not equal."
+          },
+          {
+            "questionId": 34,
+            "question": "What is the result of `'10' - 5` in JavaScript?",
+            "options": [
+              { "A": "5" },
+              { "B": "105" },
+              { "C": "NaN" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The string '10' is coerced into a number before performing the subtraction, resulting in `5`."
+          },
+          {
+            "questionId": 35,
+            "question": "Which method is used to return a new array with elements that pass a test?",
+            "options": [
+              { "A": "map()" },
+              { "B": "filter()" },
+              { "C": "reduce()" },
+              { "D": "find()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`filter()` creates a new array with elements that pass the test implemented by the provided function."
+          },
+          {
+            "questionId": 36,
+            "question": "Which of the following is used to define a block of code in JavaScript?",
+            "options": [
+              { "A": "{}" },
+              { "B": "()" },
+              { "C": "[]" },
+              { "D": "''" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Curly braces `{}` are used to define a block of code in JavaScript."
+          },
+          {
+            "questionId": 37,
+            "question": "Which method is used to join two or more arrays in JavaScript?",
+            "options": [
+              { "A": "concat()" },
+              { "B": "merge()" },
+              { "C": "join()" },
+              { "D": "combine()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`concat()` is used to merge two or more arrays into one."
+          },
+          {
+            "questionId": 38,
+            "question": "What is the output of `false == 'false'` in JavaScript?",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The `==` operator performs type coercion, and `false` is not equal to the string 'false'."
+          },
+          {
+            "questionId": 39,
+            "question": "Which operator is used to assign a value to a variable?",
+            "options": [
+              { "A": "=" },
+              { "B": "==" },
+              { "C": "===" },
+              { "D": ":=" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `=` operator is used to assign values to variables."
+          },
+          {
+            "questionId": 40,
+            "question": "What is the output of the following code?\n\nconsole.log(2 + 3 + '5');",
+            "options": [
+              { "A": "55" },
+              { "B": "23" },
+              { "C": "25" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "JavaScript performs addition from left to right. The result of `2 + 3` is `5`, which is then concatenated with the string '5', resulting in '55'."
+          },
+          {
+            "questionId": 41,
+            "question": "Which method is used to execute a function for each element in an array?",
+            "options": [
+              { "A": "forEach()" },
+              { "B": "map()" },
+              { "C": "reduce()" },
+              { "D": "filter()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`forEach()` executes a provided function once for each array element."
+          },
+          {
+            "questionId": 42,
+            "question": "What will the following code output?\n\nconsole.log(!!'false');",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `!!` operator converts a value to its boolean equivalent, and a non-empty string is truthy, so the result is `true`."
+          },
+          {
+            "questionId": 43,
+            "question": "What is the result of `'5' + 5` in JavaScript?",
+            "options": [
+              { "A": "10" },
+              { "B": "'55'" },
+              { "C": "Error" },
+              { "D": "'5 5'" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "JavaScript performs string concatenation when a string and a number are added, so the result is `'55'`."
+          },
+          {
+            "questionId": 44,
+            "question": "Which method is used to convert a string to lowercase in JavaScript?",
+            "options": [
+              { "A": "toLower()" },
+              { "B": "lower()" },
+              { "C": "toLowerCase()" },
+              { "D": "lowerCase()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "`toLowerCase()` is used to convert a string to lowercase."
+          },
+          {
+            "questionId": 45,
+            "question": "What will the following code output?\n\nconsole.log(2 == '2');",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`==` performs type coercion and compares the values, so the result is `true`."
+          },
+          {
+            "questionId": 46,
+            "question": "What will be the output of the following code?\n\nconsole.log('3' == 3);",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`==` performs type coercion and compares values, so the result is `true`."
+          },
+          {
+            "questionId": 47,
+            "question": "What does the `trim()` method do in JavaScript?",
+            "options": [
+              { "A": "Removes whitespace from both ends of a string" },
+              { "B": "Converts a string to uppercase" },
+              { "C": "Splits a string into an array" },
+              { "D": "Replaces a substring in a string" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`trim()` removes whitespace from both ends of a string."
+          },
+          {
+            "questionId": 48,
+            "question": "Which method is used to check if an array includes a certain value?",
+            "options": [
+              { "A": "contains()" },
+              { "B": "has()" },
+              { "C": "indexOf()" },
+              { "D": "includes()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "`includes()` checks if a certain value is present in an array."
+          },
+          {
+            "questionId": 49,
+            "question": "What is the output of the following code?\n\nconsole.log(0 == false);",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`==` compares values after type coercion, so `0` is equal to `false`."
+          },
+          {
+            "questionId": 50,
+            "question": "Which method is used to add an element to the beginning of an array?",
+            "options": [
+              { "A": "push()" },
+              { "B": "shift()" },
+              { "C": "unshift()" },
+              { "D": "pop()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "`unshift()` adds an element to the beginning of an array."
           }
         ],
         "correctAnswersCount": 0,
@@ -39,7 +663,7 @@
         "section": "Functions and Scope",
         "questions": [
           {
-            "questionId": 11,
+            "questionId": 1,
             "question": "What will the following code output?\n\n(function() { var a = b = 3; })(); console.log(typeof b);",
             "options": [
               { "A": "\"undefined\"" },
@@ -52,17 +676,641 @@
             "explanation": "The variable `b` is implicitly created as a global variable, making it accessible outside the function scope as `number`."
           },
           {
-            "questionId": 12,
+            "questionId": 2,
             "question": "Which keyword is used to define a constant in JavaScript?",
             "options": [
               { "A": "let" },
               { "B": "const" },
               { "C": "var" },
-              { "D": "define"}
+              { "D": "define" }
             ],
             "selectedAnswer": "",
             "correctAnswer": "B",
             "explanation": "The `const` keyword is used to define constants in JavaScript."
+          },
+          {
+            "questionId": 3,
+            "question": "What will the following code output?\n\nvar a = 10; (function() { var a = 20; console.log(a); })();",
+            "options": [
+              { "A": "10" },
+              { "B": "20" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The variable `a` inside the function is scoped to the function, so it prints `20`."
+          },
+          {
+            "questionId": 4,
+            "question": "What is the output of the following code?\n\nconsole.log(typeof typeof 1);",
+            "options": [
+              { "A": "\"number\"" },
+              { "B": "\"string\"" },
+              { "C": "\"boolean\"" },
+              { "D": "\"undefined\"" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The first `typeof 1` returns `\"number\"`, and then `typeof \"number\"` returns `\"string\"`."
+          },
+          {
+            "questionId": 5,
+            "question": "What will the following code output?\n\nfunction test() { return typeof arguments; } console.log(test());",
+            "options": [
+              { "A": "\"object\"" },
+              { "B": "\"undefined\"" },
+              { "C": "\"arguments\"" },
+              { "D": "\"array\"" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `arguments` object is an array-like object, and `typeof arguments` returns `\"object\"`."
+          },
+          {
+            "questionId": 6,
+            "question": "Which of the following is not a valid JavaScript function declaration?",
+            "options": [
+              { "A": "function myFunc() {}" },
+              { "B": "var myFunc = function() {}" },
+              { "C": "function = myFunc() {}" },
+              { "D": "let myFunc = () => {}" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The syntax `function = myFunc() {}` is invalid."
+          },
+          {
+            "questionId": 7,
+            "question": "Which of the following is true about the `var` keyword?",
+            "options": [
+              { "A": "It defines a block-scoped variable" },
+              { "B": "It defines a global-scoped variable" },
+              { "C": "It defines a function-scoped variable" },
+              { "D": "It defines a constant" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "`var` defines a function-scoped variable."
+          },
+          {
+            "questionId": 8,
+            "question": "What will the following code output?\n\nconsole.log(this);",
+            "options": [
+              { "A": "The global object" },
+              { "B": "undefined" },
+              { "C": "An object with properties" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "In non-strict mode, `this` refers to the global object."
+          },
+          {
+            "questionId": 9,
+            "question": "What is the value of `this` inside an arrow function?",
+            "options": [
+              { "A": "The global object" },
+              { "B": "The function's scope" },
+              { "C": "The value of `this` from the enclosing scope" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "In an arrow function, `this` is lexically bound, meaning it refers to the `this` value from the surrounding scope."
+          },
+          {
+            "questionId": 10,
+            "question": "Which of the following is the correct syntax for defining a function with parameters in JavaScript?",
+            "options": [
+              { "A": "function myFunc(a, b) {}" },
+              { "B": "function myFunc(a, b) {return;}" },
+              { "C": "function myFunc {a, b} {}" },
+              { "D": "myFunc function(a, b) {}" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`function myFunc(a, b) {}` is the correct syntax for defining a function with parameters."
+          },
+          {
+            "questionId": 11,
+            "question": "What will the following code output?\n\n(function() { var a = 5; })(); console.log(a);",
+            "options": [
+              { "A": "5" },
+              { "B": "undefined" },
+              { "C": "ReferenceError" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The variable `a` is scoped to the function and not accessible outside it, so it throws a `ReferenceError`."
+          },
+          {
+            "questionId": 12,
+            "question": "Which of the following is the correct syntax for an anonymous function in JavaScript?",
+            "options": [
+              { "A": "function() {}" },
+              { "B": "function myFunc() {}" },
+              { "C": "var func = function() {}" },
+              { "D": "var func = myFunc() {}" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "An anonymous function is a function that is not named, and it can be assigned to a variable like `var func = function() {};`."
+          },
+          {
+            "questionId": 13,
+            "question": "What will the following code output?\n\nfunction example() { return arguments.length; } console.log(example(1, 2, 3));",
+            "options": [
+              { "A": "3" },
+              { "B": "undefined" },
+              { "C": "Error" },
+              { "D": "null" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `arguments.length` property returns the number of arguments passed to the function, which is `3` in this case."
+          },
+          {
+            "questionId": 14,
+            "question": "Which of the following is a feature of JavaScript closures?",
+            "options": [
+              { "A": "A closure can access variables from the global scope" },
+              { "B": "A closure can access variables from its outer function's scope" },
+              { "C": "A closure can access variables from any function's scope" },
+              { "D": "Closures cannot access any variables" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "A closure allows a function to access variables from its outer (enclosing) function's scope."
+          },
+          {
+            "questionId": 15,
+            "question": "What does the `call()` method do in JavaScript?",
+            "options": [
+              { "A": "Calls a function with a specified `this` value" },
+              { "B": "Calls a function after a delay" },
+              { "C": "Creates a new function" },
+              { "D": "Converts a function into an arrow function" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`call()` invokes a function with a specified `this` value and arguments."
+          },
+          {
+            "questionId": 16,
+            "question": "What will be the result of the following code?\n\nfunction foo() { var a = 2; return function() { return a; }; } var bar = foo(); console.log(bar());",
+            "options": [
+              { "A": "undefined" },
+              { "B": "2" },
+              { "C": "Error" },
+              { "D": "null" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The inner function returns the value of `a` from the outer function's scope, which is `2`."
+          },
+          {
+            "questionId": 17,
+            "question": "What is a JavaScript callback function?",
+            "options": [
+              { "A": "A function that is invoked immediately" },
+              { "B": "A function that is passed as an argument to another function" },
+              { "C": "A function that returns another function" },
+              { "D": "A function that is automatically executed" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "A callback function is a function passed as an argument to another function to be executed later."
+          },
+          {
+            "questionId": 18,
+            "question": "Which of the following is true about the `this` keyword in JavaScript?",
+            "options": [
+              { "A": "It refers to the global object when used inside a function" },
+              { "B": "It refers to the current function" },
+              { "C": "It refers to the object from which the function was called" },
+              { "D": "It refers to the parent scope" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "`this` refers to the object from which the function was called."
+          },
+          {
+            "questionId": 19,
+            "question": "What will the following code output?\n\n(function() { var a = 10; })(); console.log(a);",
+            "options": [
+              { "A": "10" },
+              { "B": "undefined" },
+              { "C": "ReferenceError" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The variable `a` is scoped to the function and not accessible outside it, so it throws a `ReferenceError`."
+          },
+          {
+            "questionId": 20,
+            "question": "What is the default value of `this` in a regular function?",
+            "options": [
+              { "A": "The global object" },
+              { "B": "The object on which the function was invoked" },
+              { "C": "undefined" },
+              { "D": "null" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "In non-strict mode, `this` defaults to the global object when inside a regular function."
+          },
+          {
+            "questionId": 21,
+            "question": "What is the value of `this` in a method of an object?",
+            "options": [
+              { "A": "The object itself" },
+              { "B": "The global object" },
+              { "C": "undefined" },
+              { "D": "A reference to the method" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`this` in a method refers to the object the method is a property of."
+          },
+          {
+            "questionId": 22,
+            "question": "What is the difference between `null` and `undefined` in JavaScript?",
+            "options": [
+              { "A": "They are the same" },
+              { "B": "`null` is a value, while `undefined` is a type" },
+              { "C": "`undefined` is a value, while `null` is an object" },
+              { "D": "`null` is a special value, while `undefined` is a default value" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`null` is an object, and `undefined` is a type indicating that a variable has not been assigned a value."
+          },
+          {
+            "questionId": 23,
+            "question": "What is the output of the following code?\n\nconsole.log(typeof typeof 42);",
+            "options": [
+              { "A": "\"number\"" },
+              { "B": "\"string\"" },
+              { "C": "\"undefined\"" },
+              { "D": "\"object\"" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`typeof 42` returns `number`, and `typeof number` returns `string`."
+          },
+          {
+            "questionId": 24,
+            "question": "Which of the following will create a function that immediately invokes itself?",
+            "options": [
+              { "A": "(function() {})();" },
+              { "B": "function() {}" },
+              { "C": "function() {}();" },
+              { "D": "function() {}" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "An immediately invoked function expression (IIFE) is created using `(function() {})();`."
+          },
+          {
+            "questionId": 25,
+            "question": "What will the following code output?\n\nvar foo = function() { return this; }; console.log(foo());",
+            "options": [
+              { "A": "The global object" },
+              { "B": "undefined" },
+              { "C": "null" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "In non-strict mode, `this` inside a function defaults to the global object when called directly."
+          },
+          {
+            "questionId": 26,
+            "question": "What will the following code output?\n\n(function() { var x = 10; if (true) { let x = 20; console.log(x); } })();",
+            "options": [
+              { "A": "10" },
+              { "B": "20" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The `let` keyword creates a block-scoped variable, so the inner `x` is `20`."
+          },
+          {
+            "questionId": 27,
+            "question": "Which of the following is the correct way to call a function using `apply()`?",
+            "options": [
+              { "A": "func.apply(this, args)" },
+              { "B": "func.call(this, args)" },
+              { "C": "func(this, args)" },
+              { "D": "func.apply(args)" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`apply()` calls a function with a specified `this` value and an array of arguments."
+          },
+          {
+            "questionId": 28,
+            "question": "Which of the following is not a valid method to define a function in JavaScript?",
+            "options": [
+              { "A": "function name() {}" },
+              { "B": "const name = function() {}" },
+              { "C": "let name = () => {}" },
+              { "D": "function() {}" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "`function() {}` is an incomplete function declaration and cannot be used as a valid method."
+          },
+          {
+            "questionId": 29,
+            "question": "What is the output of the following code?\n\nvar a = 10; function test() { a = 20; console.log(a); } test();",
+            "options": [
+              { "A": "10" },
+              { "B": "20" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Inside the function, `a` is reassigned to `20`, so it outputs `20`."
+          },
+          {
+            "questionId": 30,
+            "question": "Which of the following defines a block-scoped variable in JavaScript?",
+            "options": [
+              { "A": "let" },
+              { "B": "var" },
+              { "C": "const" },
+              { "D": "both A and C" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "`let` and `const` both define block-scoped variables, while `var` defines a function-scoped variable."
+          },
+          {
+            "questionId": 31,
+            "question": "What is the behavior of `this` in strict mode?",
+            "options": [
+              { "A": "`this` is the global object" },
+              { "B": "`this` is `undefined` when called from a function" },
+              { "C": "`this` is always a reference to the current object" },
+              { "D": "`this` is an error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "In strict mode, `this` inside a function is `undefined` if not explicitly bound."
+          },
+          {
+            "questionId": 32,
+            "question": "What will the following code output?\n\nconsole.log(typeof NaN);",
+            "options": [
+              { "A": "\"number\"" },
+              { "B": "\"string\"" },
+              { "C": "\"NaN\"" },
+              { "D": "\"undefined\"" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`typeof NaN` returns `number`, as NaN is considered a number in JavaScript."
+          },
+          {
+            "questionId": 33,
+            "question": "What will the following code output?\n\nvar a = 1; function example() { a = 2; return; } console.log(a); example(); console.log(a);",
+            "options": [
+              { "A": "1, 2" },
+              { "B": "2, 2" },
+              { "C": "1, 1" },
+              { "D": "undefined, 2" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The first `console.log(a)` prints `2` because `a` is updated by the `example()` function."
+          },
+          {
+            "questionId": 34,
+            "question": "What does the `bind()` method do in JavaScript?",
+            "options": [
+              { "A": "Creates a new function with a specified `this` value" },
+              { "B": "Defines a function" },
+              { "C": "Defines the `this` context for a function" },
+              { "D": "None of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`bind()` creates a new function with the specified `this` value and any arguments passed to it."
+          },
+          {
+            "questionId": 35,
+            "question": "What will the following code output?\n\nconsole.log(function() {} === function() {});",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Two different function expressions will not be the same, so it returns `false`."
+          },
+          {
+            "questionId": 36,
+            "question": "What will the following code output?\n\nvar x = 10; (function() { var x = 20; console.log(x); })(); console.log(x);",
+            "options": [
+              { "A": "10, 10" },
+              { "B": "20, 10" },
+              { "C": "10, 20" },
+              { "D": "20, 20" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The first `console.log(x)` prints `20` because it logs the `x` inside the IIFE, and the second prints `10` from the outer scope."
+          },
+          {
+            "questionId": 37,
+            "question": "What will the following code output?\n\nvar x = 10; function outer() { var x = 20; function inner() { console.log(x); } inner(); } outer();",
+            "options": [
+              { "A": "10" },
+              { "B": "20" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The inner function has access to the `x` variable defined in the outer function's scope."
+          },
+          {
+            "questionId": 38,
+            "question": "What will be the output of the following code?\n\nvar a = 5; function test() { console.log(a); var a = 10; } test();",
+            "options": [
+              { "A": "5" },
+              { "B": "10" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The variable `a` is hoisted to the top of the function, and thus the console logs `undefined`."
+          },
+          {
+            "questionId": 39,
+            "question": "Which of the following is the correct way to create a closure in JavaScript?",
+            "options": [
+              { "A": "function outer() { var a = 5; function inner() { return a; } return inner(); }" },
+              { "B": "function outer() { var a = 5; function inner() { return a; } }" },
+              { "C": "function outer() { return function() { return a; } }" },
+              { "D": "None of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "A closure is formed when a function is defined inside another function, and it has access to the outer function's variables."
+          },
+          {
+            "questionId": 40,
+            "question": "What is the value of `this` in a method call like `object.method()`?",
+            "options": [
+              { "A": "The global object" },
+              { "B": "The object `object` itself" },
+              { "C": "undefined" },
+              { "D": "The method function itself" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "In a method call, `this` refers to the object the method belongs to."
+          },
+          {
+            "questionId": 41,
+            "question": "Which of the following will result in a `ReferenceError` in JavaScript?",
+            "options": [
+              { "A": "let x = 10; console.log(x);" },
+              { "B": "const y = 5; console.log(y);" },
+              { "C": "console.log(z);" },
+              { "D": "var a = 5; console.log(a);" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "`z` is not declared anywhere, so attempting to log it will result in a `ReferenceError`."
+          },
+          {
+            "questionId": 42,
+            "question": "Which of the following correctly assigns a function to a variable in JavaScript?",
+            "options": [
+              { "A": "var func = function() {};" },
+              { "B": "function func() {}" },
+              { "C": "const func = () => {};" },
+              { "D": "All of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "All options are valid ways of assigning a function to a variable in JavaScript."
+          },
+          {
+            "questionId": 43,
+            "question": "What will the following code output?\n\nconsole.log(function() { return arguments.length; }(1, 2, 3));",
+            "options": [
+              { "A": "3" },
+              { "B": "undefined" },
+              { "C": "Error" },
+              { "D": "NaN" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `arguments` object holds the arguments passed to the function, and its `length` property is `3`."
+          },
+          {
+            "questionId": 44,
+            "question": "What is the behavior of the `arguments` object in arrow functions?",
+            "options": [
+              { "A": "It is automatically available in arrow functions" },
+              { "B": "It is not available in arrow functions" },
+              { "C": "It can be accessed by specifying `arguments`" },
+              { "D": "None of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Arrow functions do not have their own `arguments` object. They inherit it from the surrounding function."
+          },
+          {
+            "questionId": 45,
+            "question": "What does the following code output?\n\n(function() { return 1 + 2 + 3 + 4; })();",
+            "options": [
+              { "A": "1234" },
+              { "B": "10" },
+              { "C": "7" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The addition of numbers results in `10`."
+          },
+          {
+            "questionId": 46,
+            "question": "Which of the following is used to immediately execute a function in JavaScript?",
+            "options": [
+              { "A": "function() {}();" },
+              { "B": "(function() {})();" },
+              { "C": "function(){};" },
+              { "D": "None of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "An immediately invoked function expression (IIFE) is used to immediately execute a function."
+          },
+          {
+            "questionId": 47,
+            "question": "What is the purpose of the `call()` method in JavaScript?",
+            "options": [
+              { "A": "It invokes a function and sets the value of `this`" },
+              { "B": "It defines a function" },
+              { "C": "It defines a class method" },
+              { "D": "It invokes a function asynchronously" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`call()` is used to invoke a function and explicitly set the value of `this`."
+          },
+          {
+            "questionId": 48,
+            "question": "What is the value of `this` in a regular function when called in strict mode?",
+            "options": [
+              { "A": "The global object" },
+              { "B": "undefined" },
+              { "C": "null" },
+              { "D": "The function itself" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "In strict mode, `this` is `undefined` in a regular function unless explicitly bound."
+          },
+          {
+            "questionId": 49,
+            "question": "What is the difference between `call()` and `apply()` methods?",
+            "options": [
+              { "A": "`call()` takes arguments as separate parameters, while `apply()` takes an array of arguments" },
+              { "B": "`apply()` takes arguments as separate parameters, while `call()` takes an array of arguments" },
+              { "C": "There is no difference" },
+              { "D": "`call()` is used only for object methods, while `apply()` is used for all functions" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`call()` takes arguments as separate parameters, while `apply()` takes arguments as an array."
+          },
+          {
+            "questionId": 50,
+            "question": "Which of the following will create a new function that is a copy of an existing function but with a different `this` value?",
+            "options": [
+              { "A": "bind()" },
+              { "B": "apply()" },
+              { "C": "call()" },
+              { "D": "None of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`bind()` creates a new function with a specified `this` value and any provided arguments."
           }
         ],
         "correctAnswersCount": 0,
@@ -73,6 +1321,266 @@
       {
         "section": "Objects and Arrays",
         "questions": [
+          {
+            "questionId": 1,
+            "question": "How do you access the property 'age' in the object `let person = { name: \"John\", age: 30 };`?",
+            "options": [
+              { "A": "person.age" },
+              { "B": "person['age']" },
+              { "C": "Both A and B" },
+              { "D": "person(age)" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Both dot notation (`person.age`) and bracket notation (`person['age']`) are valid ways to access properties."
+          },
+          {
+            "questionId": 2,
+            "question": "What is the output of `let arr = [1, 2, 3]; console.log(arr.length);`?",
+            "options": [
+              { "A": "1" },
+              { "B": "2" },
+              { "C": "3" },
+              { "D": "undefined" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The length property returns the number of elements in the array."
+          },
+          {
+            "questionId": 3,
+            "question": "How do you add a property to an existing object?",
+            "options": [
+              { "A": "object.property = value" },
+              { "B": "object['property'] = value" },
+              { "C": "Both A and B" },
+              { "D": "object.add(property, value)" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "You can use either dot notation or bracket notation to add properties to an object."
+          },
+          {
+            "questionId": 4,
+            "question": "What does `Array.isArray()` do?",
+            "options": [
+              { "A": "Checks if a variable is a string" },
+              { "B": "Checks if a variable is an array" },
+              { "C": "Checks if a variable is an object" },
+              { "D": "Converts a variable into an array" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`Array.isArray()` checks whether a value is an array."
+          },
+          {
+            "questionId": 5,
+            "question": "What will be the result of `let arr = [1, 2, 3]; arr.push(4); console.log(arr);`?",
+            "options": [
+              { "A": "[1, 2, 3]" },
+              { "B": "[1, 2, 3, 4]" },
+              { "C": "[4, 1, 2, 3]" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`push()` adds a new element to the end of an array."
+          },
+          {
+            "questionId": 6,
+            "question": "How do you remove the last element from an array?",
+            "options": [
+              { "A": "arr.pop()" },
+              { "B": "arr.shift()" },
+              { "C": "arr.remove()" },
+              { "D": "arr.delete()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`pop()` removes the last element from an array."
+          },
+          {
+            "questionId": 7,
+            "question": "What is the default value of an object's property if it is not defined?",
+            "options": [
+              { "A": "undefined" },
+              { "B": "null" },
+              { "C": "false" },
+              { "D": "NaN" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "If a property is not defined in an object, its value will be `undefined`."
+          },
+          {
+            "questionId": 8,
+            "question": "What is the result of the expression `[] == false`?",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "Error" },
+              { "D": "undefined" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "In JavaScript, `[]` is considered falsy and equal to `false`."
+          },
+          {
+            "questionId": 9,
+            "question": "What does `Array.prototype.join()` do?",
+            "options": [
+              { "A": "Joins all elements of an array into a single string" },
+              { "B": "Adds elements to the array" },
+              { "C": "Removes elements from the array" },
+              { "D": "Reverses the elements in an array" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`join()` combines all elements of an array into a single string."
+          },
+          {
+            "questionId": 10,
+            "question": "How do you create a new object using an existing one as a prototype?",
+            "options": [
+              { "A": "Object.create(existingObject)" },
+              { "B": "Object.new(existingObject)" },
+              { "C": "existingObject.new()" },
+              { "D": "new Object(existingObject)" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`Object.create(existingObject)` creates a new object with the existing object as its prototype."
+          },
+          {
+            "questionId": 11,
+            "question": "Which method removes the first element of an array?",
+            "options": [
+              { "A": "arr.shift()" },
+              { "B": "arr.pop()" },
+              { "C": "arr.remove()" },
+              { "D": "arr.delete()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`shift()` removes the first element from an array."
+          },
+          {
+            "questionId": 12,
+            "question": "What is the result of `typeof null`?",
+            "options": [
+              { "A": "object" },
+              { "B": "null" },
+              { "C": "undefined" },
+              { "D": "error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`typeof null` returns 'object', which is a known quirk in JavaScript."
+          },
+          {
+            "questionId": 13,
+            "question": "How do you check if an array contains a certain element?",
+            "options": [
+              { "A": "arr.contains(element)" },
+              { "B": "arr.indexOf(element) !== -1" },
+              { "C": "arr.has(element)" },
+              { "D": "arr.includes(element)" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`indexOf()` returns `-1` if the element is not found in the array."
+          },
+          {
+            "questionId": 14,
+            "question": "What is the result of `let arr = [2, 4, 6]; arr[1] = 10; console.log(arr);`?",
+            "options": [
+              { "A": "[2, 4, 6]" },
+              { "B": "[2, 10, 6]" },
+              { "C": "[10, 4, 6]" },
+              { "D": "[2, 10]" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The element at index `1` is updated to `10`."
+          },
+          {
+            "questionId": 15,
+            "question": "What is the result of `let person = { name: \"John\", age: 30 }; delete person.age; console.log(person);`?",
+            "options": [
+              { "A": "{ name: 'John', age: 30 }" },
+              { "B": "{ name: 'John' }" },
+              { "C": "{ age: 30 }" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`delete` removes the specified property from an object."
+          },
+          {
+            "questionId": 16,
+            "question": "What does `Array.prototype.concat()` do?",
+            "options": [
+              { "A": "Adds elements to the array" },
+              { "B": "Combines two or more arrays into a new array" },
+              { "C": "Removes elements from the array" },
+              { "D": "Filters elements in the array" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`concat()` combines two or more arrays into a new one without modifying the original arrays."
+          },
+          {
+            "questionId": 17,
+            "question": "Which of the following is a valid way to create an empty object?",
+            "options": [
+              { "A": "{}" },
+              { "B": "new Object()" },
+              { "C": "Both A and B" },
+              { "D": "None of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Both `{}` and `new Object()` create empty objects."
+          },
+          {
+            "questionId": 18,
+            "question": "What is the result of `let arr = [10, 20, 30]; arr.reverse(); console.log(arr);`?",
+            "options": [
+              { "A": "[30, 20, 10]" },
+              { "B": "[10, 20, 30]" },
+              { "C": "[20, 30, 10]" },
+              { "D": "[30, 10, 20]" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`reverse()` reverses the order of elements in the array."
+          },
+          {
+            "questionId": 19,
+            "question": "What is the result of `let arr = [1, 2, 3]; arr.unshift(0); console.log(arr);`?",
+            "options": [
+              { "A": "[1, 2, 3]" },
+              { "B": "[0, 1, 2, 3]" },
+              { "C": "[1, 3, 2]" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`unshift()` adds one or more elements to the beginning of the array."
+          },
+          {
+            "questionId": 20,
+            "question": "Which method is used to check if an object has a certain property?",
+            "options": [
+              { "A": "Object.hasOwnProperty(property)" },
+              { "B": "Object.propertyExist(property)" },
+              { "C": "Object.contains(property)" },
+              { "D": "Object.find(property)" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`hasOwnProperty()` checks if an object has a specific property."
+          },
           {
             "questionId": 21,
             "question": "How do you access the property 'name' in the object `let person = { name: \"John\" };`?",
@@ -88,7 +1596,7 @@
           },
           {
             "questionId": 22,
-            "question": "What does the Array.prototype.map() method do?",
+            "question": "What does the `Array.prototype.map()` method do?",
             "options": [
               { "A": "Mutates the original array" },
               { "B": "Creates a new array with the results of calling a function on each element" },
@@ -98,6 +1606,331 @@
             "selectedAnswer": "",
             "correctAnswer": "B",
             "explanation": "The map() method creates a new array with the results of a function applied to each element in the original array."
+          },
+          {
+            "questionId": 23,
+            "question": "How do you create an array with elements from 1 to 5?",
+            "options": [
+              { "A": "[1, 2, 3, 4, 5]" },
+              { "B": "Array(1, 2, 3, 4, 5)" },
+              { "C": "new Array(1, 2, 3, 4, 5)" },
+              { "D": "Both A and C" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "You can use both `[1, 2, 3, 4, 5]` and `new Array(1, 2, 3, 4, 5)` to create an array."
+          },
+          {
+            "questionId": 24,
+            "question": "What is the result of `let arr = [1, 2, 3]; arr.splice(1, 1); console.log(arr);`?",
+            "options": [
+              { "A": "[1, 2, 3]" },
+              { "B": "[1, 3]" },
+              { "C": "[2, 3]" },
+              { "D": "[1]" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`splice()` removes the second element (at index 1) from the array."
+          },
+          {
+            "questionId": 25,
+            "question": "How do you merge two objects in JavaScript?",
+            "options": [
+              { "A": "Object.merge(obj1, obj2)" },
+              { "B": "Object.assign(obj1, obj2)" },
+              { "C": "obj1 + obj2" },
+              { "D": "obj1.concat(obj2)" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`Object.assign()` merges the properties of two objects."
+          },
+          {
+            "questionId": 26,
+            "question": "What is the result of `let arr = [10, 20, 30]; let copy = [...arr]; console.log(copy);`?",
+            "options": [
+              { "A": "[10, 20, 30]" },
+              { "B": "[20, 30, 40]" },
+              { "C": "Error" },
+              { "D": "[10, 20]" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The spread operator (`...`) creates a shallow copy of the array."
+          },
+          {
+            "questionId": 27,
+            "question": "Which of the following is a valid way to check if a property exists in an object?",
+            "options": [
+              { "A": "'property' in object" },
+              { "B": "object.hasOwnProperty('property')" },
+              { "C": "Both A and B" },
+              { "D": "object.property != null" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Both `'property' in object` and `object.hasOwnProperty('property')` can check for the existence of a property."
+          },
+          {
+            "questionId": 28,
+            "question": "What is the result of `let arr = [1, 2, 3]; arr.unshift(0); console.log(arr);`?",
+            "options": [
+              { "A": "[1, 2, 3]" },
+              { "B": "[0, 1, 2, 3]" },
+              { "C": "[1, 3, 2]" },
+              { "D": "[0]" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`unshift()` adds a new element to the beginning of the array."
+          },
+          {
+            "questionId": 29,
+            "question": "What is the result of `let arr = [1, 2, 3]; arr.slice(1, 2); console.log(arr);`?",
+            "options": [
+              { "A": "[2]" },
+              { "B": "[1, 2]" },
+              { "C": "[2, 3]" },
+              { "D": "[1, 2, 3]" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`slice()` extracts elements from an array without modifying it."
+          },
+          {
+            "questionId": 30,
+            "question": "What is the result of `let arr = [1, 2, 3]; arr.concat([4, 5]); console.log(arr);`?",
+            "options": [
+              { "A": "[1, 2, 3]" },
+              { "B": "[1, 2, 3, 4, 5]" },
+              { "C": "[4, 5]" },
+              { "D": "[1, 2, 3, [4, 5]]" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`concat()` merges two arrays into a new array."
+          },
+          {
+            "questionId": 31,
+            "question": "Which of the following methods can be used to find the index of an element in an array?",
+            "options": [
+              { "A": "array.indexOf(element)" },
+              { "B": "array.search(element)" },
+              { "C": "array.findIndex(element)" },
+              { "D": "Both A and C" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "`indexOf()` and `findIndex()` both return the index of an element in an array."
+          },
+          {
+            "questionId": 32,
+            "question": "How can you check if an object is an instance of a particular class?",
+            "options": [
+              { "A": "object instanceof class" },
+              { "B": "object instanceof Object" },
+              { "C": "object.isInstance(class)" },
+              { "D": "object.checkInstance(class)" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`instanceof` checks whether an object is an instance of a specific class."
+          },
+          {
+            "questionId": 33,
+            "question": "Which of the following is a way to prevent a property from being modified in an object?",
+            "options": [
+              { "A": "Object.preventExtensions(object)" },
+              { "B": "Object.freeze(object)" },
+              { "C": "Object.seal(object)" },
+              { "D": "Both B and C" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`Object.freeze()` prevents an object from being modified."
+          },
+          {
+            "questionId": 34,
+            "question": "What is the result of `let obj = { name: 'John', age: 30 }; delete obj.age; console.log(obj);`?",
+            "options": [
+              { "A": "{ name: 'John', age: 30 }" },
+              { "B": "{ name: 'John' }" },
+              { "C": "{ age: 30 }" },
+              { "D": "undefined" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`delete` removes the `age` property from the object."
+          },
+          {
+            "questionId": 35,
+            "question": "What does `Object.keys()` return?",
+            "options": [
+              { "A": "The values of the object's properties" },
+              { "B": "The names of the object's properties" },
+              { "C": "The object itself" },
+              { "D": "The array of the object's methods" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`Object.keys()` returns an array of the object's property names."
+          },
+          {
+            "questionId": 36,
+            "question": "What is the result of `let arr = [1, 2, 3]; arr.reverse(); console.log(arr);`?",
+            "options": [
+              { "A": "[1, 2, 3]" },
+              { "B": "[3, 2, 1]" },
+              { "C": "[2, 1, 3]" },
+              { "D": "[3, 1, 2]" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`reverse()` reverses the order of elements in an array."
+          },
+          {
+            "questionId": 37,
+            "question": "Which method can be used to join two arrays in JavaScript?",
+            "options": [
+              { "A": "concat()" },
+              { "B": "join()" },
+              { "C": "push()" },
+              { "D": "append()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`concat()` is used to join two arrays."
+          },
+          {
+            "questionId": 38,
+            "question": "What does `Array.prototype.reduce()` do?",
+            "options": [
+              { "A": "Reduces the array to a single value" },
+              { "B": "Filters the array based on a condition" },
+              { "C": "Maps over the array" },
+              { "D": "Adds elements to the array" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`reduce()` applies a function to each element in an array and reduces the array to a single value."
+          },
+          {
+            "questionId": 39,
+            "question": "What is the result of `let arr = [1, 2, 3]; arr.pop(); console.log(arr);`?",
+            "options": [
+              { "A": "[1, 2, 3]" },
+              { "B": "[1, 2]" },
+              { "C": "[2, 3]" },
+              { "D": "[1, 3]" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`pop()` removes the last element from the array."
+          },
+          {
+            "questionId": 40,
+            "question": "How do you find the first element in an array that satisfies a condition?",
+            "options": [
+              { "A": "array.find(condition)" },
+              { "B": "array.filter(condition)" },
+              { "C": "array.some(condition)" },
+              { "D": "array.findIndex(condition)" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`find()` returns the first element in an array that satisfies the provided condition."
+          },
+          {
+            "questionId": 41,
+            "question": "How do you check if a variable is an array in JavaScript?",
+            "options": [
+              { "A": "Array.isArray(variable)" },
+              { "B": "variable.isArray()" },
+              { "C": "Array.is(variable)" },
+              { "D": "variable instanceof Array" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`Array.isArray()` checks if a variable is an array."
+          },
+          {
+            "questionId": 42,
+            "question": "What is the result of `let arr = [1, 2, 3]; arr.shift(); console.log(arr);`?",
+            "options": [
+              { "A": "[2, 3]" },
+              { "B": "[1, 2, 3]" },
+              { "C": "[3]" },
+              { "D": "[1]" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`shift()` removes the first element from an array."
+          },
+          {
+            "questionId": 43,
+            "question": "How do you remove all elements from an array in JavaScript?",
+            "options": [
+              { "A": "array.removeAll()" },
+              { "B": "array.splice(0, array.length)" },
+              { "C": "array.clear()" },
+              { "D": "array.pop()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`splice(0, array.length)` removes all elements from the array."
+          },
+          {
+            "questionId": 44,
+            "question": "How do you convert a string to an array in JavaScript?",
+            "options": [
+              { "A": "string.toArray()" },
+              { "B": "string.split('')" },
+              { "C": "Array.from(string)" },
+              { "D": "Both B and C" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "`split('')` and `Array.from()` can both convert a string to an array of characters."
+          },
+          {
+            "questionId": 45,
+            "question": "What does the `Array.prototype.every()` method do?",
+            "options": [
+              { "A": "Tests if all elements satisfy a condition" },
+              { "B": "Tests if any element satisfies a condition" },
+              { "C": "Maps each element to a new value" },
+              { "D": "Filters out elements that satisfy a condition" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`every()` tests if all elements in the array satisfy the given condition."
+          },
+          {
+            "questionId": 46,
+            "question": "Which method returns the first element in an array that satisfies the provided condition?",
+            "options": [
+              { "A": "find()" },
+              { "B": "some()" },
+              { "C": "map()" },
+              { "D": "filter()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`find()` returns the first element that satisfies the condition."
+          },
+          {
+            "questionId": 47,
+            "question": "Which of the following methods can be used to merge two arrays?",
+            "options": [
+              { "A": "concat()" },
+              { "B": "join()" },
+              { "C": "push()" },
+              { "D": "merge()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`concat()` merges two arrays."
           }
         ],
         "correctAnswersCount": 0,
@@ -109,7 +1942,7 @@
         "section": "ES6+ Features",
         "questions": [
           {
-            "questionId": 31,
+            "questionId": 1,
             "question": "What will the following code output?\n\nlet [a, , b] = [1, 2, 3]; console.log(a, b);",
             "options": [
               { "A": "1 2" },
@@ -122,7 +1955,7 @@
             "explanation": "The destructuring syntax allows skipping elements by leaving an empty slot between commas."
           },
           {
-            "questionId": 32,
+            "questionId": 2,
             "question": "Which new data structure was introduced in ES6 for unique values?",
             "options": [
               { "A": "Array" },
@@ -133,8 +1966,437 @@
             "selectedAnswer": "",
             "correctAnswer": "D",
             "explanation": "The `Set` data structure allows storing unique values and was introduced in ES6."
+          },
+          {
+            "questionId": 3,
+            "question": "What does the `let` keyword allow in comparison to `var`?",
+            "options": [
+              { "A": "It can be reassigned but not redeclared." },
+              { "B": "It has function scope." },
+              { "C": "It has block-level scope." },
+              { "D": "It is hoisted to the top of the scope." }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The `let` keyword has block-level scope, unlike `var`, which has function scope."
+          },
+          {
+            "questionId": 4,
+            "question": "Which method was introduced in ES6 to iterate over Map objects?",
+            "options": [
+              { "A": "forEach()" },
+              { "B": "map()" },
+              { "C": "filter()" },
+              { "D": "mapForEach()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `forEach()` method is used to iterate over Map objects."
+          },
+          {
+            "questionId": 5,
+            "question": "What is the result of the following code?\n\nlet obj = { name: \"John\", age: 30 }; let { name, age } = obj; console.log(name, age);",
+            "options": [
+              { "A": "name age" },
+              { "B": "John 30" },
+              { "C": "undefined undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The code uses object destructuring to extract `name` and `age` from `obj`."
+          },
+          {
+            "questionId": 6,
+            "question": "What is the purpose of the `const` keyword in ES6?",
+            "options": [
+              { "A": "To declare variables that cannot be reassigned." },
+              { "B": "To declare variables that cannot be redeclared." },
+              { "C": "To declare variables that can be reassigned but not redeclared." },
+              { "D": "To declare variables with function scope." }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `const` keyword is used to declare variables whose values cannot be reassigned."
+          },
+          {
+            "questionId": 7,
+            "question": "Which feature was introduced in ES6 to allow default parameter values?",
+            "options": [
+              { "A": "Parameter Initialization" },
+              { "B": "Default Arguments" },
+              { "C": "Function Arguments" },
+              { "D": "Arguments Object" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "ES6 allows you to assign default values to function parameters."
+          },
+          {
+            "questionId": 8,
+            "question": "What will the following code output?\n\nlet x = 10; x ||= 5; console.log(x);",
+            "options": [
+              { "A": "5" },
+              { "B": "10" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The `||=` operator assigns the right-hand value only if the left-hand value is falsy, but since `x` is truthy, it remains 10."
+          },
+          {
+            "questionId": 9,
+            "question": "How do you create a template literal in ES6?",
+            "options": [
+              { "A": "Using backticks `" },
+              { "B": "Using double quotes" },
+              { "C": "Using single quotes" },
+              { "D": "Using parentheses" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Template literals are created using backticks (`) and allow embedded expressions."
+          },
+          {
+            "questionId": 10,
+            "question": "Which of the following is a new way of defining functions in ES6?",
+            "options": [
+              { "A": "Arrow function" },
+              { "B": "Named function" },
+              { "C": "Function expression" },
+              { "D": "Anonymous function" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Arrow functions (`=>`) provide a more concise syntax and lexically bind `this`."
+          },
+          {
+            "questionId": 11,
+            "question": "What is the purpose of the `Map` object in ES6?",
+            "options": [
+              { "A": "It stores unique values." },
+              { "B": "It stores key-value pairs." },
+              { "C": "It stores lists of items." },
+              { "D": "It stores unordered key-value pairs." }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The `Map` object stores key-value pairs where the keys can be any type, unlike objects that only allow strings or symbols as keys."
+          },
+          {
+            "questionId": 12,
+            "question": "What will the following code output?\n\nlet arr = [1, 2, 3, 4]; let [x, ...y] = arr; console.log(x, y);",
+            "options": [
+              { "A": "1 [2, 3, 4]" },
+              { "B": "1 2, 3, 4" },
+              { "C": "[1] [2, 3, 4]" },
+              { "D": "1 undefined" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `...` operator collects the remaining elements into an array after destructuring the first element."
+          },
+          {
+            "questionId": 13,
+            "question": "Which new method was added to arrays in ES6 for removing elements from the beginning?",
+            "options": [
+              { "A": "shift()" },
+              { "B": "pop()" },
+              { "C": "unshift()" },
+              { "D": "splice()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `shift()` method removes elements from the beginning of an array."
+          },
+          {
+            "questionId": 14,
+            "question": "Which of the following is used to declare a block-scoped variable in ES6?",
+            "options": [
+              { "A": "var" },
+              { "B": "const" },
+              { "C": "let" },
+              { "D": "all of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "`let` and `const` are used for block-scoped variables, while `var` is function-scoped."
+          },
+          {
+            "questionId": 15,
+            "question": "What is the output of the following code?\n\nconst arr = [1, 2, 3]; arr.push(4); arr[1] = 5; console.log(arr);",
+            "options": [
+              { "A": "[1, 5, 3, 4]" },
+              { "B": "[1, 2, 3, 4]" },
+              { "C": "[1, 5, 4, 3]" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Arrays declared with `const` cannot be reassigned, but their contents can be modified."
+          },
+          {
+            "questionId": 16,
+            "question": "Which new feature in ES6 allows the use of variables in a shorter syntax for object properties?",
+            "options": [
+              { "A": "Object Destructuring" },
+              { "B": "Object Shorthand" },
+              { "C": "Template Literals" },
+              { "D": "Arrow Functions" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Object shorthand allows you to define properties with the same name as the variable."
+          },
+          {
+            "questionId": 17,
+            "question": "Which of the following ES6 features is used to handle asynchronous code?",
+            "options": [
+              { "A": "Promise" },
+              { "B": "Callbacks" },
+              { "C": "Arrow Functions" },
+              { "D": "Event Loop" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Promises represent the eventual completion (or failure) of an asynchronous operation."
+          },
+          {
+            "questionId": 18,
+            "question": "What is the purpose of the `spread` operator in ES6?",
+            "options": [
+              { "A": "To combine arrays or objects." },
+              { "B": "To extract the values of arrays and objects." },
+              { "C": "To assign default values to variables." },
+              { "D": "To bind `this` context in a function." }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `...` (spread) operator allows you to expand arrays or objects into individual elements."
+          },
+          {
+            "questionId": 19,
+            "question": "What will the following code output?\n\nlet numbers = [1, 2, 3, 4]; console.log(...numbers);",
+            "options": [
+              { "A": "1, 2, 3, 4" },
+              { "B": "[1, 2, 3, 4]" },
+              { "C": "Error" },
+              { "D": "undefined" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `...` (spread) operator expands the array into individual elements."
+          },
+          {
+            "questionId": 20,
+            "question": "Which new feature was added to ES6 for dealing with multiple async operations?",
+            "options": [
+              { "A": "Promise.all()" },
+              { "B": "Async/Await" },
+              { "C": "AsyncPromise" },
+              { "D": "Callback.all()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The `async/await` feature provides a more readable and synchronous way to handle asynchronous code."
+          },
+          {
+            "questionId": 21,
+            "question": "Which method is used to merge two or more objects in ES6?",
+            "options": [
+              { "A": "merge()" },
+              { "B": "extend()" },
+              { "C": "Object.assign()" },
+              { "D": "Object.merge()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "`Object.assign()` is used to merge multiple objects into one."
+          },
+          {
+            "questionId": 22,
+            "question": "What does the following code output?\n\nconst numbers = [1, 2, 3]; const newNumbers = [...numbers, 4, 5]; console.log(newNumbers);",
+            "options": [
+              { "A": "[1, 2, 3, 4, 5]" },
+              { "B": "[4, 5]" },
+              { "C": "[1, 2, 3]" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The spread operator expands the original array, then the new elements are added."
+          },
+          {
+            "questionId": 23,
+            "question": "Which method was added in ES6 to create a new array by transforming an existing array?",
+            "options": [
+              { "A": "map()" },
+              { "B": "reduce()" },
+              { "C": "forEach()" },
+              { "D": "filter()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `map()` method creates a new array by applying a function to each element of the existing array."
+          },
+          {
+            "questionId": 24,
+            "question": "What is the output of the following code?\n\nlet arr = [1, 2, 3, 4]; arr = arr.reverse(); console.log(arr);",
+            "options": [
+              { "A": "[4, 3, 2, 1]" },
+              { "B": "[1, 2, 3, 4]" },
+              { "C": "Error" },
+              { "D": "[2, 3, 4, 1]" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `reverse()` method reverses the array in place and returns the reversed array."
+          },
+          {
+            "questionId": 25,
+            "question": "What does the `includes()` method check in ES6?",
+            "options": [
+              { "A": "If the array contains a certain value." },
+              { "B": "If the value is an object." },
+              { "C": "If the array is empty." },
+              { "D": "If the string contains a certain character." }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `includes()` method checks if an array contains a specific element."
+          },
+          {
+            "questionId": 26,
+            "question": "What is the purpose of `Promise.then()` in ES6?",
+            "options": [
+              { "A": "To handle asynchronous success cases." },
+              { "B": "To handle asynchronous failure cases." },
+              { "C": "To create a new promise." },
+              { "D": "To handle both success and failure." }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`Promise.then()` is used to handle success cases when the promise is resolved."
+          },
+          {
+            "questionId": 27,
+            "question": "What will the following code output?\n\nlet name = \"Alice\"; name ||= \"Bob\"; console.log(name);",
+            "options": [
+              { "A": "Bob" },
+              { "B": "Alice" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The `||=` operator assigns the value on the right only if the left value is falsy, but since `name` is truthy, it remains Alice."
+          },
+          {
+            "questionId": 28,
+            "question": "What new feature does ES6 provide to store key-value pairs in an ordered structure?",
+            "options": [
+              { "A": "Object" },
+              { "B": "Array" },
+              { "C": "Map" },
+              { "D": "Set" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "ES6 introduced the `Map` object, which stores key-value pairs and maintains the insertion order."
+          },
+          {
+            "questionId": 29,
+            "question": "Which method in ES6 returns the array of keys from an object?",
+            "options": [
+              { "A": "Object.keys()" },
+              { "B": "Object.values()" },
+              { "C": "Object.entries()" },
+              { "D": "Object.items()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`Object.keys()` returns an array of an object's keys."
+          },
+          {
+            "questionId": 30,
+            "question": "Which of the following is used for creating an iterable object in ES6?",
+            "options": [
+              { "A": "Iterator" },
+              { "B": "forEach()" },
+              { "C": "Map" },
+              { "D": "Symbol.iterator" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "The `Symbol.iterator` property is used to define how objects are iterated."
+          },
+          {
+            "questionId": 31,
+            "question": "What is the main advantage of using arrow functions in ES6?",
+            "options": [
+              { "A": "They have a concise syntax." },
+              { "B": "They automatically bind `this`." },
+              { "C": "They are faster." },
+              { "D": "Both A and B" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "Arrow functions have a concise syntax and do not have their own `this`, which is inherited from the enclosing scope."
+          },
+          {
+            "questionId": 32,
+            "question": "What does `const` provide in ES6 that `var` does not?",
+            "options": [
+              { "A": "Constant reference to a value" },
+              { "B": "Block-scoped variable" },
+              { "C": "Function-scoped variable" },
+              { "D": "Both A and B" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "`const` creates a block-scoped constant reference to a value, unlike `var`."
+          },
+          {
+            "questionId": 33,
+            "question": "What does the `let` keyword allow you to do that `var` does not?",
+            "options": [
+              { "A": "Declare variables outside any function." },
+              { "B": "Declare block-scoped variables." },
+              { "C": "Declare constants." },
+              { "D": "Declare variables with automatic type checking." }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`let` allows you to declare block-scoped variables, while `var` is function-scoped."
+          },
+          {
+            "questionId": 34,
+            "question": "Which of the following is true about the `Symbol` data type introduced in ES6?",
+            "options": [
+              { "A": "It is used to create unique identifiers." },
+              { "B": "It can be used to create global variables." },
+              { "C": "It can be used to define constant values." },
+              { "D": "It is an object type." }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`Symbol` is a unique and immutable primitive data type that can be used to create unique identifiers."
+          },
+          {
+            "questionId": 35,
+            "question": "Which of the following features is NOT available in ES6?",
+            "options": [
+              { "A": "Template Literals" },
+              { "B": "Class Inheritance" },
+              { "C": "Block-level scoping" },
+              { "D": "Public fields" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "ES6 does not directly introduce public fields for classes, but it does allow class inheritance, template literals, and block-level scoping."
           }
-        ],
+                ],
         "correctAnswersCount": 0,
         "wrongAnswersCount": 0,
         "unattemptedCount": 0,
@@ -144,8 +2406,8 @@
         "section": "Asynchronous JavaScript",
         "questions": [
           {
-            "questionId": 41,
-            "question": "Which statement is used to handle errors in a promise chain?",
+            "questionId": 1,
+            "question": "Which method is used to handle errors in a promise chain?",
             "options": [
               { "A": ".catch()" },
               { "B": ".then()" },
@@ -154,10 +2416,10 @@
             ],
             "selectedAnswer": "",
             "correctAnswer": "A",
-            "explanation": "The .catch() method is used to handle errors in a promise chain."
+            "explanation": ".catch() is used to handle errors in a promise chain."
           },
           {
-            "questionId": 42,
+            "questionId": 2,
             "question": "What will the following code output?\n\nasync function foo() { return 'Hello'; } foo().then(console.log);",
             "options": [
               { "A": "Promise { <pending> }" },
@@ -168,6 +2430,240 @@
             "selectedAnswer": "",
             "correctAnswer": "B",
             "explanation": "The async function `foo` resolves to 'Hello', and `.then(console.log)` outputs 'Hello'."
+          },
+          {
+            "questionId": 3,
+            "question": "Which of the following methods is used to execute a function after a promise is settled (fulfilled or rejected)?",
+            "options": [
+              { "A": ".finally()" },
+              { "B": ".then()" },
+              { "C": ".catch()" },
+              { "D": ".done()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `.finally()` method is used to execute code after a promise has settled, regardless of its outcome."
+          },
+          {
+            "questionId": 4,
+            "question": "Which method in JavaScript is used to execute code when a promise is successfully resolved?",
+            "options": [
+              { "A": ".catch()" },
+              { "B": ".then()" },
+              { "C": ".finally()" },
+              { "D": ".reject()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The `.then()` method is used to handle a promise that is resolved successfully."
+          },
+          {
+            "questionId": 5,
+            "question": "What is the output of the following code?\n\nPromise.resolve('Hello').then(console.log);",
+            "options": [
+              { "A": "Promise { <pending> }" },
+              { "B": "Hello" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The resolved value 'Hello' is logged to the console when `.then(console.log)` is called."
+          },
+          {
+            "questionId": 6,
+            "question": "What does `async` in front of a function definition do?",
+            "options": [
+              { "A": "It makes the function return a promise." },
+              { "B": "It runs the function asynchronously." },
+              { "C": "It forces the function to resolve a value." },
+              { "D": "Both A and B" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "`async` makes a function return a promise and allows you to use `await` inside it."
+          },
+          {
+            "questionId": 7,
+            "question": "Which of the following can be used to pause the execution of an `async` function until a promise is resolved?",
+            "options": [
+              { "A": "await" },
+              { "B": "then" },
+              { "C": "setTimeout" },
+              { "D": "Promise.resolve" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `await` keyword is used to pause the execution of an `async` function until the promise is resolved."
+          },
+          {
+            "questionId": 8,
+            "question": "What does the following code output?\n\nasync function foo() { return 'Hello'; }\nfoo().then(console.log);",
+            "options": [
+              { "A": "Promise { <pending> }" },
+              { "B": "Hello" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The `async` function resolves to 'Hello', and `.then(console.log)` outputs 'Hello'."
+          },
+          {
+            "questionId": 9,
+            "question": "What will the following code output?\n\nasync function foo() { throw 'Error'; } foo().catch(console.log);",
+            "options": [
+              { "A": "Error" },
+              { "B": "Promise { <pending> }" },
+              { "C": "undefined" },
+              { "D": "Error: Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `async` function throws an error, and `.catch(console.log)` logs the error to the console."
+          },
+          {
+            "questionId": 10,
+            "question": "Which of the following is NOT a method for handling asynchronous JavaScript?",
+            "options": [
+              { "A": "Promise" },
+              { "B": "Callbacks" },
+              { "C": "Async/Await" },
+              { "D": "Sync/Wait" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "`Sync/Wait` is not a valid method for handling asynchronous JavaScript. The other options are commonly used."
+          },
+          {
+            "questionId": 11,
+            "question": "What does the `Promise.all()` method do?",
+            "options": [
+              { "A": "It returns a single promise that resolves when all input promises resolve." },
+              { "B": "It creates an array of promises." },
+              { "C": "It executes all promises in parallel." },
+              { "D": "Both A and C" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "`Promise.all()` takes an array of promises and returns a single promise that resolves when all the input promises resolve."
+          },
+          {
+            "questionId": 12,
+            "question": "What will the following code output?\n\nPromise.all([Promise.resolve(1), Promise.resolve(2)]).then(console.log);",
+            "options": [
+              { "A": "[1, 2]" },
+              { "B": "[Promise { <pending> }, Promise { <pending> }]" },
+              { "C": "1, 2" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`Promise.all()` resolves to an array of the resolved values of all promises."
+          },
+          {
+            "questionId": 13,
+            "question": "What will the following code output?\n\nPromise.all([Promise.resolve(1), Promise.reject('Error')]).then(console.log).catch(console.log);",
+            "options": [
+              { "A": "Error" },
+              { "B": "[1, 'Error']" },
+              { "C": "1" },
+              { "D": "Error: Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`Promise.all()` will reject as soon as one of the promises rejects, so the `.catch(console.log)` will log the error."
+          },
+          {
+            "questionId": 14,
+            "question": "Which method returns a promise that resolves after a certain time delay?",
+            "options": [
+              { "A": "setTimeout" },
+              { "B": "setInterval" },
+              { "C": "Promise.resolve" },
+              { "D": "Promise.delay" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "While `setTimeout` is not a promise method, it can be used with promises to resolve after a delay."
+          },
+          {
+            "questionId": 15,
+            "question": "Which of the following is true about the `async` function?",
+            "options": [
+              { "A": "An async function always returns a promise." },
+              { "B": "An async function is always synchronous." },
+              { "C": "An async function cannot handle errors." },
+              { "D": "An async function is just a normal function." }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "An `async` function always returns a promise, and `await` can be used inside it to handle asynchronous operations."
+          },
+          {
+            "questionId": 16,
+            "question": "What does the following code output?\n\nconst result = await Promise.resolve('Success'); console.log(result);",
+            "options": [
+              { "A": "Promise { <pending> }" },
+              { "B": "Success" },
+              { "C": "undefined" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`await` resolves the promise, and `result` holds the value 'Success', which is logged."
+          },
+          {
+            "questionId": 17,
+            "question": "Which method is used to handle successful resolution of multiple promises in parallel?",
+            "options": [
+              { "A": "Promise.all()" },
+              { "B": "Promise.race()" },
+              { "C": "Promise.allSettled()" },
+              { "D": "Promise.any()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`Promise.all()` waits for all promises to resolve and returns their results as an array."
+          },
+          {
+            "questionId": 18,
+            "question": "Which method is used to handle multiple promises, returning a result as soon as the first promise resolves?",
+            "options": [
+              { "A": "Promise.all()" },
+              { "B": "Promise.race()" },
+              { "C": "Promise.allSettled()" },
+              { "D": "Promise.any()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "`Promise.race()` returns as soon as the first promise resolves or rejects."
+          },
+          {
+            "questionId": 19,
+            "question": "What is the primary difference between `Promise.all()` and `Promise.race()`?",
+            "options": [
+              { "A": "`Promise.all()` resolves when all promises resolve; `Promise.race()` resolves when the first promise resolves." },
+              { "B": "`Promise.all()` resolves when the first promise resolves; `Promise.race()` resolves when all promises resolve." },
+              { "C": "`Promise.all()` is slower than `Promise.race()`." },
+              { "D": "`Promise.race()` is used to create a promise chain." }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "`Promise.all()` waits for all promises to resolve, whereas `Promise.race()` resolves when the first promise resolves."
+          },
+          {
+            "questionId": 20,
+            "question": "What does the `await` keyword do inside an `async` function?",
+            "options": [
+              { "A": "It pauses the execution of the function until the promise resolves." },
+              { "B": "It returns a promise." },
+              { "C": "It creates a promise." },
+              { "D": "It waits for the first promise to resolve." }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `await` keyword pauses the execution of an `async` function until the promise resolves."
           }
         ],
         "correctAnswersCount": 0,
