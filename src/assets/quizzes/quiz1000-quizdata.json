@@ -3,81 +3,862 @@
       {
         "section": "Java",
         "questions": [
-          {
-            "questionId": 1,
-            "question": "What is the default value of a boolean in Java?",
-            "options": [
-              { "A": "true" },
-              { "B": "false" },
-              { "C": "null" },
-              { "D": "undefined" }
-            ],
-            "selectedAnswer": "",
-            "correctAnswer": "B",
-            "explanation": "The default value of a boolean in Java is false."
-          },
-          {
-            "questionId": 2,
-            "question": "Which keyword is used to inherit a class in Java?",
-            "options": [
-              { "A": "extends" },
-              { "B": "implements" },
-              { "C": "inherits" },
-              { "D": "derives" }
-            ],
-            "selectedAnswer": "",
-            "correctAnswer": "A",
-            "explanation": "The \"extends\" keyword is used to inherit a class in Java."
-          },
-          {
-            "questionId": 3,
-            "question": "What is the size of an int in Java?",
-            "options": [
-              { "A": "8 bits" },
-              { "B": "16 bits" },
-              { "C": "32 bits" },
-              { "D": "64 bits" }
-            ],
-            "selectedAnswer": "",
-            "correctAnswer": "C",
-            "explanation": "The int in Java has a size of 32 bits (4 bytes)."
-          }
+            {
+                "questionId": 1,
+                "question": "What is the default value of a boolean in Java?",
+                "options": [
+                    { "A": "true" },
+                    { "B": "false" },
+                    { "C": "null" },
+                    { "D": "undefined" }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "B",
+                "explanation": "The default value of a boolean in Java is false."
+            },
+            {
+                "questionId": 2,
+                "question": "Which keyword is used to inherit a class in Java?",
+                "options": [
+                    { "A": "extends" },
+                    { "B": "implements" },
+                    { "C": "inherits" },
+                    { "D": "derives" }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "A",
+                "explanation": "The \"extends\" keyword is used to inherit a class in Java."
+            },
+            {
+                "questionId": 3,
+                "question": "What is the size of an int in Java?",
+                "options": [
+                    { "A": "8 bits" },
+                    { "B": "16 bits" },
+                    { "C": "32 bits" },
+                    { "D": "64 bits" }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "C",
+                "explanation": "The int in Java has a size of 32 bits (4 bytes)."
+            },
+            {
+                "questionId": 4,
+                "question": "Which of the following is a valid Java identifier?",
+                "options": [
+                    { "A": "1variable" },
+                    { "B": "$variable" },
+                    { "C": "#variable" },
+                    { "D": "variable-name" }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "B",
+                "explanation": "A valid Java identifier can start with a letter, underscore, or dollar sign, but not a number or special character like # or -."
+            },
+            {
+                "questionId": 5,
+                "question": "What does the `final` keyword mean when applied to a variable in Java?",
+                "options": [
+                    { "A": "The variable is read-only and cannot be modified after initialization." },
+                    { "B": "The variable is static and shared across all instances." },
+                    { "C": "The variable is garbage collected immediately." },
+                    { "D": "The variable is private to the class." }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "A",
+                "explanation": "The `final` keyword makes a variable read-only, meaning its value cannot be changed after it is initialized."
+            },
+            {
+                "questionId": 6,
+                "question": "Which method is used to compare two strings in Java?",
+                "options": [
+                    { "A": "equals()" },
+                    { "B": "compare()" },
+                    { "C": "==" },
+                    { "D": "compareToIgnoreCase()" }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "A",
+                "explanation": "The equals() method compares two strings for equality based on their content."
+            },
+            {
+                "questionId": 7,
+                "question": "Which data type is used to store a sequence of characters in Java?",
+                "options": [
+                    { "A": "char" },
+                    { "B": "String" },
+                    { "C": "Character" },
+                    { "D": "Text" }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "B",
+                "explanation": "The String data type is used to store a sequence of characters in Java."
+            },
+            {
+                "questionId": 8,
+                "question": "What is the purpose of the `this` keyword in Java?",
+                "options": [
+                    { "A": "To refer to the superclass of a class." },
+                    { "B": "To refer to the current object instance." },
+                    { "C": "To define static methods." },
+                    { "D": "To import other classes." }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "B",
+                "explanation": "The `this` keyword is used to refer to the current object instance in Java."
+            },
+            {
+                "questionId": 9,
+                "question": "Which operator is used to check equality in Java?",
+                "options": [
+                    { "A": "==" },
+                    { "B": "=" },
+                    { "C": "equals" },
+                    { "D": "<>" }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "A",
+                "explanation": "The `==` operator is used to check equality of primitive data types and object references in Java."
+            },
+            {
+                "questionId": 10,
+                "question": "What is the return type of the `hashCode()` method in Java?",
+                "options": [
+                    { "A": "String" },
+                    { "B": "int" },
+                    { "C": "Object" },
+                    { "D": "boolean" }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "B",
+                "explanation": "The `hashCode()` method in Java returns an integer value representing the hash code of the object."
+            },
+            {
+                "questionId": 11,
+                "question": "Which of the following is a valid way to declare an array in Java?",
+                "options": [
+                    { "A": "int[] arr = new int[10];" },
+                    { "B": "int arr[] = {1, 2, 3};" },
+                    { "C": "int arr[10] = {0};" },
+                    { "D": "All of the above" }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "A",
+                "explanation": "The correct way to declare and initialize an array in Java is either `int[] arr = new int[10];` or `int arr[] = {1, 2, 3};`, but `int arr[10] = {0};` is invalid."
+            },
+            {
+                "questionId": 12,
+                "question": "What is the purpose of the `super` keyword in Java?",
+                "options": [
+                    { "A": "To call the parent class constructor." },
+                    { "B": "To refer to the current class instance." },
+                    { "C": "To define a method." },
+                    { "D": "To return from a method." }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "A",
+                "explanation": "The `super` keyword is used to call the constructor or methods of the parent class."
+            },
+            {
+                "questionId": 13,
+                "question": "Which method is called when an object is garbage collected in Java?",
+                "options": [
+                    { "A": "destroy()" },
+                    { "B": "delete()" },
+                    { "C": "finalize()" },
+                    { "D": "clean()" }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "C",
+                "explanation": "The `finalize()` method is called by the garbage collector before an object is destroyed."
+            },
+            {
+                "questionId": 14,
+                "question": "What is the default access modifier in Java?",
+                "options": [
+                    { "A": "private" },
+                    { "B": "public" },
+                    { "C": "protected" },
+                    { "D": "package-private" }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "D",
+                "explanation": "The default access modifier in Java is package-private, meaning the member is accessible only within the same package."
+            },
+            {
+                "questionId": 15,
+                "question": "What is the use of the `instanceof` keyword in Java?",
+                "options": [
+                    { "A": "To check if an object is an instance of a specific class." },
+                    { "B": "To declare a variable." },
+                    { "C": "To define an object." },
+                    { "D": "To initialize an array." }
+                ],
+                "selectedAnswer": "",
+                "correctAnswer": "A",
+                "explanation": "The `instanceof` keyword checks whether an object is an instance of a specific class or subclass."
+            }
         ],
         "correctAnswersCount": 0,
         "wrongAnswersCount": 0,
         "unattemptedCount": 0,
         "sectionIndex": 0
-      },
+    },
       {
-        "section": "Collection API",
-        "questions": [
-          {
-            "questionId": 4,
-            "question": "Which interface does java.util.HashMap implement?",
-            "options": [
-              { "A": "List" },
-              { "B": "Set" },
-              { "C": "Map" },
-              { "D": "Queue" }
-            ],
-            "selectedAnswer": "",
-            "correctAnswer": "C",
-            "explanation": "HashMap implements the Map interface in Java."
-          },
-          {
-            "questionId": 5,
-            "question": "What is the time complexity of retrieving an element from a HashMap?",
-            "options": [
-              { "A": "O(1)" },
-              { "B": "O(n)" },
-              { "C": "O(log n)" },
-              { "D": "O(n^2)" }
-            ],
-            "selectedAnswer": "",
-            "correctAnswer": "A",
-            "explanation": "Retrieving an element from a HashMap has an average time complexity of O(1)."
-          }
-        ],
+        
+          "section": "Collection API",
+          "questions": [
+            {
+              "questionId": 1,
+              "question": "Which interface does java.util.ArrayList implement?",
+              "options": [
+                { "A": "List" },
+                { "B": "Set" },
+                { "C": "Map" },
+                { "D": "Queue" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "ArrayList implements the List interface in Java."
+            },
+            {
+              "questionId": 2,
+              "question": "Which of the following is true about HashSet?",
+              "options": [
+                { "A": "It allows duplicate elements" },
+                { "B": "It allows null values" },
+                { "C": "It maintains insertion order" },
+                { "D": "It implements the List interface" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "B",
+              "explanation": "HashSet allows null values but does not allow duplicate elements."
+            },
+            {
+              "questionId": 3,
+              "question": "Which method is used to add an element to a HashSet?",
+              "options": [
+                { "A": "add()" },
+                { "B": "put()" },
+                { "C": "insert()" },
+                { "D": "push()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "The add() method is used to add an element to a HashSet."
+            },
+            {
+              "questionId": 4,
+              "question": "Which interface does java.util.HashMap implement?",
+              "options": [
+                { "A": "List" },
+                { "B": "Set" },
+                { "C": "Map" },
+                { "D": "Queue" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "C",
+              "explanation": "HashMap implements the Map interface in Java."
+            },
+            {
+              "questionId": 5,
+              "question": "What is the time complexity of retrieving an element from a HashMap?",
+              "options": [
+                { "A": "O(1)" },
+                { "B": "O(n)" },
+                { "C": "O(log n)" },
+                { "D": "O(n^2)" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "Retrieving an element from a HashMap has an average time complexity of O(1)."
+            },
+            {
+              "questionId": 6,
+              "question": "Which method is used to remove an element from a List?",
+              "options": [
+                { "A": "delete()" },
+                { "B": "remove()" },
+                { "C": "discard()" },
+                { "D": "erase()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "B",
+              "explanation": "The remove() method is used to remove an element from a List."
+            },
+            {
+              "questionId": 7,
+              "question": "Which collection class allows only unique elements?",
+              "options": [
+                { "A": "ArrayList" },
+                { "B": "HashMap" },
+                { "C": "HashSet" },
+                { "D": "LinkedList" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "C",
+              "explanation": "HashSet allows only unique elements."
+            },
+            {
+              "questionId": 8,
+              "question": "Which of the following classes is part of the Collection API in Java?",
+              "options": [
+                { "A": "Thread" },
+                { "B": "ArrayList" },
+                { "C": "String" },
+                { "D": "Date" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "B",
+              "explanation": "ArrayList is a part of the Collection API in Java."
+            },
+            {
+              "questionId": 9,
+              "question": "Which of the following interfaces does LinkedList implement?",
+              "options": [
+                { "A": "List" },
+                { "B": "Queue" },
+                { "C": "Deque" },
+                { "D": "All of the above" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "D",
+              "explanation": "LinkedList implements List, Queue, and Deque interfaces."
+            },
+            {
+              "questionId": 10,
+              "question": "Which method returns the size of a collection in Java?",
+              "options": [
+                { "A": "getSize()" },
+                { "B": "size()" },
+                { "C": "length()" },
+                { "D": "count()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "B",
+              "explanation": "The size() method returns the number of elements in a collection."
+            },
+            {
+              "questionId": 11,
+              "question": "Which collection class is thread-safe?",
+              "options": [
+                { "A": "ArrayList" },
+                { "B": "HashSet" },
+                { "C": "Vector" },
+                { "D": "HashMap" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "C",
+              "explanation": "Vector is thread-safe because it is synchronized."
+            },
+            {
+              "questionId": 12,
+              "question": "Which of the following methods is used to check if a collection contains a specific element?",
+              "options": [
+                { "A": "has()" },
+                { "B": "contains()" },
+                { "C": "find()" },
+                { "D": "includes()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "B",
+              "explanation": "The contains() method is used to check if a collection contains a specific element."
+            },
+            {
+              "questionId": 13,
+              "question": "Which collection does not maintain the order of its elements?",
+              "options": [
+                { "A": "LinkedList" },
+                { "B": "ArrayList" },
+                { "C": "HashSet" },
+                { "D": "TreeSet" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "C",
+              "explanation": "HashSet does not guarantee any specific order of its elements."
+            },
+            {
+              "questionId": 14,
+              "question": "Which collection class allows null elements?",
+              "options": [
+                { "A": "HashSet" },
+                { "B": "TreeSet" },
+                { "C": "LinkedList" },
+                { "D": "PriorityQueue" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "HashSet allows null elements."
+            },
+            {
+              "questionId": 15,
+              "question": "Which method is used to check if a collection is empty?",
+              "options": [
+                { "A": "isEmpty()" },
+                { "B": "empty()" },
+                { "C": "isNull()" },
+                { "D": "size()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "The isEmpty() method is used to check if a collection is empty."
+            },
+            {
+              "questionId": 16,
+              "question": "What does the method 'clear()' do in a collection?",
+              "options": [
+                { "A": "Deletes the collection" },
+                { "B": "Removes all elements from the collection" },
+                { "C": "Clears all null values" },
+                { "D": "Reverses the collection" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "B",
+              "explanation": "The clear() method removes all elements from the collection."
+            },
+            {
+              "questionId": 17,
+              "question": "What is the default capacity of an ArrayList in Java?",
+              "options": [
+                { "A": "10" },
+                { "B": "5" },
+                { "C": "20" },
+                { "D": "None of the above" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "The default capacity of an ArrayList is 10."
+            },
+            {
+              "questionId": 18,
+              "question": "Which of the following is not a valid operation on a Map?",
+              "options": [
+                { "A": "put()" },
+                { "B": "get()" },
+                { "C": "remove()" },
+                { "D": "add()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "D",
+              "explanation": "Maps do not have an add() method. Instead, they use put() to add key-value pairs."
+            },
+            {
+              "questionId": 19,
+              "question": "Which of the following is true about TreeSet?",
+              "options": [
+                { "A": "It stores elements in natural order" },
+                { "B": "It allows duplicate elements" },
+                { "C": "It does not allow null elements" },
+                { "D": "It implements the List interface" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "TreeSet stores elements in their natural order or according to a comparator."
+            },
+            {
+              "questionId": 20,
+              "question": "What is the time complexity of adding an element to a HashMap?",
+              "options": [
+                { "A": "O(1)" },
+                { "B": "O(n)" },
+                { "C": "O(log n)" },
+                { "D": "O(n^2)" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "Adding an element to a HashMap has an average time complexity of O(1)."
+            },
+            {
+              "questionId": 21,
+              "question": "Which of the following classes is used to represent an ordered collection?",
+              "options": [
+                { "A": "HashMap" },
+                { "B": "LinkedHashMap" },
+                { "C": "TreeMap" },
+                { "D": "HashSet" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "B",
+              "explanation": "LinkedHashMap maintains the insertion order of its elements."
+            },
+            {
+              "questionId": 22,
+              "question": "What is the time complexity of retrieving an element from a HashSet?",
+              "options": [
+                { "A": "O(1)" },
+                { "B": "O(n)" },
+                { "C": "O(log n)" },
+                { "D": "O(n^2)" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "Retrieving an element from a HashSet has an average time complexity of O(1)."
+            },
+            {
+              "questionId": 23,
+              "question": "Which interface does java.util.TreeSet implement?",
+              "options": [
+                { "A": "Set" },
+                { "B": "List" },
+                { "C": "Map" },
+                { "D": "Queue" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "TreeSet implements the Set interface."
+            },
+            {
+              "questionId": 24,
+              "question": "Which of the following collections allows duplicates?",
+              "options": [
+                { "A": "HashSet" },
+                { "B": "TreeSet" },
+                { "C": "LinkedList" },
+                { "D": "EnumSet" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "C",
+              "explanation": "LinkedList allows duplicates, whereas HashSet and TreeSet do not."
+            },
+            {
+              "questionId": 25,
+              "question": "Which method is used to check if an element exists in a List?",
+              "options": [
+                { "A": "contains()" },
+                { "B": "exists()" },
+                { "C": "find()" },
+                { "D": "search()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "The contains() method is used to check if an element exists in a List."
+            },
+            {
+              "questionId": 26,
+              "question": "What is the purpose of the 'toArray()' method in Java collections?",
+              "options": [
+                { "A": "To convert a collection to an array" },
+                { "B": "To return an empty array" },
+                { "C": "To sort the collection" },
+                { "D": "To add an element to the collection" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "The toArray() method is used to convert a collection to an array."
+            },
+            {
+              "questionId": 27,
+              "question": "Which collection class is best for fast access by index?",
+              "options": [
+                { "A": "LinkedList" },
+                { "B": "ArrayList" },
+                { "C": "HashSet" },
+                { "D": "TreeSet" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "B",
+              "explanation": "ArrayList provides fast access to elements by index."
+            },
+            {
+              "questionId": 28,
+              "question": "Which method in the Collection interface returns the number of elements?",
+              "options": [
+                { "A": "getCount()" },
+                { "B": "size()" },
+                { "C": "length()" },
+                { "D": "numberOfElements()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "B",
+              "explanation": "The size() method returns the number of elements in a collection."
+            },
+            {
+              "questionId": 29,
+              "question": "Which of the following collections allows ordering of its elements based on a comparator?",
+              "options": [
+                { "A": "TreeSet" },
+                { "B": "HashMap" },
+                { "C": "LinkedHashMap" },
+                { "D": "PriorityQueue" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "D",
+              "explanation": "PriorityQueue allows ordering based on a comparator."
+            },
+            {
+              "questionId": 30,
+              "question": "Which method is used to sort a List in Java?",
+              "options": [
+                { "A": "sort()" },
+                { "B": "order()" },
+                { "C": "arrange()" },
+                { "D": "orderBy()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "The sort() method is used to sort a List in Java."
+            },
+            {
+              "questionId": 31,
+              "question": "What is the purpose of the 'iterator()' method?",
+              "options": [
+                { "A": "To iterate over the elements of a collection" },
+                { "B": "To add an element to a collection" },
+                { "C": "To get the size of a collection" },
+                { "D": "To sort the collection" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "The iterator() method is used to iterate over the elements of a collection."
+            },
+            {
+              "questionId": 32,
+              "question": "Which of the following classes implements the Queue interface?",
+              "options": [
+                { "A": "ArrayList" },
+                { "B": "LinkedList" },
+                { "C": "HashSet" },
+                { "D": "PriorityQueue" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "D",
+              "explanation": "PriorityQueue implements the Queue interface."
+            },
+            {
+              "questionId": 33,
+              "question": "Which of the following methods is used to remove and return the first element in a Queue?",
+              "options": [
+                { "A": "poll()" },
+                { "B": "peek()" },
+                { "C": "pop()" },
+                { "D": "remove()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "The poll() method is used to remove and return the first element in a Queue."
+            },
+            {
+              "questionId": 34,
+              "question": "Which collection is best for searching elements quickly?",
+              "options": [
+                { "A": "LinkedList" },
+                { "B": "ArrayList" },
+                { "C": "HashSet" },
+                { "D": "HashMap" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "D",
+              "explanation": "HashMap provides the fastest search time for elements using keys."
+            },
+            {
+              "questionId": 35,
+              "question": "Which method is used to combine two collections in Java?",
+              "options": [
+                { "A": "combine()" },
+                { "B": "merge()" },
+                { "C": "addAll()" },
+                { "D": "concatenate()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "C",
+              "explanation": "The addAll() method is used to combine two collections in Java."
+            },
+            {
+              "questionId": 36,
+              "question": "Which of the following is true about a LinkedList?",
+              "options": [
+                { "A": "It is faster for insertions and deletions" },
+                { "B": "It allows random access by index" },
+                { "C": "It uses a fixed-size array internally" },
+                { "D": "It is slower for inserting elements" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "LinkedList is faster for insertions and deletions compared to an ArrayList."
+            },
+            {
+              "questionId": 37,
+              "question": "Which collection class implements the Deque interface?",
+              "options": [
+                { "A": "ArrayList" },
+                { "B": "LinkedList" },
+                { "C": "HashSet" },
+                { "D": "PriorityQueue" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "B",
+              "explanation": "LinkedList implements the Deque interface."
+            },
+            {
+              "questionId": 38,
+              "question": "Which method is used to remove an element from a List?",
+              "options": [
+                { "A": "remove()" },
+                { "B": "delete()" },
+                { "C": "discard()" },
+                { "D": "clear()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "The remove() method is used to remove an element from a List."
+            },
+            {
+              "questionId": 39,
+              "question": "Which of the following collections is thread-safe?",
+              "options": [
+                { "A": "HashMap" },
+                { "B": "ConcurrentHashMap" },
+                { "C": "TreeSet" },
+                { "D": "ArrayList" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "B",
+              "explanation": "ConcurrentHashMap is thread-safe."
+            },
+            {
+              "questionId": 40,
+              "question": "Which collection class represents a thread-safe set?",
+              "options": [
+                { "A": "CopyOnWriteArraySet" },
+                { "B": "HashSet" },
+                { "C": "TreeSet" },
+                { "D": "LinkedHashSet" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "CopyOnWriteArraySet represents a thread-safe set."
+            },
+            {
+              "questionId": 41,
+              "question": "What is the time complexity of inserting an element into a HashSet?",
+              "options": [
+                { "A": "O(1)" },
+                { "B": "O(n)" },
+                { "C": "O(log n)" },
+                { "D": "O(n^2)" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "Inserting an element into a HashSet has an average time complexity of O(1)."
+            },
+            {
+              "questionId": 42,
+              "question": "Which collection class is based on a balanced binary tree?",
+              "options": [
+                { "A": "TreeMap" },
+                { "B": "HashMap" },
+                { "C": "LinkedHashMap" },
+                { "D": "HashSet" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "TreeMap is based on a balanced binary tree."
+            },
+            {
+              "questionId": 43,
+              "question": "Which method is used to return the last element of a Deque?",
+              "options": [
+                { "A": "peekLast()" },
+                { "B": "peek()" },
+                { "C": "peekFirst()" },
+                { "D": "pollLast()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "The peekLast() method is used to return the last element of a Deque."
+            },
+            {
+              "questionId": 44,
+              "question": "Which method is used to convert a List to a set?",
+              "options": [
+                { "A": "toSet()" },
+                { "B": "set()" },
+                { "C": "addAll()" },
+                { "D": "stream().collect(Collectors.toSet())" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "D",
+              "explanation": "The stream().collect(Collectors.toSet()) method is used to convert a List to a set."
+            },
+            {
+              "questionId": 45,
+              "question": "Which method is used to get the first element of a List?",
+              "options": [
+                { "A": "peek()" },
+                { "B": "get(0)" },
+                { "C": "head()" },
+                { "D": "first()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "B",
+              "explanation": "The get(0) method is used to get the first element of a List."
+            },
+            {
+              "questionId": 46,
+              "question": "Which collection class implements the SortedSet interface?",
+              "options": [
+                { "A": "TreeSet" },
+                { "B": "HashSet" },
+                { "C": "LinkedHashSet" },
+                { "D": "CopyOnWriteArraySet" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "TreeSet implements the SortedSet interface."
+            },
+            {
+              "questionId": 47,
+              "question": "Which of the following collections supports null elements?",
+              "options": [
+                { "A": "HashSet" },
+                { "B": "TreeSet" },
+                { "C": "LinkedHashMap" },
+                { "D": "EnumSet" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "HashSet supports null elements, while TreeSet does not."
+            },
+            {
+              "questionId": 48,
+              "question": "Which method is used to add an element to a List?",
+              "options": [
+                { "A": "add()" },
+                { "B": "insert()" },
+                { "C": "append()" },
+                { "D": "push()" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "The add() method is used to add an element to a List."
+            },
+            {
+              "questionId": 49,
+              "question": "Which collection does not allow duplicates?",
+              "options": [
+                { "A": "List" },
+                { "B": "Set" },
+                { "C": "Queue" },
+                { "D": "Deque" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "B",
+              "explanation": "Set does not allow duplicates, while List does."
+            },
+            {
+              "questionId": 50,
+              "question": "Which of the following collections implements the List interface?",
+              "options": [
+                { "A": "LinkedList" },
+                { "B": "HashSet" },
+                { "C": "TreeSet" },
+                { "D": "PriorityQueue" }
+              ],
+              "selectedAnswer": "",
+              "correctAnswer": "A",
+              "explanation": "LinkedList implements the List interface."
+            }
+          ],
         "correctAnswersCount": 0,
         "wrongAnswersCount": 0,
         "unattemptedCount": 0,
@@ -111,7 +892,2011 @@
             "selectedAnswer": "",
             "correctAnswer": "A",
             "explanation": "Lambda expressions are anonymous functions in Java."
+          },
+          {
+            "questionId": 66,
+            "question": "What is the purpose of the forEach() method in Stream API?",
+            "options": [
+              { "A": "To perform an action for each element in the stream" },
+              { "B": "To filter elements in the stream" },
+              { "C": "To transform elements in the stream" },
+              { "D": "To sort elements in the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The forEach() method is used to perform a specific action for each element in the stream."
+          },
+          {
+            "questionId": 67,
+            "question": "Which terminal operation in Stream API is used to collect the elements into a collection?",
+            "options": [
+              { "A": "collect()" },
+              { "B": "gather()" },
+              { "C": "accumulate()" },
+              { "D": "combine()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The collect() method is a terminal operation that collects the elements of a stream into a collection."
+          },
+          {
+            "questionId": 68,
+            "question": "What does the map() method in Stream API do?",
+            "options": [
+              { "A": "Transforms each element in the stream" },
+              { "B": "Filters elements based on a condition" },
+              { "C": "Combines elements in the stream" },
+              { "D": "Finds duplicate elements in the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The map() method transforms each element in the stream using the provided function."
+          },
+          {
+            "questionId": 69,
+            "question": "What is the purpose of the reduce() method in Stream API?",
+            "options": [
+              { "A": "To combine elements into a single result" },
+              { "B": "To filter elements in the stream" },
+              { "C": "To transform elements in the stream" },
+              { "D": "To sort elements in the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The reduce() method is used to combine elements of a stream into a single result using an accumulator function."
+          },
+          {
+            "questionId": 70,
+            "question": "What is the purpose of the distinct() method in Stream API?",
+            "options": [
+              { "A": "To remove duplicate elements from the stream" },
+              { "B": "To sort elements in the stream" },
+              { "C": "To transform elements in the stream" },
+              { "D": "To combine elements into a single result" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The distinct() method removes duplicate elements from the stream, ensuring uniqueness."
+          },
+          {
+            "questionId": 71,
+            "question": "Which method in Stream API can limit the number of elements processed?",
+            "options": [
+              { "A": "limit()" },
+              { "B": "reduce()" },
+              { "C": "collect()" },
+              { "D": "filter()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The limit() method is used to limit the number of elements processed in a stream."
+          },
+          {
+            "questionId": 72,
+            "question": "What is the function of the skip() method in Stream API?",
+            "options": [
+              { "A": "Skips a specified number of elements in the stream" },
+              { "B": "Filters elements in the stream" },
+              { "C": "Combines elements into a single result" },
+              { "D": "Sorts elements in the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The skip() method skips a specified number of elements in the stream and processes the remaining elements."
+          },
+          {
+            "questionId": 73,
+            "question": "Which Java 8 feature allows you to define a single abstract method using a lambda expression?",
+            "options": [
+              { "A": "Functional Interface" },
+              { "B": "Default Methods" },
+              { "C": "Stream API" },
+              { "D": "Optional" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Functional interfaces allow lambda expressions to define a single abstract method."
+          },
+          {
+            "questionId": 74,
+            "question": "Which functional interface is used for representing a supplier of results?",
+            "options": [
+              { "A": "Supplier" },
+              { "B": "Function" },
+              { "C": "Consumer" },
+              { "D": "Predicate" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Supplier functional interface represents a supplier of results and does not take any input."
+          },
+          {
+            "questionId": 6,
+            "question": "Which feature was introduced in Java 8?",
+            "options": [
+              { "A": "Streams API" },
+              { "B": "Generics" },
+              { "C": "Annotations" },
+              { "D": "Reflection" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Streams API was introduced in Java 8 to facilitate functional programming."
+          },
+          {
+            "questionId": 7,
+            "question": "What is a lambda expression in Java?",
+            "options": [
+              { "A": "An anonymous function" },
+              { "B": "A class definition" },
+              { "C": "A new type of method" },
+              { "D": "A package" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Lambda expressions are anonymous functions in Java."
+          },
+          {
+            "questionId": 8,
+            "question": "Which functional interface is used for defining a single abstract method?",
+            "options": [
+              { "A": "FunctionalInterface" },
+              { "B": "Serializable" },
+              { "C": "Cloneable" },
+              { "D": "Runnable" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The @FunctionalInterface annotation indicates an interface with a single abstract method."
+          },
+          {
+            "questionId": 9,
+            "question": "Which method in the Stream API is used to filter elements?",
+            "options": [
+              { "A": "filter()" },
+              { "B": "map()" },
+              { "C": "reduce()" },
+              { "D": "forEach()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The filter() method is used to filter elements in a stream."
+          },
+          {
+            "questionId": 10,
+            "question": "What is the purpose of the Optional class in Java 8?",
+            "options": [
+              { "A": "To handle null values more gracefully" },
+              { "B": "To improve performance" },
+              { "C": "To add new collections" },
+              { "D": "To enhance multithreading" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Optional class in Java 8 helps to handle null values more gracefully."
+          },
+          {
+            "questionId": 11,
+            "question": "Which method in the Optional class is used to retrieve the value if present?",
+            "options": [
+              { "A": "get()" },
+              { "B": "orElse()" },
+              { "C": "orElseGet()" },
+              { "D": "isPresent()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The get() method retrieves the value if present, throwing an exception if not."
+          },
+          {
+            "questionId": 12,
+            "question": "What does the method forEach() in the Stream API do?",
+            "options": [
+              { "A": "Applies an action to each element of the stream" },
+              { "B": "Filters elements" },
+              { "C": "Combines stream elements" },
+              { "D": "Sorts stream elements" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The forEach() method applies an action to each element of the stream."
+          },
+          {
+            "questionId": 13,
+            "question": "Which new package was introduced in Java 8 for date and time?",
+            "options": [
+              { "A": "java.time" },
+              { "B": "java.util.date" },
+              { "C": "java.calendar" },
+              { "D": "java.time.format" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The java.time package was introduced in Java 8 for date and time."
+          },
+          {
+            "questionId": 14,
+            "question": "What is the default method in Java 8?",
+            "options": [
+              { "A": "A method in an interface with an implementation" },
+              { "B": "A method that must be overridden" },
+              { "C": "A method that is abstract" },
+              { "D": "A method that is final" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Default methods in Java 8 allow interfaces to have methods with implementations."
+          },
+          {
+            "questionId": 15,
+            "question": "Which method in the Collectors class is used to group elements?",
+            "options": [
+              { "A": "groupingBy()" },
+              { "B": "partitioningBy()" },
+              { "C": "toList()" },
+              { "D": "toMap()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The groupingBy() method in the Collectors class is used to group elements."
+          },
+          {
+            "questionId": 16,
+            "question": "What is the functional interface for a predicate?",
+            "options": [
+              { "A": "Predicate<T>" },
+              { "B": "Consumer<T>" },
+              { "C": "Supplier<T>" },
+              { "D": "Function<T, R>" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Predicate<T> is a functional interface that takes one argument and returns a boolean."
+          },
+          {
+            "questionId": 17,
+            "question": "Which method in Stream sorts the elements?",
+            "options": [
+              { "A": "sorted()" },
+              { "B": "map()" },
+              { "C": "filter()" },
+              { "D": "collect()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The sorted() method is used to sort the elements in a stream."
+          },
+          {
+            "questionId": 18,
+            "question": "Which of the following is NOT a functional interface?",
+            "options": [
+              { "A": "Runnable" },
+              { "B": "Comparator" },
+              { "C": "Serializable" },
+              { "D": "Callable" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Serializable is not a functional interface as it has no abstract methods."
+          },
+          {
+            "questionId": 19,
+            "question": "What does the map() method in Stream API do?",
+            "options": [
+              { "A": "Transforms elements" },
+              { "B": "Filters elements" },
+              { "C": "Groups elements" },
+              { "D": "Iterates elements" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The map() method transforms each element of the stream."
+          },
+          {
+            "questionId": 20,
+            "question": "What is the purpose of the flatMap() method in Stream?",
+            "options": [
+              { "A": "Flattens nested structures" },
+              { "B": "Filters elements" },
+              { "C": "Sorts elements" },
+              { "D": "Collects elements" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The flatMap() method is used to flatten nested structures in a stream."
+          },
+          {
+            "questionId": 21,
+            "question": "Which method in Stream API is used to find the first element?",
+            "options": [
+              { "A": "findFirst()" },
+              { "B": "findAny()" },
+              { "C": "peek()" },
+              { "D": "reduce()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The findFirst() method retrieves the first element of the stream."
+          },
+          {
+            "questionId": 22,
+            "question": "What is the purpose of the peek() method in Stream?",
+            "options": [
+              { "A": "To perform an action on each element as it is processed" },
+              { "B": "To terminate the stream" },
+              { "C": "To filter elements" },
+              { "D": "To map elements" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The peek() method performs an action on each element as it is processed."
+          },
+          {
+            "questionId": 23,
+            "question": "What does the reduce() method in Stream API do?",
+            "options": [
+              { "A": "Aggregates elements into a single result" },
+              { "B": "Filters elements" },
+              { "C": "Transforms elements" },
+              { "D": "Sorts elements" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The reduce() method is used to aggregate elements into a single result."
+          },
+          {
+            "questionId": 24,
+            "question": "What is the main advantage of using Optional in Java 8?",
+            "options": [
+              { "A": "Avoids null pointer exceptions" },
+              { "B": "Improves performance" },
+              { "C": "Adds new methods to Object class" },
+              { "D": "Replaces primitive data types" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Optional helps to avoid null pointer exceptions by providing a container for potentially null values."
+          },
+          {
+            "questionId": 25,
+            "question": "Which Stream operation is terminal?",
+            "options": [
+              { "A": "forEach()" },
+              { "B": "map()" },
+              { "C": "filter()" },
+              { "D": "flatMap()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The forEach() method is a terminal operation in Stream API."
+          },
+          {
+            "questionId": 26,
+            "question": "What is the difference between map() and flatMap() in Stream API?",
+            "options": [
+              { "A": "map() transforms elements; flatMap() flattens streams" },
+              { "B": "map() filters elements; flatMap() transforms elements" },
+              { "C": "map() terminates the stream; flatMap() aggregates elements" },
+              { "D": "There is no difference" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "map() transforms elements, while flatMap() flattens nested structures into a single stream."
+          },
+          {
+            "questionId": 27,
+            "question": "Which functional interface does the lambda expression `(x, y) -> x + y` implement?",
+            "options": [
+              { "A": "BiFunction" },
+              { "B": "Function" },
+              { "C": "Consumer" },
+              { "D": "Supplier" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "A lambda expression like `(x, y) -> x + y` implements the BiFunction interface."
+          },
+          {
+            "questionId": 28,
+            "question": "What is the purpose of the Collectors.toList() method?",
+            "options": [
+              { "A": "Collects elements into a List" },
+              { "B": "Filters elements" },
+              { "C": "Maps elements" },
+              { "D": "Sorts elements" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Collectors.toList() is used to collect elements into a List."
+          },
+          {
+            "questionId": 29,
+            "question": "Which new date/time class in Java 8 represents a date without a time zone?",
+            "options": [
+              { "A": "LocalDate" },
+              { "B": "LocalDateTime" },
+              { "C": "ZonedDateTime" },
+              { "D": "OffsetDateTime" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "LocalDate represents a date without time zone information."
+          },
+          {
+            "questionId": 30,
+            "question": "What is the default method in an interface?",
+            "options": [
+              { "A": "A method with a default implementation" },
+              { "B": "An abstract method" },
+              { "C": "A static method" },
+              { "D": "A private method" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "A default method is a method in an interface with a default implementation."
+          },
+          {
+            "questionId": 31,
+            "question": "Which Java 8 class is used to model a value that may or may not be present?",
+            "options": [
+              { "A": "Optional" },
+              { "B": "List" },
+              { "C": "Map" },
+              { "D": "Set" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Optional class is used to model a value that may or may not be present."
+          },
+          {
+            "questionId": 32,
+            "question": "What does the Stream.collect() method do?",
+            "options": [
+              { "A": "Performs a mutable reduction" },
+              { "B": "Filters elements" },
+              { "C": "Sorts elements" },
+              { "D": "Terminates the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Stream.collect() method performs a mutable reduction operation."
+          },
+          {
+            "questionId": 33,
+            "question": "Which annotation is used to define a functional interface in Java 8?",
+            "options": [
+              { "A": "@FunctionalInterface" },
+              { "B": "@Override" },
+              { "C": "@Inherited" },
+              { "D": "@Deprecated" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "@FunctionalInterface is used to declare a functional interface."
+          },
+          {
+            "questionId": 34,
+            "question": "Which of the following is a terminal operation in Stream API?",
+            "options": [
+              { "A": "collect()" },
+              { "B": "filter()" },
+              { "C": "map()" },
+              { "D": "flatMap()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "collect() is a terminal operation that reduces the stream to a collection or value."
+          },
+          {
+            "questionId": 35,
+            "question": "What is the purpose of the Supplier functional interface?",
+            "options": [
+              { "A": "Provides results without input" },
+              { "B": "Consumes inputs without returning results" },
+              { "C": "Processes two inputs and returns a result" },
+              { "D": "Applies a function to inputs and returns results" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Supplier functional interface supplies results without requiring input."
+          },
+          {
+            "questionId": 36,
+            "question": "Which method in the Stream API is used to filter elements based on a condition?",
+            "options": [
+              { "A": "filter()" },
+              { "B": "map()" },
+              { "C": "reduce()" },
+              { "D": "collect()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The filter() method is used to select elements that satisfy a given condition."
+          },
+          {
+            "questionId": 37,
+            "question": "What is the use of the Function functional interface in Java 8?",
+            "options": [
+              { "A": "Applies a function to input and returns a result" },
+              { "B": "Performs an action without returning results" },
+              { "C": "Processes two inputs and returns a result" },
+              { "D": "Supplies results without inputs" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Function interface is used to apply a function to input and return a result."
+          },
+          {
+            "questionId": 38,
+            "question": "Which Java 8 feature allows processing collections in a functional style?",
+            "options": [
+              { "A": "Streams" },
+              { "B": "Reflection" },
+              { "C": "Annotations" },
+              { "D": "Generics" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Streams allow processing collections in a functional style."
+          },
+          {
+            "questionId": 39,
+            "question": "What does the Optional.ifPresent() method do?",
+            "options": [
+              { "A": "Executes an action if a value is present" },
+              { "B": "Returns the value if present" },
+              { "C": "Throws an exception if no value is present" },
+              { "D": "Checks if the value is null" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Optional.ifPresent() executes an action if a value is present."
+          },
+          {
+            "questionId": 40,
+            "question": "What is the purpose of the Predicate functional interface?",
+            "options": [
+              { "A": "Tests a condition and returns a boolean" },
+              { "B": "Applies a function to input and returns a result" },
+              { "C": "Processes two inputs and returns a result" },
+              { "D": "Supplies results without inputs" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Predicate interface is used to test a condition and return a boolean result."
+          },
+          {
+            "questionId": 41,
+            "question": "Which method in the Stream API is used to perform aggregation operations like sum or average?",
+            "options": [
+              { "A": "reduce()" },
+              { "B": "map()" },
+              { "C": "filter()" },
+              { "D": "collect()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The reduce() method is used for aggregation operations such as sum or average."
+          },
+          {
+            "questionId": 42,
+            "question": "Which Java 8 feature provides a way to execute code asynchronously?",
+            "options": [
+              { "A": "CompletableFuture" },
+              { "B": "Streams" },
+              { "C": "Optional" },
+              { "D": "Collectors" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "CompletableFuture is used to execute code asynchronously."
+          },
+          {
+            "questionId": 43,
+            "question": "What does the Optional.orElse() method do?",
+            "options": [
+              { "A": "Returns the value if present; otherwise, returns a default value" },
+              { "B": "Executes an action if a value is present" },
+              { "C": "Throws an exception if no value is present" },
+              { "D": "Maps the value to another value" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Optional.orElse() returns the value if present; otherwise, it returns a default value."
+          },
+          {
+            "questionId": 44,
+            "question": "Which method in the Stream API is used to sort elements?",
+            "options": [
+              { "A": "sorted()" },
+              { "B": "filter()" },
+              { "C": "map()" },
+              { "D": "collect()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The sorted() method is used to sort elements in the stream."
+          },
+          {
+            "questionId": 45,
+            "question": "Which new class in Java 8 provides a clock for obtaining the current time?",
+            "options": [
+              { "A": "Clock" },
+              { "B": "Instant" },
+              { "C": "Duration" },
+              { "D": "Period" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Clock class provides a clock for obtaining the current time."
+          },
+          {
+            "questionId": 46,
+            "question": "What is the purpose of the map() method in the Stream API?",
+            "options": [
+              { "A": "Transforms each element in a stream" },
+              { "B": "Filters elements in a stream" },
+              { "C": "Combines elements in a stream" },
+              { "D": "Sorts elements in a stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The map() method transforms each element in a stream using a provided function."
+          },
+          {
+            "questionId": 47,
+            "question": "Which functional interface is used to supply values in Java 8?",
+            "options": [
+              { "A": "Supplier" },
+              { "B": "Consumer" },
+              { "C": "Function" },
+              { "D": "Predicate" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Supplier functional interface is used to supply values without any input."
+          },
+          {
+            "questionId": 48,
+            "question": "What does the forEach() method in Stream API do?",
+            "options": [
+              { "A": "Iterates over each element in a stream and performs an action" },
+              { "B": "Filters elements in a stream" },
+              { "C": "Combines elements in a stream" },
+              { "D": "Transforms elements in a stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The forEach() method iterates over each element in a stream and performs a specified action."
+          },
+          {
+            "questionId": 49,
+            "question": "Which annotation is used to define a default method in an interface?",
+            "options": [
+              { "A": "@Override" },
+              { "B": "@FunctionalInterface" },
+              { "C": "@Default" },
+              { "D": "No annotation is required" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "Default methods in interfaces do not require any annotation."
+          },
+          {
+            "questionId": 50,
+            "question": "Which class in Java 8 represents an immutable date-time object?",
+            "options": [
+              { "A": "LocalDateTime" },
+              { "B": "Date" },
+              { "C": "Calendar" },
+              { "D": "SimpleDateFormat" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The LocalDateTime class represents an immutable date-time object without a time zone."
+          },
+          {
+            "questionId": 51,
+            "question": "What is the key benefit of using the Collectors.toList() method in the Stream API?",
+            "options": [
+              { "A": "Converts the elements of a stream into a List" },
+              { "B": "Filters elements in a stream" },
+              { "C": "Transforms elements in a stream" },
+              { "D": "Performs aggregation on elements" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Collectors.toList() method is used to collect the elements of a stream into a List."
+          },
+          {
+            "questionId": 52,
+            "question": "What does the flatMap() method in the Stream API do?",
+            "options": [
+              { "A": "Flattens a stream of streams into a single stream" },
+              { "B": "Transforms each element in a stream" },
+              { "C": "Filters elements in a stream" },
+              { "D": "Combines elements in a stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The flatMap() method is used to flatten a stream of streams into a single stream."
+          },
+          {
+            "questionId": 53,
+            "question": "Which new feature in Java 8 provides a new API for manipulating dates and times?",
+            "options": [
+              { "A": "java.time package" },
+              { "B": "java.util package" },
+              { "C": "java.text package" },
+              { "D": "java.sql package" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The java.time package introduced in Java 8 provides a new API for dates and times."
+          },
+          {
+            "questionId": 54,
+            "question": "Which method in the Stream API performs a reduction operation on elements?",
+            "options": [
+              { "A": "reduce()" },
+              { "B": "map()" },
+              { "C": "filter()" },
+              { "D": "collect()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The reduce() method is used to perform a reduction operation on elements in a stream."
+          },
+          {
+            "questionId": 55,
+            "question": "Which functional interface is used to consume a value without returning anything?",
+            "options": [
+              { "A": "Consumer" },
+              { "B": "Supplier" },
+              { "C": "Function" },
+              { "D": "Predicate" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Consumer functional interface is used to consume a value and does not return anything."
+          },
+          {
+            "questionId": 56,
+            "question": "Which functional interface in Java 8 accepts two arguments and produces a result?",
+            "options": [
+              { "A": "BiFunction" },
+              { "B": "Function" },
+              { "C": "Consumer" },
+              { "D": "Predicate" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "BiFunction is a functional interface that accepts two arguments and produces a result."
+          },
+          {
+            "questionId": 57,
+            "question": "What does the Optional class in Java 8 provide?",
+            "options": [
+              { "A": "A container object for null safety" },
+              { "B": "A way to store optional values in a list" },
+              { "C": "An alternative to primitive types" },
+              { "D": "A method to sort streams" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Optional class provides a container for optional values to prevent NullPointerExceptions."
+          },
+          {
+            "questionId": 58,
+            "question": "Which method in Optional is used to provide a default value when the value is absent?",
+            "options": [
+              { "A": "orElse()" },
+              { "B": "get()" },
+              { "C": "isPresent()" },
+              { "D": "filter()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The orElse() method provides a default value if the value is absent in an Optional."
+          },
+          {
+            "questionId": 59,
+            "question": "What is the purpose of the filter() method in Stream API?",
+            "options": [
+              { "A": "Filters elements based on a condition" },
+              { "B": "Transforms each element in a stream" },
+              { "C": "Combines elements in a stream" },
+              { "D": "Sorts elements in a stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The filter() method filters elements in a stream based on a given condition."
+          },
+          {
+            "questionId": 60,
+            "question": "Which Stream method returns the count of elements?",
+            "options": [
+              { "A": "count()" },
+              { "B": "size()" },
+              { "C": "sum()" },
+              { "D": "reduce()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The count() method returns the number of elements in a stream."
+          },
+          {
+            "questionId": 61,
+            "question": "What is the default method introduced in interfaces in Java 8?",
+            "options": [
+              { "A": "A method with a default implementation in an interface" },
+              { "B": "A method that must be overridden" },
+              { "C": "A method that is abstract by default" },
+              { "D": "A private method in an interface" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "A default method in Java 8 is a method in an interface with a default implementation."
+          },
+          {
+            "questionId": 62,
+            "question": "What does the method findFirst() do in a stream?",
+            "options": [
+              { "A": "Returns the first element in a stream" },
+              { "B": "Returns the smallest element in a stream" },
+              { "C": "Finds a specific element in a stream" },
+              { "D": "Returns the first duplicate element in a stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The findFirst() method returns the first element in a stream, if present."
+          },
+          {
+            "questionId": 63,
+            "question": "What is a major advantage of using functional interfaces in Java 8?",
+            "options": [
+              { "A": "They enable lambda expressions and method references" },
+              { "B": "They provide runtime performance improvements" },
+              { "C": "They eliminate the need for inheritance" },
+              { "D": "They support multithreading by default" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Functional interfaces allow the use of lambda expressions and method references, simplifying functional programming."
+          },
+          {
+            "questionId": 64,
+            "question": "What does the method peek() in Stream API do?",
+            "options": [
+              { "A": "Performs an action for each element without modifying the stream" },
+              { "B": "Filters elements based on a condition" },
+              { "C": "Transforms elements in a stream" },
+              { "D": "Combines elements in a stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The peek() method allows performing an action for each element without modifying the stream."
+          },
+          {
+            "questionId": 65,
+            "question": "Which method in Stream API is used to sort elements?",
+            "options": [
+              { "A": "sorted()" },
+              { "B": "order()" },
+              { "C": "compare()" },
+              { "D": "arrange()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The sorted() method in the Stream API is used to sort elements in natural or custom order."
+          },
+          {
+            "questionId": 66,
+            "question": "What is the purpose of the forEach() method in Stream API?",
+            "options": [
+              { "A": "To perform an action for each element in the stream" },
+              { "B": "To filter elements in the stream" },
+              { "C": "To transform elements in the stream" },
+              { "D": "To sort elements in the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The forEach() method is used to perform a specific action for each element in the stream."
+          },
+          {
+            "questionId": 67,
+            "question": "Which terminal operation in Stream API is used to collect the elements into a collection?",
+            "options": [
+              { "A": "collect()" },
+              { "B": "gather()" },
+              { "C": "accumulate()" },
+              { "D": "combine()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The collect() method is a terminal operation that collects the elements of a stream into a collection."
+          },
+          {
+            "questionId": 68,
+            "question": "What does the map() method in Stream API do?",
+            "options": [
+              { "A": "Transforms each element in the stream" },
+              { "B": "Filters elements based on a condition" },
+              { "C": "Combines elements in the stream" },
+              { "D": "Finds duplicate elements in the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The map() method transforms each element in the stream using the provided function."
+          },
+          {
+            "questionId": 69,
+            "question": "What is the purpose of the reduce() method in Stream API?",
+            "options": [
+              { "A": "To combine elements into a single result" },
+              { "B": "To filter elements in the stream" },
+              { "C": "To transform elements in the stream" },
+              { "D": "To sort elements in the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The reduce() method is used to combine elements of a stream into a single result using an accumulator function."
+          },
+          {
+            "questionId": 70,
+            "question": "What is the purpose of the distinct() method in Stream API?",
+            "options": [
+              { "A": "To remove duplicate elements from the stream" },
+              { "B": "To sort elements in the stream" },
+              { "C": "To transform elements in the stream" },
+              { "D": "To combine elements into a single result" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The distinct() method removes duplicate elements from the stream, ensuring uniqueness."
+          },
+          {
+            "questionId": 71,
+            "question": "Which method in Stream API can limit the number of elements processed?",
+            "options": [
+              { "A": "limit()" },
+              { "B": "reduce()" },
+              { "C": "collect()" },
+              { "D": "filter()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The limit() method is used to limit the number of elements processed in a stream."
+          },
+          {
+            "questionId": 72,
+            "question": "What is the function of the skip() method in Stream API?",
+            "options": [
+              { "A": "Skips a specified number of elements in the stream" },
+              { "B": "Filters elements in the stream" },
+              { "C": "Combines elements into a single result" },
+              { "D": "Sorts elements in the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The skip() method skips a specified number of elements in the stream and processes the remaining elements."
+          },
+          {
+            "questionId": 73,
+            "question": "Which Java 8 feature allows you to define a single abstract method using a lambda expression?",
+            "options": [
+              { "A": "Functional Interface" },
+              { "B": "Default Methods" },
+              { "C": "Stream API" },
+              { "D": "Optional" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Functional interfaces allow lambda expressions to define a single abstract method."
+          },
+          {
+            "questionId": 74,
+            "question": "Which functional interface is used for representing a supplier of results?",
+            "options": [
+              { "A": "Supplier" },
+              { "B": "Function" },
+              { "C": "Consumer" },
+              { "D": "Predicate" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Supplier functional interface represents a supplier of results and does not take any input."
+          },
+          {
+            "questionId": 75,
+            "question": "What is the purpose of the isPresent() method in the Optional class?",
+            "options": [
+              { "A": "To check if a value is present in the Optional object" },
+              { "B": "To retrieve the value in the Optional object" },
+              { "C": "To provide a default value if absent" },
+              { "D": "To throw an exception if the value is absent" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The isPresent() method checks if a value is present in the Optional object."
+          },      
+          {
+            "questionId": 75,
+            "question": "What is the purpose of the isPresent() method in the Optional class?",
+            "options": [
+              { "A": "To check if a value is present in the Optional object" },
+              { "B": "To retrieve the value in the Optional object" },
+              { "C": "To provide a default value if absent" },
+              { "D": "To throw an exception if the value is absent" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The isPresent() method checks if a value is present in the Optional object."
+          },
+          {
+            "questionId": 76,
+            "question": "What does the filter() method in Stream API do?",
+            "options": [
+              { "A": "Filters elements based on a predicate" },
+              { "B": "Transforms elements in the stream" },
+              { "C": "Combines elements in the stream" },
+              { "D": "Sorts elements in the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The filter() method filters elements in the stream based on a given predicate."
+          },
+          {
+            "questionId": 77,
+            "question": "What is the use of the Optional class in Java 8?",
+            "options": [
+              { "A": "To represent optional values that may or may not be present" },
+              { "B": "To handle exceptions" },
+              { "C": "To replace null values with a default value" },
+              { "D": "To perform I/O operations" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Optional class is used to represent a value that may or may not be present, avoiding null pointer exceptions."
+          },
+          {
+            "questionId": 78,
+            "question": "Which method in the Optional class retrieves the value if present, otherwise throws an exception?",
+            "options": [
+              { "A": "get()" },
+              { "B": "isPresent()" },
+              { "C": "orElse()" },
+              { "D": "orElseThrow()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The get() method retrieves the value if it is present in the Optional object."
+          },
+          {
+            "questionId": 79,
+            "question": "What does the sorted() method in Stream API do?",
+            "options": [
+              { "A": "Sorts the elements in the stream" },
+              { "B": "Filters elements based on a predicate" },
+              { "C": "Transforms elements in the stream" },
+              { "D": "Skips elements in the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The sorted() method sorts the elements of the stream based on their natural order or a comparator."
+          },
+          {
+            "questionId": 80,
+            "question": "What is the default method in an interface?",
+            "options": [
+              { "A": "A method with a default implementation in an interface" },
+              { "B": "A method without a return type" },
+              { "C": "A method with static implementation" },
+              { "D": "A method that cannot be overridden" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Default methods allow interfaces to have methods with a default implementation."
+          },
+          {
+            "questionId": 81,
+            "question": "What is the purpose of the flatMap() method in Stream API?",
+            "options": [
+              { "A": "Flattens nested streams into a single stream" },
+              { "B": "Transforms elements in the stream" },
+              { "C": "Filters elements in the stream" },
+              { "D": "Sorts elements in the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The flatMap() method is used to flatten nested streams into a single stream."
+          },
+          {
+            "questionId": 82,
+            "question": "Which functional interface is used for representing a function that accepts one argument and produces a result?",
+            "options": [
+              { "A": "Function" },
+              { "B": "Consumer" },
+              { "C": "Supplier" },
+              { "D": "Predicate" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Function interface represents a function that accepts one argument and produces a result."
+          },
+          {
+            "questionId": 83,
+            "question": "What is the primary purpose of a predicate in Java 8?",
+            "options": [
+              { "A": "To represent a condition or filter" },
+              { "B": "To produce a result without input" },
+              { "C": "To consume values without returning a result" },
+              { "D": "To transform one value to another" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Predicate functional interface is used to represent a condition or filter."
+          },
+          {
+            "questionId": 84,
+            "question": "What is the difference between map() and flatMap() in Stream API?",
+            "options": [
+              { "A": "flatMap() flattens nested streams, while map() transforms elements" },
+              { "B": "map() flattens nested streams, while flatMap() transforms elements" },
+              { "C": "map() is used for filtering, while flatMap() is used for sorting" },
+              { "D": "flatMap() is faster than map()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The flatMap() method flattens nested streams, whereas map() transforms each element in the stream."
+          },
+          {
+            "questionId": 85,
+            "question": "What is the main advantage of using Stream API in Java 8?",
+            "options": [
+              { "A": "It enables functional-style operations on collections" },
+              { "B": "It supports backward compatibility" },
+              { "C": "It introduces multithreading by default" },
+              { "D": "It replaces traditional for loops" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Stream API enables functional-style operations on collections, making data processing easier and more concise."
+          },
+          {
+            "questionId": 86,
+            "question": "What is the purpose of the collect() method in Stream API?",
+            "options": [
+              { "A": "To collect the stream elements into a collection" },
+              { "B": "To filter stream elements" },
+              { "C": "To transform stream elements" },
+              { "D": "To sort the stream elements" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The collect() method in Stream API is used to gather the elements of a stream into a collection."
+          },
+          {
+            "questionId": 87,
+            "question": "Which functional interface is used to consume a value without returning any result?",
+            "options": [
+              { "A": "Consumer" },
+              { "B": "Function" },
+              { "C": "Predicate" },
+              { "D": "Supplier" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Consumer functional interface is used to consume a value without returning any result."
+          },
+          {
+            "questionId": 88,
+            "question": "Which of the following is a terminal operation in Stream API?",
+            "options": [
+              { "A": "forEach()" },
+              { "B": "filter()" },
+              { "C": "map()" },
+              { "D": "sorted()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The forEach() method is a terminal operation that processes each element of the stream."
+          },
+          {
+            "questionId": 89,
+            "question": "What is the purpose of the anyMatch() method in Stream API?",
+            "options": [
+              { "A": "To check if any element matches the given predicate" },
+              { "B": "To filter elements that match a predicate" },
+              { "C": "To terminate the stream" },
+              { "D": "To combine multiple streams" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The anyMatch() method checks if any element in the stream matches the given predicate."
+          },
+          {
+            "questionId": 90,
+            "question": "What does the reduce() method do in Stream API?",
+            "options": [
+              { "A": "Performs a reduction operation on the elements of the stream" },
+              { "B": "Filters elements in the stream" },
+              { "C": "Maps elements to another type" },
+              { "D": "Sorts elements in the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The reduce() method performs a reduction operation, such as summing or concatenating, on the elements of a stream."
+          },
+          {
+            "questionId": 91,
+            "question": "Which method in Stream API is used to skip elements in a stream?",
+            "options": [
+              { "A": "skip()" },
+              { "B": "limit()" },
+              { "C": "filter()" },
+              { "D": "sorted()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The skip() method is used to skip a specified number of elements in a stream."
+          },
+          {
+            "questionId": 92,
+            "question": "What is the default behavior of the limit() method in Stream API?",
+            "options": [
+              { "A": "Limits the number of elements in the stream" },
+              { "B": "Filters elements in the stream" },
+              { "C": "Sorts elements in the stream" },
+              { "D": "Combines multiple streams" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The limit() method is used to limit the number of elements processed in a stream."
+          },
+          {
+            "questionId": 93,
+            "question": "What does the distinct() method in Stream API do?",
+            "options": [
+              { "A": "Removes duplicate elements from the stream" },
+              { "B": "Sorts elements in the stream" },
+              { "C": "Filters elements based on a condition" },
+              { "D": "Combines multiple streams into one" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The distinct() method removes duplicate elements from the stream."
+          },
+          {
+            "questionId": 94,
+            "question": "What is the default value of a Stream when created from an empty collection?",
+            "options": [
+              { "A": "Empty Stream" },
+              { "B": "Null" },
+              { "C": "Stream with a single null element" },
+              { "D": "Stream with default elements" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "When a stream is created from an empty collection, it results in an empty Stream."
+          },
+          {
+            "questionId": 95,
+            "question": "What is the purpose of peek() in Stream API?",
+            "options": [
+              { "A": "To perform an action on each element without consuming the stream" },
+              { "B": "To transform elements in the stream" },
+              { "C": "To filter elements based on a condition" },
+              { "D": "To sort elements in the stream" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The peek() method is used to perform an action on each element without consuming or terminating the stream."
+          },
+          {
+            "questionId": 96,
+            "question": "Which of the following is not a functional interface in Java?",
+            "options": [
+              { "A": "Runnable" },
+              { "B": "Consumer" },
+              { "C": "Predicate" },
+              { "D": "Function" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Runnable is not a functional interface since it doesn't have a method that returns a value."
+          },
+          {
+            "questionId": 97,
+            "question": "Which of the following methods can be used to create a stream from a collection?",
+            "options": [
+              { "A": "stream()" },
+              { "B": "create()" },
+              { "C": "generate()" },
+              { "D": "initialize()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The stream() method is used to create a stream from a collection."
+          },
+          {
+            "questionId": 98,
+            "question": "What is the default behavior of the findFirst() method in Stream API?",
+            "options": [
+              { "A": "Returns the first element of the stream" },
+              { "B": "Returns the last element of the stream" },
+              { "C": "Returns the first even element" },
+              { "D": "Returns the first element that satisfies a condition" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The findFirst() method returns the first element from the stream."
+          },
+          {
+            "questionId": 99,
+            "question": "What does the allMatch() method do in Stream API?",
+            "options": [
+              { "A": "Checks if all elements match the given predicate" },
+              { "B": "Filters elements based on a condition" },
+              { "C": "Finds the first matching element" },
+              { "D": "Sorts the stream elements" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The allMatch() method checks if all elements in the stream match the given predicate."
+          },
+          {
+            "questionId": 100,
+            "question": "Which method can be used to create an infinite stream in Java 8?",
+            "options": [
+              { "A": "generate()" },
+              { "B": "limit()" },
+              { "C": "forEach()" },
+              { "D": "reduce()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The generate() method can be used to create an infinite stream in Java 8."
           }
+,      
+          {
+            "questionId": 101,
+            "question": "Which method is used to remove elements from a List in Java?",
+            "options": [
+              { "A": "remove()" },
+              { "B": "delete()" },
+              { "C": "erase()" },
+              { "D": "clear()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The remove() method is used to remove an element from a List in Java."
+          },
+          {
+            "questionId": 102,
+            "question": "Which of the following is true about HashMap in Java?",
+            "options": [
+              { "A": "HashMap allows duplicate keys" },
+              { "B": "HashMap allows null values" },
+              { "C": "HashMap maintains insertion order" },
+              { "D": "HashMap is synchronized" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "HashMap allows null values but does not maintain insertion order."
+          },
+          {
+            "questionId": 103,
+            "question": "Which of the following interfaces does HashMap implement?",
+            "options": [
+              { "A": "Map" },
+              { "B": "Set" },
+              { "C": "List" },
+              { "D": "Queue" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "HashMap implements the Map interface in Java."
+          },
+          {
+            "questionId": 104,
+            "question": "Which of the following is not a valid Map operation in Java?",
+            "options": [
+              { "A": "put()" },
+              { "B": "get()" },
+              { "C": "remove()" },
+              { "D": "add()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "The add() operation is not valid for Map. Maps use put() for adding entries."
+          },
+          {
+            "questionId": 105,
+            "question": "What is the output of the following Java code? System.out.println(3 * 5 / 2);",
+            "options": [
+              { "A": "7" },
+              { "B": "8" },
+              { "C": "6" },
+              { "D": "15" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "7",
+            "explanation": "The expression 3 * 5 / 2 evaluates to 15 / 2, which results in 7."
+          },
+          {
+            "questionId": 106,
+            "question": "Which of the following collections guarantees the order of insertion?",
+            "options": [
+              { "A": "HashSet" },
+              { "B": "LinkedHashSet" },
+              { "C": "TreeSet" },
+              { "D": "HashMap" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "LinkedHashSet guarantees the order of insertion in Java."
+          },
+          {
+            "questionId": 107,
+            "question": "Which of the following is a synchronized collection in Java?",
+            "options": [
+              { "A": "ArrayList" },
+              { "B": "HashSet" },
+              { "C": "Vector" },
+              { "D": "TreeSet" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Vector is a synchronized collection in Java."
+          },
+          {
+            "questionId": 108,
+            "question": "Which of the following methods is used to check if a collection is empty in Java?",
+            "options": [
+              { "A": "isEmpty()" },
+              { "B": "clear()" },
+              { "C": "size()" },
+              { "D": "contains()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The isEmpty() method is used to check if a collection is empty in Java."
+          },
+          {
+            "questionId": 109,
+            "question": "What is the time complexity of accessing an element in a LinkedList?",
+            "options": [
+              { "A": "O(1)" },
+              { "B": "O(n)" },
+              { "C": "O(log n)" },
+              { "D": "O(n^2)" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Accessing an element in a LinkedList has a time complexity of O(n)."
+          },
+          {
+            "questionId": 110,
+            "question": "What is the default capacity of an ArrayList in Java?",
+            "options": [
+              { "A": "10" },
+              { "B": "20" },
+              { "C": "15" },
+              { "D": "5" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "10",
+            "explanation": "The default capacity of an ArrayList in Java is 10."
+          },
+          {
+            "questionId": 111,
+            "question": "Which of the following methods is used to add an element at the end of an ArrayList?",
+            "options": [
+              { "A": "add()" },
+              { "B": "insert()" },
+              { "C": "append()" },
+              { "D": "push()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The add() method is used to add an element at the end of an ArrayList."
+          },
+          {
+            "questionId": 112,
+            "question": "Which of the following is not a valid way to iterate over a list in Java?",
+            "options": [
+              { "A": "Using an index" },
+              { "B": "Using forEach() method" },
+              { "C": "Using an Iterator" },
+              { "D": "Using a set() method" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "There is no set() method to iterate over a list in Java."
+          },
+          {
+            "questionId": 113,
+            "question": "Which of the following is true about the Comparable interface?",
+            "options": [
+              { "A": "It is used to compare objects of the same class" },
+              { "B": "It is used to compare objects of different classes" },
+              { "C": "It is used to compare two different types of objects" },
+              { "D": "It is used to compare integers only" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Comparable interface is used to compare objects of the same class."
+          },
+          {
+            "questionId": 114,
+            "question": "Which of the following methods is used to sort a collection in Java?",
+            "options": [
+              { "A": "sort()" },
+              { "B": "order()" },
+              { "C": "arrange()" },
+              { "D": "sortCollection()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The sort() method is used to sort a collection in Java."
+          },
+          {
+            "questionId": 115,
+            "question": "What is the default value of a boolean variable in Java?",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "null" },
+              { "D": "0" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "false",
+            "explanation": "The default value of a boolean variable in Java is false."
+          },
+          {
+            "questionId": 116,
+            "question": "Which of the following is true about a constructor in Java?",
+            "options": [
+              { "A": "It must have the same name as the class" },
+              { "B": "It must return a value" },
+              { "C": "It is used to create a static method" },
+              { "D": "It is called automatically when the object is created" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "A constructor must have the same name as the class in Java."
+          },
+          {
+            "questionId": 117,
+            "question": "Which of the following keywords is used to prevent a class from being inherited in Java?",
+            "options": [
+              { "A": "final" },
+              { "B": "static" },
+              { "C": "protected" },
+              { "D": "abstract" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "final",
+            "explanation": "The final keyword is used to prevent a class from being inherited in Java."
+          },
+          {
+            "questionId": 118,
+            "question": "What does the static keyword indicate in Java?",
+            "options": [
+              { "A": "The method or variable belongs to the class, not instances" },
+              { "B": "The method or variable belongs to the instance" },
+              { "C": "The method is private" },
+              { "D": "The method is public" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The static keyword indicates that the method or variable belongs to the class, not instances."
+          },
+          {
+            "questionId": 119,
+            "question": "Which of the following is true about a constructor in Java?",
+            "options": [
+              { "A": "A constructor can be overloaded" },
+              { "B": "A constructor can be inherited" },
+              { "C": "A constructor can return a value" },
+              { "D": "A constructor must be called explicitly" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "A constructor can be overloaded, meaning multiple constructors can have the same name but different parameters."
+          },
+          {
+            "questionId": 120,
+            "question": "What will be the output of the following code? System.out.println(2 + 2 + \"5\");",
+            "options": [
+              { "A": "225" },
+              { "B": "7" },
+              { "C": "25" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "225",
+            "explanation": "The output will be 225 because the integers 2 + 2 are evaluated first, giving 4, and then concatenated with the string \"5\"."
+          },
+          {
+            "questionId": 121,
+            "question": "Which of the following is a functional interface in Java?",
+            "options": [
+              { "A": "Runnable" },
+              { "B": "Thread" },
+              { "C": "Callable" },
+              { "D": "Comparator" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Runnable is a functional interface, which has only one abstract method."
+          },
+          {
+            "questionId": 122,
+            "question": "What does the term 'autoboxing' refer to in Java?",
+            "options": [
+              { "A": "Converting an object to a primitive type" },
+              { "B": "Converting a primitive type to an object" },
+              { "C": "Converting an array to a list" },
+              { "D": "None of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Autoboxing refers to automatically converting a primitive type to its corresponding wrapper class object."
+          },
+          {
+            "questionId": 123,
+            "question": "Which method is used to get the length of an array in Java?",
+            "options": [
+              { "A": "length()" },
+              { "B": "size()" },
+              { "C": "getLength()" },
+              { "D": "length" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "The length property is used to get the length of an array in Java."
+          },
+          {
+            "questionId": 124,
+            "question": "What will be the output of the following code? System.out.println(\"abc\".charAt(1));",
+            "options": [
+              { "A": "a" },
+              { "B": "b" },
+              { "C": "c" },
+              { "D": "Error" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The charAt() method returns the character at the specified index, which is 'b' at index 1."
+          },
+          {
+            "questionId": 125,
+            "question": "Which of the following is used to represent a Unicode character in Java?",
+            "options": [
+              { "A": "\\u" },
+              { "B": "char" },
+              { "C": "String" },
+              { "D": "unicode" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "In Java, Unicode characters are represented using the syntax \\u followed by a four-digit hexadecimal number."
+          },
+          {
+            "questionId": 126,
+            "question": "Which method is used to convert a string to an integer in Java?",
+            "options": [
+              { "A": "parseInt()" },
+              { "B": "toInt()" },
+              { "C": "convertToInt()" },
+              { "D": "parseInteger()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The parseInt() method of the Integer class is used to convert a string to an integer."
+          },
+          {
+            "questionId": 127,
+            "question": "What is the default value of an instance variable of type double?",
+            "options": [
+              { "A": "0.0" },
+              { "B": "0" },
+              { "C": "null" },
+              { "D": "NaN" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "0.0",
+            "explanation": "The default value of a double variable is 0.0 in Java."
+          },
+          {
+            "questionId": 128,
+            "question": "Which of the following is true about the `final` keyword in Java?",
+            "options": [
+              { "A": "It is used to define constants" },
+              { "B": "It is used to prevent method overriding" },
+              { "C": "It is used to prevent class inheritance" },
+              { "D": "All of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "The `final` keyword is used for defining constants, preventing method overriding, and preventing class inheritance."
+          },
+          {
+            "questionId": 129,
+            "question": "Which of the following interfaces is used to define a functional interface in Java?",
+            "options": [
+              { "A": "Serializable" },
+              { "B": "Cloneable" },
+              { "C": "FunctionalInterface" },
+              { "D": "Runnable" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The `@FunctionalInterface` annotation is used to define a functional interface in Java."
+          },
+          {
+            "questionId": 130,
+            "question": "Which collection class provides constant-time performance for basic operations like add, remove, and contains?",
+            "options": [
+              { "A": "ArrayList" },
+              { "B": "HashMap" },
+              { "C": "TreeSet" },
+              { "D": "LinkedList" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "HashMap provides constant-time performance for basic operations like add, remove, and contains, assuming the hash function disperses the elements properly."
+          },
+          {
+            "questionId": 131,
+            "question": "Which of the following is used to declare a constant in Java?",
+            "options": [
+              { "A": "final" },
+              { "B": "constant" },
+              { "C": "static" },
+              { "D": "immutable" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `final` keyword is used to declare a constant in Java."
+          },
+          {
+            "questionId": 132,
+            "question": "What is the default value of an instance variable of type boolean in Java?",
+            "options": [
+              { "A": "true" },
+              { "B": "false" },
+              { "C": "null" },
+              { "D": "0" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "false",
+            "explanation": "The default value of a boolean instance variable is `false` in Java."
+          },
+          {
+            "questionId": 133,
+            "question": "Which method is used to compare two strings in Java?",
+            "options": [
+              { "A": "equals()" },
+              { "B": "compare()" },
+              { "C": "equalsIgnoreCase()" },
+              { "D": "compareTo()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `equals()` method is used to compare two strings for equality in Java."
+          },
+          {
+            "questionId": 134,
+            "question": "Which of the following collections maintains the natural ordering of elements in Java?",
+            "options": [
+              { "A": "ArrayList" },
+              { "B": "HashSet" },
+              { "C": "TreeSet" },
+              { "D": "LinkedList" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "TreeSet maintains the natural ordering of its elements in Java."
+          },
+          {
+            "questionId": 135,
+            "question": "What is the result of the expression 10 / 3 in Java?",
+            "options": [
+              { "A": "3.333" },
+              { "B": "3" },
+              { "C": "Error" },
+              { "D": "3.0" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "3",
+            "explanation": "In Java, when performing division between two integers, the result will be an integer (10 / 3 = 3)."
+          },
+          {
+            "questionId": 136,
+            "question": "Which method is used to convert a string to uppercase in Java?",
+            "options": [
+              { "A": "toUpperCase()" },
+              { "B": "toUpper()" },
+              { "C": "uppercase()" },
+              { "D": "toCapital()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `toUpperCase()` method is used to convert a string to uppercase in Java."
+          },
+          {
+            "questionId": 137,
+            "question": "Which method is used to remove all elements from a collection in Java?",
+            "options": [
+              { "A": "clear()" },
+              { "B": "delete()" },
+              { "C": "empty()" },
+              { "D": "flush()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `clear()` method is used to remove all elements from a collection in Java."
+          },
+          {
+            "questionId": 138,
+            "question": "Which of the following is used to make a method or variable immutable in Java?",
+            "options": [
+              { "A": "final" },
+              { "B": "static" },
+              { "C": "transient" },
+              { "D": "private" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `final` keyword is used to make a method or variable immutable in Java."
+          },
+          {
+            "questionId": 139,
+            "question": "Which method is used to get the system time in milliseconds in Java?",
+            "options": [
+              { "A": "currentTimeMillis()" },
+              { "B": "getMillis()" },
+              { "C": "millis()" },
+              { "D": "currentTime()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `currentTimeMillis()` method of the System class is used to get the current system time in milliseconds."
+          },
+          {
+            "questionId": 140,
+            "question": "Which of the following is true about a static method in Java?",
+            "options": [
+              { "A": "It can be called without creating an instance of the class" },
+              { "B": "It can access instance variables" },
+              { "C": "It can be overridden" },
+              { "D": "None of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "A static method can be called without creating an instance of the class."
+          },
+          {
+            "questionId": 141,
+            "question": "Which keyword is used to define a block of code that will execute after the try block, regardless of whether an exception is thrown or not?",
+            "options": [
+              { "A": "catch" },
+              { "B": "finally" },
+              { "C": "throw" },
+              { "D": "throws" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The `finally` block is always executed after the try block, whether an exception is thrown or not."
+          },
+          {
+            "questionId": 142,
+            "question": "Which of the following interfaces is used to allow different threads to communicate with each other in Java?",
+            "options": [
+              { "A": "Thread" },
+              { "B": "Runnable" },
+              { "C": "Comparable" },
+              { "D": "Observer" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "The `Observer` interface is used to allow different threads to communicate with each other."
+          },
+          {
+            "questionId": 143,
+            "question": "Which method is used to synchronize a block of code in Java?",
+            "options": [
+              { "A": "synchronized" },
+              { "B": "sync" },
+              { "C": "lock" },
+              { "D": "monitor" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `synchronized` keyword is used to ensure that a block of code is accessed by only one thread at a time."
+          },
+          {
+            "questionId": 144,
+            "question": "Which of the following is a valid constructor for the String class in Java?",
+            "options": [
+              { "A": "new String(\"Hello\")" },
+              { "B": "new String('Hello')" },
+              { "C": "String(\"Hello\")" },
+              { "D": "new String[\"Hello\"]" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `new String(\"Hello\")` constructor is used to create a new string in Java."
+          },
+          {
+            "questionId": 145,
+            "question": "What is the default capacity of an ArrayList in Java when it is created without an initial capacity?",
+            "options": [
+              { "A": "10" },
+              { "B": "20" },
+              { "C": "50" },
+              { "D": "None of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The default capacity of an ArrayList in Java is 10 when it is created without specifying an initial capacity."
+          },
+          {
+            "questionId": 146,
+            "question": "What does the `hashCode()` method return in Java?",
+            "options": [
+              { "A": "A unique identifier for an object" },
+              { "B": "A string representation of the object" },
+              { "C": "A boolean value" },
+              { "D": "An integer value representing the object" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "The `hashCode()` method returns an integer value that is used for hashing the object."
+          },
+          {
+            "questionId": 147,
+            "question": "Which of the following is true about the `transient` keyword in Java?",
+            "options": [
+              { "A": "It is used to prevent serialization of a variable" },
+              { "B": "It makes a variable constant" },
+              { "C": "It is used to define a volatile variable" },
+              { "D": "None of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The `transient` keyword is used to indicate that a variable should not be serialized in Java."
+          },
+          {
+            "questionId": 148,
+            "question": "Which of the following collections implements the Set interface in Java?",
+            "options": [
+              { "A": "ArrayList" },
+              { "B": "HashSet" },
+              { "C": "LinkedList" },
+              { "D": "PriorityQueue" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "HashSet is a collection that implements the Set interface in Java."
+          },
+          {
+            "questionId": 149,
+            "question": "What does the `super()` keyword do in Java?",
+            "options": [
+              { "A": "It refers to the parent class" },
+              { "B": "It is used to call a parent class constructor" },
+              { "C": "It refers to the current instance" },
+              { "D": "Both A and B" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "The `super()` keyword is used to refer to the parent class and can be used to call the parent class constructor."
+          }
+   
         ],
         "correctAnswersCount": 0,
         "wrongAnswersCount": 0,

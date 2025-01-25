@@ -28,7 +28,632 @@
             "selectedAnswer": "",
             "correctAnswer": "D",
             "explanation": "AWS provides all three core service models: SaaS, PaaS, and IaaS."
+          },
+          {
+            "questionId": 3,
+            "question": "Which of the following AWS services is used for scalable object storage?",
+            "options": [
+              { "A": "Amazon EC2" },
+              { "B": "Amazon RDS" },
+              { "C": "Amazon S3" },
+              { "D": "Amazon Lambda" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Amazon S3 (Simple Storage Service) provides scalable object storage."
+          },
+          {
+            "questionId": 4,
+            "question": "What does AWS EC2 stand for?",
+            "options": [
+              { "A": "Elastic Compute Cloud" },
+              { "B": "Elastic Container Cloud" },
+              { "C": "Enhanced Computing Cloud" },
+              { "D": "Elastic Compute Cluster" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS EC2 stands for Elastic Compute Cloud, which provides scalable virtual servers."
+          },
+          {
+            "questionId": 5,
+            "question": "Which AWS service helps monitor resources and applications?",
+            "options": [
+              { "A": "Amazon CloudWatch" },
+              { "B": "AWS Lambda" },
+              { "C": "Amazon S3" },
+              { "D": "AWS IAM" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon CloudWatch is used for monitoring AWS resources and applications in real-time."
+          },
+          {
+            "questionId": 6,
+            "question": "Which AWS service is used for database management and scaling?",
+            "options": [
+              { "A": "Amazon RDS" },
+              { "B": "Amazon EC2" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon RDS (Relational Database Service) provides database management and scaling."
+          },
+          {
+            "questionId": 7,
+            "question": "Which AWS service allows you to manage access to AWS resources?",
+            "options": [
+              { "A": "AWS IAM" },
+              { "B": "Amazon EC2" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon RDS" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS IAM (Identity and Access Management) is used to manage user access to AWS resources."
+          },
+          {
+            "questionId": 8,
+            "question": "Which of the following is a key benefit of using AWS Cloud?",
+            "options": [
+              { "A": "Lower fixed costs" },
+              { "B": "Scalable infrastructure" },
+              { "C": "Unpredictable pricing" },
+              { "D": "Limitations in scalability" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Cloud offers scalable infrastructure, allowing users to scale up or down based on demand."
+          },
+          {
+            "questionId": 9,
+            "question": "What is Amazon VPC used for?",
+            "options": [
+              { "A": "Provisioning virtual servers" },
+              { "B": "Creating a virtual private network" },
+              { "C": "Managing databases" },
+              { "D": "Storing data" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Amazon VPC (Virtual Private Cloud) is used to create isolated virtual networks within AWS."
+          },
+          {
+            "questionId": 10,
+            "question": "Which AWS service provides serverless compute?",
+            "options": [
+              { "A": "Amazon EC2" },
+              { "B": "AWS Lambda" },
+              { "C": "Amazon S3" },
+              { "D": "AWS IAM" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Lambda provides serverless compute, allowing you to run code without provisioning servers."
+          },
+          {
+            "questionId": 11,
+            "question": "Which of the following is an example of a managed NoSQL database service in AWS?",
+            "options": [
+              { "A": "Amazon RDS" },
+              { "B": "Amazon DynamoDB" },
+              { "C": "Amazon Aurora" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Amazon DynamoDB is a managed NoSQL database service provided by AWS."
+          },
+          {
+            "questionId": 12,
+            "question": "Which AWS service is used for sending bulk email?",
+            "options": [
+              { "A": "Amazon SES" },
+              { "B": "Amazon EC2" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon RDS" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon SES (Simple Email Service) is used for sending bulk email."
+          },
+          {
+            "questionId": 13,
+            "question": "What does AWS CloudFormation allow you to do?",
+            "options": [
+              { "A": "Automate server provisioning" },
+              { "B": "Create infrastructure as code" },
+              { "C": "Monitor resources" },
+              { "D": "Manage access to AWS services" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS CloudFormation allows you to create and manage AWS resources using infrastructure as code."
+          },
+          {
+            "questionId": 14,
+            "question": "What does the AWS Elastic Load Balancer (ELB) do?",
+            "options": [
+              { "A": "Monitors resource usage" },
+              { "B": "Balances incoming traffic across multiple servers" },
+              { "C": "Stores data" },
+              { "D": "Manages user access" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The AWS Elastic Load Balancer (ELB) distributes incoming traffic across multiple servers to ensure availability and scalability."
+          },
+          {
+            "questionId": 15,
+            "question": "Which AWS service is used for distributed denial-of-service (DDoS) protection?",
+            "options": [
+              { "A": "AWS Shield" },
+              { "B": "AWS IAM" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon RDS" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Shield provides protection against DDoS (Distributed Denial of Service) attacks."
+          },
+          {
+            "questionId": 16,
+            "question": "Which AWS service can be used to provision and manage containers?",
+            "options": [
+              { "A": "Amazon ECS" },
+              { "B": "Amazon EC2" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon ECS (Elastic Container Service) is used for provisioning and managing containers."
+          },
+          {
+            "questionId": 17,
+            "question": "What is the purpose of AWS CloudTrail?",
+            "options": [
+              { "A": "Logging AWS API calls" },
+              { "B": "Monitoring resource usage" },
+              { "C": "Creating virtual networks" },
+              { "D": "Managing user access" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS CloudTrail logs AWS API calls to help track user activities and resource changes."
+          },
+          {
+            "questionId": 18,
+            "question": "Which of the following services is used for content delivery?",
+            "options": [
+              { "A": "Amazon CloudFront" },
+              { "B": "Amazon S3" },
+              { "C": "AWS Lambda" },
+              { "D": "AWS IAM" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon CloudFront is a content delivery network (CDN) service that speeds up the delivery of content to users worldwide."
+          },
+          {
+            "questionId": 19,
+            "question": "Which AWS service helps automate resource scaling based on demand?",
+            "options": [
+              { "A": "Amazon CloudWatch" },
+              { "B": "Amazon EC2" },
+              { "C": "AWS Auto Scaling" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "AWS Auto Scaling automatically adjusts the number of EC2 instances based on demand."
+          },
+          {
+            "questionId": 20,
+            "question": "What type of storage is provided by Amazon Glacier?",
+            "options": [
+              { "A": "High-performance storage" },
+              { "B": "Long-term archival storage" },
+              { "C": "Real-time storage" },
+              { "D": "Relational database storage" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Amazon Glacier provides low-cost, long-term archival storage for data that is infrequently accessed."
+          },
+          {
+            "questionId": 21,
+            "question": "What does AWS Direct Connect provide?",
+            "options": [
+              { "A": "Private connection to AWS" },
+              { "B": "Public internet access to AWS" },
+              { "C": "A CDN for faster content delivery" },
+              { "D": "Automatic scaling of AWS resources" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Direct Connect provides a dedicated, private connection from your on-premises data center to AWS."
+          },
+          {
+            "questionId": 22,
+            "question": "Which of the following AWS services is primarily used for orchestrating containerized applications?",
+            "options": [
+              { "A": "AWS Elastic Beanstalk" },
+              { "B": "Amazon ECS" },
+              { "C": "Amazon EKS" },
+              { "D": "AWS Lambda" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Amazon EKS (Elastic Kubernetes Service) is primarily used for orchestrating containerized applications."
+          },
+          {
+            "questionId": 23,
+            "question": "Which AWS service allows you to automate the deployment of applications?",
+            "options": [
+              { "A": "AWS CloudFormation" },
+              { "B": "Amazon RDS" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon EC2" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS CloudFormation enables automation for the deployment and management of AWS resources using templates."
+          },
+          {
+            "questionId": 24,
+            "question": "Which AWS service provides a managed Kubernetes service?",
+            "options": [
+              { "A": "Amazon EKS" },
+              { "B": "Amazon ECS" },
+              { "C": "Amazon EC2" },
+              { "D": "AWS Lambda" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon EKS (Elastic Kubernetes Service) provides a fully managed Kubernetes service to run and scale containerized applications."
+          },
+          {
+            "questionId": 25,
+            "question": "Which AWS service is used for creating and managing virtual private networks?",
+            "options": [
+              { "A": "Amazon VPC" },
+              { "B": "AWS Shield" },
+              { "C": "Amazon S3" },
+              { "D": "AWS CloudTrail" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon VPC (Virtual Private Cloud) is used to create isolated virtual networks within AWS, allowing you to securely connect AWS resources."
+          },
+          {
+            "questionId": 26,
+            "question": "Which of the following AWS services offers a managed service for running MySQL databases?",
+            "options": [
+              { "A": "Amazon RDS" },
+              { "B": "Amazon DynamoDB" },
+              { "C": "Amazon Aurora" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon RDS (Relational Database Service) provides managed MySQL databases and other relational databases."
+          },
+          {
+            "questionId": 27,
+            "question": "Which AWS service helps to reduce the latency of your applications by caching frequently accessed data?",
+            "options": [
+              { "A": "Amazon CloudFront" },
+              { "B": "Amazon S3" },
+              { "C": "Amazon ElastiCache" },
+              { "D": "AWS Lambda" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Amazon ElastiCache is a service that improves the performance of applications by caching frequently accessed data."
+          },
+          {
+            "questionId": 28,
+            "question": "What does Amazon Route 53 provide?",
+            "options": [
+              { "A": "DNS (Domain Name System) service" },
+              { "B": "Cloud storage" },
+              { "C": "Load balancing" },
+              { "D": "Email delivery" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon Route 53 is a scalable Domain Name System (DNS) web service designed to route traffic to various AWS services."
+          },
+          {
+            "questionId": 29,
+            "question": "Which AWS service is used to build, train, and deploy machine learning models?",
+            "options": [
+              { "A": "Amazon SageMaker" },
+              { "B": "Amazon Polly" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon Rekognition" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon SageMaker is a managed service for building, training, and deploying machine learning models at scale."
+          },
+          {
+            "questionId": 30,
+            "question": "Which AWS service provides a scalable and cost-effective data warehouse solution?",
+            "options": [
+              { "A": "Amazon Redshift" },
+              { "B": "Amazon S3" },
+              { "C": "Amazon RDS" },
+              { "D": "AWS Lambda" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon Redshift provides a fully managed, scalable data warehouse service that allows you to analyze large datasets."
+          },
+          {
+            "questionId": 31,
+            "question": "Which AWS service is designed for managing and analyzing streaming data?",
+            "options": [
+              { "A": "Amazon Kinesis" },
+              { "B": "Amazon S3" },
+              { "C": "Amazon RDS" },
+              { "D": "AWS Glue" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon Kinesis is used to process and analyze streaming data in real-time."
+          },
+          {
+            "questionId": 32,
+            "question": "Which AWS service is used to provide a managed key management solution for encrypting data?",
+            "options": [
+              { "A": "AWS KMS" },
+              { "B": "Amazon RDS" },
+              { "C": "AWS Shield" },
+              { "D": "Amazon CloudWatch" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS KMS (Key Management Service) is a managed service that enables the creation and control of encryption keys used to encrypt data."
+          },
+          {
+            "questionId": 33,
+            "question": "What does Amazon Elastic Beanstalk provide?",
+            "options": [
+              { "A": "Managed web application hosting" },
+              { "B": "Distributed content delivery" },
+              { "C": "Relational database management" },
+              { "D": "Serverless computing" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon Elastic Beanstalk is a Platform as a Service (PaaS) that allows you to quickly deploy and manage web applications."
+          },
+          {
+            "questionId": 34,
+            "question": "Which of the following is a key feature of Amazon S3?",
+            "options": [
+              { "A": "File storage" },
+              { "B": "Managed relational databases" },
+              { "C": "Compute services" },
+              { "D": "Content delivery network" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon S3 (Simple Storage Service) provides scalable object storage for data."
+          },
+          {
+            "questionId": 35,
+            "question": "Which AWS service is used for managing and automating the provisioning of resources?",
+            "options": [
+              { "A": "AWS CloudFormation" },
+              { "B": "Amazon EC2" },
+              { "C": "Amazon RDS" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS CloudFormation helps automate the deployment and management of AWS resources using templates."
+          },
+          {
+            "questionId": 36,
+            "question": "Which AWS service helps protect applications from DDoS attacks?",
+            "options": [
+              { "A": "AWS WAF" },
+              { "B": "AWS Shield" },
+              { "C": "Amazon CloudFront" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Shield is a managed DDoS protection service that safeguards applications against DDoS attacks."
+          },
+          {
+            "questionId": 37,
+            "question": "Which AWS service allows you to analyze data using a petabyte-scale data warehouse?",
+            "options": [
+              { "A": "Amazon Redshift" },
+              { "B": "Amazon Athena" },
+              { "C": "AWS Glue" },
+              { "D": "Amazon RDS" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon Redshift is a data warehouse service that allows for analysis of large-scale data sets."
+          },
+          {
+            "questionId": 38,
+            "question": "Which AWS service is designed for automating serverless applications?",
+            "options": [
+              { "A": "AWS Lambda" },
+              { "B": "Amazon EC2" },
+              { "C": "AWS Elastic Beanstalk" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Lambda is a serverless compute service that allows you to run code without provisioning or managing servers."
+          },
+          {
+            "questionId": 39,
+            "question": "Which AWS service is used to provide identity and access management across AWS services?",
+            "options": [
+              { "A": "AWS IAM" },
+              { "B": "Amazon VPC" },
+              { "C": "AWS Shield" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS IAM (Identity and Access Management) allows you to manage access to AWS services and resources securely."
+          },
+          {
+            "questionId": 40,
+            "question": "Which AWS service helps in delivering content globally with low latency?",
+            "options": [
+              { "A": "Amazon CloudFront" },
+              { "B": "AWS Lambda" },
+              { "C": "Amazon EC2" },
+              { "D": "Amazon RDS" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon CloudFront is a content delivery network (CDN) service that accelerates content delivery by caching it at edge locations worldwide."
+          },
+          {
+            "questionId": 41,
+            "question": "Which AWS service helps in storing large-scale logs and monitoring the health of applications?",
+            "options": [
+              { "A": "Amazon CloudWatch" },
+              { "B": "AWS Lambda" },
+              { "C": "AWS Auto Scaling" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon CloudWatch allows you to collect and monitor log data and track the health of AWS resources and applications."
+          },
+          {
+            "questionId": 42,
+            "question": "Which AWS service is used to build and deploy applications on managed infrastructure?",
+            "options": [
+              { "A": "AWS Elastic Beanstalk" },
+              { "B": "Amazon EC2" },
+              { "C": "Amazon S3" },
+              { "D": "Amazon RDS" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Elastic Beanstalk helps in deploying applications on managed infrastructure, simplifying the deployment process."
+          },
+          {
+            "questionId": 43,
+            "question": "Which AWS service is used for creating and managing private networks in the cloud?",
+            "options": [
+              { "A": "Amazon VPC" },
+              { "B": "Amazon EC2" },
+              { "C": "AWS IAM" },
+              { "D": "AWS Shield" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon VPC (Virtual Private Cloud) is used to create isolated virtual networks in the cloud for secure communication."
+          },
+          {
+            "questionId": 44,
+            "question": "Which AWS service allows you to store objects such as files, images, and videos?",
+            "options": [
+              { "A": "Amazon S3" },
+              { "B": "Amazon EC2" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon RDS" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon S3 (Simple Storage Service) is used to store and retrieve any amount of data, such as files, images, and videos."
+          },
+          {
+            "questionId": 45,
+            "question": "What is the purpose of AWS Lambda?",
+            "options": [
+              { "A": "To store and retrieve data from S3" },
+              { "B": "To run code without provisioning or managing servers" },
+              { "C": "To provision EC2 instances" },
+              { "D": "To manage user identities and access" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Lambda is a serverless computing service that lets you run code without the need to manage servers."
+          },
+          {
+            "questionId": 46,
+            "question": "Which AWS service helps you run containers at scale?",
+            "options": [
+              { "A": "Amazon ECS" },
+              { "B": "AWS Lambda" },
+              { "C": "Amazon EC2" },
+              { "D": "Amazon CloudFront" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon ECS (Elastic Container Service) is used for running and scaling Docker containers in AWS."
+          },
+          {
+            "questionId": 47,
+            "question": "Which AWS service provides automatic backups of Amazon RDS databases?",
+            "options": [
+              { "A": "Amazon RDS Snapshots" },
+              { "B": "Amazon S3" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon Glacier" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon RDS Snapshots automatically back up Amazon RDS databases to ensure data durability and recovery."
+          },
+          {
+            "questionId": 48,
+            "question": "Which AWS service is used to track and record API calls made to AWS services?",
+            "options": [
+              { "A": "AWS CloudTrail" },
+              { "B": "Amazon CloudWatch" },
+              { "C": "AWS Config" },
+              { "D": "Amazon Route 53" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS CloudTrail is used to log and monitor API calls made to AWS services for auditing and compliance purposes."
+          },
+          {
+            "questionId": 49,
+            "question": "Which AWS service is primarily used for sending bulk emails?",
+            "options": [
+              { "A": "Amazon SES" },
+              { "B": "AWS Lambda" },
+              { "C": "Amazon S3" },
+              { "D": "Amazon EC2" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon SES (Simple Email Service) is used for sending transactional and bulk emails at scale."
+          },
+          {
+            "questionId": 50,
+            "question": "Which AWS service is used for managing serverless applications by running code in response to events?",
+            "options": [
+              { "A": "AWS Lambda" },
+              { "B": "Amazon EC2" },
+              { "C": "Amazon RDS" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Lambda allows you to run code in response to events without the need to provision or manage servers."
           }
+      
         ],
         "correctAnswersCount": 0,
         "wrongAnswersCount": 0,
@@ -63,6 +688,656 @@
             "selectedAnswer": "",
             "correctAnswer": "B",
             "explanation": "AWS Identity and Access Management (IAM) is used to manage permissions and access to AWS resources."
+          },
+          {
+            "questionId": 1,
+            "question": "What is the primary responsibility of AWS under the shared responsibility model?",
+            "options": [
+              { "A": "Securing customer data" },
+              { "B": "Managing operating system patches" },
+              { "C": "Securing the infrastructure" },
+              { "D": "Configuring network access" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Under the shared responsibility model, AWS is responsible for securing the underlying infrastructure."
+          },
+          {
+            "questionId": 2,
+            "question": "Which AWS service can be used to control access to AWS resources?",
+            "options": [
+              { "A": "Amazon CloudWatch" },
+              { "B": "AWS Identity and Access Management (IAM)" },
+              { "C": "AWS CloudFormation" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Identity and Access Management (IAM) is used to manage permissions and access to AWS resources."
+          },
+          {
+            "questionId": 3,
+            "question": "What is the AWS service used to monitor security-related events in real-time?",
+            "options": [
+              { "A": "AWS CloudTrail" },
+              { "B": "AWS Shield" },
+              { "C": "AWS WAF" },
+              { "D": "Amazon GuardDuty" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "Amazon GuardDuty continuously monitors for malicious activity and unauthorized behavior to protect your AWS accounts."
+          },
+          {
+            "questionId": 4,
+            "question": "What AWS service allows you to configure firewall rules for controlling inbound and outbound traffic to your VPC?",
+            "options": [
+              { "A": "AWS Firewall Manager" },
+              { "B": "Amazon Route 53" },
+              { "C": "Amazon VPC Security Groups" },
+              { "D": "AWS WAF" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Amazon VPC Security Groups allow you to configure inbound and outbound traffic rules for your Virtual Private Cloud (VPC)."
+          },
+          {
+            "questionId": 5,
+            "question": "Which of the following is a feature of AWS Key Management Service (KMS)?",
+            "options": [
+              { "A": "Encryption of data in transit only" },
+              { "B": "Key rotation management" },
+              { "C": "Automated firewall configuration" },
+              { "D": "Security event logging" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS KMS allows you to manage encryption keys for your applications and automatically rotate keys for enhanced security."
+          },
+          {
+            "questionId": 6,
+            "question": "Which AWS service helps protect your AWS applications from DDoS attacks?",
+            "options": [
+              { "A": "AWS Shield" },
+              { "B": "AWS IAM" },
+              { "C": "AWS Config" },
+              { "D": "Amazon CloudFront" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Shield is a managed DDoS protection service that safeguards applications from volumetric attacks and infrastructure-layer attacks."
+          },
+          {
+            "questionId": 7,
+            "question": "Which of the following best describes AWS Multi-Factor Authentication (MFA)?",
+            "options": [
+              { "A": "A password-based authentication mechanism" },
+              { "B": "A user authentication mechanism that requires multiple forms of verification" },
+              { "C": "A one-time password generator for secure access" },
+              { "D": "A cloud security service" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS MFA adds an extra layer of security by requiring a second form of authentication in addition to your regular password."
+          },
+          {
+            "questionId": 8,
+            "question": "What AWS service is used for centralized auditing and monitoring of API calls in your AWS account?",
+            "options": [
+              { "A": "AWS CloudTrail" },
+              { "B": "Amazon CloudWatch" },
+              { "C": "AWS Config" },
+              { "D": "AWS WAF" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS CloudTrail records API calls made in your account and provides visibility into your AWS resources."
+          },
+          {
+            "questionId": 9,
+            "question": "What service can you use to encrypt data stored in Amazon S3?",
+            "options": [
+              { "A": "AWS WAF" },
+              { "B": "Amazon EBS" },
+              { "C": "AWS KMS" },
+              { "D": "Amazon GuardDuty" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "AWS Key Management Service (KMS) is used to manage encryption keys for data at rest, including in Amazon S3."
+          },
+          {
+            "questionId": 10,
+            "question": "Which of the following is the best practice for securing AWS account root user access?",
+            "options": [
+              { "A": "Use multi-factor authentication (MFA) for the root user" },
+              { "B": "Share root user credentials securely with team members" },
+              { "C": "Use only password protection for the root user" },
+              { "D": "Disable the root user" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "It is recommended to use MFA for the root user to increase security and prevent unauthorized access."
+          },
+          {
+            "questionId": 11,
+            "question": "What is the primary responsibility of AWS under the shared responsibility model?",
+            "options": [
+              { "A": "Securing customer data" },
+              { "B": "Managing operating system patches" },
+              { "C": "Securing the infrastructure" },
+              { "D": "Configuring network access" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Under the shared responsibility model, AWS is responsible for securing the underlying infrastructure."
+          },
+          {
+            "questionId": 12,
+            "question": "Which AWS service can be used to control access to AWS resources?",
+            "options": [
+              { "A": "Amazon CloudWatch" },
+              { "B": "AWS Identity and Access Management (IAM)" },
+              { "C": "AWS CloudFormation" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Identity and Access Management (IAM) is used to manage permissions and access to AWS resources."
+          },
+          {
+            "questionId": 13,
+            "question": "Which AWS service provides continuous compliance monitoring and remediation for AWS resources?",
+            "options": [
+              { "A": "AWS Config" },
+              { "B": "AWS CloudFormation" },
+              { "C": "Amazon CloudWatch" },
+              { "D": "AWS Shield" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Config continuously monitors and records AWS resource configurations and changes, helping with compliance auditing."
+          },
+          {
+            "questionId": 14,
+            "question": "Which AWS service can help identify potential security issues with your AWS resources and applications?",
+            "options": [
+              { "A": "Amazon GuardDuty" },
+              { "B": "AWS Shield" },
+              { "C": "Amazon S3" },
+              { "D": "AWS WAF" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon GuardDuty detects malicious activity and potential threats within your AWS environment."
+          },
+          {
+            "questionId": 15,
+            "question": "What AWS service provides network security and application-level protection against web exploits?",
+            "options": [
+              { "A": "AWS Shield" },
+              { "B": "AWS WAF" },
+              { "C": "Amazon CloudFront" },
+              { "D": "Amazon RDS" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Web Application Firewall (WAF) helps protect web applications from common web exploits."
+          },
+          {
+            "questionId": 16,
+            "question": "Which AWS service allows you to automate security assessments of your applications?",
+            "options": [
+              { "A": "Amazon Inspector" },
+              { "B": "AWS CloudTrail" },
+              { "C": "AWS Config" },
+              { "D": "Amazon GuardDuty" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon Inspector automatically assesses applications for vulnerabilities and deviations from security best practices."
+          },
+          {
+            "questionId": 17,
+            "question": "Which AWS service helps ensure that sensitive information is never stored in plaintext?",
+            "options": [
+              { "A": "AWS Secrets Manager" },
+              { "B": "AWS KMS" },
+              { "C": "AWS CloudTrail" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Secrets Manager helps you store and manage sensitive information such as API keys, database credentials, and other secrets."
+          },
+          {
+            "questionId": 18,
+            "question": "Which of the following best describes the AWS shared responsibility model?",
+            "options": [
+              { "A": "AWS is responsible for both security of the cloud and security in the cloud" },
+              { "B": "AWS is responsible for securing the cloud, and customers are responsible for securing what they put in the cloud" },
+              { "C": "Customers are responsible for all aspects of security" },
+              { "D": "AWS manages security both inside and outside the cloud" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "In the shared responsibility model, AWS secures the underlying infrastructure, and customers are responsible for securing their own data and applications."
+          },
+          {
+            "questionId": 19,
+            "question": "Which AWS service provides a detailed overview of your compliance posture in AWS?",
+            "options": [
+              { "A": "AWS Config" },
+              { "B": "AWS Artifact" },
+              { "C": "Amazon GuardDuty" },
+              { "D": "AWS IAM" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Artifact provides on-demand access to AWS's compliance reports and certifications."
+          },
+          {
+            "questionId": 20,
+            "question": "Which AWS service allows you to monitor and automatically block access based on malicious IP addresses?",
+            "options": [
+              { "A": "AWS WAF" },
+              { "B": "Amazon CloudWatch" },
+              { "C": "AWS Config" },
+              { "D": "Amazon VPC" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS WAF can block access from malicious IP addresses and help protect web applications from attacks."
+          },
+          {
+            "questionId": 21,
+            "question": "Which AWS service allows you to encrypt data in transit between your services and clients?",
+            "options": [
+              { "A": "AWS KMS" },
+              { "B": "AWS Shield" },
+              { "C": "AWS Certificate Manager" },
+              { "D": "AWS Config" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "AWS Certificate Manager helps manage SSL/TLS certificates to encrypt data in transit."
+          },
+          {
+            "questionId": 22,
+            "question": "What AWS service can help protect against data exfiltration by monitoring outbound traffic from AWS resources?",
+            "options": [
+              { "A": "AWS Config" },
+              { "B": "Amazon GuardDuty" },
+              { "C": "AWS Shield" },
+              { "D": "AWS WAF" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Amazon GuardDuty monitors network traffic for signs of potential data exfiltration and other malicious activity."
+          },
+          {
+            "questionId": 23,
+            "question": "Which AWS service can be used to automate the encryption of your Amazon S3 data?",
+            "options": [
+              { "A": "AWS KMS" },
+              { "B": "AWS CloudTrail" },
+              { "C": "AWS Shield" },
+              { "D": "AWS WAF" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Key Management Service (KMS) is used to manage encryption keys for encrypting data in Amazon S3."
+          },
+          {
+            "questionId": 24,
+            "question": "What AWS service provides centralized logging for all AWS services and your applications?",
+            "options": [
+              { "A": "Amazon CloudWatch Logs" },
+              { "B": "AWS CloudTrail" },
+              { "C": "AWS Config" },
+              { "D": "AWS Shield" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon CloudWatch Logs enables centralized logging for AWS resources and applications, allowing for log storage, analysis, and monitoring."
+          },
+          {
+            "questionId": 25,
+            "question": "Which AWS service can help ensure that your EC2 instances meet security best practices and policies?",
+            "options": [
+              { "A": "AWS Config" },
+              { "B": "Amazon Inspector" },
+              { "C": "AWS Shield" },
+              { "D": "AWS CloudTrail" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Amazon Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS."
+          },
+          {
+            "questionId": 26,
+            "question": "What AWS service can be used to detect and protect against DDoS attacks?",
+            "options": [
+              { "A": "AWS WAF" },
+              { "B": "AWS Shield" },
+              { "C": "AWS Firewall Manager" },
+              { "D": "AWS GuardDuty" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Shield is a managed DDoS protection service that safeguards AWS applications from large-scale and sophisticated DDoS attacks."
+          },
+          {
+            "questionId": 27,
+            "question": "Which AWS service can be used to set up and manage security groups for your VPC?",
+            "options": [
+              { "A": "Amazon VPC" },
+              { "B": "AWS Identity and Access Management (IAM)" },
+              { "C": "AWS Config" },
+              { "D": "AWS GuardDuty" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon VPC allows you to create and configure security groups to control inbound and outbound traffic to your AWS resources."
+          },
+          {
+            "questionId": 28,
+            "question": "Which AWS service provides a secure and scalable way to manage API authentication and authorization?",
+            "options": [
+              { "A": "Amazon API Gateway" },
+              { "B": "AWS IAM" },
+              { "C": "AWS Lambda" },
+              { "D": "AWS Secrets Manager" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon API Gateway enables you to create, deploy, and manage secure APIs for your applications with built-in authentication and authorization."
+          },
+          {
+            "questionId": 29,
+            "question": "Which AWS service can be used to provide end-to-end encryption for your data in Amazon S3?",
+            "options": [
+              { "A": "AWS KMS" },
+              { "B": "Amazon CloudFront" },
+              { "C": "AWS Certificate Manager" },
+              { "D": "AWS Shield" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Key Management Service (KMS) enables you to manage encryption keys for securing data stored in Amazon S3."
+          },
+          {
+            "questionId": 30,
+            "question": "Which AWS service can be used to centrally manage and monitor your compliance posture across AWS accounts?",
+            "options": [
+              { "A": "AWS Config" },
+              { "B": "AWS Control Tower" },
+              { "C": "AWS CloudTrail" },
+              { "D": "AWS Artifact" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Control Tower offers a centralized management dashboard to set up, govern, and monitor multi-account AWS environments."
+          },
+          {
+            "questionId": 31,
+            "question": "What AWS service helps prevent unauthorized access to your resources by controlling network traffic?",
+            "options": [
+              { "A": "AWS WAF" },
+              { "B": "AWS Shield" },
+              { "C": "Amazon VPC" },
+              { "D": "AWS Firewall Manager" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Amazon VPC allows you to configure network access control lists (ACLs) to regulate inbound and outbound traffic to your resources."
+          },
+          {
+            "questionId": 32,
+            "question": "Which AWS service allows you to manage and analyze logs from various AWS resources and services?",
+            "options": [
+              { "A": "Amazon CloudWatch Logs" },
+              { "B": "AWS CloudTrail" },
+              { "C": "AWS Config" },
+              { "D": "AWS IAM" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon CloudWatch Logs can collect and monitor logs from a variety of AWS services and resources to track events and security issues."
+          },
+          {
+            "questionId": 33,
+            "question": "Which AWS service can help you implement role-based access control (RBAC) for AWS resources?",
+            "options": [
+              { "A": "AWS IAM" },
+              { "B": "AWS Shield" },
+              { "C": "AWS Config" },
+              { "D": "AWS Secrets Manager" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Identity and Access Management (IAM) helps you define permissions and roles for users, services, and groups to control access to AWS resources."
+          },
+          {
+            "questionId": 34,
+            "question": "Which AWS service allows you to review your resource configurations to ensure compliance with best practices and industry standards?",
+            "options": [
+              { "A": "AWS Config" },
+              { "B": "AWS Control Tower" },
+              { "C": "Amazon Inspector" },
+              { "D": "AWS GuardDuty" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Config allows you to track and review your AWS resources' configurations and monitor compliance with internal policies and industry standards."
+          },
+          {
+            "questionId": 35,
+            "question": "Which AWS service helps you protect your applications against SQL injection and cross-site scripting (XSS) attacks?",
+            "options": [
+              { "A": "AWS WAF" },
+              { "B": "Amazon CloudFront" },
+              { "C": "AWS Lambda" },
+              { "D": "AWS Shield" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS WAF helps protect web applications from common web exploits such as SQL injection and cross-site scripting (XSS)."
+          },
+          {
+            "questionId": 36,
+            "question": "Which AWS service provides the ability to automate security incident response using predefined security runbooks?",
+            "options": [
+              { "A": "AWS Lambda" },
+              { "B": "AWS Security Hub" },
+              { "C": "AWS Systems Manager" },
+              { "D": "AWS CloudTrail" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Security Hub aggregates, organizes, and prioritizes security alerts and findings from various AWS services, enabling automated incident response."
+          },
+          {
+            "questionId": 37,
+            "question": "Which AWS service enables you to manage and rotate your credentials for accessing AWS services securely?",
+            "options": [
+              { "A": "AWS Secrets Manager" },
+              { "B": "AWS IAM" },
+              { "C": "AWS KMS" },
+              { "D": "AWS Config" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Secrets Manager allows you to securely manage, rotate, and retrieve credentials, API keys, and other sensitive information."
+          },
+          {
+            "questionId": 38,
+            "question": "Which AWS service can be used to configure and monitor compliance checks for EC2 instances across multiple AWS accounts?",
+            "options": [
+              { "A": "AWS Config" },
+              { "B": "AWS CloudTrail" },
+              { "C": "AWS Systems Manager" },
+              { "D": "AWS Inspector" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Config provides detailed resource configurations and compliance tracking, helping you monitor EC2 instances for security best practices."
+          },
+          {
+            "questionId": 39,
+            "question": "Which AWS service can help you manage API access and enforce security policies for serverless applications?",
+            "options": [
+              { "A": "Amazon API Gateway" },
+              { "B": "AWS IAM" },
+              { "C": "AWS Lambda" },
+              { "D": "AWS WAF" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon API Gateway helps manage API access, authentication, authorization, and security for serverless applications."
+          },
+          {
+            "questionId": 40,
+            "question": "What AWS service is used to provide protection from bot attacks and mitigate bot traffic?",
+            "options": [
+              { "A": "AWS WAF" },
+              { "B": "AWS Shield" },
+              { "C": "Amazon CloudFront" },
+              { "D": "AWS Firewall Manager" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS WAF allows you to protect your applications from bot traffic by using AWS managed rule groups and custom rules."
+          },
+          {
+            "questionId": 41,
+            "question": "Which AWS service helps you monitor and analyze malicious activity within your AWS environment using machine learning?",
+            "options": [
+              { "A": "AWS GuardDuty" },
+              { "B": "Amazon Macie" },
+              { "C": "AWS Inspector" },
+              { "D": "Amazon Rekognition" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS GuardDuty is a threat detection service that uses machine learning to identify and analyze malicious activity across AWS environments."
+          },
+          {
+            "questionId": 42,
+            "question": "Which AWS service allows you to monitor activity in your AWS environment and respond to events automatically?",
+            "options": [
+              { "A": "AWS CloudTrail" },
+              { "B": "Amazon GuardDuty" },
+              { "C": "AWS Config" },
+              { "D": "AWS Systems Manager" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "AWS Systems Manager enables you to automate responses to security events and manage configurations of AWS resources securely."
+          },
+          {
+            "questionId": 43,
+            "question": "Which AWS service can be used to manage the encryption of data in your AWS S3 buckets?",
+            "options": [
+              { "A": "AWS KMS" },
+              { "B": "Amazon S3" },
+              { "C": "AWS Shield" },
+              { "D": "AWS WAF" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Key Management Service (KMS) enables you to control the encryption of data stored in Amazon S3 and other AWS services."
+          },
+          {
+            "questionId": 44,
+            "question": "Which AWS service provides a dashboard that aggregates security findings and compliance status across all AWS accounts?",
+            "options": [
+              { "A": "AWS Security Hub" },
+              { "B": "AWS WAF" },
+              { "C": "AWS Shield" },
+              { "D": "AWS IAM" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Security Hub aggregates findings from various AWS services and provides a comprehensive view of security and compliance across accounts."
+          },
+          {
+            "questionId": 45,
+            "question": "Which AWS service is used to safeguard your S3 buckets and other resources against unauthorized access using fine-grained access controls?",
+            "options": [
+              { "A": "AWS IAM" },
+              { "B": "Amazon S3 Block Public Access" },
+              { "C": "AWS KMS" },
+              { "D": "AWS Shield" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Amazon S3 Block Public Access helps you safeguard your S3 buckets by preventing public access to the objects stored in them."
+          },
+          {
+            "questionId": 46,
+            "question": "Which AWS service can be used to automate compliance checks against a set of predefined rules for your AWS resources?",
+            "options": [
+              { "A": "AWS Config" },
+              { "B": "AWS CloudTrail" },
+              { "C": "AWS Systems Manager" },
+              { "D": "AWS Control Tower" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Config provides rules that allow you to automatically check the compliance of your AWS resource configurations against best practices and internal policies."
+          },
+          {
+            "questionId": 47,
+            "question": "Which AWS service helps you monitor network traffic for security threats and provide insights into potential attacks or anomalies?",
+            "options": [
+              { "A": "AWS GuardDuty" },
+              { "B": "Amazon VPC Flow Logs" },
+              { "C": "AWS WAF" },
+              { "D": "AWS CloudTrail" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Amazon VPC Flow Logs capture information about the IP traffic going to and from network interfaces in your VPC, helping to detect and monitor potential threats."
+          },
+          {
+            "questionId": 48,
+            "question": "Which AWS service enables you to securely store and manage sensitive information, such as passwords and API keys?",
+            "options": [
+              { "A": "AWS Secrets Manager" },
+              { "B": "AWS KMS" },
+              { "C": "AWS IAM" },
+              { "D": "AWS GuardDuty" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Secrets Manager helps you securely store and manage sensitive information, such as credentials and API keys, and automatically rotate them."
+          },
+          {
+            "questionId": 49,
+            "question": "Which AWS service allows you to configure network access control rules for your virtual private cloud (VPC)?",
+            "options": [
+              { "A": "Amazon VPC" },
+              { "B": "AWS WAF" },
+              { "C": "AWS Shield" },
+              { "D": "AWS IAM" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon VPC allows you to create network access control lists (ACLs) and security groups to regulate inbound and outbound traffic for your resources."
+          },
+          {
+            "questionId": 50,
+            "question": "Which AWS service helps protect against unauthorized access to your AWS resources through an intrusion detection system?",
+            "options": [
+              { "A": "AWS GuardDuty" },
+              { "B": "AWS Inspector" },
+              { "C": "AWS Shield" },
+              { "D": "AWS WAF" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS GuardDuty is a threat detection service that continuously monitors your AWS environment for malicious activity and unauthorized access."
           }
         ],
         "correctAnswersCount": 0,
@@ -109,30 +1384,589 @@
         "section": "Billing and Pricing",
         "questions": [
           {
-            "questionId": 31,
-            "question": "Which AWS pricing model allows users to pay for computing capacity on an as-needed basis?",
+            "questionId": 1,
+            "question": "What type of database is Amazon RDS?",
             "options": [
-              { "A": "Reserved Instances" },
-              { "B": "On-Demand Instances" },
-              { "C": "Spot Instances" },
-              { "D": "Dedicated Hosts" }
+              { "A": "NoSQL database" },
+              { "B": "Document database" },
+              { "C": "Relational database" },
+              { "D": "Graph database" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Amazon RDS is a managed relational database service."
+          },
+          {
+            "questionId": 2,
+            "question": "Which AWS service can be used to deploy and manage Docker containers?",
+            "options": [
+              { "A": "AWS Lambda" },
+              { "B": "Amazon ECS" },
+              { "C": "Amazon RDS" },
+              { "D": "AWS CloudFormation" }
             ],
             "selectedAnswer": "",
             "correctAnswer": "B",
-            "explanation": "On-Demand Instances allow users to pay only for the compute capacity they need with no long-term commitments."
+            "explanation": "Amazon ECS (Elastic Container Service) is used for deploying and managing Docker containers on AWS."
           },
           {
-            "questionId": 32,
-            "question": "What tool does AWS offer to help estimate costs for a particular architecture?",
+            "questionId": 3,
+            "question": "What is the primary purpose of AWS S3?",
             "options": [
-              { "A": "AWS CloudTrail" },
-              { "B": "AWS TCO Calculator" },
-              { "C": "AWS Cost Explorer" },
-              { "D": "AWS Pricing Calculator" }
+              { "A": "Compute service" },
+              { "B": "File storage" },
+              { "C": "Database service" },
+              { "D": "Container service" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS S3 is primarily used for file storage and data backup."
+          },
+          {
+            "questionId": 4,
+            "question": "Which AWS service provides a managed Kubernetes service?",
+            "options": [
+              { "A": "AWS ECS" },
+              { "B": "AWS Lambda" },
+              { "C": "Amazon EKS" },
+              { "D": "Amazon EC2" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Amazon EKS (Elastic Kubernetes Service) is a managed Kubernetes service provided by AWS."
+          },
+          {
+            "questionId": 5,
+            "question": "Which AWS service is used for identity and access management?",
+            "options": [
+              { "A": "AWS IAM" },
+              { "B": "AWS S3" },
+              { "C": "AWS EC2" },
+              { "D": "Amazon RDS" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS IAM (Identity and Access Management) is used for managing access to AWS resources."
+          },
+          {
+            "questionId": 6,
+            "question": "Which AWS service is used to monitor and manage AWS resources and applications?",
+            "options": [
+              { "A": "Amazon CloudWatch" },
+              { "B": "Amazon RDS" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon Route 53" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon CloudWatch is used to monitor and manage AWS resources and applications in real time."
+          },
+          {
+            "questionId": 7,
+            "question": "What does AWS Lambda allow you to do?",
+            "options": [
+              { "A": "Host virtual machines" },
+              { "B": "Run serverless applications" },
+              { "C": "Store files" },
+              { "D": "Create Kubernetes clusters" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Lambda allows you to run serverless applications without provisioning or managing servers."
+          },
+          {
+            "questionId": 8,
+            "question": "Which service can be used to distribute content globally with low latency?",
+            "options": [
+              { "A": "Amazon CloudFront" },
+              { "B": "AWS Elastic Beanstalk" },
+              { "C": "Amazon S3" },
+              { "D": "Amazon EC2" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon CloudFront is a content delivery network (CDN) that distributes content globally with low latency."
+          },
+          {
+            "questionId": 9,
+            "question": "What is the main advantage of AWS Elastic Beanstalk?",
+            "options": [
+              { "A": "Provides a database solution" },
+              { "B": "Manages application deployment automatically" },
+              { "C": "Is a serverless computing platform" },
+              { "D": "Handles DNS management" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "AWS Elastic Beanstalk is an easy-to-use service for deploying and managing applications automatically."
+          },
+          {
+            "questionId": 10,
+            "question": "Which AWS service is used for relational database management?",
+            "options": [
+              { "A": "Amazon EC2" },
+              { "B": "Amazon RDS" },
+              { "C": "Amazon EFS" },
+              { "D": "AWS Fargate" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Amazon RDS is used for managing relational databases such as MySQL, PostgreSQL, and SQL Server."
+          },
+          {
+            "questionId": 11,
+            "question": "Which AWS service provides scalable compute capacity?",
+            "options": [
+              { "A": "Amazon EC2" },
+              { "B": "Amazon S3" },
+              { "C": "Amazon Lambda" },
+              { "D": "AWS Route 53" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon EC2 (Elastic Compute Cloud) provides scalable compute capacity in the cloud."
+          },
+          {
+            "questionId": 12,
+            "question": "Which AWS service can be used to host a static website?",
+            "options": [
+              { "A": "AWS Lambda" },
+              { "B": "Amazon EC2" },
+              { "C": "Amazon S3" },
+              { "D": "AWS CloudFormation" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Amazon S3 can be used to host static websites by serving HTML, CSS, and JavaScript files."
+          },
+          {
+            "questionId": 13,
+            "question": "Which AWS service is used for API management?",
+            "options": [
+              { "A": "AWS API Gateway" },
+              { "B": "Amazon EC2" },
+              { "C": "AWS CloudFormation" },
+              { "D": "Amazon RDS" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS API Gateway is used to create, publish, and manage APIs for your backend services."
+          },
+          {
+            "questionId": 14,
+            "question": "What service does AWS provide for artificial intelligence?",
+            "options": [
+              { "A": "AWS SageMaker" },
+              { "B": "Amazon Rekognition" },
+              { "C": "Amazon Polly" },
+              { "D": "All of the above" }
             ],
             "selectedAnswer": "",
             "correctAnswer": "D",
-            "explanation": "The AWS Pricing Calculator helps users estimate the cost of specific AWS services and architectures."
+            "explanation": "AWS provides a wide range of AI services like AWS SageMaker, Amazon Rekognition, and Amazon Polly."
+          },
+          {
+            "questionId": 15,
+            "question": "Which AWS service is primarily used for sending email notifications?",
+            "options": [
+              { "A": "Amazon SES" },
+              { "B": "Amazon SNS" },
+              { "C": "AWS S3" },
+              { "D": "AWS EC2" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon SES (Simple Email Service) is used to send and receive email notifications."
+          },
+          {
+            "questionId": 16,
+            "question": "Which AWS service is used to store files in a scalable manner?",
+            "options": [
+              { "A": "Amazon S3" },
+              { "B": "AWS Lambda" },
+              { "C": "Amazon EC2" },
+              { "D": "AWS DynamoDB" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon S3 is a scalable storage service used for storing files, images, and other objects."
+          },
+          {
+            "questionId": 17,
+            "question": "What service is used by AWS to perform DNS management?",
+            "options": [
+              { "A": "Amazon Route 53" },
+              { "B": "AWS CloudFormation" },
+              { "C": "Amazon S3" },
+              { "D": "AWS IAM" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon Route 53 is used to manage DNS (Domain Name System) records for AWS resources."
+          },
+          {
+            "questionId": 18,
+            "question": "Which AWS service can automatically scale your application?",
+            "options": [
+              { "A": "AWS Auto Scaling" },
+              { "B": "Amazon EC2" },
+              { "C": "AWS CloudFormation" },
+              { "D": "AWS Lambda" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Auto Scaling automatically adjusts your application’s capacity to maintain performance and minimize costs."
+          },
+          {
+            "questionId": 19,
+            "question": "Which service can be used for infrastructure automation on AWS?",
+            "options": [
+              { "A": "AWS CloudFormation" },
+              { "B": "Amazon EC2" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon Route 53" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS CloudFormation allows you to define and provision AWS infrastructure as code."
+          },
+          {
+            "questionId": 20,
+            "question": "Which AWS service provides a fully managed database for NoSQL data?",
+            "options": [
+              { "A": "Amazon RDS" },
+              { "B": "Amazon DynamoDB" },
+              { "C": "Amazon Aurora" },
+              { "D": "AWS Lambda" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Amazon DynamoDB is a fully managed NoSQL database service for high performance and scalability."
+          },
+          {
+            "questionId": 21,
+            "question": "Which AWS service provides real-time analytics for large datasets?",
+            "options": [
+              { "A": "Amazon Kinesis" },
+              { "B": "AWS Lambda" },
+              { "C": "Amazon Redshift" },
+              { "D": "Amazon RDS" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon Kinesis enables real-time processing of streaming data."
+          },
+          {
+            "questionId": 22,
+            "question": "Which AWS service can be used to automate machine learning workflows?",
+            "options": [
+              { "A": "AWS SageMaker" },
+              { "B": "Amazon Polly" },
+              { "C": "Amazon Rekognition" },
+              { "D": "AWS Lambda" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS SageMaker helps you automate and deploy machine learning workflows."
+          },
+          {
+            "questionId": 23,
+            "question": "Which service allows you to manage and deploy containerized applications on AWS?",
+            "options": [
+              { "A": "Amazon ECS" },
+              { "B": "AWS Lambda" },
+              { "C": "Amazon EC2" },
+              { "D": "Amazon S3" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon ECS (Elastic Container Service) is used for managing and deploying Docker containers."
+          },
+          {
+            "questionId": 24,
+            "question": "What AWS service provides security for web applications?",
+            "options": [
+              { "A": "AWS WAF" },
+              { "B": "AWS CloudFront" },
+              { "C": "AWS Lambda" },
+              { "D": "AWS IAM" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS WAF (Web Application Firewall) provides protection for web applications."
+          },
+          {
+            "questionId": 25,
+            "question": "Which AWS service helps you to migrate databases to AWS?",
+            "options": [
+              { "A": "AWS Database Migration Service" },
+              { "B": "AWS Snowball" },
+              { "C": "Amazon EC2" },
+              { "D": "AWS Route 53" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Database Migration Service helps you migrate databases to AWS with minimal downtime."
+          },
+          {
+            "questionId": 26,
+            "question": "Which AWS service allows you to track changes to your resources and configurations?",
+            "options": [
+              { "A": "AWS CloudTrail" },
+              { "B": "AWS CloudWatch" },
+              { "C": "Amazon S3" },
+              { "D": "AWS Lambda" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS CloudTrail records API calls made on your account for auditing and tracking purposes."
+          },
+          {
+            "questionId": 27,
+            "question": "Which AWS service is primarily used for monitoring AWS resources and applications in real-time?",
+            "options": [
+              { "A": "Amazon CloudWatch" },
+              { "B": "AWS Lambda" },
+              { "C": "AWS CloudFormation" },
+              { "D": "Amazon EC2" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon CloudWatch monitors AWS resources and applications in real-time."
+          },
+          {
+            "questionId": 28,
+            "question": "Which AWS service can help you analyze large-scale datasets using SQL queries?",
+            "options": [
+              { "A": "Amazon Redshift" },
+              { "B": "Amazon RDS" },
+              { "C": "Amazon DynamoDB" },
+              { "D": "Amazon EC2" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon Redshift is a data warehouse service that enables analyzing large-scale datasets using SQL queries."
+          },
+          {
+            "questionId": 29,
+            "question": "Which AWS service allows you to build and train machine learning models?",
+            "options": [
+              { "A": "Amazon SageMaker" },
+              { "B": "Amazon Polly" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon Rekognition" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon SageMaker is a fully managed service for building, training, and deploying machine learning models."
+          },
+          {
+            "questionId": 30,
+            "question": "Which AWS service is used for deploying serverless applications?",
+            "options": [
+              { "A": "AWS Lambda" },
+              { "B": "Amazon EC2" },
+              { "C": "Amazon S3" },
+              { "D": "AWS CloudFormation" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Lambda enables you to run serverless applications without managing servers."
+          },
+          {
+            "questionId": 31,
+            "question": "Which AWS service is used to manage and scale containerized applications?",
+            "options": [
+              { "A": "Amazon ECS" },
+              { "B": "Amazon RDS" },
+              { "C": "AWS Lambda" },
+              { "D": "AWS Elastic Beanstalk" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon ECS (Elastic Container Service) is used for managing and scaling containerized applications."
+          },
+          {
+            "questionId": 32,
+            "question": "Which AWS service allows you to run virtual machines in the cloud?",
+            "options": [
+              { "A": "Amazon EC2" },
+              { "B": "AWS Lambda" },
+              { "C": "Amazon S3" },
+              { "D": "Amazon CloudFront" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon EC2 provides scalable compute capacity by allowing you to run virtual machines in the cloud."
+          },
+          {
+            "questionId": 33,
+            "question": "Which AWS service provides a fully managed DNS and domain name registration?",
+            "options": [
+              { "A": "Amazon Route 53" },
+              { "B": "AWS CloudTrail" },
+              { "C": "AWS WAF" },
+              { "D": "AWS IAM" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon Route 53 is a scalable DNS and domain name registration service."
+          },
+          {
+            "questionId": 34,
+            "question": "Which service allows you to distribute content globally using a content delivery network (CDN)?",
+            "options": [
+              { "A": "Amazon CloudFront" },
+              { "B": "Amazon S3" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon EC2" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon CloudFront is a content delivery network (CDN) that helps distribute content globally."
+          },
+          {
+            "questionId": 35,
+            "question": "Which AWS service is designed for creating and managing APIs?",
+            "options": [
+              { "A": "AWS API Gateway" },
+              { "B": "AWS IAM" },
+              { "C": "AWS CloudFormation" },
+              { "D": "AWS CloudWatch" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS API Gateway enables you to create, manage, and deploy APIs."
+          },
+          {
+            "questionId": 36,
+            "question": "What AWS service helps you to collect and analyze data streams in real-time?",
+            "options": [
+              { "A": "Amazon Kinesis" },
+              { "B": "Amazon EC2" },
+              { "C": "Amazon S3" },
+              { "D": "Amazon DynamoDB" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon Kinesis enables real-time data stream collection and analysis."
+          },
+          {
+            "questionId": 37,
+            "question": "Which AWS service helps you to secure your web applications by protecting against common threats?",
+            "options": [
+              { "A": "AWS WAF" },
+              { "B": "AWS IAM" },
+              { "C": "Amazon EC2" },
+              { "D": "AWS Lambda" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS WAF (Web Application Firewall) helps protect web applications against common threats like SQL injection."
+          },
+          {
+            "questionId": 38,
+            "question": "Which AWS service allows you to run code without provisioning servers?",
+            "options": [
+              { "A": "AWS Lambda" },
+              { "B": "Amazon EC2" },
+              { "C": "Amazon S3" },
+              { "D": "Amazon RDS" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Lambda enables you to run your code in response to events without provisioning or managing servers."
+          },
+          {
+            "questionId": 39,
+            "question": "Which AWS service provides a platform for building and deploying applications in the cloud?",
+            "options": [
+              { "A": "AWS Elastic Beanstalk" },
+              { "B": "Amazon EC2" },
+              { "C": "Amazon S3" },
+              { "D": "AWS CloudFormation" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Elastic Beanstalk is a platform for building, deploying, and scaling applications quickly."
+          },
+          {
+            "questionId": 40,
+            "question": "Which AWS service is used for storing data in a relational database format?",
+            "options": [
+              { "A": "Amazon RDS" },
+              { "B": "Amazon DynamoDB" },
+              { "C": "Amazon S3" },
+              { "D": "AWS Lambda" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon RDS is a fully managed relational database service that supports databases like MySQL, PostgreSQL, and SQL Server."
+          },
+          {
+            "questionId": 41,
+            "question": "Which AWS service is primarily used for managing containers?",
+            "options": [
+              { "A": "Amazon ECS" },
+              { "B": "AWS CloudFormation" },
+              { "C": "AWS Lambda" },
+              { "D": "Amazon RDS" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon ECS (Elastic Container Service) helps manage and scale containerized applications."
+          },
+          {
+            "questionId": 42,
+            "question": "Which AWS service can be used for large-scale data migration to AWS?",
+            "options": [
+              { "A": "AWS Snowball" },
+              { "B": "Amazon EC2" },
+              { "C": "Amazon RDS" },
+              { "D": "AWS Lambda" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS Snowball is a data transport solution for securely transferring large amounts of data into and out of AWS."
+          },
+          {
+            "questionId": 43,
+            "question": "Which AWS service is used to enable real-time messaging between applications?",
+            "options": [
+              { "A": "Amazon SNS" },
+              { "B": "AWS Lambda" },
+              { "C": "Amazon SQS" },
+              { "D": "AWS IAM" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Amazon SNS (Simple Notification Service) enables real-time messaging between distributed systems."
+          },
+          {
+            "questionId": 44,
+            "question": "Which AWS service is designed to manage and secure access to AWS resources?",
+            "options": [
+              { "A": "AWS IAM" },
+              { "B": "Amazon S3" },
+              { "C": "Amazon EC2" },
+              { "D": "AWS CloudTrail" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS IAM (Identity and Access Management) allows you to securely manage access to AWS services."
+          },
+          {
+            "questionId": 45,
+            "question": "Which AWS service is used for automating the management of infrastructure?",
+            "options": [
+              { "A": "AWS CloudFormation" },
+              { "B": "AWS Lambda" },
+              { "C": "Amazon EC2" },
+              { "D": "AWS WAF" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "AWS CloudFormation allows you to define infrastructure as code and automate the creation and management of resources."
           }
         ],
         "correctAnswersCount": 0,

@@ -1,7 +1,6 @@
 {
     "sections": [
       {
-        "section": "Angular Basics",
         "questions": [
           {
             "questionId": 1,
@@ -28,7 +27,1281 @@
             "selectedAnswer": "",
             "correctAnswer": "A",
             "explanation": "The syntax [(ngModel)] (banana in a box) is used for two-way data binding."
-          } 
+          },
+          {
+            "questionId": 3,
+            "question": "Which of the following is the correct way to define a component selector?",
+            "options": [
+              { "A": "selector: 'app-root'" },
+              { "B": "selector: 'root-app'" },
+              { "C": "selector: 'appComponent'" },
+              { "D": "selector: 'root-component'" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The component selector is defined as 'selector: 'app-root'' in the component metadata."
+          },
+          {
+            "questionId": 4,
+            "question": "Which lifecycle hook is called after Angular has initialized all data-bound properties?",
+            "options": [
+              { "A": "ngOnChanges" },
+              { "B": "ngOnInit" },
+              { "C": "ngAfterViewInit" },
+              { "D": "ngAfterContentChecked" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The ngOnInit lifecycle hook is called after Angular initializes all data-bound properties."
+          },
+          {
+            "questionId": 5,
+            "question": "What is the purpose of the ngFor directive in Angular?",
+            "options": [
+              { "A": "To iterate over arrays or lists" },
+              { "B": "To bind values to a component" },
+              { "C": "To handle form submissions" },
+              { "D": "To show a component in a loop" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The ngFor directive is used to iterate over arrays or lists in Angular."
+          },
+          {
+            "questionId": 6,
+            "question": "Which of the following is used to import Angular modules?",
+            "options": [
+              { "A": "import { NgModule } from '@angular/core';" },
+              { "B": "import { Module } from '@angular/core';" },
+              { "C": "import { NgModule } from '@angular/common';" },
+              { "D": "import { NgModule } from '@angular/platform-browser';" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The correct import for Angular modules is 'import { NgModule } from '@angular/core';'."
+          },
+          {
+            "questionId": 7,
+            "question": "Which Angular feature allows you to build and manage forms?",
+            "options": [
+              { "A": "FormsModule" },
+              { "B": "ReactiveFormsModule" },
+              { "C": "HttpClientModule" },
+              { "D": "FormControlModule" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "FormsModule and ReactiveFormsModule are used for building and managing forms in Angular."
+          },
+          {
+            "questionId": 8,
+            "question": "Which command is used to build an Angular project?",
+            "options": [
+              { "A": "ng serve" },
+              { "B": "ng build" },
+              { "C": "ng start" },
+              { "D": "ng create" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The 'ng build' command is used to build the Angular project."
+          },
+          {
+            "questionId": 9,
+            "question": "What does the term 'dependency injection' mean in Angular?",
+            "options": [
+              { "A": "Injecting external JavaScript libraries into Angular" },
+              { "B": "Passing a component's dependencies from a parent component" },
+              { "C": "Automatically injecting services into components and directives" },
+              { "D": "Binding data to HTML elements" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Dependency injection in Angular is the process of automatically injecting services into components and directives."
+          },
+          {
+            "questionId": 10,
+            "question": "Which module is required to enable HTTP requests in Angular?",
+            "options": [
+              { "A": "HttpClientModule" },
+              { "B": "FormsModule" },
+              { "C": "RouterModule" },
+              { "D": "CommonModule" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The HttpClientModule is required to enable HTTP requests in Angular."
+          },
+          {
+            "questionId": 11,
+            "question": "Which of the following is used to define routes in Angular?",
+            "options": [
+              { "A": "ngRoute" },
+              { "B": "RouterModule" },
+              { "C": "NgRouter" },
+              { "D": "AppRoutingModule" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "RouterModule is used to define routes in Angular applications."
+          },
+          {
+            "questionId": 12,
+            "question": "How can you handle errors in Angular HTTP requests?",
+            "options": [
+              { "A": "By using the catchError operator" },
+              { "B": "By using try-catch block" },
+              { "C": "By using errorHandler directive" },
+              { "D": "By using the onError method" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "You can handle errors in Angular HTTP requests by using the catchError operator."
+          },
+          {
+            "questionId": 13,
+            "question": "What is the purpose of the ngIf directive in Angular?",
+            "options": [
+              { "A": "To iterate over an array" },
+              { "B": "To display or hide elements conditionally" },
+              { "C": "To apply a class to an element" },
+              { "D": "To bind data to an element" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The ngIf directive is used to display or hide elements conditionally in Angular."
+          },
+          {
+            "questionId": 14,
+            "question": "Which operator is used to handle asynchronous operations in Angular?",
+            "options": [
+              { "A": "Promise" },
+              { "B": "Observable" },
+              { "C": "Callback" },
+              { "D": "Async" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "In Angular, Observable is used to handle asynchronous operations."
+          },
+          {
+            "questionId": 15,
+            "question": "Which module do you need to import to use the 'ngFor' directive?",
+            "options": [
+              { "A": "BrowserModule" },
+              { "B": "CommonModule" },
+              { "C": "FormsModule" },
+              { "D": "HttpClientModule" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "CommonModule is required to use directives like ngFor and ngIf."
+          },
+          {
+            "questionId": 16,
+            "question": "What is the purpose of the async pipe in Angular?",
+            "options": [
+              { "A": "To automatically subscribe to observables" },
+              { "B": "To handle HTTP requests asynchronously" },
+              { "C": "To wait for a promise to resolve" },
+              { "D": "To delay the execution of a function" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The async pipe is used to automatically subscribe to observables and resolve promises."
+          },
+          {
+            "questionId": 17,
+            "question": "What is the decorator used to define a service in Angular?",
+            "options": [
+              { "A": "@Component" },
+              { "B": "@Injectable" },
+              { "C": "@Service" },
+              { "D": "@Directive" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The @Injectable decorator is used to define services in Angular."
+          },
+          {
+            "questionId": 18,
+            "question": "Which of the following can be used to navigate to a new route programmatically in Angular?",
+            "options": [
+              { "A": "window.location.href" },
+              { "B": "this.router.navigate()" },
+              { "C": "this.navigate()" },
+              { "D": "this.router.link()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "In Angular, you can navigate programmatically using 'this.router.navigate()'."
+          },
+          {
+            "questionId": 19,
+            "question": "Which directive is used to add styles dynamically to an element?",
+            "options": [
+              { "A": "ngClass" },
+              { "B": "ngStyle" },
+              { "C": "ngFor" },
+              { "D": "ngIf" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The ngStyle directive is used to dynamically add styles to an element."
+          },
+          {
+            "questionId": 20,
+            "question": "What is the purpose of the ngOnChanges lifecycle hook?",
+            "options": [
+              { "A": "To respond to changes in input properties" },
+              { "B": "To initialize data-bound properties" },
+              { "C": "To check for changes in the component's view" },
+              { "D": "To clean up resources" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The ngOnChanges lifecycle hook is used to respond to changes in input properties."
+          },
+          {
+            "questionId": 21,
+            "question": "Which lifecycle hook is called after Angular has initialized all content of a component?",
+            "options": [
+              { "A": "ngAfterViewInit" },
+              { "B": "ngOnInit" },
+              { "C": "ngAfterContentInit" },
+              { "D": "ngOnChanges" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "ngAfterContentInit is called after Angular has initialized all content of a component."
+          },
+          {
+            "questionId": 22,
+            "question": "What is the function of the Angular CLI?",
+            "options": [
+              { "A": "To handle HTTP requests" },
+              { "B": "To manage application routes" },
+              { "C": "To automate tasks like building and serving" },
+              { "D": "To provide services for components" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The Angular CLI is used to automate tasks like building, serving, and testing Angular applications."
+          },
+          {
+            "questionId": 23,
+            "question": "Which of the following is an Angular lifecycle hook?",
+            "options": [
+              { "A": "ngOnStart" },
+              { "B": "ngOnChanges" },
+              { "C": "ngViewInit" },
+              { "D": "ngOnCreate" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "ngOnChanges is an Angular lifecycle hook that responds to changes in input properties."
+          },
+          {
+            "questionId": 24,
+            "question": "What is the role of the Angular Router?",
+            "options": [
+              { "A": "To display dynamic content" },
+              { "B": "To manage components' visibility" },
+              { "C": "To navigate between views or components" },
+              { "D": "To update the URL" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The Angular Router manages navigation between different views or components."
+          },
+          {
+            "questionId": 25,
+            "question": "Which directive is used to apply styles to elements based on conditions in Angular?",
+            "options": [
+              { "A": "ngStyle" },
+              { "B": "ngClass" },
+              { "C": "ngIf" },
+              { "D": "ngFor" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The ngClass directive is used to conditionally apply styles to elements."
+          },
+          {
+            "questionId": 26,
+            "question": "Which Angular service is responsible for handling HTTP requests?",
+            "options": [
+              { "A": "HttpClient" },
+              { "B": "HttpService" },
+              { "C": "HttpModule" },
+              { "D": "HttpRequest" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "HttpClient is the Angular service responsible for handling HTTP requests."
+          },
+          {
+            "questionId": 27,
+            "question": "Which decorator is used to define a component in Angular?",
+            "options": [
+              { "A": "@Component" },
+              { "B": "@Injectable" },
+              { "C": "@Module" },
+              { "D": "@Directive" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "@Component decorator is used to define components in Angular."
+          },
+          {
+            "questionId": 28,
+            "question": "What type of data structure does Angular's Observable handle?",
+            "options": [
+              { "A": "Array" },
+              { "B": "Map" },
+              { "C": "Event stream" },
+              { "D": "Promise" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "Angular's Observable handles event streams."
+          },
+          {
+            "questionId": 29,
+            "question": "What is the purpose of a service in Angular?",
+            "options": [
+              { "A": "To create reusable UI components" },
+              { "B": "To handle business logic and data management" },
+              { "C": "To apply styles to elements" },
+              { "D": "To route users to different views" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Services in Angular handle business logic, data management, and communication between components."
+          },
+          {
+            "questionId": 30,
+            "question": "What is the correct way to create a new Angular service?",
+            "options": [
+              { "A": "ng generate service <service-name>" },
+              { "B": "ng create service <service-name>" },
+              { "C": "ng add service <service-name>" },
+              { "D": "ng new service <service-name>" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The correct command to generate a new Angular service is 'ng generate service <service-name>'."
+          },
+          {
+            "questionId": 31,
+            "question": "Which of the following is used to bind an HTML element to a property in Angular?",
+            "options": [
+              { "A": "ngModel" },
+              { "B": "ngBind" },
+              { "C": "ngProperty" },
+              { "D": "ngFor" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "ngModel is used for binding an HTML element to a property in Angular."
+          },
+          {
+            "questionId": 32,
+            "question": "What is the purpose of the ngAfterViewInit lifecycle hook?",
+            "options": [
+              { "A": "It is called when Angular has initialized the component's view" },
+              { "B": "It is called when the component's content is initialized" },
+              { "C": "It is called after Angular updates the DOM" },
+              { "D": "It is called before Angular updates the DOM" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "ngAfterViewInit is called when Angular has initialized the component's view."
+          },
+          {
+            "questionId": 33,
+            "question": "Which operator in Angular allows you to combine multiple observable streams?",
+            "options": [
+              { "A": "merge" },
+              { "B": "combineLatest" },
+              { "C": "concat" },
+              { "D": "switchMap" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "combineLatest allows you to combine multiple observable streams in Angular."
+          },
+          {
+            "questionId": 34,
+            "question": "Which decorator is used to inject a dependency into a class in Angular?",
+            "options": [
+              { "A": "@Injectable" },
+              { "B": "@Inject" },
+              { "C": "@Service" },
+              { "D": "@Directive" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The @Inject decorator is used to inject a dependency into a class in Angular."
+          },
+          {
+            "questionId": 35,
+            "question": "What command is used to start the Angular development server?",
+            "options": [
+              { "A": "ng serve" },
+              { "B": "ng start" },
+              { "C": "ng build" },
+              { "D": "ng run" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The correct command to start the Angular development server is 'ng serve'."
+          },
+          {
+            "questionId": 36,
+            "question": "What is the purpose of the ngIf directive in Angular?",
+            "options": [
+              { "A": "To loop through an array" },
+              { "B": "To display or hide an element based on a condition" },
+              { "C": "To apply styles to an element" },
+              { "D": "To handle HTTP requests" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "ngIf is used to display or hide an element based on a condition in Angular."
+          },
+          {
+            "questionId": 37,
+            "question": "Which Angular directive is used to loop through a collection of items?",
+            "options": [
+              { "A": "ngFor" },
+              { "B": "ngRepeat" },
+              { "C": "ngLoop" },
+              { "D": "ngEach" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "ngFor is the directive used to loop through a collection of items in Angular."
+          },
+          {
+            "questionId": 38,
+            "question": "Which decorator is used to define a service in Angular?",
+            "options": [
+              { "A": "@Injectable" },
+              { "B": "@Component" },
+              { "C": "@Service" },
+              { "D": "@Directive" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "@Injectable is the decorator used to define a service in Angular."
+          },
+          {
+            "questionId": 39,
+            "question": "Which of the following is used to create a new component in Angular?",
+            "options": [
+              { "A": "ng create component <component-name>" },
+              { "B": "ng generate component <component-name>" },
+              { "C": "ng new component <component-name>" },
+              { "D": "ng add component <component-name>" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The correct command to generate a new Angular component is 'ng generate component <component-name>'."
+          },
+          {
+            "questionId": 40,
+            "question": "Which lifecycle hook is called before Angular checks the component's view?",
+            "options": [
+              { "A": "ngOnChanges" },
+              { "B": "ngOnInit" },
+              { "C": "ngAfterViewInit" },
+              { "D": "ngAfterContentInit" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "ngOnChanges is called before Angular checks the component's view."
+          },
+          {
+            "questionId": 41,
+            "question": "Which of the following is used to handle errors in Angular?",
+            "options": [
+              { "A": "try-catch" },
+              { "B": "catchError" },
+              { "C": "errorHandler" },
+              { "D": "throwError" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The 'catchError' operator is used to handle errors in Angular."
+          },
+          {
+            "questionId": 42,
+            "question": "What is the correct way to define a module in Angular?",
+            "options": [
+              { "A": "@Module" },
+              { "B": "@NgModule" },
+              { "C": "@AppModule" },
+              { "D": "@Component" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The correct decorator to define a module in Angular is '@NgModule'."
+          },
+          {
+            "questionId": 43,
+            "question": "Which of the following is used to bind an event in Angular?",
+            "options": [
+              { "A": "ngEvent" },
+              { "B": "ngClick" },
+              { "C": "(event)" },
+              { "D": "ngEventBinding" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The correct way to bind an event in Angular is by using '(event)'."
+          },
+          {
+            "questionId": 44,
+            "question": "Which of the following is used to display a list of items in Angular?",
+            "options": [
+              { "A": "ngList" },
+              { "B": "ngFor" },
+              { "C": "ngRepeat" },
+              { "D": "ngItems" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "ngFor is used to display a list of items in Angular."
+          },
+          {
+            "questionId": 45,
+            "question": "Which operator is used to switch from one observable to another in Angular?",
+            "options": [
+              { "A": "switchMap" },
+              { "B": "mergeMap" },
+              { "C": "concatMap" },
+              { "D": "switchTo" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The 'switchMap' operator is used to switch from one observable to another."
+          },
+          {
+            "questionId": 46,
+            "question": "Which of the following is used to create a new Angular project?",
+            "options": [
+              { "A": "ng create project <project-name>" },
+              { "B": "ng new <project-name>" },
+              { "C": "ng init <project-name>" },
+              { "D": "ng generate <project-name>" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The correct command to create a new Angular project is 'ng new <project-name>'."
+          },
+          {
+            "questionId": 47,
+            "question": "Which lifecycle hook is used for performing cleanup before the component is destroyed?",
+            "options": [
+              { "A": "ngOnDestroy" },
+              { "B": "ngOnChanges" },
+              { "C": "ngAfterContentInit" },
+              { "D": "ngAfterViewInit" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "ngOnDestroy is used for performing cleanup before the component is destroyed."
+          },
+          {
+            "questionId": 48,
+            "question": "Which of the following can be used to inject a dependency into an Angular component?",
+            "options": [
+              { "A": "@Injectable" },
+              { "B": "@Inject" },
+              { "C": "@Directive" },
+              { "D": "@Component" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The @Inject decorator is used to inject a dependency into an Angular component."
+          },
+          {
+            "questionId": 49,
+            "question": "What is the correct syntax for binding a click event to a button in Angular?",
+            "options": [
+              { "A": "(click)='onClick()'" },
+              { "B": "[click]='onClick()'" },
+              { "C": "click='onClick()'" },
+              { "D": "ngClick='onClick()'" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The correct syntax for binding a click event to a button in Angular is '(click)='onClick()''."
+          },
+          {
+            "questionId": 50,
+            "question": "Which Angular directive is used to add or remove CSS classes based on a condition?",
+            "options": [
+              { "A": "ngIf" },
+              { "B": "ngFor" },
+              { "C": "ngClass" },
+              { "D": "ngStyle" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "ngClass is used to add or remove CSS classes based on a condition in Angular."
+          },
+          {
+            "questionId": 51,
+            "question": "Which of the following is used to handle asynchronous operations in Angular?",
+            "options": [
+              { "A": "Promises" },
+              { "B": "Observables" },
+              { "C": "Callbacks" },
+              { "D": "Async functions" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Observables are used to handle asynchronous operations in Angular, often used with RxJS."
+          },
+          {
+            "questionId": 52,
+            "question": "Which Angular service is used to handle HTTP requests?",
+            "options": [
+              { "A": "HttpClient" },
+              { "B": "HttpService" },
+              { "C": "HttpModule" },
+              { "D": "HttpRequest" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The HttpClient service is used to handle HTTP requests in Angular."
+          },
+          {
+            "questionId": 53,
+            "question": "Which decorator is used to define a component in Angular?",
+            "options": [
+              { "A": "@Component" },
+              { "B": "@Injectable" },
+              { "C": "@Module" },
+              { "D": "@Directive" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The @Component decorator is used to define a component in Angular."
+          },
+          {
+            "questionId": 54,
+            "question": "Which of the following is used to bind an element’s style in Angular?",
+            "options": [
+              { "A": "ngStyle" },
+              { "B": "ngClass" },
+              { "C": "ngBind" },
+              { "D": "ngAttributes" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "ngStyle is used to bind an element’s style in Angular."
+          },
+          {
+            "questionId": 55,
+            "question": "Which of the following is the correct way to create a new Angular service?",
+            "options": [
+              { "A": "ng create service <service-name>" },
+              { "B": "ng generate service <service-name>" },
+              { "C": "ng new service <service-name>" },
+              { "D": "ng add service <service-name>" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The correct command to generate a new service in Angular is 'ng generate service <service-name>'."
+          },
+          {
+            "questionId": 56,
+            "question": "Which lifecycle hook is called after Angular initializes the component's view?",
+            "options": [
+              { "A": "ngOnInit" },
+              { "B": "ngAfterViewInit" },
+              { "C": "ngAfterContentInit" },
+              { "D": "ngOnChanges" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "ngAfterViewInit is called after Angular initializes the component's view."
+          },
+          {
+            "questionId": 57,
+            "question": "Which operator in Angular is used to handle multiple observable streams at once?",
+            "options": [
+              { "A": "concatMap" },
+              { "B": "mergeMap" },
+              { "C": "forkJoin" },
+              { "D": "combineLatest" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "The forkJoin operator is used to handle multiple observable streams at once."
+          },
+          {
+            "questionId": 58,
+            "question": "Which of the following is used for routing in Angular?",
+            "options": [
+              { "A": "ngRoute" },
+              { "B": "RouterModule" },
+              { "C": "RouterLink" },
+              { "D": "ngLink" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "RouterModule is used for routing in Angular."
+          },
+          {
+            "questionId": 59,
+            "question": "Which operator is used to combine the latest values from multiple observables in Angular?",
+            "options": [
+              { "A": "combineLatest" },
+              { "B": "mergeMap" },
+              { "C": "concatMap" },
+              { "D": "switchMap" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "combineLatest is used to combine the latest values from multiple observables in Angular."
+          },
+          {
+            "questionId": 60,
+            "question": "Which method in Angular is used to detect changes in a component?",
+            "options": [
+              { "A": "detectChanges" },
+              { "B": "ngOnChanges" },
+              { "C": "ngAfterViewChecked" },
+              { "D": "ngDoCheck" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "The ngDoCheck lifecycle hook is used to detect changes in a component."
+          },
+          {
+            "questionId": 61,
+            "question": "What is the correct way to pass data to a child component in Angular?",
+            "options": [
+              { "A": "Using @Input decorator" },
+              { "B": "Using @Output decorator" },
+              { "C": "Using services" },
+              { "D": "Using router parameters" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The @Input decorator is used to pass data from a parent component to a child component in Angular."
+          },
+          {
+            "questionId": 62,
+            "question": "Which of the following is used to navigate programmatically in Angular?",
+            "options": [
+              { "A": "Router" },
+              { "B": "RouteLink" },
+              { "C": "RouterModule" },
+              { "D": "navigateTo" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The Router service is used to navigate programmatically in Angular."
+          },
+          {
+            "questionId": 63,
+            "question": "Which lifecycle hook is called when Angular initializes a component's content?",
+            "options": [
+              { "A": "ngOnInit" },
+              { "B": "ngAfterContentInit" },
+              { "C": "ngAfterViewInit" },
+              { "D": "ngDoCheck" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "ngAfterContentInit is called when Angular initializes a component's content."
+          },
+          {
+            "questionId": 64,
+            "question": "Which method in Angular is used to handle HTTP GET requests?",
+            "options": [
+              { "A": "get" },
+              { "B": "post" },
+              { "C": "put" },
+              { "D": "delete" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The 'get' method is used to handle HTTP GET requests in Angular."
+          },
+          {
+            "questionId": 65,
+            "question": "Which decorator is used to define a directive in Angular?",
+            "options": [
+              { "A": "@Directive" },
+              { "B": "@Injectable" },
+              { "C": "@Component" },
+              { "D": "@NgModule" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The @Directive decorator is used to define a directive in Angular."
+          },
+          {
+            "questionId": 66,
+            "question": "Which of the following is used to display dynamic HTML content in Angular?",
+            "options": [
+              { "A": "ngContent" },
+              { "B": "ngTemplate" },
+              { "C": "ngBind" },
+              { "D": "ngModel" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "ngTemplate is used to display dynamic HTML content in Angular."
+          },
+          {
+            "questionId": 67,
+            "question": "What is the correct way to inject a service into a component in Angular?",
+            "options": [
+              { "A": "By using the constructor" },
+              { "B": "By using the ngOnInit method" },
+              { "C": "By using the inject() function" },
+              { "D": "By using the @Injectable decorator" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "A service is injected into a component by using the constructor."
+          },
+          {
+            "questionId": 68,
+            "question": "Which of the following is used to handle forms in Angular?",
+            "options": [
+              { "A": "FormsModule" },
+              { "B": "ReactiveFormsModule" },
+              { "C": "FormControl" },
+              { "D": "All of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "Angular provides FormsModule, ReactiveFormsModule, and FormControl to handle forms."
+          },
+          {
+            "questionId": 69,
+            "question": "Which of the following is used to handle routing in Angular?",
+            "options": [
+              { "A": "RouterModule" },
+              { "B": "ngRoute" },
+              { "C": "ngRouting" },
+              { "D": "Router" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "RouterModule is used to handle routing in Angular."
+          },
+          {
+            "questionId": 70,
+            "question": "Which of the following lifecycle hooks is called after the view is checked?",
+            "options": [
+              { "A": "ngAfterViewChecked" },
+              { "B": "ngAfterContentChecked" },
+              { "C": "ngOnInit" },
+              { "D": "ngDoCheck" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "ngAfterViewChecked is called after the view is checked."
+          },
+          {
+            "questionId": 71,
+            "question": "Which Angular pipe is used for date formatting?",
+            "options": [
+              { "A": "DatePipe" },
+              { "B": "CurrencyPipe" },
+              { "C": "JsonPipe" },
+              { "D": "DecimalPipe" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "DatePipe is used for date formatting in Angular."
+          },
+          {
+            "questionId": 72,
+            "question": "Which Angular directive is used to repeat an element for each item in a list?",
+            "options": [
+              { "A": "ngRepeat" },
+              { "B": "ngFor" },
+              { "C": "ngForEach" },
+              { "D": "ngList" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "The ngFor directive is used to repeat an element for each item in a list."
+          },
+          {
+            "questionId": 73,
+            "question": "What is the correct way to define a route in Angular?",
+            "options": [
+              { "A": "path: 'path', component: Component" },
+              { "B": "component: Component, path: 'path'" },
+              { "C": "route: { path: 'path', component: Component }" },
+              { "D": "routes: [{ path: 'path', component: Component }]" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "The correct way to define a route is by using an array of route objects like 'routes: [{ path: 'path', component: Component }]'."
+          },
+          {
+            "questionId": 74,
+            "question": "Which of the following is used to create Angular components?",
+            "options": [
+              { "A": "ng generate component" },
+              { "B": "ng create component" },
+              { "C": "ng new component" },
+              { "D": "ng build component" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The correct command to generate a new component is 'ng generate component'."
+          },
+          {
+            "questionId": 75,
+            "question": "Which of the following is used to define a module in Angular?",
+            "options": [
+              { "A": "@Module" },
+              { "B": "@Component" },
+              { "C": "@Directive" },
+              { "D": "@Injectable" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "@Module is used to define a module in Angular."
+          },
+          {
+            "questionId": 76,
+            "question": "Which Angular directive is used for conditional rendering?",
+            "options": [
+              { "A": "ngIf" },
+              { "B": "ngSwitch" },
+              { "C": "ngFor" },
+              { "D": "ngClass" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "ngIf is used for conditional rendering in Angular."
+          },
+          {
+            "questionId": 77,
+            "question": "Which of the following is a reactive form control in Angular?",
+            "options": [
+              { "A": "FormGroup" },
+              { "B": "FormControl" },
+              { "C": "FormArray" },
+              { "D": "All of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "FormGroup, FormControl, and FormArray are all reactive form controls in Angular."
+          },
+          {
+            "questionId": 78,
+            "question": "Which method is used to subscribe to an Observable in Angular?",
+            "options": [
+              { "A": "subscribe()" },
+              { "B": "listen()" },
+              { "C": "onNext()" },
+              { "D": "observe()" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The subscribe() method is used to subscribe to an Observable in Angular."
+          },
+          {
+            "questionId": 79,
+            "question": "Which Angular service is used to store and manage data within a component?",
+            "options": [
+              { "A": "HttpClient" },
+              { "B": "Store" },
+              { "C": "SessionService" },
+              { "D": "Service" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "A service is typically used to store and manage data within a component."
+          },
+          {
+            "questionId": 80,
+            "question": "Which Angular feature allows you to define reusable pieces of functionality?",
+            "options": [
+              { "A": "Directives" },
+              { "B": "Components" },
+              { "C": "Modules" },
+              { "D": "Pipes" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "Directives allow you to define reusable pieces of functionality in Angular."
+          },
+          {
+            "questionId": 81,
+            "question": "What is the purpose of Angular’s zone.js?",
+            "options": [
+              { "A": "To provide an abstraction layer over Promises" },
+              { "B": "To manage asynchronous operations" },
+              { "C": "To handle HTTP requests" },
+              { "D": "To manage DOM elements" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Zone.js is used in Angular to manage asynchronous operations and track changes to the application state."
+          },
+          {
+            "questionId": 82,
+            "question": "Which Angular module is used to create reactive forms?",
+            "options": [
+              { "A": "FormsModule" },
+              { "B": "ReactiveFormsModule" },
+              { "C": "HttpClientModule" },
+              { "D": "CommonModule" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "ReactiveFormsModule is used to create reactive forms in Angular."
+          },
+          {
+            "questionId": 83,
+            "question": "Which operator is used to transform values from an Observable in Angular?",
+            "options": [
+              { "A": "map" },
+              { "B": "merge" },
+              { "C": "switch" },
+              { "D": "filter" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The map operator is used to transform values emitted by an Observable in Angular."
+          },
+          {
+            "questionId": 84,
+            "question": "What is the Angular CLI command to add a new module?",
+            "options": [
+              { "A": "ng generate module <module-name>" },
+              { "B": "ng add module <module-name>" },
+              { "C": "ng create module <module-name>" },
+              { "D": "ng new module <module-name>" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The correct Angular CLI command to add a new module is 'ng generate module <module-name>'."
+          },
+          {
+            "questionId": 85,
+            "question": "Which lifecycle hook is invoked when Angular sets a value for a component’s input properties?",
+            "options": [
+              { "A": "ngOnInit" },
+              { "B": "ngOnChanges" },
+              { "C": "ngAfterViewInit" },
+              { "D": "ngDoCheck" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "ngOnChanges is invoked when Angular sets a value for a component’s input properties."
+          },
+          {
+            "questionId": 86,
+            "question": "Which of the following is used to dynamically load a component into a view in Angular?",
+            "options": [
+              { "A": "ngTemplateOutlet" },
+              { "B": "ngFor" },
+              { "C": "ngContent" },
+              { "D": "ngView" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "ngTemplateOutlet is used to dynamically load a component into a view in Angular."
+          },
+          {
+            "questionId": 87,
+            "question": "What does RxJS stand for in the context of Angular?",
+            "options": [
+              { "A": "Reactive Extension for JavaScript" },
+              { "B": "Reactive Expression for JavaScript" },
+              { "C": "Reactive X for JavaScript" },
+              { "D": "Reactive Extension for JSON" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "RxJS stands for Reactive Extension for JavaScript."
+          },
+          {
+            "questionId": 88,
+            "question": "Which directive is used to create a two-way binding for form controls in Angular?",
+            "options": [
+              { "A": "ngModel" },
+              { "B": "ngBind" },
+              { "C": "ngClass" },
+              { "D": "ngFor" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "ngModel is used to create a two-way binding for form controls in Angular."
+          },
+          {
+            "questionId": 89,
+            "question": "Which Angular feature allows you to modify an element's appearance based on its state?",
+            "options": [
+              { "A": "ngClass" },
+              { "B": "ngStyle" },
+              { "C": "ngIf" },
+              { "D": "ngModel" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "ngClass is used to modify an element's appearance based on its state in Angular."
+          },
+          {
+            "questionId": 90,
+            "question": "Which of the following is the correct syntax for defining a route guard in Angular?",
+            "options": [
+              { "A": "canActivate" },
+              { "B": "canLoad" },
+              { "C": "canActivateChild" },
+              { "D": "All of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "canActivate, canLoad, and canActivateChild are all valid route guards in Angular."
+          },
+          {
+            "questionId": 91,
+            "question": "Which Angular feature allows you to set up global event listeners?",
+            "options": [
+              { "A": "EventEmitter" },
+              { "B": "Renderer2" },
+              { "C": "ElementRef" },
+              { "D": "ngEvent" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "B",
+            "explanation": "Renderer2 is used in Angular to set up global event listeners."
+          },
+          {
+            "questionId": 92,
+            "question": "Which operator in RxJS is used to combine multiple Observables into a single Observable?",
+            "options": [
+              { "A": "merge" },
+              { "B": "concat" },
+              { "C": "switchMap" },
+              { "D": "combineLatest" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "combineLatest is used to combine multiple Observables into a single Observable in RxJS."
+          },
+          {
+            "questionId": 93,
+            "question": "Which lifecycle hook is invoked once when the component’s view is initialized?",
+            "options": [
+              { "A": "ngAfterViewInit" },
+              { "B": "ngOnInit" },
+              { "C": "ngAfterContentInit" },
+              { "D": "ngOnChanges" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "ngAfterViewInit is invoked once when the component’s view is initialized."
+          },
+          {
+            "questionId": 94,
+            "question": "Which of the following Angular features allows you to test components?",
+            "options": [
+              { "A": "Jasmine" },
+              { "B": "Karma" },
+              { "C": "TestBed" },
+              { "D": "All of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "Jasmine, Karma, and TestBed are all used for testing Angular components."
+          },
+          {
+            "questionId": 95,
+            "question": "Which of the following is used to provide dependency injection in Angular?",
+            "options": [
+              { "A": "ngInject" },
+              { "B": "constructor" },
+              { "C": "@Injectable" },
+              { "D": "@Inject" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "C",
+            "explanation": "@Injectable is used to provide dependency injection in Angular."
+          },
+          {
+            "questionId": 96,
+            "question": "What is the correct syntax to bind an event in Angular?",
+            "options": [
+              { "A": "(click)='method()'" },
+              { "B": "(event)='method()'" },
+              { "C": "bind(event)='method()'" },
+              { "D": "on(event)='method()'" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The correct syntax to bind an event in Angular is (click)='method()'."
+          },
+          {
+            "questionId": 97,
+            "question": "Which Angular directive is used to define a template to be displayed in a switch-case manner?",
+            "options": [
+              { "A": "ngSwitch" },
+              { "B": "ngIf" },
+              { "C": "ngFor" },
+              { "D": "ngContent" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "ngSwitch is used to define a template to be displayed in a switch-case manner."
+          },
+          {
+            "questionId": 98,
+            "question": "What is the purpose of the Angular async pipe?",
+            "options": [
+              { "A": "To subscribe to an Observable" },
+              { "B": "To bind to async data" },
+              { "C": "To manage promises" },
+              { "D": "All of the above" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "D",
+            "explanation": "The async pipe is used to subscribe to an Observable, bind to async data, and manage promises in Angular."
+          },
+          {
+            "questionId": 99,
+            "question": "Which of the following is used to create a new Angular application?",
+            "options": [
+              { "A": "ng new" },
+              { "B": "ng generate" },
+              { "C": "ng create" },
+              { "D": "ng start" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "The correct command to create a new Angular application is 'ng new'."
+          },
+          {
+            "questionId": 100,
+            "question": "Which Angular module is required for form validation?",
+            "options": [
+              { "A": "FormsModule" },
+              { "B": "ReactiveFormsModule" },
+              { "C": "CommonModule" },
+              { "D": "HttpClientModule" }
+            ],
+            "selectedAnswer": "",
+            "correctAnswer": "A",
+            "explanation": "FormsModule is required for form validation in Angular."
+          }
         ],
         "correctAnswersCount": 0,
         "wrongAnswersCount": 0,
